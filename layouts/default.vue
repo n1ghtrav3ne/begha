@@ -1,15 +1,25 @@
 <template>
     <div>
-        <Header />
+        <Header v-if="!initStore.isLoading" />
+        <VitePwaManifest />
         <NuxtPage />
-        <Footer />
+        <Footer v-if="!initStore.isLoading" />
     </div>
 </template>
 
 <script lang="ts" setup>
-import Header from '~/components/layouts/header.vue';
-import Footer from '~/components/layouts/footer.vue';
+import Header from '~/components/layouts/Header.vue';
+import Footer from '~/components/layouts/Footer.vue';
+import { useInitialApp } from '@/stores/init-app';
 defineComponent({Header , Footer})
+const initStore = useInitialApp();
+
+setTimeout(() => {
+    initStore.changeLoadingState()
+}, 5000);
+
+
+
 </script>
 
 <style lang="scss" scoped>

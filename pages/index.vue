@@ -1,14 +1,13 @@
 <template>
   <div>
-    <template>
-      <h1 class="text-3xl font-bold">سلام دنیا</h1>
-    </template>
+    <Home />
   </div>
 </template>
 
 <script lang="ts" setup>
-
+import Home from '@/components/home/Home.vue';
+defineComponent({Home})
 definePageMeta({
-  middleware: ['is-auth'],
-});
+  layout : 'default'
+})
 </script>

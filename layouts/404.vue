@@ -1,5 +1,6 @@
 <template>
   <div>
+    <VitePwaManifest />
     <h1>{{ 404 }}</h1>
     <NuxtLink to="/">Go back home</NuxtLink>
   </div>

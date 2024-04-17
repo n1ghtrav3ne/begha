@@ -8,6 +8,27 @@ export default defineNuxtConfig({
     "@pinia-plugin-persistedstate/nuxt",
   ],
 
+  pwa: {
+    registerType: "autoUpdate",
+      devOptions: {
+        enabled: true,
+      },
+      manifest: {
+        name: "ایران بقاع",
+      short_name: "Iran Begha",
+      start_url: "/",
+      theme_color: "#FBFFFD",
+      background_color: "#29F697",
+        icons: [
+          {
+            src: "pwa.png",
+            sizes: "192x192",
+            type: "image/png", 
+          },
+        ],
+      }
+} , 
+
   css: ["~/assets/css/main.scss"],
   runtimeConfig: {
     public: {
