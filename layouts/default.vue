@@ -16,7 +16,7 @@ const initStore = useInitialApp();
 
 setTimeout(() => {
     initStore.changeLoadingState()
-}, 5000);
+}, 1000);
 
 
 

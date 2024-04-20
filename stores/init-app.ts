@@ -7,7 +7,7 @@ export const useInitialApp = defineStore('initialApp', {
   }),
   getters: {
     isLoadingApp(): boolean {
-      return this.isLoading = false
+      return this.isLoading
     },
   },
   actions: {
