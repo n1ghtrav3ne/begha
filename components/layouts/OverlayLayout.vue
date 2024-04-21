@@ -1,10 +1,19 @@
 <template>
   <div>
-    <div class="overlay"></div>
+    <div @click="closeOverlayAppAndSidebar()" class="overlay"></div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useAppSidebar } from "~/stores/layout-store";
+
+const appSidebar = useAppSidebar();
+
+const closeOverlayAppAndSidebar = () => {
+  appSidebar.changeSidebarState();
+}
+
+</script>
 
 <style lang="scss" scoped>
 @import "~/assets/css/colors.scss";

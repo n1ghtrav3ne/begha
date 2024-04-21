@@ -1,7 +1,13 @@
 <template>
     <div>
+        <div v-if="!initStore.isLoading" class="app-home">
+            <div class="container">
+                <div class="pray-banner">
+                    <img src="~/assets/images/home/pray-home-banner.svg" alt="">
+                </div>
+            </div>
+        </div>
         <SplashLoading v-if="initStore.isLoading" />
-        <i class="ico ue913-Help"></i>
     </div>
 </template>
 
