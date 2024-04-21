@@ -31,12 +31,12 @@ const appSidebar = useAppSidebar();
 <style lang="scss" scoped>
 .slide-fade-enter-active {
   opacity: 1;
-  transition: all ease-in-out 0.13s;
+  transition: all ease-in-out 0.15ms;
 }
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
   opacity: 0;
-  transition: all ease-in-out 0.13s;
+  transition: all ease-in-out 0.15ms;
 }
 </style>

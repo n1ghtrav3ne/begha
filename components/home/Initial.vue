@@ -4,7 +4,9 @@
             <div class="container h-full mx-auto">
                <div class="splash-container mx-auto p-10 flex flex-col h-full justify-between">
                 <div class="image-logo-container mx-auto container flex justify-center items-center">
-                    <img  src="~/assets/images/logo/home-logo.png" width="125" height="134" alt="">
+                    <div class="">
+
+                    </div>
                 </div>
                 <div class="loading-container container flex justify-center">
                     <img src="~/assets/images/loading/loading-dots.gif" width="100" height="100" alt="">

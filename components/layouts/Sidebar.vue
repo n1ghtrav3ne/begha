@@ -20,11 +20,26 @@
           </div>
           <div class="sidebar-items">
             <ul class="sidebar-list mt-5">
-              <li class="sidebar-item">ذکر شمار</li>
-              <li class="sidebar-item">تقویم</li>
-              <li class="sidebar-item">ارتباط با پشتیبانی</li>
-              <li class="sidebar-item">راهنمای برنامه</li>
-              <li class="sidebar-item">قوانین و مقررات</li>
+              <li class="sidebar-item">
+                <span class="material-symbols-outlined"> ad_units </span>ذکر
+                شمار
+              </li>
+              <li class="sidebar-item">
+                <span class="material-symbols-outlined"> calendar_month </span>
+                تقویم
+              </li>
+              <li class="sidebar-item">
+                <span class="material-symbols-outlined"> support_agent </span>
+                ارتباط با پشتیبانی
+              </li>
+              <li class="sidebar-item">
+                <span class="material-symbols-outlined"> device_unknown </span>
+                راهنمای برنامه
+              </li>
+              <li class="sidebar-item">
+                <span class="material-symbols-outlined"> developer_guide </span>
+                قوانین و مقررات
+              </li>
             </ul>
           </div>
           <div class="sidebar-app-version flex items-center justify-center">
@@ -66,8 +81,24 @@ const appSidebar = useAppSidebar();
     padding-bottom: 5px;
   }
   .sidebar-item {
+    cursor: pointer;
     padding: 20px 0;
     font-family: "yekan-regular";
+    font-size: 14px;
+    color: $surface-on;
+    margin: 10px 0;
+    padding-right: 10px;
+    border-radius: 5px;
+    &:hover {
+      background-color: #eee;
+    }
+    span {
+      color: $surface-on;
+      vertical-align: -10px;
+      font-size: 30px;
+      margin-left: 10px;
+      font-weight: 100 !important;
+    }
   }
   .sidebar-app-version {
     font-family: "yekan-regular";
