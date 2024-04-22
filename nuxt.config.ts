@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@vite-pwa/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
+    "nuxt-swiper"
   ],
 
   app: {
@@ -42,6 +43,15 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/css/main.scss"],
+  
+  swiper: {
+    // Swiper options
+    //----------------------
+    // prefix: 'Swiper',
+    // styleLang: 'css',
+    // modules: ['navigation', 'pagination'], // all modules are imported by default
+  } , 
+
   runtimeConfig: {
     public: {
       baseURL: process.env.NUXT_PUBLIC_API_URL,

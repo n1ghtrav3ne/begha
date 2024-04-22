@@ -4,6 +4,7 @@
       <div class="container">
         <PrayBanner />
         <ServicesButtons />
+        <FollowEvents />
       </div>
     </div>
     <SplashLoading v-if="initStore.isLoading" />
@@ -14,8 +15,9 @@
 import SplashLoading from "./Initial.vue";
 import PrayBanner from "./PrayBanner.vue";
 import ServicesButtons from "./ServicesButtons.vue";
+import FollowEvents from "./FollowEvents.vue";
 import { useInitialApp } from "@/stores/init-app";
-defineComponent({ PrayBanner , ServicesButtons });
+defineComponent({ PrayBanner , ServicesButtons , FollowEvents });
 defineComponent({ SplashLoading });
 const initStore = useInitialApp();
 </script>

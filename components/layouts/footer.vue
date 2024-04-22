@@ -35,7 +35,9 @@
 @import "~/assets/css/colors.scss";
 
 .footer-menu {
-    position: absolute;
+  background-color: $outline-variant;
+  z-index: 999;
+    position: fixed;
     bottom: 0;
     right: 0;
     width: 100%;

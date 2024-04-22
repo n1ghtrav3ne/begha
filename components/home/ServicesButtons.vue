@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mt-5 services-container grid grid-rows-2">
+    <div class="mt-5 services-container grid grid-rows-1">
       <div class="grid grid-cols-4 flex">
         <div
           v-for="(item, index) in servicesList"
