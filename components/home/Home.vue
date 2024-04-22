@@ -5,6 +5,9 @@
         <PrayBanner />
         <ServicesButtons />
         <FollowEvents />
+        <WorkEventBanner />
+        <PopularBegha />
+        <NextPlans />
       </div>
     </div>
     <SplashLoading v-if="initStore.isLoading" />
@@ -16,8 +19,11 @@ import SplashLoading from "./Initial.vue";
 import PrayBanner from "./PrayBanner.vue";
 import ServicesButtons from "./ServicesButtons.vue";
 import FollowEvents from "./FollowEvents.vue";
+import WorkEventBanner from "./WorkEventBanner.vue";
+import PopularBegha from "./PopularBegha.vue";
+import NextPlans from "./NextPlans.vue";
 import { useInitialApp } from "@/stores/init-app";
-defineComponent({ PrayBanner , ServicesButtons , FollowEvents });
+defineComponent({ PrayBanner , ServicesButtons , FollowEvents , WorkEventBanner , PopularBegha , NextPlans });
 defineComponent({ SplashLoading });
 const initStore = useInitialApp();
 </script>

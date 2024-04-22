@@ -1,19 +1,19 @@
 <template>
   <div>
-    <div class="slider-container mt-10">
+    <div class="slider-container mt-8">
       <div class="new-events">
         <span class="flex items-center"
           ><img
             class="new-events-shape ml-2"
-            src="~/assets/images/home/new-events-shape.png"
+            src="~/assets/images/home/popular-begha-shape.png"
             alt="new events"
-          />رویداد های پیش رو</span
+          />محبوب ترین بقعه ها</span
         >
       </div>
       <Swiper
         :modules="[SwiperAutoplay, SwiperEffectCreative]"
         :slidesPerView="'auto'"
-        :spaceBetween="25"
+        :spaceBetween="8"
         :loop="false"
         :autoplay="{
           delay: 8000,
@@ -28,29 +28,11 @@
             <div class="card-info mt-3">
               <div class="card-title-head">
                 <div>
-                  <span class="flex items-center mb-3">
-                    <span
-                      class="service-btn btn-bg-blue-light flex flex-col items-center justify-center"
-                    >
-                      <span class="material-symbols-outlined">
-                        prayer_times
-                      </span>
-                    </span>
-                    <span class="event-title mr-2"> جشن بزرگ عید فطر</span>
+                  <span class="flex flex-col items-center mb-3">
+                    <span class="begha-title">امام زاده محسن اصفهان</span>
+                    <span class="begha-follow-text">دنبال کردن</span>
                   </span>
                 </div>
-                <div class="event-location">
-                  <span class="flex items-center">
-                    <span class="material-symbols-outlined event-location-icon">
-                      mosque
-                    </span>
-                    <span class="event-location-title">امام زاده صالح</span>
-                  </span>
-                </div>
-              </div>
-              <div class="card-footer mt-2 flex items-center justify-between">
-                <span class="event-time">۲۲ بهمن ساعت ۱۹:۰۰</span>
-                <span class="event-see-more">مشاهده</span>
               </div>
             </div>
           </div>
@@ -138,7 +120,7 @@ const servicesList = ref<
 }
 
 .swiper-slide {
-  width: 75%;
+  width: 45%;
 }
 
 @media (max-width: 375px) {
@@ -161,46 +143,25 @@ const servicesList = ref<
     }
   }
   .card-info {
-    padding: 20px;
-  }
-  .event-title {
-    font-family: "yekan-bold";
-    font-size: 14px;
-    color: $surface-on;
-  }
-  .event-title-icon {
-    color: blue;
-  }
-  .event-location {
-    margin-bottom: 25px;
-    .event-location-title {
-      font-size: 11px;
-      font-family: "yekan-regular";
+    padding: 10px;
+    .begha-title{
       color: $surface-on;
-      background-color: $surface-container-lowest;
-      padding: 5px 12px;
-      border-radius: 20px;
-      margin-right: 10px;
+      font-size: 12px;
+      font-family: 'yekan-regular';
     }
-    .event-location-icon {
-      color: $primary;
-    }
-  }
-  .card-footer {
-    border-top: 1px solid $outline-variant;
-    padding-top: 23px;
-    .event-time {
-      color: $surface-on-variant;
-      font-size: 11px;
-      font-family: "yekan-regular";
-    }
-    .event-see-more {
-      font-size: 11px;
-      font-family: "yekan-regular";
-      color: $primary;
-      cursor: pointer;
+    .begha-follow-text{
+      margin-top: 15px;
+      background-color: transparent;
+      border: 2px solid $secondary;
+      border-radius: 10px;
+      color: $secondary;
+      font-size: 12px;
+      font-family: 'yekan-regular';
+      padding: 8px 12px;
     }
   }
+ 
+
 }
 
 .slider-container {
@@ -219,18 +180,5 @@ const servicesList = ref<
     }
   }
 }
-.service-btn {
-  // padding: 5px;
-  width: 30px;
-  height: 30px;
-  border-radius: 5px;
-  color: #fff;
-}
-.btn-bg-blue-light {
-  background: linear-gradient(
-    0deg,
-    rgba(32, 198, 188, 1) 0%,
-    rgba(59, 235, 221, 1) 100%
-  );
-}
+
 </style>

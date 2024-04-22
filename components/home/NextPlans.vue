@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="slider-container mt-10">
+    <div class="slider-container mt-5">
       <div class="new-events">
         <span class="flex items-center"
           ><img
             class="new-events-shape ml-2"
-            src="~/assets/images/home/new-events-shape.png"
+            src="~/assets/images/home/popular-begha-shape.png"
             alt="new events"
-          />رویداد های پیش رو</span
+          />برنامه های پیش رو</span
         >
       </div>
       <Swiper
