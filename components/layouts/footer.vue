@@ -12,7 +12,7 @@
             <span class="mt-2 footer-item-title">بقاع من</span>
           </li>
           <li class="flex flex-col search-item items-center">
-            <span class="material-symbols-outlined search-icon"> search </span>
+            <span class="material-symbols-outlined search-icon"> location_on </span>
           </li>
 
           <li class="flex flex-col items-center">

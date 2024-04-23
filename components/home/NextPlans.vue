@@ -13,7 +13,7 @@
       <Swiper
         :modules="[SwiperAutoplay, SwiperEffectCreative]"
         :slidesPerView="'auto'"
-        :spaceBetween="25"
+        :spaceBetween="10"
         :loop="false"
         :autoplay="{
           delay: 8000,
@@ -26,31 +26,22 @@
               <img src="~/assets/images/home/eid-fetr.jpg" alt="" />
             </div>
             <div class="card-info mt-3">
-              <div class="card-title-head">
+              <div class="card-title-head flex items-center justify-between">
                 <div>
-                  <span class="flex items-center mb-3">
-                    <span
-                      class="service-btn btn-bg-blue-light flex flex-col items-center justify-center"
-                    >
-                      <span class="material-symbols-outlined">
-                        prayer_times
-                      </span>
-                    </span>
-                    <span class="event-title mr-2"> جشن بزرگ عید فطر</span>
-                  </span>
-                </div>
-                <div class="event-location">
                   <span class="flex items-center">
-                    <span class="material-symbols-outlined event-location-icon">
-                      mosque
+                    <span
+                      class="service-btn btn-bg-green-light flex flex-col items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined"> school </span>
                     </span>
-                    <span class="event-location-title">امام زاده صالح</span>
+                    <span class="event-title mr-2"
+                      >آموزش رایگان اذان گویی از مقدماتی تا پیشرفته</span
+                    >
                   </span>
                 </div>
-              </div>
-              <div class="card-footer mt-2 flex items-center justify-between">
-                <span class="event-time">۲۲ بهمن ساعت ۱۹:۰۰</span>
-                <span class="event-see-more">مشاهده</span>
+                <div class="plan-join">
+                  <span>ثبت نام</span>
+                </div>
               </div>
             </div>
           </div>
@@ -138,74 +129,77 @@ const servicesList = ref<
 }
 
 .swiper-slide {
-  width: 75%;
+  width: 90%;
 }
 
 @media (max-width: 375px) {
   .card-box {
-    width: 250px !important;
+    width: 350px !important;
+    .card-image {
+      img {
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        max-width: 350px !important;
+        width: 100% !important;
+      }
+    }
+
   }
 }
 
 .card-box {
   cursor: pointer;
-  width: 350px;
+  width: 400px;
   border-radius: 10px !important;
   background-color: #fff;
   .card-image {
     img {
       border-top-right-radius: 20px;
       border-top-left-radius: 20px;
-      max-width: 350px !important;
-      width: 100% !important;
+      max-width: 400px;
+      width: 100%;
     }
   }
   .card-info {
-    padding: 20px;
+    padding: 10px;
   }
   .event-title {
-    font-family: "yekan-bold";
-    font-size: 14px;
+    font-family: "yekan-regular";
+    font-size: 11px;
     color: $surface-on;
+    width: 70%;
   }
   .event-title-icon {
     color: blue;
   }
-  .event-location {
-    margin-bottom: 25px;
-    .event-location-title {
-      font-size: 11px;
+
+  .plan-join {
+    span {
+      width: 63px;
+      height: 32px;
+      background-color: transparent;
+      border: 2px solid $primary;
+      font-size: 12px;
       font-family: "yekan-regular";
-      color: $surface-on;
-      background-color: $surface-container-lowest;
-      padding: 5px 12px;
-      border-radius: 20px;
-      margin-right: 10px;
-    }
-    .event-location-icon {
-      color: $primary;
-    }
-  }
-  .card-footer {
-    border-top: 1px solid $outline-variant;
-    padding-top: 23px;
-    .event-time {
-      color: $surface-on-variant;
-      font-size: 11px;
-      font-family: "yekan-regular";
-    }
-    .event-see-more {
-      font-size: 11px;
-      font-family: "yekan-regular";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
       color: $primary;
       cursor: pointer;
+      transition: all ease-in 0.13s;
+      &:hover {
+        background-color: $primary;
+        border-color: #fff;
+        color: #fff;
+      }
     }
   }
 }
 
 .slider-container {
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 150px;
   .new-events {
     margin-bottom: 15px;
     .new-events-shape {
@@ -226,11 +220,11 @@ const servicesList = ref<
   border-radius: 5px;
   color: #fff;
 }
-.btn-bg-blue-light {
+.btn-bg-green-light {
   background: linear-gradient(
     0deg,
-    rgba(32, 198, 188, 1) 0%,
-    rgba(59, 235, 221, 1) 100%
+    rgba(9, 197, 108, 1) 0%,
+    rgba(39, 228, 135, 1) 100%
   );
 }
 </style>
