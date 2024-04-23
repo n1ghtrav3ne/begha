@@ -23,6 +23,7 @@ export default defineNuxtConfig({
 
   pwa: {
     registerType: "autoUpdate",
+    strategies:  'injectManifest' , 
     devOptions: {
       enabled: true,
     },
@@ -39,6 +40,9 @@ export default defineNuxtConfig({
           type: "image/png",
         },
       ],
+    },
+    workbox: {
+      globPatterns: ["**/*.{js,css,html,png,jpg,}"],
     },
   },
 
@@ -57,6 +61,9 @@ export default defineNuxtConfig({
       baseURL: process.env.NUXT_PUBLIC_API_URL,
     },
   },
+  plugins: [
+    '~/plugins/sw.client.js'
+  ] ,
   postcss: {
     plugins: {
       tailwindcss: {},

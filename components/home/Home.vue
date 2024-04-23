@@ -23,8 +23,7 @@ import WorkEventBanner from "./WorkEventBanner.vue";
 import PopularBegha from "./PopularBegha.vue";
 import NextPlans from "./NextPlans.vue";
 import { useInitialApp } from "@/stores/init-app";
-defineComponent({ PrayBanner , ServicesButtons , FollowEvents , WorkEventBanner , PopularBegha , NextPlans });
-defineComponent({ SplashLoading });
+defineComponent({ SplashLoading , PrayBanner , ServicesButtons , FollowEvents , WorkEventBanner , PopularBegha , NextPlans });
 const initStore = useInitialApp();
 </script>
 
