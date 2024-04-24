@@ -93,8 +93,8 @@ const servicesList = ref<
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/css/icons.scss";
-@import "../../assets/css/colors.scss";
+@import "~/assets/css/icons.scss";
+@import "~/assets/css/colors.scss";
 
 .swiper {
   width: 100%;
@@ -136,7 +136,7 @@ const servicesList = ref<
   background-color: #fff;
   .card-image {
     img {
-      border-top-right-radius: 20px;
+      border-top-righct-radius: 20px;
       border-top-left-radius: 20px;
       max-width: 350px !important;
       width: 100% !important;
