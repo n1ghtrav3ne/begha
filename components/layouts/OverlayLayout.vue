@@ -1,16 +1,19 @@
 <template>
   <div>
-    <div @click="closeOverlayAppAndSidebar()" class="overlay"></div>
+    <div @click="closeOverlayApp()" class="overlay"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useAppSidebar } from "~/stores/layout-store";
+import { useModalStore } from "~/stores/modals-store";
 
 const appSidebar = useAppSidebar();
+const modalStore = useModalStore();
 
-const closeOverlayAppAndSidebar = () => {
+const closeOverlayApp = () => {
   appSidebar.changeSidebarState();
+  modalStore.changeBeghaListProvinceFiltersActive();
 }
 
 </script>
