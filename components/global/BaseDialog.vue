@@ -25,7 +25,8 @@ import { useModalStore } from '~/stores/modals-store';
 defineNuxtComponent({OverlayLayout})
 const modalStore = useModalStore()
 const closeModal = () => {
-  modalStore.changeBeghaListProvinceFiltersActive()
+  modalStore.changeBeghaListProvinceFiltersActive('deactive')
+  modalStore.changeBeghaListEventFiltersActive('deactive')
 }
 </script>
 
@@ -67,5 +68,7 @@ const closeModal = () => {
       height: 100%;
       overflow-y: scroll !important;
     }
+    
 }
+
 </style>

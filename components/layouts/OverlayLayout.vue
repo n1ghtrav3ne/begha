@@ -13,7 +13,8 @@ const modalStore = useModalStore();
 
 const closeOverlayApp = () => {
   appSidebar.changeSidebarState();
-  modalStore.changeBeghaListProvinceFiltersActive();
+  modalStore.changeBeghaListProvinceFiltersActive('deactive');
+  modalStore.changeBeghaListEventFiltersActive('deactive');
 }
 
 </script>

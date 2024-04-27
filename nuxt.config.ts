@@ -46,6 +46,10 @@ export default defineNuxtConfig({
     },
   },
 
+  components: {
+    dirs: ['~/components/global/']
+  } , 
+
   css: ["~/assets/css/main.scss"],
   
   swiper: {
