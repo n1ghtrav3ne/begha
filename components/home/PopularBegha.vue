@@ -168,7 +168,7 @@ const servicesList = ref<
   width: 100%;
   margin-bottom: 40px;
   .new-events {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     .new-events-shape {
       width: 28px !important;
       height: 12px !important;

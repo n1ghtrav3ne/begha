@@ -55,7 +55,7 @@ export default {
 .work-event-banner {
   cursor: pointer;
   background-color: $error;
-  border-radius: 25px;
+  border-radius: 12px;
   width: 100%;
   padding: 15px;
   position: relative;

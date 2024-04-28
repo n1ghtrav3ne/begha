@@ -55,7 +55,7 @@ export default {
 .pray-banner {
   cursor: pointer;
   background-color: $secondary;
-  border-radius: 25px;
+  border-radius: 12px;
   width: 100%;
   padding: 15px;
   position: relative;
@@ -67,6 +67,8 @@ export default {
   .do-pray {
     background: $secondary-container;
     border-radius: 25px;
+    max-width: 200px;
+    width: fit-content !important;
     .do-pray-word {
       margin-top: 20px;
       font-size: 12px;
@@ -79,6 +81,7 @@ export default {
       span {
         font-size: 22px;
         vertical-align: -9px;
+        margin-right: 8px;
       }
     }
   }

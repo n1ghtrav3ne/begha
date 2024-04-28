@@ -36,7 +36,26 @@
               <input type="text" placeholder="جستجوی مراسم" />
             </div>
             <div class="current-location mt-4 flex items-center">
-              /شسیشسیشسیشسی
+              <div class="grid grid-rows-1">
+                <div class="grid grid-cols-4 flex">
+                  <span
+                    class="filtered-badge ml-2 flex items-center justify-between"
+                  >
+                    <span class="filter-badge-text ml-3">دعای ندبه</span>
+                    <span class="material-symbols-outlined delete-filter-icon">
+                      close
+                    </span>
+                  </span>
+                  <span
+                    class="filtered-badge ml-2 flex items-center justify-between"
+                  >
+                    <span class="filter-badge-text ml-3">دعای ندبه</span>
+                    <span class="material-symbols-outlined delete-filter-icon">
+                      close
+                    </span>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -47,7 +66,13 @@
               <input type="checkbox" :checked="true" />
               <span class="checkmark"></span>
             </label> -->
-            <BaseCheckbox>دعا کمیل</BaseCheckbox>
+              <label
+                v-for="(item, index) in checkboxes"
+                :key="index"
+                class="flex"
+              >
+                <BaseCheckbox :label="item.label" v-model="item.isChecked" />
+              </label>
             </div>
           </div>
         </div>
@@ -63,6 +88,23 @@ import BaseDialog from "~/components/global/BaseDialog.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineNuxtComponent({ PopularBegha, BeghaListItems, BaseDialog });
 const modalStore = useModalStore();
+const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
+  {
+    id: 1,
+    label: "دعای ندبه و کمیل",
+    isChecked: false,
+  },
+  {
+    id: 2,
+    label: "دعای ندبه و کمیل",
+    isChecked: false,
+  },
+  {
+    id: 3,
+    label: "دعای ندبه و کمیل",
+    isChecked: false,
+  },
+]);
 const servicesList = ref<
   { title: string; iconClass: string; colorClass: string }[]
 >([
@@ -150,6 +192,20 @@ const servicesList = ref<
       background: #d7ecff;
       border-radius: 50%;
       padding: 8px;
+    }
+    .filtered-badge {
+      background-color: $secondary-container;
+      padding: 10px 15px;
+      border-radius: 25px;
+      border: 2px solid $secondary;
+      .filter-badge-text {
+        font-size: 11px;
+        font-family: "yekan-regular";
+        color: $secondary-on-container;
+      }
+      .delete-filter-icon {
+        font-size: 18px;
+      }
     }
     border-bottom: 2px solid $outline-variant;
   }

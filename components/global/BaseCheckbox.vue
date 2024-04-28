@@ -1,70 +1,97 @@
+
 <template>
-  <div>
-    <form>
-      <div class="form-group">
-        <input type="checkbox" id="html" />
-        <label for="html"></label>
-      </div>
-    </form>
+  <div class="inline-flex items-center">
+    <label
+      class="relative flex items-center p-3 rounded-full cursor-pointer"
+      htmlFor="check"
+    >
+      <input
+        type="checkbox"
+        class="custom-checkbox before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      />
+      <span
+        class="absolute checkmark-icon text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-3.5 w-3.5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          stroke="currentColor"
+          stroke-width="1"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </span>
+    </label>
+    <label
+      class="mt-px font-light text-gray-700 cursor-pointer select-none"
+      htmlFor="check"
+    >
+      دعای ندبه
+    </label>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  model: {
+    prop: "modelValue",
+    event: "change",
+  },
+  props: {
+    value: { type: String },
+    modelValue: { default: "" },
+    label: { type: String, required: true },
+    trueValue: { default: true },
+    falseValue: { default: false },
+  },
+  computed: {
+    isChecked() {
+      if (this.modelValue instanceof Array) {
+        return this.modelValue.includes(this.value);
+      }
+      // Note that `true-value` and `false-value` are camelCase in the JS
+      return this.modelValue === this.trueValue;
+    },
+  },
+  methods: {
+    updateInput(event) {
+      let isChecked = event.target.checked;
+      if (this.modelValue instanceof Array) {
+        let newValue = [...this.modelValue];
+        if (isChecked) {
+          newValue.push(this.value);
+        } else {
+          newValue.splice(newValue.indexOf(this.value), 1);
+        }
+        this.$emit("change", newValue);
+      } else {
+        this.$emit("change", isChecked ? this.trueValue : this.falseValue);
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+/* Customize the label (the wrapper) */
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
-.form-group {
-  display: block;
-  margin-bottom: 15px;
-}
 
-.form-group input {
-  padding: 0;
-  height: initial;
-  width: initial;
-  margin-bottom: 0;
-  display: none;
-  cursor: pointer;
-}
-
-.form-group label {
-  position: relative;
-  cursor: pointer;
+.custom-checkbox{
   background-color: transparent;
+  outline: none;
+  border: 1px solid $outline;
+  &:checked{
+    background-color: $secondary;
+  }
 }
-
-.form-group label:before {
-  content:'';
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: 2px solid $outline-variant;
-  padding: 12px;
-  border-radius: 7px;
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-.form-group input:checked + label:before{
-background-color: $secondary;
-border-radius: 7px;
-}
-
-.form-group input:checked + label:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 4px;
-  left: 11px;
-  width: 6px;
-  height: 12px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+.checkmark-icon{
+  color: #fff !important;
 }
 </style>

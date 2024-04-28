@@ -11,6 +11,7 @@
         >
       </div>
       <Swiper
+      class=""
         :modules="[SwiperAutoplay, SwiperEffectCreative]"
         :slidesPerView="'auto'"
         :spaceBetween="25"
@@ -25,12 +26,12 @@
             <div class="card-image">
               <img src="~/assets/images/home/eid-fetr.jpg" alt="" />
             </div>
-            <div class="card-info mt-3">
+            <div class="card-info">
               <div class="card-title-head">
                 <div>
                   <span class="flex items-center mb-3">
                     <span
-                      class="service-btn btn-bg-blue-light flex flex-col items-center justify-center"
+                      class="service-btn btn-bg-blue flex flex-col items-center justify-center"
                     >
                       <span class="material-symbols-outlined">
                         prayer_times
@@ -117,12 +118,13 @@ const servicesList = ref<
 .swiper {
   width: 100%;
   height: 100%;
+  background-color: $surface !important;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: $surface;
 
   /* Center slide text vertically */
   display: flex;
@@ -139,6 +141,18 @@ const servicesList = ref<
 
 .swiper-slide {
   width: 75%;
+  border-radius: 16px;
+  border: 1px solid $outline-variant;
+}
+
+.swiper-wrapper{
+  background-color: $surface !important;
+  border-radius: 16px !important;
+}
+
+.swiper-backface-hidden{
+  background-color: transparent !important;
+  // padding: 14px 15px !important;
 }
 
 @media (max-width: 375px) {
@@ -150,18 +164,23 @@ const servicesList = ref<
 .card-box {
   cursor: pointer;
   width: 350px;
-  border-radius: 10px !important;
+  border-radius: 16px !important;
   background-color: #fff;
   .card-image {
+    border-top-right-radius: 16px !important;
+    border-top-left-radius: 16px !important;
     img {
-      border-top-right-radius: 20px;
-      border-top-left-radius: 20px;
+      border-top-right-radius: 16px;
+      border-top-left-radius: 16px;
       max-width: 350px !important;
       width: 100% !important;
     }
   }
   .card-info {
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
+    border-bottom-right-radius: 16px !important;
+    border-bottom-left-radius: 16px !important;
+    box-shadow: 3px 4px 19px 0px rgba(0, 0, 0, 0.01);
   }
   .event-title {
     font-family: "yekan-bold";
@@ -207,7 +226,7 @@ const servicesList = ref<
   width: 100%;
   margin-bottom: 40px;
   .new-events {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     .new-events-shape {
       width: 28px !important;
       height: 12px !important;
@@ -232,5 +251,8 @@ const servicesList = ref<
     rgba(32, 198, 188, 1) 0%,
     rgba(59, 235, 221, 1) 100%
   );
+}
+.btn-bg-blue {
+  background: linear-gradient(180deg, #8AC6FD 0%, #49A2F5 100%);
 }
 </style>
