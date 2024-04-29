@@ -11,6 +11,7 @@
       </div>
     </div>
     <SplashLoading v-if="initStore.isLoading" />
+    <MoreServicesButtons v-if="modalStore.isOpenMoreServicesButtons" />
   </div>
 </template>
 
@@ -22,9 +23,12 @@ import FollowEvents from "./FollowEvents.vue";
 import WorkEventBanner from "./WorkEventBanner.vue";
 import PopularBegha from "./PopularBegha.vue";
 import NextPlans from "./NextPlans.vue";
+import MoreServicesButtons from "./MoreServicesButtons.vue";
 import { useInitialApp } from "@/stores/init-app";
-defineComponent({ SplashLoading , PrayBanner , ServicesButtons , FollowEvents , WorkEventBanner , PopularBegha , NextPlans });
+import { useModalStore } from "@/stores/modals-store";
+defineComponent({ SplashLoading , PrayBanner , ServicesButtons , FollowEvents , WorkEventBanner , PopularBegha , NextPlans , MoreServicesButtons });
 const initStore = useInitialApp();
+const modalStore = useModalStore();
 </script>
 
 <style lang="scss" scoped>

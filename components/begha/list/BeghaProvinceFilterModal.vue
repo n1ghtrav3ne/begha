@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseDialog v-if="modalStore.isOpenBeghaListProvinceFilter" class="filter-province-modal">
+    <BaseDialog :modalPadding="'20px 0 35px 0'" :modalHeight="523" v-if="modalStore.isOpenBeghaListProvinceFilter" class="filter-province-modal">
         <template #headerText>
           <span class="modal-head-title">شهر مورد نظر خود را انتخاب کنید</span>
         </template>

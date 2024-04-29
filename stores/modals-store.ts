@@ -5,7 +5,8 @@ export const useModalStore = defineStore('modalStore', {
   state: () => ({
     modals : {
       beghaListProvinceFilter : false , 
-      beghaListEventFilter : false
+      beghaListEventFilter : false , 
+      moreServicesButtons : false , 
     }
   }),
   getters: {
@@ -14,6 +15,9 @@ export const useModalStore = defineStore('modalStore', {
     },
     isOpenBeghaListEventFilter(): boolean {
       return this.modals.beghaListEventFilter
+    },
+     isOpenMoreServicesButtons(): boolean {
+      return this.modals.moreServicesButtons
     },
   },
   actions: {
@@ -29,6 +33,13 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.beghaListEventFilter = true;
       }else{
         this.modals.beghaListEventFilter = false;
+      }
+    } , 
+    changeMoreServicesButtonsActive(operator:string) {
+      if (operator === 'active') {
+        this.modals.moreServicesButtons = true;
+      }else{
+        this.modals.moreServicesButtons = false;
       }
     } , 
   },

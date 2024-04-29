@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="base-modal">
+    <div :style="`height: ${props.modalHeight + 'px !important'};`" class="base-modal">
       <div class="base-modal-header">
         <span class="base-modal-stick"></span>
         <div class="modal-head-title flex items-center justify-between">
@@ -8,7 +8,7 @@
           <span @click="closeModal()" class="material-symbols-outlined close-modal-icon"> close </span>
         </div>
       </div>
-      <div class="base-modal-body">
+      <div :style="`padding: ${props.modalPadding} !important`" class="base-modal-body">
         <slot name="body"></slot>
       </div>
       <div class="base-modal-footer">
@@ -23,10 +23,12 @@
 import OverlayLayout from '../layouts/OverlayLayout.vue';
 import { useModalStore } from '~/stores/modals-store';
 defineNuxtComponent({OverlayLayout})
+const props = defineProps(['modalHeight' , 'modalPadding'])
 const modalStore = useModalStore()
 const closeModal = () => {
   modalStore.changeBeghaListProvinceFiltersActive('deactive')
   modalStore.changeBeghaListEventFiltersActive('deactive')
+  modalStore.changeMoreServicesButtonsActive('deactive')
 }
 </script>
 
@@ -39,7 +41,6 @@ const closeModal = () => {
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     width: 100%;
-    height: 523px;
     position: fixed;
     bottom: 0;
     padding: 30px 25px;
@@ -64,7 +65,6 @@ const closeModal = () => {
         }
     }
     .base-modal-body{
-      padding: 20px 0 35px 0;
       height: 100%;
       overflow-y: scroll !important;
     }

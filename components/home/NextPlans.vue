@@ -32,7 +32,7 @@
                     <span
                       class="service-btn btn-bg-green-light flex flex-col items-center justify-center"
                     >
-                      <span class="material-symbols-outlined"> school </span>
+                      <span class="icon-Education-Iran">  </span>
                     </span>
                     <span class="event-title mr-2"
                       >آموزش رایگان اذان گویی از مقدماتی تا پیشرفته</span
@@ -108,12 +108,13 @@ const servicesList = ref<
 .swiper {
   width: 100%;
   height: 100%;
+  background-color: $surface !important;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: $surface;
 
   /* Center slide text vertically */
   display: flex;
@@ -129,12 +130,25 @@ const servicesList = ref<
 }
 
 .swiper-slide {
-  width: 90%;
+  width: 75%;
+  border-radius: 16px;
+  border: 1px solid $outline-variant;
+}
+
+.swiper-wrapper{
+  background-color: $surface !important;
+  border-radius: 16px !important;
+}
+
+.swiper-backface-hidden{
+  background-color: transparent !important;
+  // padding: 14px 15px !important;
 }
 
 @media (max-width: 375px) {
   .card-box {
     width: 350px !important;
+    
     .card-image {
       img {
         border-top-right-radius: 20px;
@@ -150,8 +164,9 @@ const servicesList = ref<
 .card-box {
   cursor: pointer;
   width: 400px;
-  border-radius: 10px !important;
+  border-radius: 16px !important;
   background-color: #fff;
+  
   .card-image {
     img {
       border-top-right-radius: 20px;
@@ -161,7 +176,10 @@ const servicesList = ref<
     }
   }
   .card-info {
-    padding: 10px;
+    padding: 20px 20px 20px 20px;
+    border-bottom-right-radius: 16px !important;
+    border-bottom-left-radius: 16px !important;
+    box-shadow: 3px 4px 19px 0px rgba(0, 0, 0, 0.01);
   }
   .event-title {
     font-family: "yekan-regular";
@@ -195,6 +213,9 @@ const servicesList = ref<
       }
     }
   }
+  .icon-Education-Iran{
+    font-size: 20px;
+  }
 }
 
 .slider-container {
@@ -214,17 +235,13 @@ const servicesList = ref<
   }
 }
 .service-btn {
-  // padding: 5px;
   width: 30px;
   height: 30px;
-  border-radius: 5px;
+  border-radius: 8px;
+  padding: 4.5px 5px 4.816px 4.5px;
   color: #fff;
 }
 .btn-bg-green-light {
-  background: linear-gradient(
-    0deg,
-    rgba(9, 197, 108, 1) 0%,
-    rgba(39, 228, 135, 1) 100%
-  );
+  background: linear-gradient(180deg, #B5F895 0%, #2AF487 100%);
 }
 </style>

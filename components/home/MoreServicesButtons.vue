@@ -1,77 +1,68 @@
 <template>
   <div>
-    <div class="mt-5 services-container grid grid-rows-1">
-      <div class="grid grid-cols-4 flex">
-        <div
-          v-for="(item, index) in servicesList"
-          :key="index"
-          class="flex mt-5 flex-col items-center justify-center"
-        >
-          <span
-            :class="`${item.colorClass}`"
-            class="service-btn flex flex-col items-center justify-center"
-          >
-            <span :class="`${item.badgeColorClass}`" class="btn-badge">جدید</span>
-            <span class="service-btn-icons" :class="item.iconClass"> </span>
-          </span>
-          <span class="service-title mt-2">{{ item.title }}</span>
+    <BaseDialog :modalHeight="189">
+      <template #headerText>
+        <span class="modal-head-title">سایر خدمات</span>
+      </template>
+      <template #body>
+        <div class="services-container grid grid-rows-1">
+          <div class="grid grid-cols-4 flex">
+            <div
+              v-for="(item, index) in servicesList"
+              :key="index"
+              class="flex mt-5 flex-col items-center justify-center"
+            >
+              <span
+                :class="`${item.colorClass}`"
+                class="service-btn flex flex-col items-center justify-center"
+              >
+                <span :class="`${item.badgeColorClass}`" class="btn-badge"
+                  >جدید</span
+                >
+                <span class="service-btn-icons" :class="item.iconClass"> </span>
+              </span>
+              <span class="service-title mt-2">{{ item.title }}</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </template>
+    </BaseDialog>
   </div>
 </template>
 
 <script lang="ts" setup>
 const servicesList = ref<
-  { title: string; iconClass: string; colorClass: string; badgeColorClass : string}[]
+  {
+    title: string;
+    iconClass: string;
+    colorClass: string;
+    badgeColorClass: string;
+  }[]
 >([
-  {
-    title: "بقاع متبرکه",
-    iconClass: "icon-Mosque-Iran",
-    colorClass: "btn-bg-green",
-    badgeColorClass : 'success-bg-color'
-  },
-  {
-    title: "زائر سرا",
-    iconClass: "icon-House-Iran",
-    colorClass: "btn-bg-blue",
-    badgeColorClass : 'error-bg-color'
-  },
-  {
-    title: "کتابخانه",
-    iconClass: "icon-Book-Iran",
-    colorClass: "btn-bg-green",
-    badgeColorClass : 'success-bg-color'
-  },
-  {
-    title: "قبور",
-    iconClass: "icon-Ghabr-Iran",
-    colorClass: "btn-bg-yellow",
-    badgeColorClass : 'error-bg-color'
-  },
+  
   {
     title: "سالن مراسم",
     iconClass: "icon-Hall-Iran",
     colorClass: "btn-bg-green-light",
-    badgeColorClass : 'success-bg-color'
+    badgeColorClass: "success-bg-color",
   },
   {
     title: "آموزشی",
     iconClass: "icon-Education-Iran",
     colorClass: "btn-bg-yellow",
-    badgeColorClass : 'success-bg-color'
+    badgeColorClass: "success-bg-color",
   },
   {
     title: "رویداد ها",
     iconClass: "icon-Event-Iran",
     colorClass: "btn-bg-blue-kind",
-    badgeColorClass : 'error-bg-color'
+    badgeColorClass: "error-bg-color",
   },
   {
     title: "حمایت مالی",
     iconClass: "icon-Donate-Iran",
     colorClass: "btn-bg-navy-blue",
-    badgeColorClass : 'error-bg-color'
+    badgeColorClass: "error-bg-color",
   },
 ]);
 </script>
@@ -154,11 +145,11 @@ const servicesList = ref<
     rgba(248, 232, 149, 1) 100%
   );
 }
-.error-bg-color{
+.error-bg-color {
   background-color: $error !important;
 }
 
-.success-bg-color{
+.success-bg-color {
   background-color: $primary !important;
 }
 </style>

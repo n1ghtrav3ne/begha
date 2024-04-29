@@ -33,8 +33,8 @@
                     <span
                       class="service-btn btn-bg-blue flex flex-col items-center justify-center"
                     >
-                      <span class="material-symbols-outlined">
-                        prayer_times
+                      <span class="icon-Prayer-Iran ">
+                        
                       </span>
                     </span>
                     <span class="event-title mr-2"> جشن بزرگ عید فطر</span>
@@ -42,8 +42,8 @@
                 </div>
                 <div class="event-location">
                   <span class="flex items-center">
-                    <span class="material-symbols-outlined event-location-icon">
-                      mosque
+                    <span class="icon-Mosque-Iran event-location-icon">
+                      
                     </span>
                     <span class="event-location-title">امام زاده صالح</span>
                   </span>
@@ -190,6 +190,9 @@ const servicesList = ref<
   .event-title-icon {
     color: blue;
   }
+  .icon-Prayer-Iran{
+    font-size: 24px;
+  }
   .event-location {
     margin-bottom: 25px;
     .event-location-title {
@@ -203,6 +206,7 @@ const servicesList = ref<
     }
     .event-location-icon {
       color: $primary;
+      font-size: 30px;
     }
   }
   .card-footer {

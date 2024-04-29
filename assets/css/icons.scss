@@ -1,36 +1,111 @@
 @font-face {
-    font-family: 'iran-begha';
-    src: url("../fonts/icons/iran\ begha.eot begha.ttf") format("truetype"),
-    url("../fonts/icons/iran\ begha.eot") format("embedded-opentype"),
-    url("../fonts/icons/iran\ begha.woff") format("woff");
-    }
-    .ico {
-        font-family: 'iran-begha' !important;
-        font-size: 18px;
-        font-style:normal;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    
-    .ue900-بقاعمتبرکه--بقاع-متبرکه:before { content: "\ea01"; }
-    .ue901-سالنمراسم--سالن-مراسم:before { content: "\ea02"; }
-    .ue902-آموزشی:before { content: "\ea03"; }
-    .ue903-زائرسرا:before { content: "\ea04"; }
-    .ue904-کتابخانه:before { content: "\ea05"; }
-    .ue905-رویدادها--رویداد-ها:before { content: "\ea06"; }
-    .ue906-قبور:before { content: "\ea07"; }
-    .ue907-حمایتمالی--حمایت-مالی:before { content: "\ea08"; }
-    .ue908-Menu:before { content: "\ea09"; }
-    .vuesaxoutlinesearch-normal:before { content: "\ea0a"; }
-    .ue90a-Pray:before { content: "\ea0b"; }
-    .ue90b-Education:before { content: "\ea0c"; }
-    .ue90c-Mosque:before { content: "\ea0d"; }
-    .ue90e-ذکرشمار--ذکر-شمار:before { content: "\ea0f"; }
-    .ue90f-اذانگو--اذان-گو:before { content: "\ea10"; }
-    .ue910-قبلهنما--قبله-نما:before { content: "\ea11"; }
-    .ue911-Calender:before { content: "\ea12"; }
-    .ue912-Support:before { content: "\ea13"; }
-    .ue913-Help:before { content: "\ea14"; }
-    .ue914-Regulations:before { content: "\ea15"; }
-    .ue915-Menu2:before { content: "\ea16"; }
-    
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?hlo8dd');
+    src:  url('../fonts/icomoon.eot?hlo8dd#iefix') format('embedded-opentype'),
+        url('../fonts/icons/icomoon.eot') format('eot'),
+        url('../fonts/icons/icomoon.woff') format('woff'),
+        url('../fonts/icons/icomoon.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Close-Iran:before {
+  content: "\e917";
+}
+.icon-More-Iran:before {
+  content: "\e908";
+}
+.icon-Prayer-Iran:before {
+  content: "\e918";
+}
+.icon-Calender-Iran:before {
+  content: "\e912";
+}
+.icon-Guides-Iran:before {
+  content: "\e913";
+}
+.icon-Help-Iran:before {
+  content: "\e914";
+}
+.icon-Pray-Counter-Iran:before {
+  content: "\e915";
+}
+.icon-Support-Iran:before {
+  content: "\e916";
+}
+.icon-Map-iran .path1:before {
+  content: "\e910";
+  color: rgb(251, 255, 253);
+  opacity: 0.4;
+}
+.icon-Map-iran .path2:before {
+  content: "\e911";
+  margin-left: -1em;
+  color: rgb(251, 255, 253);
+}
+.icon-Home:before {
+  content: "\e909";
+}
+.icon-Media:before {
+  content: "\e90a";
+  color: #7e7e7e;
+}
+.icon-Mosque:before {
+  content: "\e90b";
+  color: #7e7e7e;
+}
+.icon-Profile:before {
+  content: "\e90c";
+  color: #7e7e7e;
+}
+.icon-Location-Iran:before {
+  content: "\e90d";
+}
+.icon-Arrow-Bottom-Iran:before {
+  content: "\e90e";
+}
+.icon-Menu-Iran:before {
+  content: "\e90f";
+}
+.icon-Book-Iran:before {
+  content: "\e900";
+}
+.icon-Donate-Iran:before {
+  content: "\e901";
+}
+.icon-Education-Iran:before {
+  content: "\e902";
+}
+.icon-Event-Iran:before {
+  content: "\e903";
+}
+.icon-Ghabr-Iran:before {
+  content: "\e904";
+}
+.icon-Hall-Iran:before {
+  content: "\e905";
+}
+.icon-House-Iran:before {
+  content: "\e906";
+}
+.icon-Mosque-Iran:before {
+  content: "\e907";
+}
+  

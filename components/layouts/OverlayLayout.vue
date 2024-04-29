@@ -12,9 +12,10 @@ const appSidebar = useAppSidebar();
 const modalStore = useModalStore();
 
 const closeOverlayApp = () => {
-  appSidebar.changeSidebarState();
+  appSidebar.changeSidebarStateActive('deactive');
   modalStore.changeBeghaListProvinceFiltersActive('deactive');
   modalStore.changeBeghaListEventFiltersActive('deactive');
+  modalStore.changeMoreServicesButtonsActive('deactive');
 }
 
 </script>
@@ -26,7 +27,7 @@ const closeOverlayApp = () => {
   opacity: 0.2;
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   transition: all ease-in-out 0.13s;

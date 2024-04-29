@@ -11,8 +11,13 @@ export const useAppSidebar = defineStore('appSidebar', {
     },
   },
   actions: {
-    changeSidebarState() {
-      this.isOpenSidebar = !this.isOpenSidebar;
+    changeSidebarStateActive(operator:string) {
+      if(operator === 'active'){
+        this.isOpenSidebar = true;
+      }else{
+        this.isOpenSidebar = false;
+      }
+      
     }
   },
 })

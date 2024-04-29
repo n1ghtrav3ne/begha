@@ -7,18 +7,17 @@
         </div>
         <div class="flex itmes-center">
           <span
-            @click="appSidebar.changeSidebarState()"
-            class="material-symbols-outlined"
+            @click="appSidebar.changeSidebarStateActive('active')"
+            class="icon-Menu-Iran"
           >
-            menu
+            
           </span>
           <div class="choose-location flex items-center mr-3">
-            <span class="material-symbols-outlined location-choose-icon ml-1">
-              location_on
+            <span class="icon-Location-Iran location-choose-icon ml-1">
             </span>
             <span class="location-title-text">اصفهان، نجف آباد</span>
-            <span class="material-symbols-outlined mr-1">
-              arrow_drop_down
+            <span class="icon-Arrow-Bottom-Iran mr-1">
+              
             </span>
           </div>
         </div>
@@ -53,6 +52,10 @@ const appSidebar = useAppSidebar();
 .slide-fade-enter-active {
   opacity: 1;
   transition: all ease-in-out 0.15ms;
+}
+.icon-Menu-Iran{
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .slide-fade-enter-from,

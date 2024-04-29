@@ -1,6 +1,8 @@
 <template>
   <div>
     <BaseDialog
+    :modalHeight="552"
+    :modalPadding="'20px 0 35px 0'"
       v-if="modalStore.isOpenBeghaListEventFilter"
       class="filter-event-modal"
     >
@@ -251,7 +253,6 @@ const servicesList = ref<
 .services-container {
   border-bottom: 3px solid $secondary-container;
   .service-btn {
-    // padding: 5px;
     width: 48px;
     height: 48px;
     border-radius: 15px;

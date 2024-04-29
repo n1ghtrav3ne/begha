@@ -96,15 +96,19 @@ const servicesList = ref<
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 
+
 .swiper {
   width: 100%;
   height: 100%;
+  background-color: $surface !important;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
+  border-radius: 16px;
+  border: 1px solid $outline-variant;
 
   /* Center slide text vertically */
   display: flex;
@@ -132,18 +136,21 @@ const servicesList = ref<
 .card-box {
   cursor: pointer;
   width: 350px;
-  border-radius: 10px !important;
+  border-radius: 16px !important;
   background-color: #fff;
   .card-image {
     img {
-      border-top-righct-radius: 20px;
-      border-top-left-radius: 20px;
+      border-top-right-radius: 16px;
+      border-top-left-radius: 16px;
       max-width: 350px !important;
       width: 100% !important;
     }
   }
   .card-info {
-    padding: 10px;
+    padding: 12px;
+    border-bottom-right-radius: 16px !important;
+    border-bottom-left-radius: 16px !important;
+    box-shadow: 3px 4px 19px 0px rgba(0, 0, 0, 0.01);
     .begha-title{
       color: $surface-on;
       font-size: 12px;

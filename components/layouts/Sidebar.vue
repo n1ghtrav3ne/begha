@@ -11,33 +11,33 @@
             </div>
             <div class="sidebar-logo">
               <span
-                @click="appSidebar.changeSidebarState()"
-                class="material-symbols-outlined"
+                @click="appSidebar.changeSidebarStateActive('deactive')"
+                class="icon-Close-Iran"
               >
-                cancel
+                
               </span>
             </div>
           </div>
           <div class="sidebar-items">
             <ul class="sidebar-list mt-5">
               <li class="sidebar-item">
-                <span class="material-symbols-outlined"> ad_units </span>ذکر
+                <span class="icon-Pray-Counter-Iran"> </span>ذکر
                 شمار
               </li>
               <li class="sidebar-item">
-                <span class="material-symbols-outlined"> calendar_month </span>
+                <span class="icon-Calender-Iran">  </span>
                 تقویم
               </li>
               <li class="sidebar-item">
-                <span class="material-symbols-outlined"> support_agent </span>
+                <span class="icon-Support-Iran">  </span>
                 ارتباط با پشتیبانی
               </li>
               <li class="sidebar-item">
-                <span class="material-symbols-outlined"> device_unknown </span>
+                <span class="icon-Help-Iran">  </span>
                 راهنمای برنامه
               </li>
               <li class="sidebar-item">
-                <span class="material-symbols-outlined"> developer_guide </span>
+                <span class="icon-Guides-Iran">  </span>
                 قوانین و مقررات
               </li>
             </ul>
@@ -60,12 +60,13 @@ const appSidebar = useAppSidebar();
 </script>
 
 <style lang="scss" scoped>
+@import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 .sidebar-menu {
   .container {
     position: relative;
   }
-  font-family: "yekan-regular" !important;
+  // font-family: "yekan-regular" !important;
   color: $surface-on;
   background-color: $surface;
   height: 100%;
@@ -82,18 +83,17 @@ const appSidebar = useAppSidebar();
   }
   .sidebar-item {
     cursor: pointer;
-    padding: 20px 0;
-    font-family: "yekan-regular";
+    padding: 12px 0;
+    // font-family: "yekan-regular";
     font-size: 14px;
     color: $surface-on;
     margin: 10px 0;
-    padding-right: 10px;
     border-radius: 5px;
     &:hover {
       background-color: #eee;
     }
     span {
-      color: $surface-on;
+      color: $secondary;
       vertical-align: -10px;
       font-size: 30px;
       margin-left: 10px;
@@ -101,7 +101,7 @@ const appSidebar = useAppSidebar();
     }
   }
   .sidebar-app-version {
-    font-family: "yekan-regular";
+    // font-family: "yekan-regular";
     color: $surface-on-variant;
     position: absolute;
     bottom: 15px;
