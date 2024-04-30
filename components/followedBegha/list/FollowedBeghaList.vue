@@ -1,30 +1,27 @@
 <template>
   <div>
-    <div class="back-navbar flex items-center justify-between">
+    <div class="back-navbar">
       <span
         ><span class="material-symbols-outlined back-icon ml-2">
           trending_flat </span
         ><span class="back-title">بقاع متبرکه</span></span
       >
-      <div @click="modalStore.changeBeghaListProvinceFiltersActive('active')" class="choose-location flex items-center mr-3">
-        <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
-        <span class="location-title-text">اصفهان، نجف آباد</span>
-        <span class="icon-Arrow-Bottom-Iran mr-1"> </span>
-      </div>
     </div>
     <div class="app-home">
       <div class="container">
         <div class="search-box-input">
-       
+          <span @click="modalStore.changeBeghaListProvinceFiltersActive('active')" class="search-province"
+            ><span class="province-title">همه</span>
+            <span class="material-symbols-outlined arrow-down">
+              arrow_drop_down
+            </span></span
+          >
           <input
             class="search-input"
             type="text"
             placeholder="جستجو اماکن متبرکه"
           />
-          <span
-            @click="modalStore.changeBeghaListEventFiltersActive('active')"
-            class="material-symbols-outlined search-input-icon"
-          >
+          <span @click="modalStore.changeBeghaListEventFiltersActive('active')" class="material-symbols-outlined search-input-icon">
             tune
           </span>
         </div>
@@ -36,8 +33,8 @@
         </div>
       </div>
     </div>
-    <BeghaProvinceFilterModal />
-    <BeghaEventFilterModal />
+      <BeghaProvinceFilterModal />
+      <BeghaEventFilterModal />
   </div>
 </template>
 
@@ -47,39 +44,32 @@ import BeghaListItems from "~/components/home/BeghaListItems.vue";
 import BeghaProvinceFilterModal from "./BeghaProvinceFilterModal.vue";
 import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
 import { useModalStore } from "~/stores/modals-store";
-defineNuxtComponent({
-  PopularBegha,
-  BeghaListItems,
-  BeghaProvinceFilterModal,
-  BeghaEventFilterModal,
-});
+defineNuxtComponent({ PopularBegha, BeghaListItems, BeghaProvinceFilterModal , BeghaEventFilterModal });
 const modalStore = useModalStore();
-const cities = ref<
-  { province: string; city: string; iconClass: string; isActive: boolean }[]
->([
+const cities = ref<{ province: string; city: string; iconClass : string; isActive: boolean }[]>([
   {
     province: "همه",
     city: "",
     isActive: true,
-    iconClass: "apps",
+    iconClass : 'apps'
   },
   {
     province: "اصفهان",
     city: "نجف آباد",
     isActive: false,
-    iconClass: "location_on",
+    iconClass : 'location_on'
   },
   {
     province: "اصفهان",
     city: "نجف آباد",
     isActive: false,
-    iconClass: "location_on",
+    iconClass : 'location_on'
   },
   {
     province: "اصفهان",
     city: "نجف آباد",
     isActive: false,
-    iconClass: "location_on",
+    iconClass : 'location_on'
   },
 ]);
 </script>
@@ -92,6 +82,7 @@ const cities = ref<
   background: $primary;
   display: flex;
   align-items: center;
+  justify-content: start;
   padding: 5px 10px;
   span.back-title {
     font-size: 16px;
@@ -209,9 +200,9 @@ const cities = ref<
     border-bottom: 3px solid $secondary-container;
   }
   .selectable-provinces {
-    .selected {
+    .selected{
       background: $secondary-container !important;
-      .check-icon {
+      .check-icon{
         color: $secondary;
       }
     }
@@ -302,9 +293,9 @@ const cities = ref<
     border-bottom: 3px solid $secondary-container;
   }
   .selectable-provinces {
-    .selected {
+    .selected{
       background: $secondary-container !important;
-      .check-icon {
+      .check-icon{
         color: $secondary;
       }
     }
@@ -339,23 +330,6 @@ const cities = ref<
     }
   }
 }
-
-.choose-location {
-  cursor: pointer;
-  .icon-Arrow-Bottom-Iran{
-    color: $primary-on;
-  }
-}
-.location-choose-icon {
-  font-size: 20px;
-  color: $primary-on;
-}
-.location-title-text {
-  font-family: "yekan-regular";
-  font-size: 12px;
-  color: $primary-on;
-}
-
 .slide-enter-active {
   opacity: 1;
   transition: all ease-in-out 0.03s;
