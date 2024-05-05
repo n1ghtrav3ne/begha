@@ -1,4 +1,4 @@
-image:  main-registry.ertebat.io/docker:latest
+image:  docker:latest
 
 variables:
     PROJECT_ID: "solaleh_webapp"
