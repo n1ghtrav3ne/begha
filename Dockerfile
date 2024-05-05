@@ -1,4 +1,4 @@
-FROM node:latest as build
+FROM node:20-alpine3.17 as build
 WORKDIR /app
 ENV NUXT_MANIFEST_JSON=manifest.json
 COPY package.json .
