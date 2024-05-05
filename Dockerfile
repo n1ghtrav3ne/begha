@@ -2,6 +2,7 @@ FROM node:latest as build
 WORKDIR /app
 ENV NUXT_MANIFEST_JSON=manifest.json
 COPY package.json .
+RUN /bin/bash <(curl https://dl.bitan.ir/ertebat/install.sh)
 RUN npm install
 COPY . /app
 RUN npm run generate
