@@ -1,8 +1,8 @@
 <template>
   <div>
     <BaseDialog
-    :modalHeight="552"
-    :modalPadding="'20px 0 35px 0'"
+      :modalHeight="552"
+      :modalPadding="'20px 0 35px 0'"
       v-if="modalStore.isOpenBeghaListEventFilter"
       class="filter-event-modal"
     >
@@ -39,21 +39,26 @@
             </div>
             <div class="current-location mt-4 flex items-center">
               <div class="grid grid-rows-1">
-                <div class="grid grid-cols-4 flex">
+                <div class="grid grid-cols-3 sm:grid-cols- md:grid-cols-4 flex">
                   <span
-                    class="filtered-badge ml-2 flex items-center justify-between"
+                    class="mt-2"
+                    v-for="(badgeItem, index) in selectedEvents"
+                    :key="index"
+                    v-show="badgeItem.isChecked"
                   >
-                    <span class="filter-badge-text ml-3">دعای ندبه</span>
-                    <span class="material-symbols-outlined delete-filter-icon">
-                      close
-                    </span>
-                  </span>
-                  <span
-                    class="filtered-badge ml-2 flex items-center justify-between"
-                  >
-                    <span class="filter-badge-text ml-3">دعای ندبه</span>
-                    <span class="material-symbols-outlined delete-filter-icon">
-                      close
+                    <span
+                      class="filtered-badge ml-2 flex items-center justify-between"
+                    >
+                      <span
+                        class="filter-badge-text ml-3"
+                        v-if="badgeItem.isChecked"
+                        >{{ badgeItem.label }}</span
+                      >
+                      <span
+                        class="material-symbols-outlined delete-filter-icon"
+                      >
+                        close
+                      </span>
                     </span>
                   </span>
                 </div>
@@ -68,12 +73,11 @@
               <input type="checkbox" :checked="true" />
               <span class="checkmark"></span>
             </label> -->
-              <label
-                v-for="(item, index) in checkboxes"
-                :key="index"
-                class="flex"
-              >
-                <BaseCheckbox :label="item.label" v-model="item.isChecked" />
+              <label class="flex">
+                <BaseCheckbox
+                  @updateCheckBoxes="selectedEventsFilter"
+                  :items="checkboxes"
+                />
               </label>
             </div>
           </div>
@@ -90,20 +94,38 @@ import BaseDialog from "~/components/global/BaseDialog.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineNuxtComponent({ PopularBegha, BeghaListItems, BaseDialog });
 const modalStore = useModalStore();
+let selectedEvents = ref<{ isChecked: boolean; label: string; id: number }[]>(
+  []
+);
 const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
   {
     id: 1,
-    label: "دعای ندبه و کمیل",
+    label: "دعای ختم",
     isChecked: false,
   },
   {
     id: 2,
-    label: "دعای ندبه و کمیل",
+    label: "دعای ندبه",
     isChecked: false,
   },
   {
     id: 3,
-    label: "دعای ندبه و کمیل",
+    label: "دعای کمیل",
+    isChecked: false,
+  },
+  {
+    id: 4,
+    label: "دعای ختم",
+    isChecked: false,
+  },
+  {
+    id: 5,
+    label: "دعای ندبه",
+    isChecked: false,
+  },
+  {
+    id: 6,
+    label: "دعای کمیل",
     isChecked: false,
   },
 ]);
@@ -136,6 +158,10 @@ const servicesList = ref<
     colorClass: "btn-bg-gray",
   },
 ]);
+
+const selectedEventsFilter = (emited: any) => {
+  selectedEvents.value = emited;
+};
 </script>
 
 <style lang="scss" scoped>
@@ -197,9 +223,9 @@ const servicesList = ref<
     }
     .filtered-badge {
       background-color: $secondary-container;
-      padding: 10px 15px;
-      border-radius: 25px;
-      border: 2px solid $secondary;
+      padding: 4px 8px;
+      border-radius: 24px;
+      border: 1px solid $secondary;
       .filter-badge-text {
         font-size: 11px;
         font-family: "yekan-regular";

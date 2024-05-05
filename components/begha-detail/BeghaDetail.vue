@@ -1,0 +1,190 @@
+<template>
+  <div>
+    <div class="begha-banner-page-container">
+      <img
+        class="begha-page-banner"
+        src="https://s3-alpha-sig.figma.com/img/406f/c25b/55c068e0ec6af795f540ce9e7f947d19?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jACxSiy4b~cC3MHfc1tXnNemMMYQqV~aJ4V~DoKT8N8jQcjPSd3cCMfxv~ZhtXouNiwu0fVpX2gj9rMm0Q2KNgPcYhbbuwM8UCnEwdZVd6DajvyL-lO6ZRayqONJUX5CXOP8NYLlx-9~jgLgc-23oV7NXuKGll7mJBVxFwWR6PMeYZ2PC79vJsdFKMGzvfuAWOTo2cftFALdv~jdsD4lz8LzLtUe~V8Xt4zYX22SDSppdXR5o0PN1anEIlptzqQs6FfjPyhRLc2w87c6gXoBLuEHLRxjhniEzPnVBkI6AK0FYhyiUBwVTHbbHXhAr~5xqt7Hxb75nj37~b1vuLmMxg__"
+        alt=""
+      />
+      <div class="begha-profile-image">
+        <img
+          class="begha-profile-img"
+          src="https://s3-alpha-sig.figma.com/img/fd22/a092/cee2d180b364fceb40ac8cee8fac63ed?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZExyHDipIQuow0IG~GyRNzoYJZ7CMazEfY7toj-U3WH0v5nz7bDQp48MbBbYwSBMaN0Eu2oos8teKL3nAM69Ngm1b3j7D3nOY55zkf4~dwp42PLUPEAl1Dgg44OdgnWcWN1BQz85pTRGWijq7JKGDFFKtU-f1azHb0mEd2-mlXBRzGa-ijbHHz0JNJV9qsI1ympG6LCVsidbxzn~hIFimVSKdP1Lw9~9XvtQCmyHbsE1ZEtTyK16T9KU-qd1uHcUQaB-pLiZtypx75vwme5e1PxnTKf-M9RPbSJOEUCf6ULEqvfCpwqk2sFO1UNX688AVm9Mb1wEq9RNByVtX70SZA__"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="container begha-page-content">
+      <div class="begha-profile-status flex items-center justify-end">
+        <div class="notif-status-icons flex items-center">
+          <span class="begha-status flex items-center">
+            <span class="status-icon icon-Mosque-Iran"></span>
+            <span class="status-text">بسته</span>
+          </span>
+          <span class="begha-notif flex items-center justify-center mr-3">
+            <span class="material-symbols-outlined"> notifications </span>
+          </span>
+        </div>
+      </div>
+      <div class="begha-profile-info flex items-center justify-between">
+        <div class="flex flex-col">
+          <span class="begha-name">حرم امام زاده صالح (ع)</span>
+          <span class="begha-followers">۳۴۹ نفر دنبال کننده</span>
+        </div>
+        <div>
+          <span class="begha-follow-btn flex items-center justify-center"
+            >دنبال کردن</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="container begha-profile-content">
+      <div class="begha-work-banner">
+        <BeghaWorkEventBanner />
+      </div>
+      <div class="begha-content">
+        <div class="begha-description">
+          <span class="begha-description-title">درباره امام زاده</span>
+          <p>
+            در داخل حریم وسیع امامزاده صالح، صندوقی چوبین وجود دارد که احتمالاً
+            به دوران اواخر صفوی یا افشار تعلق دارد و ضریح ممتاز نقره‌ای آن که
+            اضلاع شرقی و شمال شرقی و غربی آن دارای محفظه مشبک مزین به نقره و ضلع
+            جنوبی آن مشبک چوبی است از وقفیات میرزا سعیدخان، وزیر امور خارجه
+            اواخر قاجار است.
+          </p>
+        </div>
+        <div class="begha-contact-info flex items-center flex-col">
+          <div class="begha-address flex items-center justify-between">
+            <div class="flex flex-col">
+              <span>آدرس</span>
+              <span>تهران، میدان تجریش، حرم امامزاده صالح (ع)</span>
+            </div>
+            <div>
+              <span class="material-symbols-outlined"> notifications </span>
+            </div>
+          </div>
+          <div class="begha-contact flex items-center justify-between">
+            <div class="flex flex-col">
+              <span>اطلاعات تماس</span>
+              <span>۰۹۱۲۳۴۵۶۷۸۹ و ۰۹۱۳۱۹۴۰۴۰۴۹۴</span>
+            </div>
+            <div>
+              <span class="material-symbols-outlined"> call </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <NextPlans />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import BeghaWorkEventBanner from "./BeghaWorkEventBanner.vue";
+import NextPlans from "../home/NextPlans.vue";
+defineComponent([BeghaWorkEventBanner, NextPlans]);
+</script>
+
+<style lang="scss" scoped>
+@import "~/assets/css/colors.scss";
+@import "~/assets/css/icons.scss";
+.begha-banner-page-container {
+  position: relative;
+  .begha-page-banner {
+    height: 140px;
+    width: 100%;
+  }
+  .begha-profile-img {
+    height: 120px;
+    width: 120px;
+    border-radius: 120px;
+    border: 4px solid $surface;
+    position: absolute;
+    bottom: -41%;
+    right: 16px;
+  }
+}
+
+.begha-profile-content {
+  
+}
+
+.begha-profile-info {
+  margin-top: 20px;
+  .begha-name {
+    color: $surface-on;
+    font-family: "yekan-regular";
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .begha-followers {
+    color: $surface-on-variant;
+    font-family: "yekan-regular";
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .begha-follow-btn {
+    height: 32px;
+    padding: 8px;
+    background-color: $primary;
+    color: $primary-on;
+    border-radius: 8px;
+    font-family: "yekan-regular";
+    font-size: 12px;
+  }
+}
+
+.begha-page-content {
+  .notif-status-icons {
+    .begha-status {
+      width: 75px;
+      height: 28px;
+      padding: 8px;
+      border-radius: 24px;
+      border: 1px solid $error;
+      background-color: #fdf2f2;
+      .status-text {
+        color: $error;
+        font-family: "yekan-regular";
+        font-size: 12px;
+        font-weight: 400;
+        vertical-align: 2px;
+        margin-top: 3px;
+      }
+      .status-icon {
+        color: $error;
+        font-size: 21px;
+        margin-left: 5px;
+      }
+    }
+    .begha-notif {
+      background-color: #cfe8ff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      span {
+        font-size: 20px;
+        color: #fff;
+      }
+    }
+  }
+}
+.begha-content {
+  .begha-description {
+    margin-bottom: 12px;
+    .begha-description-title {
+      color: $surface-on-variant;
+      font-family: "yekan-regular";
+      font-size: 12px;
+    }
+    p {
+      color: #000;
+      text-align: justify;
+      font-family: "yekan-regular";
+      font-size: 14px;
+    }
+  }
+}
+</style>
