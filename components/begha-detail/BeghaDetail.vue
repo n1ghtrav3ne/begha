@@ -56,21 +56,23 @@
         <div class="begha-contact-info flex items-center flex-col">
           <div class="begha-address flex items-center justify-between">
             <div class="flex flex-col">
-              <span>آدرس</span>
-              <span>تهران، میدان تجریش، حرم امامزاده صالح (ع)</span>
+              <span class="address-title">آدرس</span>
+              <span class="address-text"
+                >تهران، میدان تجریش، حرم امامزاده صالح (ع)</span
+              >
             </div>
-            <div>
+            <span class="address-icon-bg flex items-center justify-center">
               <span class="material-symbols-outlined"> notifications </span>
-            </div>
+            </span>
           </div>
           <div class="begha-contact flex items-center justify-between">
             <div class="flex flex-col">
-              <span>اطلاعات تماس</span>
-              <span>۰۹۱۲۳۴۵۶۷۸۹ و ۰۹۱۳۱۹۴۰۴۰۴۹۴</span>
+              <span class="contact-title">اطلاعات تماس</span>
+              <span class="contact-numbers">۰۹۱۲۳۴۵۶۷۸۹ و ۰۹۱۳۱۹۴۰۴۰۴۹۴</span>
             </div>
-            <div>
+            <span class="contact-icon-bg flex items-center justify-center">
               <span class="material-symbols-outlined"> call </span>
-            </div>
+            </span>
           </div>
         </div>
         <div>
@@ -90,6 +92,7 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
 <style lang="scss" scoped>
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
+
 .begha-banner-page-container {
   position: relative;
   .begha-page-banner {
@@ -107,8 +110,59 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
   }
 }
 
-.begha-profile-content {
-  
+.begha-contact-info {
+  align-items: stretch;
+  .begha-contact {
+    .contact-icon-bg {
+      padding: 8px;
+      color: $secondary-on;
+      border-radius: 50%;
+      background-color: $secondary;
+      width: 36px;
+      height: 36px;
+      span{
+        font-size: 20px;
+      }
+    }
+    border-bottom: 1px solid $outline-variant;
+    padding-bottom: 30px;
+    margin-top: 16px;
+    .contact-title {
+      color: $surface-on-variant;
+      font-size: 12px;
+      font-family: "yekan-regular";
+    }
+    .contact-numbers {
+      color: $surface-on;
+      font-size: 14px;
+      font-family: "yekan-regular";
+      text-align: justify;
+    }
+  }
+  .begha-address {
+    .address-icon-bg {
+      padding: 8px;
+      color: $secondary-on;
+      border-radius: 50%;
+      background-color: $secondary;
+      width: 36px;
+      height: 36px;
+      span{
+        font-size: 20px;
+      }
+    }
+    .address-title {
+      color: $surface-on-variant;
+      font-size: 12px;
+      font-family: "yekan-regular";
+    }
+    .address-text {
+      color: $surface-on;
+      font-size: 14px;
+      font-family: "yekan-regular";
+      text-align: justify;
+    }
+  }
 }
 
 .begha-profile-info {
@@ -137,6 +191,10 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
 }
 
 .begha-page-content {
+  .begha-profile-info {
+    border-bottom: 1px solid $outline-variant;
+    padding-bottom: 15px;
+  }
   .notif-status-icons {
     .begha-status {
       width: 75px;
@@ -186,5 +244,11 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
       font-size: 14px;
     }
   }
+}
+</style>
+
+<style lang="scss">
+.slider-container {
+  margin-bottom: 0 !important;
 }
 </style>
