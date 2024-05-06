@@ -1,25 +1,11 @@
-FROM node:20-alpine3.17 as build
+FROM node:18.20.2 
 WORKDIR /app
-ENV NUXT_MANIFEST_JSON=manifest.json
 COPY package.json .
-RUN npm install
 COPY . /app
-RUN npm run generate
+RUN npm install
+RUN node -v
+RUN npm run build
 
-FROM nginx:latest
-RUN mkdir -p /var/www/html
-RUN chmod 755 -R /var/www/html
-RUN chown www-data:www-data -R /var/www/html
-WORKDIR /var/www/html
-COPY --from=build /app/.output/public ./
-RUN echo 'server {' > /etc/nginx/conf.d/default.conf
-RUN echo '	listen 80 default_server;' >> /etc/nginx/conf.d/default.conf
-RUN echo '	listen [::]:80 default_server;' >> /etc/nginx/conf.d/default.conf
-RUN echo '	server_name _;' >> /etc/nginx/conf.d/default.conf
-RUN echo '	root /var/www/html;' >> /etc/nginx/conf.d/default.conf
-RUN echo '	access_log  off;' >> /etc/nginx/conf.d/default.conf
-RUN echo '	location / {' >> /etc/nginx/conf.d/default.conf
-RUN echo '		try_files $uri $uri/ /index.html;' >> /etc/nginx/conf.d/default.conf
-RUN echo '	}' >> /etc/nginx/conf.d/default.conf
-RUN echo '}' >> /etc/nginx/conf.d/default.conf
-EXPOSE 80
+CMD [ "node" , "/app/.output/server/index.mjs" ]
+
+EXPOSE 3000
