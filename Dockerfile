@@ -4,7 +4,7 @@ COPY package.json .
 COPY . /app
 RUN npm install
 RUN node -v
-RUN npm run build
+RUN npm run build --force
 
 CMD [ "node" , "/app/.output/server/index.mjs" ]
 
