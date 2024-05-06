@@ -1,9 +1,9 @@
 <template>
     <div>
-        <Header v-if="!initStore.isLoading" />
+        <Header v-if="!initStore.isLoading"></Header>
         <VitePwaManifest />
         <NuxtPage />
-        <Footer v-if="!initStore.isLoading" />
+        <Footer v-if="!initStore.isLoading" ></Footer>
     </div>
 </template>
 
