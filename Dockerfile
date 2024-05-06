@@ -5,6 +5,6 @@ RUN npm install
 COPY . /app
 RUN npm run build
 
-CMD ["node" , "/app/.output/server/index.mjs"]
+CMD [ "node" , "/app/.output/server/index.mjs" ]
 
 EXPOSE 3000
