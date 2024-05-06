@@ -3,13 +3,13 @@
         <Header v-if="!initStore.isLoading"></Header>
         <VitePwaManifest />
         <NuxtPage />
-        <Footer v-if="!initStore.isLoading" ></Footer>
+        <Footer v-if="!initStore.isLoading"></Footer>
     </div>
 </template>
 
 <script lang="ts" setup>
-import Header from '~/components/layouts/Header.vue';
-import Footer from '~/components/layouts/Footer.vue';
+import Header from '~/components/layouts/header.vue';
+import Footer from '~/components/layouts/footer.vue';
 import { useInitialApp } from '@/stores/init-app';
 defineComponent({Header , Footer})
 const initStore = useInitialApp();
