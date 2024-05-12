@@ -61,12 +61,14 @@ const servicesList = ref<
 @import "~/assets/css/icons.scss";
 .footer-menu{
   width: 100%;
-  position: relative;
+  position: fixed;
+  bottom: 0;
   flex-direction: column;
     justify-content: center;
     align-items: center;
     display: flex;
     padding: 12px 16px;
+    z-index: 9999;
   .footer-menu-buttons-container {
     width: 275px;
     border-radius: 12px;

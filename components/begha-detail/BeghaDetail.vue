@@ -245,6 +245,9 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
     }
   }
 }
+.begha-profile-content{
+  margin-bottom: 150px !important;
+}
 </style>
 
 <style lang="scss">

@@ -5,7 +5,7 @@
         <PrayBanner />
         <ServicesButtons />
         <FollowEvents />
-        <WorkEventBanner />
+        <WorkEventBanner class="mt-8" />
         <PopularBegha />
         <NextPlans />
       </div>
