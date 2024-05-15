@@ -1,13 +1,13 @@
 <template>
   <div>
-    <BeghaNewsDetail />
+    <BeghaEventsDetail />
   </div>
 </template>
 
 <script lang="ts" setup>
-import BeghaNewsDetail from "@/components/begha-news/BeghaNewsDetail.vue";
-defineComponent({ BeghaNewsDetail });
+import BeghaEventsDetail from "@/components/begha-events/BeghaEventsDetail.vue";
+defineComponent({ BeghaEventsDetail });
 definePageMeta({
-  layout: "empty-layout",
+  layout: "begha-layout",
 });
 </script>

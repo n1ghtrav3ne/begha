@@ -22,26 +22,26 @@
       >
         <SwiperSlide v-for="slide in 3" :key="slide">
           <div class="card-box">
-            <div class="card-image">
-              <img src="~/assets/images/home/eid-fetr.jpg" alt="" />
-            </div>
-            <div class="card-info mt-3">
+            <div class="card-info">
               <div class="card-title-head flex items-center justify-between">
                 <div>
                   <span class="flex items-center">
                     <span
-                      class="service-btn btn-bg-green-light flex flex-col items-center justify-center"
+                      class="service-btn btn-bg-navy-blue flex flex-col items-center justify-center"
                     >
                       <span class="icon-Education-Iran">  </span>
                     </span>
-                    <span class="event-title mr-2"
-                      >آموزش رایگان اذان گویی از مقدماتی تا پیشرفته</span
+                   <div class="flex flex-col">
+                    <span class="event-head-title mr-2"
+                      >دعای ندبه</span
                     >
+                    <span class="event-title mr-2"
+                      >پنجشنبه شب ها ساعت ۱۸ تا ۲۰</span
+                    >
+                   </div>
                   </span>
                 </div>
-                <div class="plan-join">
-                  <span>ثبت نام</span>
-                </div>
+              
               </div>
             </div>
           </div>
@@ -164,8 +164,8 @@ const servicesList = ref<
 .card-box {
   cursor: pointer;
   width: 400px;
-  border-radius: 16px !important;
-  background-color: #fff;
+  border-radius: 8px !important;
+  background: var(--Key-Surface-Surface-Container-Lowest, #F1F1F1);
   
   .card-image {
     img {
@@ -176,7 +176,7 @@ const servicesList = ref<
     }
   }
   .card-info {
-    padding: 20px 20px 20px 20px;
+    padding: 8px 12px;
     border-bottom-right-radius: 16px !important;
     border-bottom-left-radius: 16px !important;
     box-shadow: 3px 4px 19px 0px rgba(0, 0, 0, 0.01);
@@ -185,7 +185,15 @@ const servicesList = ref<
     font-family: "yekan-regular";
     font-size: 11px;
     color: $surface-on;
-    width: 70%;
+    display: flex;
+    font-weight: 400;
+  }
+  .event-head-title {
+    font-family: "yekan-regular";
+    font-size: 14px;
+    color: $surface-on;
+    display: flex;
+    font-weight: 400;
   }
   .event-title-icon {
     color: blue;
@@ -243,7 +251,7 @@ const servicesList = ref<
   padding: 4.5px 5px 4.816px 4.5px;
   color: #fff;
 }
-.btn-bg-green-light {
-  background: linear-gradient(180deg, #B5F895 0%, #2AF487 100%);
+.btn-bg-navy-blue {
+  background: linear-gradient(180deg, #8AC6FD 0%, #6BB3F5 100%);
 }
 </style>
