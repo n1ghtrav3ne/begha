@@ -11,7 +11,9 @@
             <span @click="showAllMonths()" class="month-title ml-2">{{
               monthTitle
             }}</span>
-            <span @click="showAllYears()" class="month-title">{{ yearTitle }}</span>
+            <span @click="showAllYears()" class="month-title">{{
+              yearTitle
+            }}</span>
             <span
               @click="changeWeek(1)"
               class="icon-Arrow-Bottom-Iran navigate-left"
@@ -20,7 +22,7 @@
         </div>
         <div class="calendar-dates flex items-center justify-between">
           <span
-          @click="makeActive(day)"
+            @click="makeActive(day)"
             v-for="day in weekDays"
             :key="day"
             :class="day.active ? 'active' : ''"
@@ -42,15 +44,24 @@
         </div>
       </div>
       <div v-if="selectMonthView" class="all-month-view">
-        <ul>
-          <li @click="updateCalendar(month , selectedYear)" class="flex items-center justify-center flex-col p-2" v-for="(month , index) in months" :key="index">
-            <span>{{ month }}</span>
+        <ul class="">
+          <li
+
+            class="grid grid-cols-3 flex"
+          >
+            <span @click="updateCalendar(month, selectedYear)"  v-for="(month, index) in months"
+            :key="index" class="flex items-center justify-center  p-2">{{ month }}</span>
           </li>
         </ul>
       </div>
       <div v-if="selectYearView" class="all-month-view">
         <ul>
-          <li v-for="(year , index) in years" :key="index" @click="updateCalendar(selectedMonth , year)" class="flex items-center justify-center flex-col p-2">
+          <li
+            v-for="(year, index) in years"
+            :key="index"
+            @click="updateCalendar(selectedMonth, year)"
+            class="flex items-center justify-center flex-col p-2"
+          >
             <span>{{ year }}</span>
           </li>
         </ul>
@@ -92,11 +103,12 @@ export default {
     let monthTitle = ref(months[selectedMonth.value]);
     let yearTitle = ref(selectedYear.value);
 
-    const updateCalendar = (month , year) => {
-      if(month){
+    const updateCalendar = (month, year) => {
+      if (month) {
         selectedMonth.value = month;
         monthTitle.value = months[month];
-      } if(year){
+      }
+      if (year) {
         selectedYear.value = year;
         yearTitle.value = year;
       }
@@ -135,8 +147,8 @@ export default {
     };
 
     const makeActive = (clickedDay) => {
-      weekDays.value.forEach(day => {
-        day.active = (day.date === clickedDay.date);
+      weekDays.value.forEach((day) => {
+        day.active = day.date === clickedDay.date;
       });
     };
 
@@ -162,12 +174,12 @@ export default {
       yearTitle,
       updateCalendar,
       changeWeek,
-      calendarView , 
-      selectMonthView , 
-      showAllMonths , 
-      showAllYears , 
-      selectYearView , 
-      makeActive
+      calendarView,
+      selectMonthView,
+      showAllMonths,
+      showAllYears,
+      selectYearView,
+      makeActive,
     };
   },
 };
