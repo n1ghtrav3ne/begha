@@ -39,7 +39,7 @@
 
 <script lang="ts" setup>
 import EventsItem from "./EventsItem.vue";
-import BaseEventCalendar from "@/components/global/BaseEventCalendar.vue";
+import BaseEventCalendar from "~/components/global/BaseEventCalendar.vue";
 import FollowEvents from "./FollowEvents.vue";
 import NextCelebrates from "./NextCelebrates.vue";
 import moment from "jalali-moment";
