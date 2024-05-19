@@ -9,7 +9,7 @@
       <div class="begha-profile-image">
         <img
           class="begha-profile-img"
-          src="https://s3-alpha-sig.figma.com/img/fd22/a092/cee2d180b364fceb40ac8cee8fac63ed?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZExyHDipIQuow0IG~GyRNzoYJZ7CMazEfY7toj-U3WH0v5nz7bDQp48MbBbYwSBMaN0Eu2oos8teKL3nAM69Ngm1b3j7D3nOY55zkf4~dwp42PLUPEAl1Dgg44OdgnWcWN1BQz85pTRGWijq7JKGDFFKtU-f1azHb0mEd2-mlXBRzGa-ijbHHz0JNJV9qsI1ympG6LCVsidbxzn~hIFimVSKdP1Lw9~9XvtQCmyHbsE1ZEtTyK16T9KU-qd1uHcUQaB-pLiZtypx75vwme5e1PxnTKf-M9RPbSJOEUCf6ULEqvfCpwqk2sFO1UNX688AVm9Mb1wEq9RNByVtX70SZA__"
+          src="~/assets/images/one-begha/begha-profile.png"
           alt=""
         />
       </div>

@@ -2,11 +2,8 @@
   <div>
     <div class="begha-banner-page-container">
       <div class="begha-page-banner">
-        <div class="flex items-center justify-end p-2 pl-4">
-          <BaseToggleButton
-            @changeToggleBtn="sendNewsNotification"
-            class="flex items-center"
-          />
+        <div class="flex items-center justify-end p-2 pt-3 pl-4">
+          <span class="material-symbols-outlined flex items-center justify-center"> search </span>
         </div>
       </div>
       <div class="begha-profile-image">
@@ -19,18 +16,21 @@
     </div>
 
     <div class="container">
-      <div class="begha-events mt-11">
-        <div>
+      <div class="begha-media mt-11">
+        <div class="flex flex-col">
           <span class="begha-profile-name">حرم امام زاده صالح (ع)</span>
+          <span class="flex items-center mt-2">
+            <span class="media-count-icon ml-2">
+              <span class="icon-Calender-Iran flex items-center justify-center"></span>
+            </span>
+             <span>23 رسانه</span>
+          </span>
         </div>
-        <div class="event-calendar">
-          <BaseEventCalendar />
-        </div>
-        <div>
-          <FollowEvents />
-        </div>
-        <div>
-          <NextCelebrates />
+        <div class="begha-media-posts">
+          <MediaPostItem />
+          <MediaPostItem />
+          <MediaPostItem />
+          <MediaPostItem />
         </div>
       </div>
     </div>
@@ -38,10 +38,9 @@
 </template>
 
 <script lang="ts" setup>
-import EventsItem from "./EventsItem.vue";
-import BaseEventCalendar from "~/components/global/BaseEventCalendar.vue";
-import FollowEvents from "./FollowEvents.vue";
-import NextCelebrates from "./NextCelebrates.vue";
+import "swiper/css";
+import 'swiper/css/pagination';
+import MediaPostItem from "./MediaPostItem.vue";
 import moment from "jalali-moment";
 const beghaNews = ref<
   {
@@ -109,7 +108,7 @@ const beghaNews = ref<
     bogheName: "امام زاده صالح (ع)",
   },
 ]);
-defineComponent([EventsItem, BaseEventCalendar , FollowEvents , NextCelebrates]);
+defineComponent([MediaPostItem]);
 const sendNewsNotification = (emited: boolean) => {
   console.log(emited, "tooooogle");
 };
@@ -136,16 +135,22 @@ const sendNewsNotification = (emited: boolean) => {
   }
 }
 
-.begha-events {
-  margin-bottom: 140px;
+.begha-media{
+  .media-count-icon{
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #bee0ff;
+  }
   .begha-profile-name {
     color: $surface-on;
     font-family: "yekan-regular";
     font-size: 16px;
     font-weight: 700;
   }
-  .event-calendar {
-    margin-top: 24px !important;
-  }
 }
+
+.begha-media-posts{
+  margin-bottom: 120px;
+}
+
 </style>

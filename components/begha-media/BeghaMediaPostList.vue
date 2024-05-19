@@ -56,7 +56,6 @@
 </template>
 
 <script lang="ts" setup>
-import EventsItem from "./EventsItem.vue";
 const beghaNews = ref<
   {
     id: number;
@@ -102,7 +101,7 @@ const beghaNews = ref<
     bogheName: "امام زاده صالح (ع)",
   },
 ]);
-defineComponent([EventsItem]);
+defineComponent([]);
 const sendNewsNotification = (emited: boolean) => {
   console.log(emited, "tooooogle");
 };
