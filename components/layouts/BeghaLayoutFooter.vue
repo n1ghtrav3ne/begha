@@ -10,6 +10,7 @@
           class="flex  flex-col items-center justify-center"
         >
           <span
+          @click="$router.push(item.link)"
             :class="`${item.colorClass}`"
             class="service-btn flex flex-col items-center justify-center"
           >
@@ -27,31 +28,35 @@
 
 <script lang="ts" setup>
 const servicesList = ref<
-  { title: string; iconClass: string; colorClass: string; badgeColorClass : string}[]
+  { title: string; iconClass: string; colorClass: string; badgeColorClass : string; link:string}[]
 >([
   {
     title: "درباره بقعه",
     iconClass: "icon-Mosque-Iran",
     colorClass: "btn-bg-green",
-    badgeColorClass : 'success-bg-color'
+    badgeColorClass : 'success-bg-color' , 
+    link : '/begha-detail/asdasd'
   },
   {
     title: "خدمات",
     iconClass: "icon-House-Iran",
     colorClass: "btn-bg-blue",
-    badgeColorClass : 'error-bg-color'
+    badgeColorClass : 'error-bg-color' , 
+    link : '/begha-media/asdasd'
   },
   {
     title: "رسانه",
     iconClass: "icon-Book-Iran",
     colorClass: "btn-bg-green",
-    badgeColorClass : 'success-bg-color'
+    badgeColorClass : 'success-bg-color' , 
+    link : '/begha-media/asdasd'
   },
   {
     title: "رویداد ها",
     iconClass: "icon-Ghabr-Iran",
     colorClass: "btn-bg-yellow",
-    badgeColorClass : 'error-bg-color'
+    badgeColorClass : 'error-bg-color' , 
+    link : '/begha-events/'
   },
 ]);
 </script>

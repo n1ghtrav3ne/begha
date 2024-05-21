@@ -27,7 +27,7 @@
             </div>
             <div class="card-info mt-3">
               <div class="card-title-head">
-                <div>
+                <div @click="$router.push('/begha-detail/asdasdasd')">
                   <span class="flex flex-col items-center mb-3">
                     <span class="begha-title">امام زاده محسن اصفهان</span>
                     <span class="begha-follow-text">دنبال کردن</span>

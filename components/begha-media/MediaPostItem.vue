@@ -61,8 +61,6 @@
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
 
-
-
   .swiper{
     direction: ltr !important;
   }
