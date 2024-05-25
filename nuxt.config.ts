@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@vite-pwa/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
-    "nuxt-swiper"
+    "nuxt-swiper",
   ],
 
   app: {
@@ -15,7 +15,16 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
 
-      link: [{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" }],
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,100,1,-25",
+        },
+      ],
 
       noscript: [{ children: "JavaScript is required" }],
     },
@@ -23,7 +32,7 @@ export default defineNuxtConfig({
 
   pwa: {
     registerType: "autoUpdate",
-    strategies:  'injectManifest' , 
+    strategies: "injectManifest",
     devOptions: {
       enabled: true,
     },
@@ -47,27 +56,25 @@ export default defineNuxtConfig({
   },
 
   components: {
-    dirs: ['~/components/global/']
-  } , 
+    dirs: ["~/components/global/"],
+  },
 
   css: ["~/assets/css/main.scss"],
-  
+
   swiper: {
     // Swiper options
     //----------------------
     // prefix: 'Swiper',
     // styleLang: 'css',
     // modules: ['navigation', 'pagination'], // all modules are imported by default
-  } , 
+  },
 
   runtimeConfig: {
     public: {
       baseURL: process.env.NUXT_PUBLIC_API_URL,
     },
   },
-  plugins: [
-    '~/plugins/sw.client.js'
-  ] ,
+  plugins: ["~/plugins/sw.client.js"],
   postcss: {
     plugins: {
       tailwindcss: {},

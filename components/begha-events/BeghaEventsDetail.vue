@@ -52,11 +52,13 @@
         </div>
       </div>
     </div>
+    <BaseRatingDialog />
   </div>
 </template>
 
 <script lang="ts" setup>
 import EventsItem from "./EventsItem.vue";
+import BaseRatingDialog from "@/components/global/BaseRatingDialog.vue";
 const beghaNews = ref<
   {
     id: number;
@@ -102,7 +104,7 @@ const beghaNews = ref<
     bogheName: "امام زاده صالح (ع)",
   },
 ]);
-defineComponent([EventsItem]);
+defineComponent([EventsItem , BaseRatingDialog]);
 const sendNewsNotification = (emited: boolean) => {
   console.log(emited, "tooooogle");
 };
