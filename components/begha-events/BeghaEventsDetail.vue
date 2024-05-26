@@ -21,7 +21,7 @@
     <div class="container begha-events-detail">
       <div class="flex items-center justify-between mb-4">
           <span class="begha-profile-name">حرم امام زاده صالح (ع)</span>
-          <span class="score-btn">امتیاز شما</span>
+          <span @click="modalStore.changeEventsRatingActive('active')" class="score-btn">امتیاز شما</span>
         </div>
       <div class="page-image-banner">
         <img
@@ -52,13 +52,16 @@
         </div>
       </div>
     </div>
-    <BaseRatingDialog />
+    <BaseRatingDialog v-if="modalStore.isOpenRatingEvents" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import EventsItem from "./EventsItem.vue";
 import BaseRatingDialog from "@/components/global/BaseRatingDialog.vue";
+import { useModalStore } from '~/stores/modals-store';
+const modalStore = useModalStore();
+
 const beghaNews = ref<
   {
     id: number;

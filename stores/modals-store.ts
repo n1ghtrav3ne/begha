@@ -7,6 +7,7 @@ export const useModalStore = defineStore('modalStore', {
       beghaListProvinceFilter : false , 
       beghaListEventFilter : false , 
       moreServicesButtons : false , 
+      ratingEvents : false , 
     }
   }),
   getters: {
@@ -18,6 +19,9 @@ export const useModalStore = defineStore('modalStore', {
     },
      isOpenMoreServicesButtons(): boolean {
       return this.modals.moreServicesButtons
+    },
+    isOpenRatingEvents(): boolean {
+      return this.modals.ratingEvents
     },
   },
   actions: {
@@ -33,6 +37,13 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.beghaListEventFilter = true;
       }else{
         this.modals.beghaListEventFilter = false;
+      }
+    } , 
+    changeEventsRatingActive(operator:string) {
+      if (operator === 'active') {
+        this.modals.ratingEvents = true;
+      }else{
+        this.modals.ratingEvents = false;
       }
     } , 
     changeMoreServicesButtonsActive(operator:string) {
