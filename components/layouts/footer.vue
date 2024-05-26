@@ -44,7 +44,7 @@ const footerItems = ref<{title:string , iconClass : string , link : string , act
   {
     title: "پروفایل",
     iconClass: "icon-Profile",
-    link: "/",
+    link: "/profile",
     active : false , 
   },
 ]);

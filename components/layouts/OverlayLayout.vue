@@ -17,6 +17,7 @@ const closeOverlayApp = () => {
   modalStore.changeBeghaListEventFiltersActive('deactive');
   modalStore.changeMoreServicesButtonsActive('deactive');
   modalStore.changeEventsRatingActive('deactive');
+  modalStore.changeSwitchAccountActive('deactive');
 }
 
 </script>

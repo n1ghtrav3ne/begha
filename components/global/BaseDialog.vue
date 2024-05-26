@@ -29,6 +29,7 @@ const closeModal = () => {
   modalStore.changeBeghaListProvinceFiltersActive('deactive')
   modalStore.changeBeghaListEventFiltersActive('deactive')
   modalStore.changeMoreServicesButtonsActive('deactive')
+  modalStore.changeSwitchAccountActive('deactive')
 }
 </script>
 
