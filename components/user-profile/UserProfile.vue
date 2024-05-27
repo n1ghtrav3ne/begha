@@ -112,6 +112,8 @@ const profileOptions = ref<{ title: string; icon: string; notif: boolean }[]>([
 const optionsAction = (item:{title:string}) => {
     if (item.title === 'تغییر نوع کاربری') {
         modalStore.changeSwitchAccountActive('active')
+    }else if(item.title === 'درخواست های من'){
+      useRouter().push('/profile/requests/')
     }
  }
 </script>

@@ -8,7 +8,8 @@ export const useModalStore = defineStore('modalStore', {
       beghaListEventFilter : false , 
       moreServicesButtons : false , 
       ratingEvents : false , 
-      switchAccount : false
+      switchAccount : false , 
+      requestsFilter : false
     }
   }),
   getters: {
@@ -27,6 +28,9 @@ export const useModalStore = defineStore('modalStore', {
     isOpenSwitchAccount(): boolean {
       return this.modals.switchAccount
     },
+    isOpenRequestsFilterModal(): boolean {
+      return this.modals.requestsFilter
+    },
   },
   actions: {
     changeBeghaListProvinceFiltersActive(operator:string) {
@@ -34,6 +38,13 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.beghaListProvinceFilter = true;
       }else{
         this.modals.beghaListProvinceFilter = false;
+      }
+    } ,
+    changeRequestsFilterActive(operator:string) {
+      if(operator === 'active'){
+        this.modals.requestsFilter = true;
+      }else{
+        this.modals.requestsFilter = false;
       }
     } ,
     changeSwitchAccountActive(operator:string) {

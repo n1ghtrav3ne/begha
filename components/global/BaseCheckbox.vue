@@ -3,7 +3,8 @@
     <div
       v-for="(item, index) in checkboxItems"
       :key="index"
-      class="inline-flex items-center"
+      :class="`${item.status}`"
+      class="checkbox-container inline-flex items-center"
     >
       <label
         class="relative flex items-center p-3 rounded-full cursor-pointer"
@@ -84,5 +85,17 @@ function updateCheckBox(
 }
 .checkmark-icon {
   color: #fff !important;
+}
+.checkbox-container{
+margin-bottom: 12px;
+}
+
+.error{
+  color: $error;
+  background-color: #FDF2F2;
+}
+.success{
+  color: $primary;
+  background-color: #F0FCF3;
 }
 </style>
