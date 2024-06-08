@@ -11,7 +11,12 @@
       <div class="search-box-input">
         <span class="material-symbols-outlined search-icon"> search </span>
         <input class="search-input" type="text" placeholder="جستجو" />
-        <span @click="modalStore.changeRequestsFilterActive('active')" class="material-symbols-outlined search-input-icon"> tune </span>
+        <span
+          @click="modalStore.changeRequestsFilterActive('active')"
+          class="material-symbols-outlined search-input-icon"
+        >
+          tune
+        </span>
       </div>
       <div class="login-info-card">
         <span class="date-title">دوشنبه ۱۴۰۲/۱۲/۰۲</span>
@@ -69,10 +74,10 @@
 </template>
 
 <script lang="ts" setup>
-import RequestsFilterModal from './RequestsFilterModal.vue';
-import { useModalStore } from '~/stores/modals-store';
-const modalStore = useModalStore()
-defineComponent([RequestsFilterModal])
+import RequestsFilterModal from "../RequestsFilterModal.vue";
+import { useModalStore } from "~/stores/modals-store";
+const modalStore = useModalStore();
+defineComponent([RequestsFilterModal]);
 </script>
 
 <style lang="scss" scoped>

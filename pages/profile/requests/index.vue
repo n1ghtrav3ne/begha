@@ -1,13 +1,13 @@
 <template>
   <div>
-     <MyRequests />
+    <MyRequests />
   </div>
 </template>
 
 <script lang="ts" setup>
-import MyRequests from '@/components/user-profile/MyRequests.vue';
-defineComponent({MyRequests})
+import MyRequests from "@/components/user-profile/requests/MyRequests.vue";
+defineComponent({ MyRequests });
 definePageMeta({
-  layout:  'empty-layout'
-})
+  layout: "empty-layout",
+});
 </script>
