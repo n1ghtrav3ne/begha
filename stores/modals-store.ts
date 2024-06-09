@@ -9,7 +9,8 @@ export const useModalStore = defineStore('modalStore', {
       moreServicesButtons : false , 
       ratingEvents : false , 
       switchAccount : false , 
-      requestsFilter : false
+      requestsFilter : false , 
+      cancelRequest : false , 
     }
   }),
   getters: {
@@ -31,6 +32,9 @@ export const useModalStore = defineStore('modalStore', {
     isOpenRequestsFilterModal(): boolean {
       return this.modals.requestsFilter
     },
+    isOpenCancelRequestModal(): boolean {
+      return this.modals.cancelRequest
+    },
   },
   actions: {
     changeBeghaListProvinceFiltersActive(operator:string) {
@@ -38,6 +42,13 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.beghaListProvinceFilter = true;
       }else{
         this.modals.beghaListProvinceFilter = false;
+      }
+    } ,
+    changeCancelRequestModalActive(operator:string) {
+      if(operator === 'active'){
+        this.modals.cancelRequest = true;
+      }else{
+        this.modals.cancelRequest = false;
       }
     } ,
     changeRequestsFilterActive(operator:string) {

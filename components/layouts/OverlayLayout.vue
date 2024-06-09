@@ -12,15 +12,15 @@ const appSidebar = useAppSidebar();
 const modalStore = useModalStore();
 
 const closeOverlayApp = () => {
-  appSidebar.changeSidebarStateActive('deactive');
-  modalStore.changeBeghaListProvinceFiltersActive('deactive');
-  modalStore.changeBeghaListEventFiltersActive('deactive');
-  modalStore.changeMoreServicesButtonsActive('deactive');
-  modalStore.changeEventsRatingActive('deactive');
-  modalStore.changeSwitchAccountActive('deactive');
-  modalStore.changeRequestsFilterActive('deactive');
-}
-
+  appSidebar.changeSidebarStateActive("deactive");
+  modalStore.changeBeghaListProvinceFiltersActive("deactive");
+  modalStore.changeBeghaListEventFiltersActive("deactive");
+  modalStore.changeMoreServicesButtonsActive("deactive");
+  modalStore.changeEventsRatingActive("deactive");
+  modalStore.changeSwitchAccountActive("deactive");
+  modalStore.changeRequestsFilterActive("deactive");
+  modalStore.changeCancelRequestModalActive("deactive");
+};
 </script>
 
 <style lang="scss" scoped>

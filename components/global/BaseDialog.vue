@@ -42,6 +42,7 @@ const closeModal = () => {
   modalStore.changeMoreServicesButtonsActive("deactive");
   modalStore.changeSwitchAccountActive("deactive");
   modalStore.changeRequestsFilterActive("deactive");
+  modalStore.changeCancelRequestModalActive("deactive");
 };
 </script>
 

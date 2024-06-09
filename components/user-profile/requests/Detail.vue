@@ -74,7 +74,9 @@
         <span class="flex items-center justify-center support-btn"
           >ارتباط با پشتیبانی</span
         >
-        <span class="flex items-center justify-center cancel-btn"
+        <span
+          @click="modalStore.changeCancelRequestModalActive('active')"
+          class="flex items-center justify-center cancel-btn"
           >لغو درخواست</span
         >
         <span class="flex items-center justify-center back-btn"
@@ -82,10 +84,16 @@
         >
       </div>
     </div>
+    <CancelRequestModal v-if="modalStore.isOpenCancelRequestModal" />
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import CancelRequestModal from "./CancelRequestModal.vue";
+import { useModalStore } from "~/stores/modals-store";
+defineComponent({ CancelRequestModal });
+const modalStore = useModalStore();
+</script>
 
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
