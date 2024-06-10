@@ -1,10 +1,8 @@
 <template>
   <div>
-
     <div class="app-home">
       <div class="container">
         <div class="search-box-input">
-       
           <input
             class="search-input"
             type="text"
@@ -124,6 +122,7 @@ const cities = ref<
     border-radius: 50%;
   }
   .search-input {
+    background-color: transparent;
     outline: none;
     padding: 2px 10px;
     width: 100%;
@@ -329,7 +328,7 @@ const cities = ref<
 
 .choose-location {
   cursor: pointer;
-  .icon-Arrow-Bottom-Iran{
+  .icon-Arrow-Bottom-Iran {
     color: $primary-on;
   }
 }

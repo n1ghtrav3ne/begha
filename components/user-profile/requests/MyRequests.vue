@@ -18,7 +18,10 @@
           tune
         </span>
       </div>
-      <div class="login-info-card">
+      <div
+        @click="$router.push('/profile/requests/detail/asdsasd')"
+        class="login-info-card"
+      >
         <span class="date-title">دوشنبه ۱۴۰۲/۱۲/۰۲</span>
         <div class="flex items-center justify-between">
           <div class="user-avatar-name flex items-center">
@@ -35,7 +38,10 @@
           </div>
         </div>
       </div>
-      <div class="login-info-card">
+      <div
+        @click="$router.push('/profile/requests/detail/asdsasd')"
+        class="login-info-card"
+      >
         <div class="flex items-center justify-between">
           <div class="user-avatar-name flex items-center">
             <img src="~/assets/images/one-begha/begha-profile.png" alt="" />
@@ -51,7 +57,10 @@
           </div>
         </div>
       </div>
-      <div class="login-info-card">
+      <div
+        @click="$router.push('/profile/requests/detail/asdsasd')"
+        class="login-info-card"
+      >
         <span class="date-title">دوشنبه ۱۴۰۲/۱۲/۰۲</span>
         <div class="flex items-center justify-between">
           <div class="user-avatar-name flex items-center">
@@ -195,6 +204,7 @@ defineComponent([RequestsFilterModal]);
     border-radius: 50%;
   }
   .search-input {
+    background-color: transparent;
     outline: none;
     padding: 2px 10px;
     width: 100%;

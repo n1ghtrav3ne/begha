@@ -3,10 +3,35 @@
     <div class="footer-menu">
       <div class="container footer-container">
         <ul class="flex items-center justify-between">
-          <li @click="handleFooterAction(item)" v-for="(item , index) in footerItems" :key="index"  :class="item.iconClass == 'icon-Location-Iran' ? 'search-item' : 'flex flex-col items-center'">
-            <span v-if="item.iconClass == 'icon-Location-Iran'" class="menu-item-icon search-icon" :class="`${item.iconClass}`"> </span>
-            <span v-else class="menu-item-icon" :class="`${item.iconClass} ` + `${item.active ? 'active-item' : ''}`"> </span>
-            <span :class="item.active ? 'active-item' : ''" class="mt-2 footer-item-title">{{item.title}}</span>
+          <li
+            @click="handleFooterAction(item)"
+            v-for="(item, index) in footerItems"
+            :key="index"
+            :class="
+              item.iconClass == 'icon-Location-Iran'
+                ? 'search-item'
+                : 'flex flex-col items-center'
+            "
+          >
+            <span
+              v-if="item.iconClass == 'icon-Location-Iran'"
+              class="menu-item-icon search-icon"
+              :class="`${item.iconClass}`"
+            >
+            </span>
+            <span
+              v-else
+              class="menu-item-icon"
+              :class="
+                `${item.iconClass} ` + `${item.active ? 'active-item' : ''}`
+              "
+            >
+            </span>
+            <span
+              :class="item.active ? 'active-item' : ''"
+              class="mt-2 footer-item-title"
+              >{{ item.title }}</span
+            >
           </li>
         </ul>
       </div>
@@ -16,46 +41,48 @@
 
 <script lang="ts" setup>
 const router = useRouter();
-const footerItems = ref<{title:string , iconClass : string , link : string , active:boolean}[]>([
+const footerItems = ref<
+  { title: string; iconClass: string; link: string; active: boolean }[]
+>([
   {
     title: "خانه",
     iconClass: "icon-Home",
     link: "/",
-    active : true , 
+    active: true,
   },
   {
     title: "بقاع من",
     iconClass: "icon-Mosque",
     link: "/followed-begha/list",
-    active : false , 
+    active: false,
   },
   {
     title: "",
     iconClass: "icon-Location-Iran",
     link: "/",
-    active : false , 
+    active: false,
   },
   {
     title: "رسانه",
     iconClass: "icon-Media",
-    link: "/",
-    active : false , 
+    link: "/media",
+    active: false,
   },
   {
     title: "پروفایل",
     iconClass: "icon-Profile",
     link: "/profile",
-    active : false , 
+    active: false,
   },
 ]);
 
-const handleFooterAction = (clickedItem:{active:boolean, link:string}) => {
+const handleFooterAction = (clickedItem: { active: boolean; link: string }) => {
   for (const item of footerItems.value) {
-      item.active = false;
+    item.active = false;
   }
-  clickedItem.active = true
-  router.push(clickedItem.link)
-}
+  clickedItem.active = true;
+  router.push(clickedItem.link);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -100,10 +127,10 @@ const handleFooterAction = (clickedItem:{active:boolean, link:string}) => {
     color: $surface-on-variant;
   }
   .active-item {
-   color: $primary;
-   &::before{
-     color: $primary;
-   }
+    color: $primary;
+    &::before {
+      color: $primary;
+    }
   }
 }
 </style>

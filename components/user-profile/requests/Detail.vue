@@ -91,7 +91,7 @@
 <script lang="ts" setup>
 import CancelRequestModal from "./CancelRequestModal.vue";
 import { useModalStore } from "~/stores/modals-store";
-defineComponent({ CancelRequestModal });
+defineComponent([CancelRequestModal]);
 const modalStore = useModalStore();
 </script>
 

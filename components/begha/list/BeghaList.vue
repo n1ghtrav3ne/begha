@@ -6,7 +6,10 @@
           trending_flat </span
         ><span class="back-title">بقاع متبرکه</span></span
       >
-      <div @click="modalStore.changeBeghaListProvinceFiltersActive('active')" class="choose-location flex items-center mr-3">
+      <div
+        @click="modalStore.changeBeghaListProvinceFiltersActive('active')"
+        class="choose-location flex items-center mr-3"
+      >
         <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
         <span class="location-title-text">اصفهان، نجف آباد</span>
         <span class="icon-Arrow-Bottom-Iran mr-1"> </span>
@@ -15,7 +18,6 @@
     <div class="app-home">
       <div class="container">
         <div class="search-box-input">
-       
           <input
             class="search-input"
             type="text"
@@ -137,6 +139,7 @@ const cities = ref<
     border-radius: 50%;
   }
   .search-input {
+    background-color: transparent;
     outline: none;
     padding: 2px 10px;
     width: 100%;
@@ -342,7 +345,7 @@ const cities = ref<
 
 .choose-location {
   cursor: pointer;
-  .icon-Arrow-Bottom-Iran{
+  .icon-Arrow-Bottom-Iran {
     color: $primary-on;
   }
 }
