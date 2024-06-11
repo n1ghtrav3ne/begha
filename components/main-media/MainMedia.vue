@@ -2,7 +2,10 @@
   <div>
     <div class="container">
       <div class="search-box-input">
-        <span class="select-begha-filter flex items-center">
+        <span
+          @click="modalStore.changeMediaBeghaFilterActive('active')"
+          class="select-begha-filter flex items-center"
+        >
           <span class="filter-title">انتخاب بقعه</span>
           <span class="material-symbols-outlined chevron-down">
             keyboard_arrow_down
@@ -30,6 +33,7 @@
         </div>
       </div>
     </div>
+    <MainMediaBeghaFilter v-if="modalStore.isOpenMediaBeghaFilterModal" />
   </div>
 </template>
 
@@ -37,7 +41,9 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import MainMediaPostItem from "./MainMediaPostItem.vue";
-import moment from "jalali-moment";
+import MainMediaBeghaFilter from "./MainMediaBeghaFilter.vue";
+import { useModalStore } from "~/stores/modals-store";
+const modalStore = useModalStore();
 const beghaNews = ref<
   {
     id: number;
@@ -104,7 +110,7 @@ const beghaNews = ref<
     bogheName: "امام زاده صالح (ع)",
   },
 ]);
-defineComponent([MainMediaPostItem]);
+defineComponent([MainMediaPostItem, MainMediaBeghaFilter]);
 const sendNewsNotification = (emited: boolean) => {
   console.log(emited, "tooooogle");
 };

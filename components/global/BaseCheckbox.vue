@@ -36,6 +36,7 @@
         </span>
       </label>
       <label
+        :style="`font-size: ${fns}`"
         class="mt-px font-light text-gray-700 cursor-pointer select-none"
         htmlFor="check"
       >
@@ -51,7 +52,7 @@ interface CheckBoxItem {
   label: string;
   isChecked: boolean;
 }
-const props = defineProps(["items"]);
+const props = defineProps(["items", "fns"]);
 const emit = defineEmits(["updateCheckBoxes"]);
 const checkboxItems = props.items;
 let checkedArray: {}[] = [];
@@ -86,16 +87,16 @@ function updateCheckBox(
 .checkmark-icon {
   color: #fff !important;
 }
-.checkbox-container{
-margin-bottom: 12px;
+.checkbox-container {
+  margin-bottom: 12px;
 }
 
-.error{
+.error {
   color: $error;
-  background-color: #FDF2F2;
+  background-color: #fdf2f2;
 }
-.success{
+.success {
   color: $primary;
-  background-color: #F0FCF3;
+  background-color: #f0fcf3;
 }
 </style>

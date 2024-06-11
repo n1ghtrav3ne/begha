@@ -20,6 +20,7 @@ const closeOverlayApp = () => {
   modalStore.changeSwitchAccountActive("deactive");
   modalStore.changeRequestsFilterActive("deactive");
   modalStore.changeCancelRequestModalActive("deactive");
+  modalStore.changeMediaBeghaFilterActive("deactive");
 };
 </script>
 

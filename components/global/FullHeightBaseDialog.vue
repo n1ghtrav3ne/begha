@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      :style="`height: ${props.modalHeight + 'px !important'};`"
-      class="base-modal"
-    >
+    <div class="base-modal h-full">
       <div class="base-modal-header">
         <span class="base-modal-stick"></span>
         <div class="modal-head-title flex items-center justify-between">
