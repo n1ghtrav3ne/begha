@@ -11,12 +11,32 @@
             keyboard_arrow_down
           </span>
         </span>
-        <input class="search-input" type="text" placeholder="نام رسانه" />
+        <input
+          @click="modalStore.changeMainMediaPostFilterActive('active')"
+          class="search-input"
+          type="text"
+          placeholder="نام رسانه"
+        />
         <span class="material-symbols-outlined search-input-icon">
           search
         </span>
       </div>
-      <div class="begha-media mt-11">
+      <div class="search-result">
+        <ul class="result-items">
+          <li class="result-item">
+            <div class="item-content flex items-center">
+              <span class="result-item-icon">
+                <span class="material-symbols-outlined"> tag </span>
+              </span>
+              <div class="result-title flex flex-col justify-center">
+                <span class="title">جستجو برای «بهشت»</span>
+                <span class="media-count">۲۱۳ رسانه</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="begha-media mt-6">
         <div class="flex items-center">
           <img
             class="begha-profile-image"
@@ -34,6 +54,7 @@
       </div>
     </div>
     <MainMediaBeghaFilter v-if="modalStore.isOpenMediaBeghaFilterModal" />
+    <MainMediaPostFilter v-if="modalStore.isOpenMainMediaPostFilter" />
   </div>
 </template>
 
@@ -42,6 +63,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import MainMediaPostItem from "./MainMediaPostItem.vue";
 import MainMediaBeghaFilter from "./MainMediaBeghaFilter.vue";
+import MainMediaPostFilter from "./MainMediaPostFilter.vue";
 import { useModalStore } from "~/stores/modals-store";
 const modalStore = useModalStore();
 const beghaNews = ref<
@@ -110,7 +132,7 @@ const beghaNews = ref<
     bogheName: "امام زاده صالح (ع)",
   },
 ]);
-defineComponent([MainMediaPostItem, MainMediaBeghaFilter]);
+defineComponent([MainMediaPostItem, MainMediaBeghaFilter, MainMediaPostFilter]);
 const sendNewsNotification = (emited: boolean) => {
   console.log(emited, "tooooogle");
 };
@@ -207,5 +229,47 @@ const sendNewsNotification = (emited: boolean) => {
 
 .begha-media-posts {
   margin-bottom: 120px;
+}
+
+.search-result {
+  margin-top: 16px;
+  .result-items {
+    .result-item {
+      border-bottom: 1px solid $outline-variant;
+      padding: 8px;
+      .item-content {
+        .result-item-icon {
+          margin-left: 8px;
+          background-color: $secondary-container;
+          display: flex;
+          width: 40px;
+          height: 40px;
+          padding: 10.5px 10px 9.5px 10px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 32px;
+          span {
+            color: $secondary;
+            font-size: 25px;
+          }
+        }
+        .result-title {
+          .title {
+            font-size: 14px;
+            font-weight: 700;
+            color: $surface-on;
+            text-align: right;
+          }
+          .media-count {
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            color: $surface-on-variant;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
 }
 </style>

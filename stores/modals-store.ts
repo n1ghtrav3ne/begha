@@ -12,6 +12,8 @@ export const useModalStore = defineStore('modalStore', {
       requestsFilter : false , 
       cancelRequest : false , 
       beghaMediaFilter : false , 
+      beghaMediaPostFilter : false , 
+      mainMediaPostFilter : false , 
     }
   }),
   getters: {
@@ -39,6 +41,12 @@ export const useModalStore = defineStore('modalStore', {
     isOpenMediaBeghaFilterModal(): boolean {
       return this.modals.beghaMediaFilter
     },
+    isOpenMainMediaPostFilter(): boolean {
+      return this.modals.mainMediaPostFilter
+    },
+    isOpenBeghaMediaPostFilter(): boolean {
+      return this.modals.beghaMediaPostFilter
+    },
   },
   actions: {
     changeBeghaListProvinceFiltersActive(operator:string) {
@@ -46,6 +54,20 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.beghaListProvinceFilter = true;
       }else{
         this.modals.beghaListProvinceFilter = false;
+      }
+    } ,
+    changeBeghaMediaPostFilterActive(operator:string) {
+      if(operator === 'active'){
+        this.modals.beghaMediaPostFilter = true;
+      }else{
+        this.modals.beghaMediaPostFilter = false;
+      }
+    } ,
+    changeMainMediaPostFilterActive(operator:string) {
+      if(operator === 'active'){
+        this.modals.mainMediaPostFilter = true;
+      }else{
+        this.modals.mainMediaPostFilter = false;
       }
     } ,
     changeMediaBeghaFilterActive(operator:string) {
