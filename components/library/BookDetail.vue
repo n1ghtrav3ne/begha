@@ -18,16 +18,18 @@
         <div class="book-card">
           <div class="book-body">
             <div class="book-head flex justify-between">
-              <div>
-                <img
-                  class="book-img"
-                  src="~/assets/images/library/book-img.png"
-                  alt=""
-                />
-              </div>
-              <div class="book-title-container flex flex-col">
-                <span class="book-title">نهج البلاغه دشتی</span>
-                <span class="book-author">نویسنده: آقای لورم ایپسوم</span>
+              <div class="flex items-center">
+                <div>
+                  <img
+                    class="book-img ml-2"
+                    src="~/assets/images/library/book-img.png"
+                    alt=""
+                  />
+                </div>
+                <div class="book-title-container flex flex-col">
+                  <span class="book-title">نهج البلاغه دشتی</span>
+                  <span class="book-author">نویسنده: آقای لورم ایپسوم</span>
+                </div>
               </div>
               <div>
                 <span class="stock-status flex items-center">
@@ -175,7 +177,6 @@ defineComponent([LibraryBanner]);
           border-radius: 8px;
         }
         .book-title-container {
-          margin-right: -20px;
           .book-title {
             color: $surface-on;
             font-family: "yekan-regular";
