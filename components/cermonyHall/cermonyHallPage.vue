@@ -68,10 +68,10 @@
         </div>
 
     
-    
 </template>
 
 <script lang="ts" setup>
+
 
     import CermonyCard from "./cermonyCard.vue";
 
