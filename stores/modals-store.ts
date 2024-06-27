@@ -14,6 +14,7 @@ export const useModalStore = defineStore('modalStore', {
       beghaMediaFilter : false , 
       beghaMediaPostFilter : false , 
       mainMediaPostFilter : false , 
+      cermonyHallRequestFilter:false,
     }
   }),
   getters: {
@@ -47,6 +48,9 @@ export const useModalStore = defineStore('modalStore', {
     isOpenBeghaMediaPostFilter(): boolean {
       return this.modals.beghaMediaPostFilter
     },
+    isOpenCermonyHallrequestFilter(): boolean{
+      return this.modals.cermonyHallRequestFilter
+    }
   },
   actions: {
     changeBeghaListProvinceFiltersActive(operator:string) {
@@ -119,5 +123,12 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.moreServicesButtons = false;
       }
     } , 
+    changeCermonyHallRequestFilterActive(operator:string){
+      if (operator==='active'){
+        this.modals.cermonyHallRequestFilter=true;
+      }else{
+        this.modals.cermonyHallRequestFilter=false;
+      }
+    }
   },
 })

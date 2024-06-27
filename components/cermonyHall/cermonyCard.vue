@@ -36,7 +36,7 @@
 
             </div>
 
-            <div class="nameOfMausoleum px-[10px] flex items-center py-[4px] gap-[4px] w-[133px] h-full">
+            <div class="nameOfMausoleum rounded-[8px] px-[10px] flex items-center py-[4px] gap-[4px] w-[133px] h-full">
 
                 <span class="w-[24px] h-[24px] flex items-center justify-center">
 

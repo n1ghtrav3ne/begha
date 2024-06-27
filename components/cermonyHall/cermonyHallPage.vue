@@ -50,7 +50,7 @@
 
         <p class="firstTxt w-[83px] h-[25px] text-[16px] mr-[8px]">سالن مراسم</p>
 
-        <div class="w-[127px] h-[17px] text-[11px] mr-auto flex justify-between flex-row">
+        <div @click="modalStore.changeCermonyHallRequestFilterActive('active')" class="w-[127px] h-[17px] text-[11px] mr-auto flex justify-between flex-row">
             <p class="secondTxt">ترتیب یر اساس</p>
             <p class="thirdTxt">محبوب ترین</p>
         </div>
@@ -67,13 +67,16 @@
         
         </div>
 
+        <cermonyHallFilter  v-if="modalStore.isOpenCermonyHallrequestFilter" />
     
 </template>
 
 <script lang="ts" setup>
 
-
+    import cermonyHallFilter from "./cermonyHallFilter.vue"
     import CermonyCard from "./cermonyCard.vue";
+    import { useModalStore } from "~/stores/modals-store";
+    const modalStore = useModalStore();
 
     const beghaCermonyHallItems=ref<
     {title:string; members:string; rating:number; capacity:string; mausoleum:string}[]
@@ -107,7 +110,13 @@
             mausoleum:'امام زاده صالح (ع)'
         },
     ]);
-    defineComponent([CermonyCard])
+    defineComponent([CermonyCard,cermonyHallFilter])
+
+    const showOrder=ref(false);
+
+    const activateShowOrder=()=>{
+        showOrder.value= !showOrder.value
+    }
 
 </script>
 
