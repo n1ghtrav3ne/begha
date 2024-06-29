@@ -43,9 +43,10 @@ const closeModal = () => {
   modalStore.changeSwitchAccountActive("deactive");
   modalStore.changeRequestsFilterActive("deactive");
   modalStore.changeCancelRequestModalActive("deactive");
-  modalStore.changeMediaBeghaFilterActive("deactive");
+  modalStore.changeMediaBeghaFilterActive("deactive");  
+  modalStore.changeCermonyHallRequestFilterActive("deactive");
 };
-</script>
+</script> 
 
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";

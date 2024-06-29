@@ -12,7 +12,6 @@
           </span>
         </span>
         <input
-          @click="modalStore.changeMainMediaPostFilterActive('active')"
           class="search-input"
           type="text"
           placeholder="نام رسانه"
