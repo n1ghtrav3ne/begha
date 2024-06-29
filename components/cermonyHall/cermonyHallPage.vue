@@ -13,16 +13,16 @@
         </div>    
         
 
-        <div class="secondItem">
-            <span class="material-symbols-outlined">
-            arrow_drop_down
-            </span>
+        
 
-        <div>
+        <div @click="modalStore.changeCermonyHallSearchCities('active')" class="secondItem">
+            <img src="~/assets/images/cermony/arrow-down.svg" alt="">
+
+        <span>
             اصفهان، نجف اباد
-        </div>
+        </span>
 
-        <span class="icon-Location-Iran"></span>
+        <img src="~/assets/images/cermony/Location copy.svg" alt="">
 
         </div>
 
@@ -73,12 +73,13 @@
         </div>
 
         <cermonyHallFilter  v-if="modalStore.isOpenCermonyHallrequestFilter" />
+        <cermonySearchCities v-if="modalStore.isOpenCermonyHallSearchCities" />
     
 </template>
 
 <script lang="ts" setup>
-
     import cermonyHallFilter from "./cermonyHallFilter.vue"
+    import cermonySearchCities from "./cermonySearchCities.vue"
     import CermonyCard from "./cermonyCard.vue";
     import { useModalStore } from "~/stores/modals-store";
     const modalStore = useModalStore();
@@ -115,7 +116,7 @@
             mausoleum:'امام زاده صالح (ع)'
         },
     ]);
-    defineComponent([CermonyCard,cermonyHallFilter])
+    defineComponent([CermonyCard,cermonyHallFilter,cermonySearchCities])
 
     const showOrder=ref(false);
 
@@ -150,18 +151,13 @@
     }
 
     .secondItem{
+        width: 142px;
+        font-weight: 400;
         display:flex;
         flex-direction: row;
         align-items: center;
-        gap: 4px;
         margin-right: auto;
-
-        .material-symbols-outlined{
-            margin-right: 70px;
-            display: flex;
-            width: 24px;
-            height: 24px;
-        }
+        justify-content: space-between;
 
     }
 }

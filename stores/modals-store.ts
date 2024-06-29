@@ -15,6 +15,8 @@ export const useModalStore = defineStore('modalStore', {
       beghaMediaPostFilter : false , 
       mainMediaPostFilter : false , 
       cermonyHallRequestFilter:false,
+      cermonyHallSearchFilter:true,
+      cermonyHallSearchCities:false,
     }
   }),
   getters: {
@@ -50,7 +52,13 @@ export const useModalStore = defineStore('modalStore', {
     },
     isOpenCermonyHallrequestFilter(): boolean{
       return this.modals.cermonyHallRequestFilter
-    }
+    },
+    isOpenCermonyHallSearchFilter(): boolean{
+      return this.modals.cermonyHallSearchFilter
+    },
+    isOpenCermonyHallSearchCities(): boolean{
+      return this.modals.cermonyHallSearchCities
+    },
   },
   actions: {
     changeBeghaListProvinceFiltersActive(operator:string) {
@@ -128,6 +136,20 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.cermonyHallRequestFilter=true;
       }else{
         this.modals.cermonyHallRequestFilter=false;
+      }
+    },
+    changeCermonyHallSearchFilterActive(operator:string){
+      if(operator==='active'){
+        this.modals.cermonyHallSearchFilter=true;
+      }else{
+        this.modals.cermonyHallSearchFilter=false;
+      }
+    },
+    changeCermonyHallSearchCities(operator:string){
+      if(operator==='active'){
+        this.modals.cermonyHallSearchCities=true;
+      }else{
+        this.modals.cermonyHallSearchCities=false;
       }
     }
   },
