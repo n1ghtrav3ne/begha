@@ -72,6 +72,7 @@
 </template>
 
 <script lang="ts" setup>
+    import cermonyHallDate from "./cermonyHallDate.vue";
 
     import cermonyHallFilter from "./cermonyHallFilter.vue"
     import CermonyCard from "./cermonyCard.vue";
@@ -110,7 +111,7 @@
             mausoleum:'امام زاده صالح (ع)'
         },
     ]);
-    defineComponent([CermonyCard,cermonyHallFilter])
+    defineComponent([CermonyCard,cermonyHallFilter,cermonyHallDate])
 
     const showOrder=ref(false);
 

@@ -8,7 +8,7 @@
             arrow_right_alt
         </span>
 
-        <p class="w-[83px] h-[25px] flex items-center">سالن مراسم</p>
+        <span class="w-[83px] h-[25px] flex items-center">سالن مراسم</span>
 
         </div>
 
@@ -39,7 +39,7 @@
 
             <div class="flex flex-row justify-between h-[25px] self-stretch">
 
-                <p class="cermonyHall">سالن مراسم</p>
+                <span class="cermonyHall">سالن مراسم</span>
 
                 <div class="flex items-center">
 
@@ -57,9 +57,11 @@
 
                 <div class="mausoleumIcon flex flex-row items-center justify-center w-[133px] rounded-[6px] h-full px-[10px] gap-[4px] py-[4px]">
 
-                    <img src="~/assets/images/cermony/secondaryIcon.svg" alt="">
+                    
+                        <img class="pb-1.5" src="~/assets/images/cermony/secondaryIcon.svg" alt="">
 
-                    <p class="nameOfmausoleum h-full w-full flex items-center">امام زاده صالح (ع)</p>
+
+                    <p class="nameOfmausoleum flex items-center">امام زاده صالح (ع)</p>
 
                 </div>
  
@@ -81,7 +83,7 @@
 
             <div class="explanation flex flex-col gap-[12px]">
 
-                <p class="explanationHead">توضیحات</p>
+                <span class="explanationHead">توضیحات</span>
 
                 <p>
                     در مورد اهمیت و ارزش ادبی و بلاغت نهج‌البلاغه سخنان متعددی از اندیشمندان زبان عربی نقل شده است[۲۰] برخی یکی از دلایل ماندگاری این کتاب را فصاحت و بلاغت موجود در این کتاب دانسته‌اند
@@ -91,7 +93,7 @@
 
             <div class="reservation flex flex-col gap-[12px]">
 
-                <p class="reservationHead">اطلاعات رزرو</p>
+                <span class="reservationHead">اطلاعات رزرو</span>
 
                 <p>
                     از ساعت ۸:۰۰ الی ۱۳:۰۰ (حداکثر ۲۰۰ نفر)
@@ -101,7 +103,7 @@
 
             <div class="facilities gap-[12px] w-[90%] h-[101px] flex flex-col">
 
-                <p class="facilitiesHead">امکانات</p>
+                <span class="facilitiesHead">امکانات</span>
 
                 <div class="flex flex-row h-[70px] items-center justify-between">
 
@@ -168,11 +170,11 @@
 
             </div>
 
-            <div class="reservationRequest w-full h-[44px] mt-[32px] flex flex-row justify-between">
+            <div class="reservationRequest fixed top-[90%] left-2.5 w-[95%] h-[44px]  flex flex-row justify-between">
 
-                <div class="reservationButton w-[85%]">
+                <div class="reservationButton">
 
-                    <p class="w-[71px] h-[19px]">درخواست رزرو</p>
+                    <p >درخواست رزرو</p>
 
                 </div>
 
@@ -195,12 +197,6 @@
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
 
-@font-face {
-    font-family: yekanBakh;
-    src: url("~/assets/fonts/yekanBakh/YekanBakh-Regular.woff");
-}
-
-
 .greenBox{
     background-color: $primary;
     height:48px;
@@ -211,11 +207,11 @@
     padding-right: 16px;
     color: $primary-on;
     font-size: 12px;
-    font-family: yekanBakh;
+    font-family: 'yekan-regular';
 
     p{
         font-weight: 400;
-        font-family: yekanBakh;
+        font-family: 'yekan-regular';
     }
 
 }
@@ -235,7 +231,7 @@
 
 .details{
     background-color: $surface;
-    font-family: yekanBakh;
+    font-family: 'yekan-regular';
 
 
     .cermonyHall{
@@ -295,11 +291,13 @@
             color: $secondary;
         }
         p{
+            height: 76px;
             font-size: 12px;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
             color: $surface-on;
+            overflow: auto;
         }
 
     }
@@ -356,6 +354,7 @@
     .reservationRequest{
 
         .reservationButton{
+            width:85%;
             background-color: $primary;
             display: flex;
             padding: 8px;
