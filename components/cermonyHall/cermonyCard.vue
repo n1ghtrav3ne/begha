@@ -38,11 +38,7 @@
 
             <div class="nameOfMausoleum rounded-[8px] px-[10px] flex items-center py-[4px] gap-[4px] w-[133px] h-full">
 
-                <span class="w-[24px] h-[24px] flex items-center justify-center">
-
-                    <img src="~/assets/images/cermony/holyBegha.svg" alt="mosque">
-
-                </span>
+                    <img class="pb-1.5" src="~/assets/images/cermony/holyBegha.svg" alt="mosque">
 
                 <p class="text-[11px]">{{ item.mausoleum }}</p>
 
@@ -66,13 +62,9 @@
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
 
-@font-face {
-    font-family: yekanBakh;
-    src: url("~/assets/fonts/yekanBakh/YekanBakh-Regular.woff");
-}
 
 .cermonyCard{
-    font-family: yekanBakh;
+    font-family: 'yekan-regular';
     border: 1px solid $outline-variant;
 
     .cardTitle{
