@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@vite-pwa/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "nuxt-swiper",
+    "vuetify-nuxt-module"
   ],
 
   app: {
@@ -74,7 +75,7 @@ export default defineNuxtConfig({
       baseURL: process.env.NUXT_PUBLIC_API_URL,
     },
   },
-  plugins: ["~/plugins/sw.client.js"],
+  plugins: ["~/plugins/sw.client.js",],
   postcss: {
     plugins: {
       tailwindcss: {},

@@ -19,6 +19,7 @@
     "pinia-plugin-persistedstate": "^3.2.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
+    "vuetify-nuxt-module": "^0.14.1",
     "workbox-core": "^7.0.0",
     "workbox-precaching": "^7.0.0",
     "workbox-routing": "^7.0.0"
