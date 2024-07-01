@@ -104,10 +104,13 @@
             
             <div class="sliderContainer">
 
-                <vuetifySlider />
+               <capacity />
                 
-
             </div>
+
+            <button class="confirmingFilter">
+                اعمال فیلتر
+            </button>
             
 
         </template>
@@ -116,9 +119,9 @@
 
 </template>
 <script lang="ts" setup>
-import vuetifySlider from "~/components/layouts/vuetifySlider.vue"
 import BaseDialog from "~/components/global/BaseDialog.vue"
-defineComponent({BaseDialog,vuetifySlider})
+import capacity from "~/components/layouts/capacity.vue"
+defineComponent({BaseDialog,capacity})
 
 const itemOne=ref(false)
 const itemTwo=ref(false)
@@ -192,7 +195,23 @@ const itemFifth=ref(false)
     margin-top: 12px;
     height: 25px;
     width: 100%;
-    
+}
+
+.confirmingFilter{
+    width: 100%;
+    height: 44px;
+    background-color: $primary;
+    color: $primary-on;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 

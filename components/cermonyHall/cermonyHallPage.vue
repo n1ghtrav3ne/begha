@@ -33,7 +33,7 @@
 
         <input placeholder="جست و جو اماکن متبرکه" type="text">
 
-        <div class="searchIconContainer">
+        <div @click="modalStore.changeFacilitiesSearchFilter('active')" class="searchIconContainer">
             <img src="~/assets/images/cermony/Group 48096574.svg" alt="img">
         </div>
 
@@ -74,7 +74,7 @@
 
         <cermonyHallFilter  v-if="modalStore.isOpenCermonyHallrequestFilter" />
         <cermonySearchCities v-if="modalStore.isOpenCermonyHallSearchCities" />
-        <facilitiesSearchFilter />
+        <facilitiesSearchFilter v-if="modalStore.isOpenFacilitiesSearchFilter" />
     
 </template>
 

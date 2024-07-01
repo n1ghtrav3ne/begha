@@ -23,6 +23,8 @@ const closeOverlayApp = () => {
   modalStore.changeMediaBeghaFilterActive("deactive");
   modalStore.changeCermonyHallRequestFilterActive("deactive");
   modalStore.changeCermonyHallSearchCities("deactive");
+  modalStore.changeFacilitiesSearchFilter("deactive")
+
 };
 </script>
 
