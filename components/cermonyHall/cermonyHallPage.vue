@@ -75,6 +75,7 @@
         <cermonyHallFilter  v-if="modalStore.isOpenCermonyHallrequestFilter" />
         <cermonySearchCities v-if="modalStore.isOpenCermonyHallSearchCities" />
         <facilitiesSearchFilter v-if="modalStore.isOpenFacilitiesSearchFilter" />
+
     
 </template>
 
@@ -253,5 +254,6 @@
     }
 
 }
+
 
 </style>

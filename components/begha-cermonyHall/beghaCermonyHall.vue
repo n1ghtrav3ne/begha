@@ -172,11 +172,11 @@
 
             <div class="reservationRequest fixed top-[90%] left-2.5 w-[95%] h-[44px]  flex flex-row justify-between">
 
-                <div class="reservationButton">
+                <button @click="modalStore.changeReservingCermonyHall('active')" class="reservationButton">
 
                     <p >درخواست رزرو</p>
 
-                </div>
+                </button>
 
                 <div class="save">
 
@@ -189,9 +189,18 @@
         </div>
 
     </div>
+
+    <cermonyHallReservation v-if="modalStore.isOpenReservingCermonyHall" />
       
 </template>
 <script setup lang="ts">
+import cermonyHallReservation from "./cermonyHallReservation.vue"
+import { useModalStore } from "~/stores/modals-store";
+
+const modalStore = useModalStore();
+
+
+defineComponent({cermonyHallReservation})
 </script>
 <style lang="scss" scoped>
 @import "~/assets/css/colors.scss";

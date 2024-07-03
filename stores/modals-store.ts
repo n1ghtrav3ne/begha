@@ -18,6 +18,7 @@ export const useModalStore = defineStore('modalStore', {
       cermonyHallSearchFilter:true,
       cermonyHallSearchCities:false,
       facilitiesSearchFilter:false,
+      reservingCermonyHall:false
     }
   }),
   getters: {
@@ -62,6 +63,9 @@ export const useModalStore = defineStore('modalStore', {
     },
     isOpenFacilitiesSearchFilter():boolean{
       return this.modals.facilitiesSearchFilter
+    },
+    isOpenReservingCermonyHall():boolean{
+      return this.modals.reservingCermonyHall
     }
   },
   actions: {
@@ -163,5 +167,12 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.facilitiesSearchFilter=false;
       }
     },
+    changeReservingCermonyHall(operator:string){
+      if(operator==='active'){
+        this.modals.reservingCermonyHall=true;
+      }else{
+        this.modals.reservingCermonyHall=false;
+      }
+    }
   },
 })
