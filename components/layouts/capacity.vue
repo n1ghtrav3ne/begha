@@ -3,7 +3,11 @@
 
         <div dir="ltr" class="labelContainer">
 
-            <label class="rangeLabel" :style="`left: ${inputValue / 10}%`">
+            <div :style="`width: ${inputValue/10}%`" class="effectingLable">
+
+            </div>
+
+            <label class="rangeLabel">
 
             {{ inputValue }}
 
@@ -11,8 +15,14 @@
 
         </div>
 
-        <input type="range" min="0" max="1000" list="numbers" v-model="inputValue" />
 
+            <input type="range" min="0" max="1000" list="numbers" v-model="inputValue" />
+
+
+
+
+        <hr class="fill" :style="`width: ${inputValue/10}%`">
+<!-- 
         <datalist id="numbers">
             <div value="0"></div>
             <div value="100"></div>
@@ -37,7 +47,7 @@
             <div>800</div>
             <div>1000</div>
 
-        </div>
+        </div> -->
 
     </div>
 </template>
@@ -54,28 +64,31 @@ const inputValue=ref(0)
 @import "~/assets/css/icons.scss";
 
 .capacityContainer{
-    
     display: flex;
     flex-direction: column;
     width: 100%;
     direction: ltr;
 
     .labelContainer{
-        height: 10px;
-        position: absolute;
-        right: 11%;
-        width: 84%;
-        @apply sm:w-[90%] sm:right-[7%];
-
+        height: fit-content;
+        position: relative;
+        width: 100%;
+        height: 24px;
+        direction: ltr;
+        display: flex;
+        flex-direction: row;
+        bottom: 5px;
+        .effectingLable{
+            height: 100%;
+        }
         .rangeLabel{
             height: 24px;
             display: flex;
-            bottom: 10px;
             justify-content: center;
             align-items: center;
-            position: absolute;
             font-size: 11px;
             font-weight: 400;
+            position: relative;
             color: $secondary-on;
             width: 26px;
             background-image: url('~/assets/images/cermony/bg.svg');
@@ -115,14 +128,22 @@ const inputValue=ref(0)
     
 
 }
+.fill{
+    position: relative;
+    bottom: 4px;
+    border: 2px solid $secondary;
+    height: 4px;
+    border-radius: 100px;
+}
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  box-shadow: -2010px 0 0 2000px $secondary;
-  position: relative;
-  background: $surface;
+    -webkit-appearance: none;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    z-index: 9999;
+    position: relative;
+    bottom: 4px;
+    background: blue;
 }
 input{
     accent-color: $secondary;
@@ -131,13 +152,14 @@ input{
     width:100%;
     direction:ltr;
     height: 100%;
-    overflow-y: hidden;
-    height: 12px;
-    border-radius: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 input[type=range]::-webkit-slider-runnable-track  {
     background: $secondary-container;
-    height: 100%;
+    height: 4px;
+    border-radius: 100px;
+    width: 100%;
 }
 
 </style>
