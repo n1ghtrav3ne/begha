@@ -33,7 +33,7 @@
 
             <div class="wholePrice">
 
-                <img src="./paymentPortal.png" alt="">
+                <img src="~/assets/images/cermony/paymentPortal.png" alt="">
 
                 <div class="priceAmount">
 
