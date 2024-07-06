@@ -62,7 +62,7 @@
 
         <span class="theDeceased">متوفیان</span>
 
-        <div class="sectionFilter">
+        <div @click="modalStore.changeBeghaCemeteryFilter('active')" class="sectionFilter">
             <span>همه قطعه ها</span>
             <img src="~/assets/images/cemetery/arrow-down.svg" alt="">
         </div>
@@ -81,10 +81,20 @@
 
 </div>
 
+    <orderingFilter v-if="modalStore.isOpenBeghaCemeteryFilter" />
+
 </template>
 <script setup lang="ts">
+
 import deceasedCard from "./deceasedCard.vue"
-defineComponent({deceasedCard})
+
+import orderingFilter from "./orderingFilter.vue"
+
+import { useModalStore } from "~/stores/modals-store";
+
+const modalStore = useModalStore();
+
+defineComponent({deceasedCard,orderingFilter})
 
 const theDeceaseds=ref<{name:string;fatherName:string;section:string}[]
 >([

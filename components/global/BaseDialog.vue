@@ -47,6 +47,7 @@ const closeModal = () => {
   modalStore.changeCermonyHallRequestFilterActive("deactive");
   modalStore.changeCermonyHallSearchCities("deactive");
   modalStore.changeFacilitiesSearchFilter("deactive")
+  modalStore.changeBeghaCemeteryFilter("deactive");
 };
 </script> 
 
