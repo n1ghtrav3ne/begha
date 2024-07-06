@@ -274,12 +274,17 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
     align-items: center;
     justify-content: center;
     background: $primary;
+    padding: 8px;
     color: $primary-on;
     width: 90%;
     height: 44px;
     border-radius: 8px;
     position: fixed;
     bottom: 2%;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     
 }
 </style>
