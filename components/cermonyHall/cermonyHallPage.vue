@@ -143,7 +143,6 @@
     padding-bottom: 11px;
     padding-right: 16px;
     color: $primary-on;
-    font-size: 12px;
     font-family: 'yekan-regular';
 
     .firstItem{
@@ -151,6 +150,10 @@
         flex-direction: row;
         align-items: center;
         gap: 16px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
 
     .secondItem{
@@ -161,7 +164,10 @@
         align-items: center;
         margin-right: auto;
         justify-content: space-between;
-
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
 }
 .beghaSearch{
@@ -172,7 +178,6 @@
     align-items: center;
     border-radius: 16px;
     flex-direction: row;
-    margin-top: 15px;
     display: flex;
     height: 52px;
     width: 100%;

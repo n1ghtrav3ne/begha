@@ -116,14 +116,16 @@
         .rating{
             display: flex; 
             flex-direction: row; 
-            justify-content: center; 
+            justify-content: space-between; 
             align-items: center; 
-            width: fit-content; 
             height: fit-content; 
+            width: fit-content;
+            margin-left: 12px;
+            gap: 3px;
             margin-bottom: auto;
             .ratingNumber{
                 display: flex; 
-                padding-top: 0.25rem; 
+                padding-top: 3px; 
                 align-items: center; 
                 width: 17px;
                 height: 19px;

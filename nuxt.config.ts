@@ -91,4 +91,6 @@ export default defineNuxtConfig({
   experimental: {
     renderJsonPayloads: true,
   },
+   
 });
+
