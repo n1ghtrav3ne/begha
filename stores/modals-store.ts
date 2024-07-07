@@ -20,6 +20,7 @@ export const useModalStore = defineStore('modalStore', {
       facilitiesSearchFilter:false,
       reservingCermonyHall:false,
       beghaCemeteryFilter:false,
+      deceasedInfo:false,
     }
   }),
   getters: {
@@ -70,7 +71,10 @@ export const useModalStore = defineStore('modalStore', {
     },
     isOpenBeghaCemeteryFilter():boolean{
       return this.modals.beghaCemeteryFilter
-    }
+    },
+    isOpenDeceasedInfo():boolean{
+      return this.modals.deceasedInfo
+    },
   },
   actions: {
     changeBeghaListProvinceFiltersActive(operator:string) {
@@ -183,6 +187,13 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.beghaCemeteryFilter=true
       }else{
         this.modals.beghaCemeteryFilter=false
+      }
+    },
+    changeDeceasedInfo(operator:string){
+      if(operator==='active'){
+        this.modals.deceasedInfo=true
+      }else{
+        this.modals.deceasedInfo=false
       }
     },
   },

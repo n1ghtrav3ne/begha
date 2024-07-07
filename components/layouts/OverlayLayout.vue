@@ -26,6 +26,7 @@ const closeOverlayApp = () => {
   modalStore.changeFacilitiesSearchFilter("deactive")
   modalStore.changeReservingCermonyHall("deactive");
   modalStore.changeBeghaCemeteryFilter("deactive");
+  modalStore.changeDeceasedInfo("deactive");
 };
 </script>
 

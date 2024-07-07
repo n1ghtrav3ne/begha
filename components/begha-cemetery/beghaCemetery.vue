@@ -73,7 +73,7 @@
 
         <div v-for="(item,index) in theDeceaseds" :key="index">
 
-            <deceasedCard :item="item" />
+            <deceasedCard @click="modalStore.changeDeceasedInfo('active')" :item="item" />
 
         </div>
 
@@ -83,6 +83,8 @@
 
     <orderingFilter v-if="modalStore.isOpenBeghaCemeteryFilter" />
 
+    <deceasedInfo v-if="modalStore.isOpenDeceasedInfo" />
+
 </template>
 <script setup lang="ts">
 
@@ -90,11 +92,13 @@ import deceasedCard from "./deceasedCard.vue"
 
 import orderingFilter from "./orderingFilter.vue"
 
+import deceasedInfo from "./deceasedInfo.vue"
+
 import { useModalStore } from "~/stores/modals-store";
 
 const modalStore = useModalStore();
 
-defineComponent({deceasedCard,orderingFilter})
+defineComponent({deceasedCard,orderingFilter,deceasedInfo})
 
 const theDeceaseds=ref<{name:string;fatherName:string;section:string}[]
 >([

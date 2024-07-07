@@ -44,9 +44,9 @@
             <span>آرامستان</span>
         </div>
 
-        <div class="cemeteryCardContainer">
+        <div class="cemeteryCardContainer grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
 
-                <div class="card" v-for="(item,index) in cemeteryInfo" :key="index">
+                <div class="card md:mt-[16px]" v-for="(item,index) in cemeteryInfo" :key="index">
 
                     <cemeteryCard :item="item" />
 
@@ -174,8 +174,6 @@ const cemeteryInfo=ref<{name:string}[]
     margin-top: 24px;
     width: 100%;  
     gap: 16px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
 
     .card{

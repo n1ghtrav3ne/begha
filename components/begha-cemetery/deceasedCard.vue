@@ -41,12 +41,16 @@
             <span>{{ item.section }}</span>
 
         </div>
+        
 
     </div>
 
+
 </template>
 <script setup lang="ts">
+
 const props=defineProps(['item'])
+
 
 </script>
 <style scoped lang="scss">
