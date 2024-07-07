@@ -49,6 +49,7 @@ const closeModal = () => {
   modalStore.changeFacilitiesSearchFilter("deactive")
   modalStore.changeBeghaCemeteryFilter("deactive");
   modalStore.changeDeceasedInfo("deactive");
+  modalStore.changeCemeterySearchFilter("deactive");
 };
 </script> 
 

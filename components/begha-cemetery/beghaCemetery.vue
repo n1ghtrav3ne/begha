@@ -12,7 +12,7 @@
 
 </div>    
 
-<img class="mr-auto" src="~/assets/images/cemetery/search-normal copy.svg" alt="">
+    <img @click="modalStore.changeCemeterySearch('active')" class="mr-auto" src="~/assets/images/cemetery/search-normal copy.svg" alt="">
 
 </div>
 
@@ -85,6 +85,8 @@
 
     <deceasedInfo v-if="modalStore.isOpenDeceasedInfo" />
 
+    <search v-if="modalStore.isOpenCemeterySearch" />
+
 </template>
 <script setup lang="ts">
 
@@ -94,11 +96,13 @@ import orderingFilter from "./orderingFilter.vue"
 
 import deceasedInfo from "./deceasedInfo.vue"
 
+import search from "./cemeterySearch/search.vue"
+
 import { useModalStore } from "~/stores/modals-store";
 
 const modalStore = useModalStore();
 
-defineComponent({deceasedCard,orderingFilter,deceasedInfo})
+defineComponent({deceasedCard,orderingFilter,deceasedInfo,search})
 
 const theDeceaseds=ref<{name:string;fatherName:string;section:string}[]
 >([
@@ -134,6 +138,7 @@ const theDeceaseds=ref<{name:string;fatherName:string;section:string}[]
         section:'قطعه شهدا (قبر ۲۲۱، طبقه ۲)'
     },
 ])
+
 
 </script>
 <style lang="scss" scoped>
