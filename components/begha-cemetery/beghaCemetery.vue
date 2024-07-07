@@ -87,6 +87,8 @@
 
     <search v-if="modalStore.isOpenCemeterySearch" />
 
+    <!-- <graveReserve /> -->
+
 </template>
 <script setup lang="ts">
 
@@ -98,11 +100,13 @@ import deceasedInfo from "./deceasedInfo.vue"
 
 import search from "./cemeterySearch/search.vue"
 
+import graveReserve from "./graveRequest/graveReserve.vue"
+
 import { useModalStore } from "~/stores/modals-store";
 
 const modalStore = useModalStore();
 
-defineComponent({deceasedCard,orderingFilter,deceasedInfo,search})
+defineComponent({deceasedCard,orderingFilter,deceasedInfo,search,graveReserve})
 
 const theDeceaseds=ref<{name:string;fatherName:string;section:string}[]
 >([

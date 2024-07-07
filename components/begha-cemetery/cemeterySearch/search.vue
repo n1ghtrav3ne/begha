@@ -118,7 +118,13 @@ defineComponent({searchFilter})
                 
             }
         }
+
+        .input:hover{
+            border: 1px solid $primary;
+        }
+
     }
 }
+
 
 </style>
