@@ -7,7 +7,7 @@ export const useModalStore = defineStore('modalStore', {
       beghaListProvinceFilter : false , 
       beghaListEventFilter : false , 
       moreServicesButtons : false , 
-      ratingEvents : false , 
+      ratingEvents : false ,  
       switchAccount : false , 
       requestsFilter : false , 
       cancelRequest : false , 

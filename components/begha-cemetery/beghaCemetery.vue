@@ -87,7 +87,7 @@
 
     <search v-if="modalStore.isOpenCemeterySearch" />
 
-    <!-- <graveReserve /> -->
+    <graveReserve />
 
 </template>
 <script setup lang="ts">

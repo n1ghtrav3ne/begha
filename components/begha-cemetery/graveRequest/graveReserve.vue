@@ -27,33 +27,64 @@
 
                 </div>
 
-                <div class="facilitiesContainer h-[400px] ">
-
-                    <span>انتخاب امکانات</span>
-
-                    <p>رفتار مناسب: مهمانسرا می‌تواند درخواست کند که همه مهمانان به رفتار مناسب و احترام‌آمیزی نسبت به یکدیگر و نیز نسبت به کارکنان رعایت کنند.
-رفتار مناسب: مهمانسرا می‌تواند درخواست کند که همه مهمانان به رفتار مناسب و احترام‌آمیزی نسبت به یکدیگر و نیز نسبت به کارکنان رعایت کنند.
-رفتار مناسب: مهمانسرا می‌تواند درخواست کند که همه مهمانان به رفتار مناسب و احترام‌آمیزی نسبت به یکدیگر و نیز نسبت به کارکنان رعایت کنند.
-رفتار مناسب: مهمانسرا می‌تواند درخواست کند که همه مهمانان به رفتار مناسب و احترام‌آمیزی نسبت به یکدیگر و نیز نسبت به کارکنان رعایت کنند.
-رفتار مناسب: مهمانسرا می‌تواند درخواست کند که همه مهمانان به رفتار مناسب و احترام‌آمیزی نسبت به یکدیگر و نیز نسبت به کارکنان رعایت کنند.
-رفتار مناسب: مهمانسرا می‌تواند درخواست کند که همه مهمانان به رفتار مناسب و احترام‌آمیزی نسبت به یکدیگر و نیز نسبت به کارکنان رعایت کنند.</p>
-
-                </div>
-
 
             </div>
 
+             <div class="facilitiesContainer">
+
+                    <span>انتخاب امکانات</span>
+
+                    <div  class="facilitieOnes">
+
+                        <div v-for="(item,index) in facilitieItems" :key="index">
+
+                            <facilities :item="item" />
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="terms">
+                   
+                    <BaseCheckbox class="pt-3" :items="checkboxes" />
+                    <span @click="reservationStore.changeTermsConfirmation('active')" class="txt">را مطالعه کرده و آن را می پذیرم.</span>
+                </div>
+
+                <button>پرداخت بیعانه (۴۰٬۰۰۰٬۰۰۰ تومان)</button>
+
+                
+
         </div>
+
+        <terms v-if="reservationStore.isOpnenTermsConfirmation" />
+
+        <!-- <dateOfDeath /> -->
 
         
     </div>
 
 </template>
 <script setup lang="ts">
+
 import inputOnes from "./inputOnes.vue"
 
+import facilities from "./facilities.vue"
 
-defineComponent({inputOnes})
+import BaseCheckbox from '~/components/global/BaseCheckbox.vue';
+
+import terms from "./inputValues/terms.vue"
+
+import dateOfDeath from "./inputValues/dateOfDeath.vue";
+
+import {useReservationStore} from "~/stores/graveRequest-store";
+
+const reservationStore=useReservationStore();
+
+
+defineComponent({inputOnes,facilities,BaseCheckbox,terms,dateOfDeath})
 
 const inputItems=ref<{name:string;val:string;txt:string;type:string;iconClass:string;iconName:string;warning:string}[]
 >([
@@ -113,6 +144,40 @@ const inputItems=ref<{name:string;val:string;txt:string;type:string;iconClass:st
     },
     
 ])
+
+const facilitieItems=ref<{title:string,price:number}[]>
+([
+    {
+        title:'قاری',
+        price:500
+    },
+    {
+        title:'قاری',
+        price:500
+    },
+    {
+        title:'قاری',
+        price:500
+    },
+    {
+        title:'قاری',
+        price:500
+    },
+    {
+        title:'قاری',
+        price:500
+    },
+
+])
+
+const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
+  {
+    id: 1,
+    label: "",
+    isChecked: false,
+  },
+]);
+
 </script>
 <style scoped lang="scss">
 @import "~/assets/css/colors.scss";
@@ -168,7 +233,8 @@ const inputItems=ref<{name:string;val:string;txt:string;type:string;iconClass:st
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: auto;
+        margin-top: 36px;
+        height: 290px;
 
         span{
             font-size: 14px;
@@ -179,6 +245,44 @@ const inputItems=ref<{name:string;val:string;txt:string;type:string;iconClass:st
             margin-left: auto;
             margin-bottom: 16px;
         }
+
+        .facilitieOnes{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height:auto;
+            gap: 24px;
+        }
+    }
+
+    .terms{
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 98px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .txt::before{
+            color: $secondary;
+            content: 'قوانین و مقررات ';
+        }
+    }
+
+    button{
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color:$primary-on;
+        background: $primary;
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        height: 44px;
+        margin-bottom: 10px;
     }
 }
 
