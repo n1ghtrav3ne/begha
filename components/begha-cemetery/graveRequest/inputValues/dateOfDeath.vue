@@ -12,15 +12,18 @@
 
             <div class="swiperContainer">
 
-                 <Swiper  ref="swiper" @scroll="onSlideChange"
+                 <Swiper 
                     :modules="[SwiperPagination, SwiperEffectCreative]"
                     :slidesPerView="3"
                     :loop="true"
                     direction="vertical"
+                    :centeredSlides="true"
                     class="daySlider"
-                    @click="toggleBars(1)" 
+                    @touchstart="activeBars(1)" 
+                    :initial-slide="initialSlide"
+                    @slideChange="onSlideChange"
                     >
-                    <SwiperSlide :class="{active:barsStyle===1}" v-for="(day,index) in days" :key="index">
+                    <SwiperSlide :class="{activeText: index === activeSlide -1,selectedText: index === activeSlide -1 && barsStyle!=1}" v-for="(day,index) in days" :key="index">
                         
                     {{ day }}
 
@@ -33,11 +36,13 @@
                     :slidesPerView="3"
                     :loop="true"
                     direction="vertical"
+                    :centeredSlides="true"
+                    @touchstart="activeBars(2)" 
                     ref="swiper"
                     class="monthSlider"
-                    @click="toggleBars(2)" 
+                    @slideChange="onMonthChange"
                     >
-                    <SwiperSlide  v-for="(month,index) in months" :key="index">
+                    <SwiperSlide :class="{activeText: index === activeMonthSlide,selectedText:index===activeMonthSlide && barsStyle!=2}" v-for="(month,index) in months" :key="index">
                         
                     {{ month }}
 
@@ -49,12 +54,14 @@
                     :modules="[SwiperPagination, SwiperEffectCreative]"
                     :slidesPerView="3"
                     :loop="true"
+                    :centeredSlides="true"
                     direction="vertical"
                     ref="swiper"
                     class="yearSlider"
-                    @click="toggleBars(3)" 
+                    @slideChange="onYearChange"
+                    @touchstart="activeBars(3)" 
                     >
-                    <SwiperSlide v-for="(year,index) in years" :key="index">
+                    <SwiperSlide :class="{activeText:index === activeYearSlide,selectedText:index===activeYearSlide && barsStyle!=3}" v-for="(year,index) in years" :key="index">
                         
                     {{ year }}
 
@@ -66,7 +73,7 @@
 
             <div class="bars">
 
-                <div  class="bar" v-for="index in 3" :key="index">
+                <div :class="{active:index === barsStyle}" class="bar" v-for="index in 3" :key="index">
 
                 </div>
 
@@ -82,8 +89,50 @@
 
 import BaseDialog from "~/components/global/BaseDialog.vue"
 
+import {useReservationStore} from "~/stores/graveRequest-store";
+
+const reservationStore=useReservationStore();
+ 
+
 defineComponent({BaseDialog})
     
+const initialSlide = ref(0);
+const activeSlide = ref(1);
+
+const onSlideChange = (event:any) => {
+    activeSlide.value =(event.realIndex % days.value.length) + 1; 
+}
+
+const activeMonthSlide=ref(0)
+
+const onMonthChange=(event:any)=>{
+    activeMonthSlide.value = event.realIndex 
+    const year = years.value[activeYearSlide.value];
+    const daysInMonth = getDaysInMonth(activeMonthSlide.value, year);
+    days.value = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+}
+const activeYearSlide=ref(0)
+
+const onYearChange=(event:any)=>{
+    activeYearSlide.value=event.realIndex;
+    const year = years.value[activeYearSlide.value];
+    const daysInMonth = getDaysInMonth(activeMonthSlide.value, year);
+    days.value = Array.from({ length: daysInMonth }, (_, i) => i + 1);       
+}
+
+const getDaysInMonth = (monthIndex: number, year: number) => {
+  if (monthIndex < 6) {
+    return 31;
+  } else if (monthIndex < 11) {
+    return 30;
+  } else {
+    const isLeapYear = (year % 4 === 0 && year % 100!== 0) || year % 400 === 0;
+    return isLeapYear? 30 : 29;
+  }
+};
+
+
+
 
 const days: Ref<number[]> = ref([])
 
@@ -91,41 +140,47 @@ for (let i = 1; i <= 31; i++) {
   days.value.push(i)
 }
 
-enum months {
-  Farvardin = 'فروردین',
-  Ordibehesht = 'اردیبهشت',
-  Khordad = 'خرداد',
-  Tir = 'تیر',
-  Mordad = 'مرداد',
-  Shahrivar = 'شهریور',
-  Mehr = 'مهر',
-  Aban = 'آبان',
-  Azar = 'آذر',
-  Dey = 'دی',
-  Bahman = 'بهمن',
-  Esfand = 'اسفند'
-}
+let months:string[]=[
+'فروردین',
+'اردیبهشت',
+'خرداد',
+'تیر',
+'مرداد',
+'شهریور',
+'مهر',
+'آبان',
+'آذر',
+'دی',
+'بهمن',
+'اسفند'
+] 
 
-const currentYear=ref(1403)
-const persianMonths: months[] = Object.values(months);
 
-const startYear = ref(1403)
-const maxYear = ref(1500)
+
+
+const startYear = ref(1340)
+const maxYear=ref(1403)
+
 
 const years = ref(Array.from({ length: maxYear.value - startYear.value + 1 }, (_, i) => startYear.value + i))
 
+
 const barsStyle=ref(0)
 
-const toggleBars=(index:number)=>{
+const activeBars=(index:number)=>{
     barsStyle.value=index
 }
 
-const swiper = ref()
-    const activeSlide = ref(0)
+const selectedDay = computed(() => days.value[activeSlide.value - 1]);
+const selectedMonth = computed(() => months[activeMonthSlide.value]);
+const selectedYear = computed(() => years.value[activeYearSlide.value]);
 
-    const onSlideChange = () => {
-      activeSlide.value = swiper.value.activeIndex
-    }
+
+const selectedDate = computed(() => [selectedDay.value, selectedMonth.value, selectedYear.value]);
+
+reservationStore.setDate(selectedDate)
+
+
 </script>
 <style scoped lang="scss">
 @import "~/assets/css/colors.scss";
@@ -158,12 +213,14 @@ const swiper = ref()
       display: flex;
       justify-content: center;
       align-items: center;
-      
+      color:$surface-container-high;
+      font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
       height: 30%;
     }
-.singleSlide{
-    background: red;
-}
+
 .monthSlider{
     font-size: 14px;
     font-style: normal;
@@ -198,8 +255,18 @@ const swiper = ref()
 
   
 }
-.active{
-    border-top: 1px solid $secondary;
-    border-bottom: 1px solid $secondary;
-    }
+.bar.active{
+    border-top:1px solid $secondary-s-400;
+    border-bottom: 1px solid $secondary-s-400;
+}
+
+
+.activeText{
+    color: $secondary;
+    font-size: 14px;
+}
+.selectedText{
+    font-size: 14px;
+    color:$surface-on
+}
 </style>

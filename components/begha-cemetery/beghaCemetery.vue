@@ -40,7 +40,7 @@
 
         </div>
 
-        <div class="graveReq">
+        <div @click="reservationStore.changeGraveReservation('active')" class="graveReq">
 
             <div class="imgHolder">
 
@@ -87,7 +87,7 @@
 
     <search v-if="modalStore.isOpenCemeterySearch" />
 
-    <graveReserve />
+    <graveReserve v-if="reservationStore.isOpenGraveReservation" />
 
 </template>
 <script setup lang="ts">
@@ -103,6 +103,10 @@ import search from "./cemeterySearch/search.vue"
 import graveReserve from "./graveRequest/graveReserve.vue"
 
 import { useModalStore } from "~/stores/modals-store";
+
+import {useReservationStore} from "~/stores/graveRequest-store";
+
+const reservationStore=useReservationStore();
 
 const modalStore = useModalStore();
 

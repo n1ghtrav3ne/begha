@@ -1,12 +1,12 @@
 <template>
 
-    <div :id="id" class="inputContainer">
+    <div class="inputContainer">
 
         <span>{{ item.name }}</span>
 
         <div class="inputHolder">
 
-            <input :value="item.val" :placeholder="item.txt" :type="item.type">
+            <input :id="id" :value="item.val" :placeholder="item.txt" :type="item.type">
 
            
                 <span class="icon" :class="item.iconClass">

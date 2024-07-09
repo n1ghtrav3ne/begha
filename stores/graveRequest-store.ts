@@ -4,19 +4,31 @@ export const useReservationStore=defineStore('reservationStore', {
     state: ()=>({
 
         modals:{
+            graveReservation:false,
             termsConfirmation:false,
             dateOfDeath:false,
+            Date:ref()
         }
 }),
 getters:{
+    isOpenGraveReservation():boolean{
+        return this.modals.graveReservation
+    },
     isOpnenTermsConfirmation():boolean{
         return this.modals.termsConfirmation
     },
-    isOpenDateOfBirth():boolean{
+    isOpenDateOfDeath():boolean{
         return this.modals.dateOfDeath
     }
 },
 actions:{
+    changeGraveReservation(operator:string){
+        if(operator==="active"){
+            this.modals.graveReservation=true;
+        }else{
+            this.modals.graveReservation=false;
+        }
+    },
     changeTermsConfirmation(operator:string){
         if(operator === 'active'){
             this.modals.termsConfirmation=true;
@@ -30,6 +42,9 @@ actions:{
         }else{
             this.modals.dateOfDeath=false;
         }
+    },
+    setDate(Date:any){
+        this.modals.Date=Date
     }
 }
 })

@@ -6,7 +6,7 @@
 
         <div class="firstItem">
 
-            <span class="material-symbols-outlined ">
+            <span @click="reservationStore.changeGraveReservation('deactive')" class="material-symbols-outlined ">
             arrow_right_alt
         </span>
 
@@ -23,7 +23,7 @@
 
                 <div class="w-full" v-for="(item,index) in inputItems" :key="index">
                     
-                    <inputOnes :id="index" :item="item" />
+                    <inputOnes @click="showDateOfDeathInput(index)" :id="index":item="item" />
 
                 </div>
 
@@ -39,6 +39,7 @@
                         <div v-for="(item,index) in facilitieItems" :key="index">
 
                             <facilities :item="item" />
+
 
                         </div>
 
@@ -61,7 +62,7 @@
 
         <terms v-if="reservationStore.isOpnenTermsConfirmation" />
 
-        <!-- <dateOfDeath /> -->
+        <dateOfDeath v-if="reservationStore.isOpenDateOfDeath" />
 
         
     </div>
@@ -177,6 +178,20 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
     isChecked: false,
   },
 ]);
+
+const chosenDate=reservationStore.modals.Date
+
+const showDateOfDeathInput=(index:number)=>{
+    if(index===2){
+        reservationStore.changeDateOfDeath('active')        
+    }
+    if(reservationStore.isOpenDateOfDeath){
+    console.log(chosenDate);
+
+    }
+}
+
+
 
 </script>
 <style scoped lang="scss">
