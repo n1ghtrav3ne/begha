@@ -7,7 +7,11 @@ export const useReservationStore=defineStore('reservationStore', {
             graveReservation:false,
             termsConfirmation:false,
             dateOfDeath:false,
-            Date:ref()
+            Date:ref(),
+            personalRatio:false,
+            theChosenPerson:ref(),
+            sectionPart:false,
+            sectionName:ref(),
         }
 }),
 getters:{
@@ -19,6 +23,12 @@ getters:{
     },
     isOpenDateOfDeath():boolean{
         return this.modals.dateOfDeath
+    },
+    isOpenPersonalRatio():boolean{
+        return this.modals.personalRatio
+    },
+    isOpensectionPart():boolean{
+        return this.modals.sectionPart
     }
 },
 actions:{
@@ -45,6 +55,26 @@ actions:{
     },
     setDate(Date:any){
         this.modals.Date=Date
+    },
+    changePersonalRatio(operator:string){
+        if(operator==='active'){
+            this.modals.personalRatio=true;
+        }else{
+            this.modals.personalRatio=false;
+        }
+    },
+    setPerson(person:any){
+        this.modals.theChosenPerson=person
+    },
+    changeSectionPart(operator:string){
+        if(operator==='active'){
+            this.modals.sectionPart=true;
+        }else{
+            this.modals.sectionPart=false;
+        }
+    },
+    setSection(section:any){
+        this.modals.sectionName=section
     }
 }
 })

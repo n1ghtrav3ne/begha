@@ -74,7 +74,7 @@ const selectItem=(index:number)=>{
         justify-content: space-between;
         border-radius: 8px;
         align-items: center;
-        height: 38px;
+        height: 40px;
 
         .all{
             font-size: 14px;
@@ -93,7 +93,7 @@ const selectItem=(index:number)=>{
     .item{
         width: 100%;
         display: flex;
-        height: 38px;
+        height: 40px;
         flex-direction: row;
         justify-content: space-between;
         border-radius: 8px;

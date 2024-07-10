@@ -56,6 +56,7 @@
                     :loop="true"
                     :centeredSlides="true"
                     direction="vertical"
+                    :initial-slide="years.length -1"
                     ref="swiper"
                     class="yearSlider"
                     @slideChange="onYearChange"

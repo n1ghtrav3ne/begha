@@ -135,16 +135,7 @@ const theDeceaseds=ref<{name:string;fatherName:string;section:string}[]
         fatherName:'فرزند عباس',
         section:'قطعه شهدا (قبر ۲۲۱، طبقه ۲)'
     },
-    {
-        name:'محمدرضا موسوی',
-        fatherName:'فرزند عباس',
-        section:'قطعه شهدا (قبر ۲۲۱، طبقه ۲)'
-    },
-    {
-        name:'محمدرضا موسوی',
-        fatherName:'فرزند عباس',
-        section:'قطعه شهدا (قبر ۲۲۱، طبقه ۲)'
-    },
+
 ])
 
 

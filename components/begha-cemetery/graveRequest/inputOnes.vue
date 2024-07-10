@@ -62,7 +62,6 @@ const props=defineProps(['item','id'])
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        color:$surface-on-variant;
         background: transparent;
         font-family: 'yekan-regular';
         outline:none;

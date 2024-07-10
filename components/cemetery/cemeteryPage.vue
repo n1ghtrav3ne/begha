@@ -46,11 +46,11 @@
 
         <div class="cemeteryCardContainer grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
 
-                <div class="card md:mt-[16px]" v-for="(item,index) in cemeteryInfo" :key="index">
+                <NuxtLink to="begha-cemetery/3242" class="card md:mt-[16px]" v-for="(item,index) in cemeteryInfo" :key="index">
 
                     <cemeteryCard :item="item" />
 
-                </div>
+                </NuxtLink>
 
         </div>
 

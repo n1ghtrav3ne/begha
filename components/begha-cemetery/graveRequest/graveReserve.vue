@@ -19,11 +19,11 @@
 
         <div class="container">
 
-            <div class="formContainer">
+            <div  class="formContainer">
 
-                <div class="w-full" v-for="(item,index) in inputItems" :key="index">
+                <div  class="w-full" v-for="(item,index) in inputItems" :key="index">
                     
-                    <inputOnes @click="showDateOfDeathInput(index)" :id="index":item="item" />
+                    <inputOnes class="theInputs" :class="{active: uploadCheck && index===4}" @click="showInputValues(index)" :id="index":item="item" />
 
                 </div>
 
@@ -64,7 +64,11 @@
 
         <dateOfDeath v-if="reservationStore.isOpenDateOfDeath" />
 
+        <personalRatio v-if="reservationStore.isOpenPersonalRatio" />
+
+        <graveSection v-if="reservationStore.isOpensectionPart" />
         
+        <input class="hidden" ref="fileInput" @change="uploadFile" type="file" accept=".pdf,.jpg,.png">
     </div>
 
 </template>
@@ -80,12 +84,16 @@ import terms from "./inputValues/terms.vue"
 
 import dateOfDeath from "./inputValues/dateOfDeath.vue";
 
+import personalRatio from "./inputValues/personalRatio.vue"
+
+import graveSection from "./inputValues/graveSection.vue"
+
 import {useReservationStore} from "~/stores/graveRequest-store";
 
 const reservationStore=useReservationStore();
 
 
-defineComponent({inputOnes,facilities,BaseCheckbox,terms,dateOfDeath})
+defineComponent({inputOnes,facilities,BaseCheckbox,terms,dateOfDeath,personalRatio,graveSection})
 
 const inputItems=ref<{name:string;val:string;txt:string;type:string;iconClass:string;iconName:string;warning:string}[]
 >([
@@ -179,18 +187,58 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
   },
 ]);
 
-const chosenDate=reservationStore.modals.Date
+const chosenDate=ref()
 
-const showDateOfDeathInput=(index:number)=>{
+
+const fileInput=ref()
+
+const showInputValues=(index:number)=>{
     if(index===2){
-        reservationStore.changeDateOfDeath('active')        
+        reservationStore.changeDateOfDeath('active')  
     }
-    if(reservationStore.isOpenDateOfDeath){
-    console.log(chosenDate);
-
+    if(index===3){
+        reservationStore.changePersonalRatio('active')
+    }
+    if(index===4){
+        fileInput.value.click()
+    }
+    if(index===5){
+        reservationStore.changeSectionPart('active')
     }
 }
 
+watch(()=>reservationStore.isOpenDateOfDeath,(newValue)=>{
+    if(!newValue){
+        chosenDate.value = reservationStore.modals.Date;  
+        inputItems.value[2].val=chosenDate.value.join(' ')
+    }
+})
+
+const chosenPerson=ref()
+watch(()=>reservationStore.isOpenPersonalRatio,(newValue)=>{
+    if(!newValue){
+        chosenPerson.value=reservationStore.modals.theChosenPerson;
+        inputItems.value[3].val=chosenPerson.value        
+    }
+})
+
+const chosenSection=ref()
+
+watch(()=>reservationStore.isOpensectionPart,(newValue)=>{
+    if(!newValue){
+        chosenSection.value=reservationStore.modals.sectionName
+        inputItems.value[5].val=chosenSection.value
+    }
+})
+
+const uploadCheck=ref(false)
+
+const uploadFile=()=>{
+    if (fileInput.value?.files && fileInput.value.files.length > 0) {
+        inputItems.value[4].val='مشاهده فایل'
+        uploadCheck.value=true
+    }
+}
 
 
 </script>
@@ -202,7 +250,7 @@ const showDateOfDeathInput=(index:number)=>{
     width: 100%;
     position: fixed;
     background: $surface;
-    z-index: 50;
+    z-index: 9999;
     top: 0;
     overflow: scroll !important;
     height: 100%;
@@ -241,6 +289,10 @@ const showDateOfDeathInput=(index:number)=>{
         align-items: center;
         padding-top: 24px;
         gap: 24px;
+
+        .theInputs{
+            color:$surface-on;
+        }
 
     }
 
@@ -299,6 +351,9 @@ const showDateOfDeathInput=(index:number)=>{
         height: 44px;
         margin-bottom: 10px;
     }
+}
+.active{
+    color: $secondary !important;
 }
 
 </style>
