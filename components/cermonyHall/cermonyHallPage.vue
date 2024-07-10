@@ -66,9 +66,9 @@
 
         </div>
 
-        <div v-for="(item,index) in beghaCermonyHallItems" :key="index" class="cermonyHallContainer">
+        <NuxtLink to="begha-cermonyHall/4233" v-for="(item,index) in beghaCermonyHallItems" :key="index" class="cermonyHallContainer">
         <cermonyCard :item="item" />
-        </div>
+        </NuxtLink>
         
         </div>
 
@@ -88,34 +88,34 @@
     const modalStore = useModalStore();
 
     const beghaCermonyHallItems=ref<
-    {title:string; members:string; rating:number; capacity:string; mausoleum:string}[]
+    {title:string; members:string; rating:number; capacity:number; mausoleum:string}[]
     >([
         {
             title:'سالن مراسم',
             members:'مداح، سخنران، پذیرایی',
             rating:6.5,
-            capacity:'ظرفیت ۷۰۰ نفر',
+            capacity:700,
             mausoleum:'امام زاده صالح (ع)'
         },
         {
             title:'سالن مراسم',
             members:'مداح، سخنران، پذیرایی',
             rating:6.5,
-            capacity:'ظرفیت ۷۰۰ نفر',
+            capacity:700,
             mausoleum:'امام زاده صالح (ع)'
         },
         {
             title:'سالن مراسم',
             members:'مداح، سخنران، پذیرایی',
             rating:6.5,
-            capacity:'ظرفیت ۷۰۰ نفر',
+            capacity:700,
             mausoleum:'امام زاده صالح (ع)'
         },
         {
             title:'سالن مراسم',
             members:'مداح، سخنران، پذیرایی',
             rating:6.5,
-            capacity:'ظرفیت ۷۰۰ نفر',
+            capacity:700,
             mausoleum:'امام زاده صالح (ع)'
         },
     ]);

@@ -25,7 +25,7 @@
                     >
                     <SwiperSlide :class="{activeText: index === activeSlide -1,selectedText: index === activeSlide -1 && barsStyle!=1}" v-for="(day,index) in days" :key="index">
                         
-                    {{ day }}
+                    {{ day.toLocaleString('fa-IR') }}
 
                     </SwiperSlide>
 
@@ -64,7 +64,7 @@
                     >
                     <SwiperSlide :class="{activeText:index === activeYearSlide,selectedText:index===activeYearSlide && barsStyle!=3}" v-for="(year,index) in years" :key="index">
                         
-                    {{ year }}
+                        {{ new Intl.NumberFormat('fa', { useGrouping: false }).format(year) }}
 
                     </SwiperSlide>
 
@@ -163,7 +163,7 @@ const startYear = ref(1340)
 const maxYear=ref(1403)
 
 
-const years = ref(Array.from({ length: maxYear.value - startYear.value + 1 }, (_, i) => startYear.value + i))
+const years = ref(Array.from({ length: maxYear.value - startYear.value + 1 }, (_, i) => startYear.value + i,))
 
 
 const barsStyle=ref(0)

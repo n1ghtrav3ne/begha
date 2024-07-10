@@ -16,7 +16,7 @@
 
             <div class="rating">
 
-                <p class="ratingNumber">{{ item.rating }}</p>
+                <p class="ratingNumber">{{ item.rating.toLocaleString('fa-IR') }}</p>
 
                 <img class="ratingImg" src="~/assets/images/cermony/ant-design_star-filled.png" alt="">
 
@@ -30,9 +30,13 @@
 
             <div class="capacityHolder">
 
-                <img src="~/assets/images/cermony/profile-2user.svg" alt="capacityImg">
+                <div class="capacityIconHolder">
 
-                <p>{{ item.capacity }}</p>
+                    <img src="~/assets/images/cermony/profile-2user copy.svg" alt="capacityImg">
+
+                </div>
+
+                <p class="pt-1">ظرفیت {{ item.capacity.toLocaleString('fa-IR') }} نفر</p>
 
             </div>
 
@@ -164,15 +168,29 @@
         .capacityHolder{
             display: flex; 
             align-items: center; 
+            flex-direction: row;
             height: 100%; 
             width: 119px;
             font-size: 11px;
             gap: 4px;
 
-            img{
+            .capacityIconHolder{
+
+                display: flex;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                background: $secondary-container;
+                border-radius: 100%;
+                align-items: center;
+
+                img{
                 width: 16px;
                 height: 16px;
             }
+
+            }
+
 
         }
 
