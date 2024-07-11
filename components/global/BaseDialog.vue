@@ -33,9 +33,13 @@
 <script lang="ts" setup>
 import OverlayLayout from "../layouts/OverlayLayout.vue";
 import { useModalStore } from "~/stores/modals-store";
+import {useReservationStore} from "~/stores/graveRequest-store";
+
 defineNuxtComponent({ OverlayLayout });
 const props = defineProps(["modalHeight", "modalPadding"]);
 const modalStore = useModalStore();
+const reservationStore=useReservationStore();
+
 const closeModal = () => {
   modalStore.changeBeghaListProvinceFiltersActive("deactive");
   modalStore.changeBeghaListEventFiltersActive("deactive");
@@ -46,6 +50,14 @@ const closeModal = () => {
   modalStore.changeMediaBeghaFilterActive("deactive");  
   modalStore.changeCermonyHallRequestFilterActive("deactive");
   modalStore.changeCermonyHallSearchCities("deactive");
+  modalStore.changeFacilitiesSearchFilter("deactive")
+  modalStore.changeBeghaCemeteryFilter("deactive");
+  modalStore.changeDeceasedInfo("deactive");
+  modalStore.changeCemeterySearchFilter("deactive");
+  reservationStore.changeTermsConfirmation("deactive");
+  reservationStore.changeDateOfDeath("deactive");
+  reservationStore.changePersonalRatio('deactive');
+  reservationStore.changeSectionPart("deactive");
 };
 </script> 
 

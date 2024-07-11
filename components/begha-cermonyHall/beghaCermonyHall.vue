@@ -1,14 +1,14 @@
 <template>
     
-    <div class="greenBox container flex flex-row items-center py-[12px]">
+    <div class="greenBox container">
 
-        <div class="inline-flex items-center gap-[16px]">
+        <div class="firstItem">
 
         <span class="material-symbols-outlined ">
             arrow_right_alt
         </span>
 
-        <span class="w-[83px] h-[25px] flex items-center">سالن مراسم</span>
+        <span class="cermonyTxt">سالن مراسم</span>
 
         </div>
 
@@ -26,22 +26,22 @@
       >
         <SwiperSlide v-for="slide in 3" :key="slide">
           <img
-            class="post-images h-full w-full"
+            class="post-images"
             src="~/assets/images/cermony/cermonyHall.png"
             alt=""
           />
         </SwiperSlide>
       </Swiper>
 
-    <div class="details w-full h-[563px] container absolute rounded-t-[16px] top-[335px] z-50">
+    <div class="details container">
 
-        <div class="w-full h-[98px] flex gap-[12px] flex-col items-center self-stretch mb-[12px]">
+        <div class="title">
 
-            <div class="flex flex-row justify-between h-[25px] self-stretch">
+            <div class="pricePerHour">
 
                 <span class="cermonyHall">سالن مراسم</span>
 
-                <div class="flex items-center">
+                <div>
 
                     <p class="price">۲۰٬۰۰۰٬۰۰۰ تومان</p>
 
@@ -51,25 +51,25 @@
 
             </div>
 
-            <p class="address w-[fit] h-[17px] ml-auto">اصفهان، خیابان مصلی، لورم ایپسوم، روبروی لورم</p>
+            <p class="address">اصفهان، خیابان مصلی، لورم ایپسوم، روبروی لورم</p>
 
-            <div class="w-full h-[32px] flex justify-between self-stretch items-center">
+            <div class="mausoleum">
 
-                <div class="mausoleumIcon flex flex-row items-center justify-center w-[133px] rounded-[6px] h-full px-[10px] gap-[4px] py-[4px]">
+                <div class="mausoleumIcon">
 
                     
                         <img class="pb-1.5" src="~/assets/images/cermony/secondaryIcon.svg" alt="">
 
 
-                    <p class="nameOfmausoleum flex items-center">امام زاده صالح (ع)</p>
+                    <p class="nameOfmausoleum">امام زاده صالح (ع)</p>
 
                 </div>
  
-                <div class="mr-auto flex flex-row items-center self-stretch ga-[4px]">
+                <div class="rating">
 
-                    <img class="w-[20px] h-[20px]" src="assets/images/cermony/ant-design_star-filled.png" alt="">
+                    <img src="assets/images/cermony/ant-design_star-filled.png" alt="">
 
-                    <p class="rating">5.0</p>
+                    <p>5.0</p>
 
                 </div>
 
@@ -77,11 +77,11 @@
 
         </div>
 
-        <hr class="w-full h-0">
+        <hr>
 
-        <div class="flex-col flex gap-[16px] mt-[16px] w-full h-[420px] ">
+        <div class="information">
 
-            <div class="explanation flex flex-col gap-[12px]">
+            <div class="explanation">
 
                 <span class="explanationHead">توضیحات</span>
 
@@ -91,7 +91,7 @@
 
             </div>
 
-            <div class="reservation flex flex-col gap-[12px]">
+            <div class="reservation">
 
                 <span class="reservationHead">اطلاعات رزرو</span>
 
@@ -101,82 +101,82 @@
 
             </div>
 
-            <div class="facilities gap-[12px] w-[90%] h-[101px] flex flex-col">
+            <div class="facilities">
 
                 <span class="facilitiesHead">امکانات</span>
 
-                <div class="flex flex-row h-[70px] items-center justify-between">
+                <div class="facilitiesContainer">
 
-                    <div class="catering flex flex-col gap-[8px]">
+                    <div class="catering">
 
-                        <div class="cateringIcon flex items-center p-[4px] rounded-full">
+                        <div class="cateringIcon">
 
-                            <img class="w-full h-full" src="~/assets/images/cermony/Ghari.svg" alt="">
+                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
 
                         </div>
 
-                        <p class="w-[46px] flex justify-center h-[22px]">پذیرایی</p>
+                        <p>پذیرایی</p>
                         
                     </div>
 
-                    <div class="catering flex flex-col gap-[8px]">
+                    <div class="catering">
 
-                        <div class="cateringIcon flex items-center p-[4px] rounded-full">
+                        <div class="cateringIcon">
 
-                            <img class="w-full h-full" src="~/assets/images/cermony/Ghari.svg" alt="">
+                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
 
                         </div>
 
-                        <p class="w-[46px] flex justify-center h-[22px]">قاری</p>
+                        <p>پذیرایی</p>
                         
                     </div>
 
-                    <div class="catering flex flex-col gap-[8px]">
+                    <div class="catering">
 
-                        <div class="cateringIcon flex items-center p-[4px] rounded-full">
+                        <div class="cateringIcon">
 
-                            <img class="w-full h-full" src="~/assets/images/cermony/Ghari.svg" alt="">
+                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
 
                         </div>
 
-                        <p class="w-[46px] flex justify-center h-[22px]">مداح</p>
+                        <p>پذیرایی</p>
                         
                     </div>
 
-                    <div class="catering flex flex-col gap-[8px]">
+                    <div class="catering">
 
-                        <div class="cateringIcon flex items-center p-[4px] rounded-full">
+                        <div class="cateringIcon">
 
-                            <img class="w-full h-full" src="~/assets/images/cermony/Ghari.svg" alt="">
+                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
 
                         </div>
 
-                        <p class="w-[46px] flex justify-center h-[22px]">سخنران</p>
+                        <p>پذیرایی</p>
                         
                     </div>
 
-                    <div class="catering flex flex-col gap-[8px]">
+                    <div class="catering">
 
-                        <div class="cateringIcon flex items-center p-[4px] rounded-full">
+                        <div class="cateringIcon">
 
-                            <img class="w-full h-full" src="~/assets/images/cermony/Ghari.svg" alt="">
+                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
 
                         </div>
 
-                        <p class="w-[46px] flex justify-center h-[22px]">عکاسی</p>
+                        <p>پذیرایی</p>
                         
                     </div>
                 </div>
 
             </div>
 
-            <div class="reservationRequest fixed top-[90%] left-2.5 w-[95%] h-[44px]  flex flex-row justify-between">
+            <div class="reservationRequest">
 
-                <div class="reservationButton">
+                <button @click="modalStore.changeReservingCermonyHall('active')" class="reservationButton">
 
                     <p >درخواست رزرو</p>
 
-                </div>
+                </button>
 
                 <div class="save">
 
@@ -189,9 +189,18 @@
         </div>
 
     </div>
+
+    <cermonyHallReservation v-if="modalStore.isOpenReservingCermonyHall" />
       
 </template>
 <script setup lang="ts">
+import cermonyHallReservation from "./cermonyHallReservation.vue"
+import { useModalStore } from "~/stores/modals-store";
+
+const modalStore = useModalStore();
+
+
+defineComponent({cermonyHallReservation})
 </script>
 <style lang="scss" scoped>
 @import "~/assets/css/colors.scss";
@@ -206,12 +215,23 @@
     padding-bottom: 11px;
     padding-right: 16px;
     color: $primary-on;
-    font-size: 12px;
-    font-family: 'yekan-regular';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 
-    p{
-        font-weight: 400;
-        font-family: 'yekan-regular';
+    .firstItem{
+        display: inline-flex; 
+        align-items: center; 
+        gap: 16px;
+
+        .cermonyTxt{
+            display: flex; 
+            align-items: center; 
+            width: 83px;
+            height: 25px;
+
+        }
     }
 
 }
@@ -219,6 +239,11 @@
 .swiper{
     direction: ltr !important;
     height: 301px !important;
+
+    .post-images{
+        width: 100%;
+        height: 100%;
+    }
   }
     :deep(.swiper-wrapper){
       direction: ltr !important;
@@ -231,57 +256,139 @@
 
 .details{
     background-color: $surface;
-    font-family: 'yekan-regular';
+    position: absolute; 
+    z-index: 50; 
+    width: 100%; 
+    height: 563px;
+    top: 335px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
 
+    .title{
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        align-self: stretch; 
+        width: 100%; 
+        height: 98px;
+        margin-bottom: 12px;
+        gap: 12px;
 
-    .cermonyHall{
-        font-size: 16px;
-        font-weight: 700;
+        .pricePerHour{
+            display: flex; 
+            flex-direction: row; 
+            justify-content: space-between; 
+            align-self: stretch; 
+            height: 25px;
+
+            div{
+                display: flex;
+                align-items: center;
+            }
+
+            .cermonyHall{
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            .price{
+                font-size: 14px;
+                font-weight: 700;
+                color: $secondary;
+                }
+
+            .pHour{
+                font-weight: 400;
+                font-size: 11px;
+                color: $surface-on-variant;
+                }
+
+        }
     }
 
-    .price{
-        font-size: 14px;
-        font-weight: 700;
-        color: $secondary;
-    }
+    
 
-    .pHour{
-        font-weight: 400;
-        font-size: 11px;
-        color: $surface-on-variant;
-    }
+ 
 
     .address{
         color: $surface-on-variant;
         font-weight: 400;
         font-size: 11px;
+        width: fit-content;
+        margin-left: auto;
     }
 
-    .mausoleumIcon{
-        background-color: $secondary-container;
+    .mausoleum{
+        display: flex; 
+        justify-content: space-between; 
+        flex-direction: row;
+        align-items: center; 
+        align-self: stretch; 
+        width: 100%; 
+        height: 32px;
 
+        .mausoleumIcon{
+            background-color: $secondary-container;
+            display: flex; 
+            flex-direction: row; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100%; 
+            width: 133px;
+            border-radius: 6px;
+            gap: 4px;
+        
         .nameOfmausoleum{
             font-size: 11px;
+            font-style: normal;
             font-weight: 400;
+            line-height: normal;
         }
 
     }
 
-    .rating{
+        .rating{
+            display: flex; 
+            flex-direction: row; 
+            align-items: center; 
+            align-self: stretch; 
+            margin-right: auto;
+            gap: 4px;
             font-size: 12px;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
             color: $surface-on;
-            width: 19px;
-            height:19px;
+            height:100%;
+
+            p{
+                padding-top: 3px;
+            }
         }
+
+    }
+
 
     hr{
         color: $outline-variant;
+        width: 100%;
+        height: 0;
     }
 
-    .explanation{
+    .information{
+
+        display: flex; 
+        flex-direction: column; 
+        width: 100%; 
+        margin-top: 16px;
+        height: 420px;
+        gap: 16px;
+
+        .explanation{
+
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
 
         .explanationHead{
             font-size: 12px;
@@ -303,6 +410,10 @@
     }
 
     .reservation{
+        
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
 
         .reservationHead{
             font-size: 12px;
@@ -323,6 +434,12 @@
 
     .facilities{
 
+        display: flex; 
+        flex-direction: column; 
+        width: 90%;
+        height: 101px;
+        gap: 12px;
+
         .facilitiesHead{
             font-size: 12px;
             font-style: normal;
@@ -331,27 +448,66 @@
             color: $secondary;
         }
 
-        .catering{
+        .facilitiesContainer{
+            display: flex; 
+            flex-direction: row; 
+            justify-content: space-between; 
+            align-items: center; 
+            height: 70px;
 
-            .cateringIcon{
-            background-color: $secondary-container;
-            }
+            .catering{
 
-            p{
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                
-            }
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .cateringIcon{
+                    background-color: $secondary-container;
+                    display: flex; 
+                    align-items: center; 
+                    border-radius: 100%; 
+                    padding: 4px;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                p{
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    display: flex; 
+                    justify-content: center; 
+                    width: 46px;
+                    height: 22px;
+                    color: $surface-on;
+                    
+                }
 
         }
-    
-       
+
+        }
+
 
     }
 
+    }
+
+    
+
     .reservationRequest{
+
+        display: flex; 
+        position: fixed; 
+        left: 0.625rem; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        top: 90%;
+        width: 95%;
+        height: 44px;
 
         .reservationButton{
             width:85%;

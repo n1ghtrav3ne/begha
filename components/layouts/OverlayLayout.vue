@@ -7,9 +7,12 @@
 <script lang="ts" setup>
 import { useAppSidebar } from "~/stores/layout-store";
 import { useModalStore } from "~/stores/modals-store";
+import {useReservationStore} from "~/stores/graveRequest-store";
+
 
 const appSidebar = useAppSidebar();
 const modalStore = useModalStore();
+const reservationStore=useReservationStore();
 
 const closeOverlayApp = () => {
   appSidebar.changeSidebarStateActive("deactive");
@@ -23,6 +26,15 @@ const closeOverlayApp = () => {
   modalStore.changeMediaBeghaFilterActive("deactive");
   modalStore.changeCermonyHallRequestFilterActive("deactive");
   modalStore.changeCermonyHallSearchCities("deactive");
+  modalStore.changeFacilitiesSearchFilter("deactive")
+  modalStore.changeReservingCermonyHall("deactive");
+  modalStore.changeBeghaCemeteryFilter("deactive");
+  modalStore.changeDeceasedInfo("deactive");
+  modalStore.changeCemeterySearchFilter("deactive");
+  reservationStore.changeTermsConfirmation("deactive")
+  reservationStore.changeDateOfDeath("deactive");
+  reservationStore.changePersonalRatio('deactive');
+  reservationStore.changeSectionPart("deactive");
 };
 </script>
 

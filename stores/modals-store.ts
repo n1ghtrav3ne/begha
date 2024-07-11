@@ -7,7 +7,7 @@ export const useModalStore = defineStore('modalStore', {
       beghaListProvinceFilter : false , 
       beghaListEventFilter : false , 
       moreServicesButtons : false , 
-      ratingEvents : false , 
+      ratingEvents : false ,  
       switchAccount : false , 
       requestsFilter : false , 
       cancelRequest : false , 
@@ -17,6 +17,12 @@ export const useModalStore = defineStore('modalStore', {
       cermonyHallRequestFilter:false,
       cermonyHallSearchFilter:true,
       cermonyHallSearchCities:false,
+      facilitiesSearchFilter:false,
+      reservingCermonyHall:false,
+      beghaCemeteryFilter:false,
+      deceasedInfo:false,
+      cemeterySearch:false,
+      cemeterySearchFilter:false,
     }
   }),
   getters: {
@@ -59,6 +65,24 @@ export const useModalStore = defineStore('modalStore', {
     isOpenCermonyHallSearchCities(): boolean{
       return this.modals.cermonyHallSearchCities
     },
+    isOpenFacilitiesSearchFilter():boolean{
+      return this.modals.facilitiesSearchFilter
+    },
+    isOpenReservingCermonyHall():boolean{
+      return this.modals.reservingCermonyHall
+    },
+    isOpenBeghaCemeteryFilter():boolean{
+      return this.modals.beghaCemeteryFilter
+    },
+    isOpenDeceasedInfo():boolean{
+      return this.modals.deceasedInfo
+    },
+    isOpenCemeterySearchFilter():boolean{
+      return this.modals.cemeterySearchFilter
+    },
+    isOpenCemeterySearch():boolean{
+      return this.modals.cemeterySearch
+    }
   },
   actions: {
     changeBeghaListProvinceFiltersActive(operator:string) {
@@ -150,6 +174,48 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.cermonyHallSearchCities=true;
       }else{
         this.modals.cermonyHallSearchCities=false;
+      }
+    },
+    changeFacilitiesSearchFilter(operator:string){
+      if(operator==='active'){
+        this.modals.facilitiesSearchFilter=true;
+      }else{
+        this.modals.facilitiesSearchFilter=false;
+      }
+    },
+    changeReservingCermonyHall(operator:string){
+      if(operator==='active'){
+        this.modals.reservingCermonyHall=true;
+      }else{
+        this.modals.reservingCermonyHall=false;
+      }
+    },
+    changeBeghaCemeteryFilter(operator:string){
+      if(operator==='active'){
+        this.modals.beghaCemeteryFilter=true
+      }else{
+        this.modals.beghaCemeteryFilter=false
+      }
+    },
+    changeDeceasedInfo(operator:string){
+      if(operator==='active'){
+        this.modals.deceasedInfo=true
+      }else{
+        this.modals.deceasedInfo=false
+      }
+    },
+    changeCemeterySearchFilter(operator:string){
+      if(operator==='active'){
+        this.modals.cemeterySearchFilter=true
+      }else{
+        this.modals.cemeterySearchFilter=false
+      }
+    },
+    changeCemeterySearch(operator:string){
+      if(operator=='active'){
+        this.modals.cemeterySearch=true
+      }else{
+        this.modals.cemeterySearch=false
       }
     }
   },
