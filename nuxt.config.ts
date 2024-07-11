@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     "@vite-pwa/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "nuxt-swiper",
-    "vuetify-nuxt-module"
   ],
 
   app: {
