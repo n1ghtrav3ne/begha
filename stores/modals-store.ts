@@ -23,6 +23,10 @@ export const useModalStore = defineStore('modalStore', {
       deceasedInfo:false,
       cemeterySearch:false,
       cemeterySearchFilter:false,
+      cermonyHallReservationHours:false,
+      completeProfile:false,
+      profileSearchCities:false,
+      imagePicker:false,
     }
   }),
   getters: {
@@ -82,6 +86,18 @@ export const useModalStore = defineStore('modalStore', {
     },
     isOpenCemeterySearch():boolean{
       return this.modals.cemeterySearch
+    },
+    isOpenCermonyHallReservationHours():boolean{
+      return this.modals.cermonyHallReservationHours
+    },
+    isOpenCompleteProfile():boolean{
+      return this.modals.completeProfile
+    },
+    isOpenProfileSearchCities():boolean{
+      return this.modals.profileSearchCities
+    },
+    isOpenImagePicker():boolean{
+      return this.modals.imagePicker
     }
   },
   actions: {
@@ -212,10 +228,38 @@ export const useModalStore = defineStore('modalStore', {
       }
     },
     changeCemeterySearch(operator:string){
-      if(operator=='active'){
+      if(operator==='active'){
         this.modals.cemeterySearch=true
       }else{
         this.modals.cemeterySearch=false
+      }
+    },
+    changeCermonyHallReservationHours(operator:string){
+      if(operator==='active'){
+        this.modals.cermonyHallReservationHours=true;
+      }else{
+        this.modals.cermonyHallReservationHours=false;
+      }
+    },
+    changeCempleteProfile(operator:string){
+      if(operator==='active'){
+        this.modals.completeProfile=true;
+      }else{
+        this.modals.completeProfile=false;
+      }
+    },
+    changeProfileSearchCities(operator:string){
+      if(operator==='active'){
+        this.modals.profileSearchCities=true;
+      }else{
+        this.modals.profileSearchCities=false;
+      }
+    },
+    changeimagePicker(operator:string){
+      if(operator==='active'){
+        this.modals.imagePicker=true;
+      }else{
+        this.modals.imagePicker=false
       }
     }
   },

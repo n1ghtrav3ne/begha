@@ -114,6 +114,10 @@ const optionsAction = (item:{title:string}) => {
         modalStore.changeSwitchAccountActive('active')
     }else if(item.title === 'درخواست های من'){
       useRouter().push('/profile/requests/')
+    }else if(item.title==='تکمیل پروفایل'){
+      useRouter().push('/profile/completion/')
+    }else if(item.title==="ذخیره شده ها"){
+      useRouter().push('/profile/savedMedia/')
     }
  }
 </script>

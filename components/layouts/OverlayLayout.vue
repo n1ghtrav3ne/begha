@@ -35,6 +35,8 @@ const closeOverlayApp = () => {
   reservationStore.changeDateOfDeath("deactive");
   reservationStore.changePersonalRatio('deactive');
   reservationStore.changeSectionPart("deactive");
+  modalStore.changeCermonyHallReservationHours('deactive');
+  modalStore.changeProfileSearchCities('deactive');
 };
 </script>
 

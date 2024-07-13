@@ -43,9 +43,9 @@
 
                 <div>
 
-                    <p class="price">۲۰٬۰۰۰٬۰۰۰ تومان</p>
+                    <span class="price">۲۰٬۰۰۰٬۰۰۰ تومان</span>
 
-                    <p class="pHour">/هر ساعت</p>
+                    <span class="pHour">/هر ساعت</span>
 
                 </div>
 
@@ -61,7 +61,7 @@
                         <img class="pb-1.5" src="~/assets/images/cermony/secondaryIcon.svg" alt="">
 
 
-                    <p class="nameOfmausoleum">امام زاده صالح (ع)</p>
+                    <span class="nameOfmausoleum">امام زاده صالح (ع)</span>
 
                 </div>
  
@@ -69,7 +69,7 @@
 
                     <img src="assets/images/cermony/ant-design_star-filled.png" alt="">
 
-                    <p>5.0</p>
+                    <span>5.0</span>
 
                 </div>
 
@@ -95,9 +95,23 @@
 
                 <span class="reservationHead">اطلاعات رزرو</span>
 
-                <p>
-                    از ساعت ۸:۰۰ الی ۱۳:۰۰ (حداکثر ۲۰۰ نفر)
-                </p>
+                <div class="info">
+
+                    <span class="capacity">
+                    ظرفیت حداکثر ۲۰۰ نفر 
+                    </span>
+
+                <div @click="modalStore.changeCermonyHallReservationHours('active')" class="reservationHours">
+
+                    <span class="text">مشاهده ساعات رزرو</span>
+                    
+                    <span class="material-symbols-rounded icon ">
+                    arrow_left
+                    </span>
+
+                </div>
+
+                </div>
 
             </div>
 
@@ -107,7 +121,7 @@
 
                 <div class="facilitiesContainer">
 
-                    <div class="catering">
+                    <div v-for="index in 5" :key="index" class="catering">
 
                         <div class="cateringIcon">
 
@@ -115,57 +129,10 @@
 
                         </div>
 
-                        <p>پذیرایی</p>
+                        <span>پذیرایی</span>
                         
                     </div>
 
-                    <div class="catering">
-
-                        <div class="cateringIcon">
-
-                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
-
-                        </div>
-
-                        <p>پذیرایی</p>
-                        
-                    </div>
-
-                    <div class="catering">
-
-                        <div class="cateringIcon">
-
-                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
-
-                        </div>
-
-                        <p>پذیرایی</p>
-                        
-                    </div>
-
-                    <div class="catering">
-
-                        <div class="cateringIcon">
-
-                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
-
-                        </div>
-
-                        <p>پذیرایی</p>
-                        
-                    </div>
-
-                    <div class="catering">
-
-                        <div class="cateringIcon">
-
-                            <img src="~/assets/images/cermony/Ghari.svg" alt="">
-
-                        </div>
-
-                        <p>پذیرایی</p>
-                        
-                    </div>
                 </div>
 
             </div>
@@ -174,7 +141,7 @@
 
                 <button @click="modalStore.changeReservingCermonyHall('active')" class="reservationButton">
 
-                    <p >درخواست رزرو</p>
+                    <span>درخواست رزرو</span>
 
                 </button>
 
@@ -191,16 +158,20 @@
     </div>
 
     <cermonyHallReservation v-if="modalStore.isOpenReservingCermonyHall" />
+
+    <reservationHours v-if="modalStore.isOpenCermonyHallReservationHours" />
       
 </template>
 <script setup lang="ts">
 import cermonyHallReservation from "./cermonyHallReservation.vue"
+
+import reservationHours from "./reservationHours.vue"
 import { useModalStore } from "~/stores/modals-store";
 
 const modalStore = useModalStore();
 
 
-defineComponent({cermonyHallReservation})
+defineComponent({cermonyHallReservation,reservationHours})
 </script>
 <style lang="scss" scoped>
 @import "~/assets/css/colors.scss";
@@ -361,7 +332,7 @@ defineComponent({cermonyHallReservation})
             color: $surface-on;
             height:100%;
 
-            p{
+            span{
                 padding-top: 3px;
             }
         }
@@ -422,12 +393,39 @@ defineComponent({cermonyHallReservation})
             line-height: normal;
             color: $secondary;
         }
-        p{
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            color: $surface-on;
+
+        .info{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .capacity{
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                color: $surface-on;
+            }
+
+            .reservationHours{
+                color: $secondary;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .text{
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                }
+
+                .icon{
+                    transform: scale(1.5);
+                    padding-top: 1px;
+                }
+            }
         }
 
     }
@@ -474,7 +472,7 @@ defineComponent({cermonyHallReservation})
                     }
                 }
 
-                p{
+                span{
                     font-size: 14px;
                     font-style: normal;
                     font-weight: 400;
@@ -520,7 +518,7 @@ defineComponent({cermonyHallReservation})
             border-radius: 8px;
             color: $primary-on;
 
-            p{
+            span{
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 400;

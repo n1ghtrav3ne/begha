@@ -4,7 +4,7 @@
 
         <div class="firstItem">
 
-            <span class="material-symbols-outlined ">
+            <span @click="$router.push('../')" class="material-symbols-outlined ">
             arrow_right_alt
         </span>
 
