@@ -74,15 +74,17 @@
 
         <cermonyHallFilter  v-if="modalStore.isOpenCermonyHallrequestFilter" />
         <cermonySearchCities v-if="modalStore.isOpenCermonyHallSearchCities" />
+<<<<<<< HEAD
+=======
         <facilitiesSearchFilter v-if="modalStore.isOpenFacilitiesSearchFilter" />
 
+>>>>>>> b88624c21b4c6cad1ae45440f13f8647bbc03f0b
     
 </template>
 
 <script lang="ts" setup>
     import cermonyHallFilter from "./cermonyHallFilter.vue"
     import cermonySearchCities from "./cermonySearchCities.vue"
-    import facilitiesSearchFilter from "./facilitiesSearchFilter.vue"
     import CermonyCard from "./cermonyCard.vue";
     import { useModalStore } from "~/stores/modals-store";
     const modalStore = useModalStore();
@@ -119,7 +121,7 @@
             mausoleum:'امام زاده صالح (ع)'
         },
     ]);
-    defineComponent([CermonyCard,cermonyHallFilter,cermonySearchCities,facilitiesSearchFilter])
+    defineComponent([CermonyCard,cermonyHallFilter,cermonySearchCities])
 
     const showOrder=ref(false);
 
