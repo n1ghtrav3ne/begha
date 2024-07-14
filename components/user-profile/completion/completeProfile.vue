@@ -18,7 +18,7 @@
         <div class="profileDetail">
 
             <div class="profileImage">
-                <img src="~/assets/images/cemetery/noOne.png" alt="">
+                <img :src="imageUrl" ref="currentImage"  alt="">
             </div>
 
             <div class="imageStatus">
@@ -29,13 +29,15 @@
 
             </div>
 
-            <div @click="modalStore.changeimagePicker('active')" class="iconContainer">
+            <div @click="fileInput.click()" class="iconContainer">
 
                 <img src="~/assets/images/completeProfile/edit.svg" alt="">
 
             </div>
 
         </div>
+
+        <input ref="fileInput" @change="handleFileChange" class="hidden" type="file" accept=".jpg,.png">
 
         <div class="inputsContainer">
 
@@ -95,6 +97,21 @@ import { useModalStore } from "~/stores/modals-store";
 const modalStore = useModalStore();
 
 defineComponent({searchCities})
+
+const fileInput = ref();
+const currentImage = ref();
+const imageUrl = ref('');
+
+const handleFileChange = (event:any) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = (event:any) => {
+    imageUrl.value = event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+};
 
 </script>
 

@@ -27,6 +27,7 @@ export const useModalStore = defineStore('modalStore', {
       completeProfile:false,
       profileSearchCities:false,
       imagePicker:false,
+      exitAccount:false
     }
   }),
   getters: {
@@ -98,6 +99,9 @@ export const useModalStore = defineStore('modalStore', {
     },
     isOpenImagePicker():boolean{
       return this.modals.imagePicker
+    },
+    isOpenExitAccount():boolean{
+      return this.modals.exitAccount
     }
   },
   actions: {
@@ -260,6 +264,13 @@ export const useModalStore = defineStore('modalStore', {
         this.modals.imagePicker=true;
       }else{
         this.modals.imagePicker=false
+      }
+    },
+    changeExitAccount(operator:string){
+      if(operator==='active'){
+        this.modals.exitAccount=true;
+      }else{
+        this.modals.exitAccount=false
       }
     }
   },

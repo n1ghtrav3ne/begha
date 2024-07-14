@@ -74,11 +74,9 @@
 
         <cermonyHallFilter  v-if="modalStore.isOpenCermonyHallrequestFilter" />
         <cermonySearchCities v-if="modalStore.isOpenCermonyHallSearchCities" />
-<<<<<<< HEAD
-=======
+
         <facilitiesSearchFilter v-if="modalStore.isOpenFacilitiesSearchFilter" />
 
->>>>>>> b88624c21b4c6cad1ae45440f13f8647bbc03f0b
     
 </template>
 
