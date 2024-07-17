@@ -14,6 +14,8 @@
 
     <moreServiceButtons v-if="mausoleumStore.isOpenServiceButtons" />
 
+    <userSelection v-if="mausoleumStore.isOpenSelectUserType" />
+
 
 </template>
 
@@ -27,6 +29,8 @@ import serviceButtons from "./serviceButtons.vue";
 import newRequest from "./newRequest.vue"
 
 import moreServiceButtons from "./moreServiceButtons.vue"
+
+import userSelection from "./userSelection.vue";
 
 import {useMausoleumStore} from "~/stores/m-modals-store"
 

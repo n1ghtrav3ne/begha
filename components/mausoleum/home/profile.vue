@@ -32,7 +32,7 @@
         </div>
 
         <div class="buttonContainer">
-            <button class="change">ویرایش اطلاعات</button>
+            <button @click="mausoleumStore.changeSelectUserType('active')" class="change">ویرایش اطلاعات</button>
             <button class="share">اشتراک گذاری</button>
         </div>
 
@@ -47,6 +47,9 @@ const active=()=>{
     activeButton.value=!activeButton.value
 }
 
+import {useMausoleumStore} from "~/stores/m-modals-store"
+
+const mausoleumStore=useMausoleumStore()
 </script>
 
 <style lang="scss" scoped>

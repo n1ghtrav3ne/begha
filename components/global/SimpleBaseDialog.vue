@@ -16,7 +16,7 @@
   </template>
   
   <script lang="ts" setup>
-  import OverlayLayout from "~/components/layouts/m-OverlayLayout.vue";
+  import OverlayLayout from "~/components/layouts/mOverlayLayout.vue";
   
   defineNuxtComponent({ OverlayLayout });
 
