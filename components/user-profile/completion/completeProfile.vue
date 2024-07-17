@@ -18,7 +18,7 @@
         <div class="profileDetail">
 
             <div class="profileImage">
-                <img :src="imageUrl" ref="currentImage"  alt="">
+                <img :src="imageUrl || defaultImage" ref="currentImage"  alt="">
             </div>
 
             <div class="imageStatus">
@@ -87,6 +87,9 @@
 </template>
 
 <script setup lang="ts">
+
+import defaultImage from "~/assets/images/mausoleumInformation/frame.svg"
+
 
 import searchCities from "./searchCities.vue"
 
@@ -160,9 +163,11 @@ const handleFileChange = (event:any) => {
         width: 56px;
         height: 56px;
         border-radius: 100%;
+        display: flex;
 
         img{
             border-radius: 100%;
+            background: $surface;
         }
     }
 

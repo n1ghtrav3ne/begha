@@ -4,7 +4,7 @@
 
     <div class="serviceButtonContainer mx-auto">
 
-        <div v-for="(item , index) in items" :key="index" class="icon">
+        <div @click="$router.push(item.link)" v-for="(item , index) in items" :key="index" class="icon">
 
             <div :style="`background:${item.backColor}`" class="iconHolder">
 
@@ -69,73 +69,91 @@ import {useMausoleumStore} from "~/stores/m-modals-store"
 const mausoleumStore=useMausoleumStore()
 
 
-const items=ref<{backColor:string;image:any;name:string;badgeColorClass:string}[]
+const items=ref<{backColor:string;image:any;name:string;badgeColorClass:string;link:string}[]
 >([
     {
         backColor:'linear-gradient(180deg, #27E487 0%, #09C56C 100%)',
         image:hollyBegha,
         name:'اطلاعات',
         badgeColorClass : 'success-bg-color', 
+        link:'/mausoleum/information'
     },
     {
         backColor:'linear-gradient(180deg, #89CEFE 0%, #259CF0 100%)',
         image:graves,
         name:'آرامستان',
         badgeColorClass : 'error-bg-color', 
+        link:''
     },
     {
         backColor:'linear-gradient(180deg, #27E487 0%, #09C56C 100%)',
         image:media,
         name:'رسانه',
         badgeColorClass : 'success-bg-color', 
+        link:''
     },
     {
         backColor:'linear-gradient(180deg, #F8E895 0%, #F4C82A 100%)',
         image:notification,
         name:'پیغام ها',
         badgeColorClass : 'success-bg-color', 
+        link:''
     },
     {
         backColor:'linear-gradient(180deg, #F8E895 0%, #F4C82A 100%)',
         image:vector,
         name:'رویدادها',
         badgeColorClass : 'success-bg-color', 
+        link:''
+
     },
     {
         backColor:' linear-gradient(180deg, #83F7BE 0%, #2CD685 100%)',
         image:cermonyHall,
         name:'پذیرش',
         badgeColorClass : 'success-bg-color', 
+        link:''
+
     },
     {
         backColor:'linear-gradient(180deg, #B2DFFE 0%, #5AABE4 100%)',
         image:message,
         name:'گزارشات',
         badgeColorClass : 'error-bg-color', 
+        link:''
+
     },
     {
         backColor:'linear-gradient(180deg, #3BEBDD 0%, #20C6BC 100%)',
         image:plans,
         name:'برنامه ها',
         badgeColorClass : 'error-bg-color', 
+        link:''
+
     },
     {
         backColor:'linear-gradient(180deg, #83F7BE 0%, #2CD685 100%)',
         image:news,
         name:'اخبار',
         badgeColorClass : 'error-bg-color', 
+        link:''
+
     },
     {
         backColor:'linear-gradient(180deg, #3BEBDD 0%, #20C6BC 100%)',
         image:memebers,
         name:'اعضا',
         badgeColorClass : 'error-bg-color', 
+        link:''
+
     },
     {
         backColor:'linear-gradient(180deg, #F8E895 0%, #F4C82A 100%)',
         image:services,
         name:'خدمات',
         badgeColorClass : 'error-bg-color', 
+        link:''
+
     },
 ])
 
