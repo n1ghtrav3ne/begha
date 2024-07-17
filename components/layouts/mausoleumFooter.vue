@@ -51,9 +51,9 @@ const footerItems = ref<
     active: true,
   },
   {
-    title: "بقاع من",
-    iconClass: "icon-Mosque",
-    link: "/followed-begha/list",
+    title: "درخواست ها",
+    iconClass: "icon-Help-Iran",
+    link: "",
     active: false,
   },
   {
@@ -63,15 +63,15 @@ const footerItems = ref<
     active: false,
   },
   {
-    title: "رسانه",
-    iconClass: "icon-Media",
-    link: "/media",
+    title: "کاربران",
+    iconClass: "icon-House-Iran",
+    link: "",
     active: false,
   },
   {
     title: "پروفایل",
     iconClass: "icon-Profile",
-    link: "/profile",
+    link: "",
     active: false,
   },
 ]);

@@ -19,7 +19,7 @@
 
         </div>
 
-         <div  class="icon">
+         <div @click="mausoleumStore.changeServiceButtons('active')" class="icon">
 
             <div class="moreIcon">
 
@@ -63,6 +63,10 @@ import news from "~/assets/images/mausoleumHome/serviceButton/note-text.svg"
 import memebers from "~/assets/images/mausoleumHome/serviceButton/profile-tick.svg"
 
 import services from "~/assets/images/mausoleumHome/serviceButton/forward-item.svg"
+
+import {useMausoleumStore} from "~/stores/m-modals-store"
+
+const mausoleumStore=useMausoleumStore()
 
 
 const items=ref<{backColor:string;image:any;name:string;badgeColorClass:string}[]
@@ -159,6 +163,7 @@ const items=ref<{backColor:string;image:any;name:string;badgeColorClass:string}[
         margin-bottom: 16px;
         margin-right: auto;
         margin-left: auto;
+        position: relative;
 
         .iconHolder{
             border-radius: 12px;
@@ -182,8 +187,8 @@ const items=ref<{backColor:string;image:any;name:string;badgeColorClass:string}[
 
     .btn-badge {
         position: absolute;
-        margin-right: 10%;
-        margin-top: 9%;
+        top: 50%;
+        right: 60%;
         color: #fff;
         border-radius: 9px;
         border: 2px solid $surface;
@@ -218,12 +223,13 @@ const items=ref<{backColor:string;image:any;name:string;badgeColorClass:string}[
             width: 48px;
             height: 48px;
             background: linear-gradient(180deg, #B2DFFE 0%, #5AABE4 100%);
+            position: relative;
         }
 
         .btn-badge-more{
                 position: absolute;
-                margin-right: 10%;
-                margin-top: 9%;
+                top: 50%;
+                right: 60%;
                 color: #fff;
                 border-radius: 9px;
                 border: 2px solid $surface;

@@ -12,6 +12,8 @@
 
     </div>
 
+    <moreServiceButtons v-if="mausoleumStore.isOpenServiceButtons" />
+
 
 </template>
 
@@ -24,7 +26,16 @@ import serviceButtons from "./serviceButtons.vue";
 
 import newRequest from "./newRequest.vue"
 
-defineComponent({facilitiesBanner,profile,serviceButtons,newRequest})
+import moreServiceButtons from "./moreServiceButtons.vue"
+
+import {useMausoleumStore} from "~/stores/m-modals-store"
+
+const mausoleumStore=useMausoleumStore()
+
+
+defineComponent({facilitiesBanner,profile,serviceButtons,newRequest,moreServiceButtons})
+
+
 </script>
 
 <style lang="scss" scoped>

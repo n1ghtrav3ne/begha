@@ -7,13 +7,13 @@
 
             <span class="text">درخواست های جدید</span>
 
-            <span class="quantitiy">3 مورد جدید</span>
+            <span class="quantitiy">{{ requestsCount.toLocaleString('fa-IR') }} مورد جدید</span>
 
         </div>
 
         <span class="date">دوشنبه ۱۴۰۲/۱۲/۰۲</span>
 
-        <div class="requests">
+        <div ref="requestsQuantitie" class="requests">
 
             <div v-for="index in 4" :key="4" class="request">
 
@@ -45,7 +45,15 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+
+const requestsQuantitie = ref()
+
+const requestsCount = ref(0)
+
+onMounted(() => {
+  requestsCount.value = requestsQuantitie.value.children.length-1
+})
 
 </script>
 

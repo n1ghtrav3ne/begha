@@ -8,11 +8,13 @@
 import { useAppSidebar } from "~/stores/layout-store";
 import { useModalStore } from "~/stores/modals-store";
 import {useReservationStore} from "~/stores/graveRequest-store";
+import {useMausoleumStore} from "~/stores/m-modals-store"
 
 
 const appSidebar = useAppSidebar();
 const modalStore = useModalStore();
 const reservationStore=useReservationStore();
+const mausoleumStore=useMausoleumStore();
 
 const closeOverlayApp = () => {
   appSidebar.changeSidebarStateActive("deactive");
@@ -39,6 +41,7 @@ const closeOverlayApp = () => {
   modalStore.changeProfileSearchCities('deactive');
   modalStore.changeExitAccount('deactive');
   modalStore.changeimagePicker('deactive');
+  mausoleumStore.changeServiceButtons('deactive');
 };
 </script>
 
