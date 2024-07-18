@@ -42,7 +42,9 @@
   const props = defineProps(["modalHeight", "modalPadding"]);
   
   const closeModal = () => {
-    mausoleumStore.changeSelectUserType('deactive')
+    mausoleumStore.changeSelectUserType('deactive');
+    mausoleumStore.changeWeeklyCermony('deactive');
+    mausoleumStore.changeCermonyTime('deactive');
   };
   </script> 
   

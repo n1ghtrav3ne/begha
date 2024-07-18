@@ -66,14 +66,102 @@
 
         </div>
 
+        <div class="addressContainer">
+
+            <span>آدرس</span>
+
+            <div class="inputContainer">
+
+                <input value="از روی نقشه انتخاب کنید" type="button">
+
+                <div class="iconContainer">
+
+                    <span class="icon-Location-Iran"></span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="weeklyPlans">
+
+            <span>برنامه های هفتگی بقعه</span>
+
+            <div @click="mausoleumStore.changeWeeklyCermony('active')" class="inputContainer">
+
+                <input value="انتخاب کنید" type="button">
+
+
+                    <span class="icon-Arrow-Bottom-Iran"></span>
+
+            </div>
+
+            <div class="chosenItems">
+
+                <div v-for="(item , index) in weekPrograms" :key="index" class="item">
+
+                    <div class="info">
+
+                        <span class="cermony">{{ item.name }}</span>
+
+                        <span @click="mausoleumStore.changeCermonyTime('active')" class="time">ساعت شروع و پایان</span>
+
+                    </div>
+
+                    <span @click="deleteCermony(index)" class="material-symbols-outlined">
+                    delete
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="prayPlans">
+
+            <span>اوقات برگزاری نماز</span>
+
+            <div class="inputContainer">
+
+                <input value="انتخاب کنید" type="button">
+
+
+                    <span class="icon-Arrow-Bottom-Iran"></span>
+
+
+            </div>
+
+
+        </div>
+
+        <button class="setUpChanges">اعمال تغییرات</button>
+
+
     </div>
 
+    <weeklyCermony v-if="mausoleumStore.isOpenWeeklyCermony" />
+
+    <cermonyTime v-if="mausoleumStore.isOpenCermonyTime" />
 
 </template>
 
 <script setup lang="ts">
 
 import defaultImage from "~/assets/images/mausoleumInformation/frame.svg"
+
+import weeklyCermony from "./inputValues/weeklyCermony.vue"
+
+import cermonyTime from "./inputValues/cermonyTime.vue"
+
+import {useMausoleumStore} from "~/stores/m-modals-store"
+
+const mausoleumStore=useMausoleumStore()
+
+defineComponent({weeklyCermony,cermonyTime})
 
 const fileInput = ref();
 const currentImage = ref();
@@ -97,6 +185,29 @@ const charNumber=ref(0)
 watch(text, (newValue) => {
     charNumber.value = newValue.length;
   });
+
+  const selectedCermony=ref()
+
+  watch(()=>mausoleumStore.isOpenWeeklyCermony,(newValue=>{
+    if(!newValue){
+        selectedCermony.value=mausoleumStore.modals.setWeekCermony 
+        selectedCermony.value.forEach((cermony:any) => {
+      if (!weekPrograms.value.find((program) => program.name === cermony)) {
+        addCermonyToWeekPrograms(cermony)
+      }
+    })}
+  }))
+
+  const weekPrograms=ref<{name:any}[]
+  >([])
+
+  const addCermonyToWeekPrograms=(cermony:any)=>{
+    weekPrograms.value.push({name:cermony})
+  }
+
+  const deleteCermony=(index:number)=>{
+    weekPrograms.value.splice(index ,1)
+  }
 
 </script>
 
@@ -257,4 +368,211 @@ watch(text, (newValue) => {
     }
 }
 
+.addressContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
+
+    span{
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: $surface-on;
+    }
+
+    .inputContainer{
+        border: 1px solid $outline-variant;
+        padding: 12px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        input{
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: $surface-on-variant;
+        background: transparent;
+    }
+
+    .iconContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+        background: $secondary-container;
+        border-radius: 100%;
+
+        span{
+            color: $secondary;
+        }
+    }
+
+    }
+ 
+
+
+}
+
+.weeklyPlans{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 42px;
+
+    span{
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        color: $surface-on;
+    }
+
+    .inputContainer{
+        border: 1px solid $outline-variant;
+        padding: 12px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        input{
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: $surface-on-variant;
+        background: transparent;
+    }
+
+  
+
+        span{
+            color: $secondary;
+            transform: rotate(90deg);
+            font-size: 20px;
+        }
+    
+
+    }
+ 
+    .chosenItems{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .item{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-right: 16px;
+            padding-left: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            justify-content: space-between;
+            background: $surface-variant;
+            border-radius: 8px;
+
+            .info{
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .cermony{
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    color: $surface-on;
+                }
+
+                .time{
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    color: $secondary;
+                }
+            }
+
+            .material-symbols-outlined{
+                color: $error;
+                transform: scale(1.5);
+                margin-bottom: 5%;
+            }
+        }
+    }
+
+}
+
+.prayPlans{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 42px;
+
+    span{
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        color: $surface-on;
+    }
+
+    .inputContainer{
+        border: 1px solid $outline-variant;
+        padding: 12px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        input{
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: $surface-on-variant;
+        background: transparent;
+    }
+
+  
+
+        span{
+            color: $secondary;
+            transform: rotate(90deg);
+            font-size: 20px;
+        }
+    
+
+    }
+ 
+
+
+}
+
+.setUpChanges{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 12px;
+    background: $primary;
+    color: $primary-on;
+    width: 100%;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 64px;
+}
 </style>

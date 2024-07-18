@@ -13,7 +13,9 @@
   
   const closeOverlayApp = () => {
     mausoleumStore.changeServiceButtons('deactive');
-    mausoleumStore.changeSelectUserType('deactive')
+    mausoleumStore.changeSelectUserType('deactive');
+    mausoleumStore.changeWeeklyCermony('deactive');
+    mausoleumStore.changeCermonyTime('deactive');
   };
   </script>
   
