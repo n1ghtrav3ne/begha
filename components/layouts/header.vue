@@ -2,7 +2,7 @@
   <div>
     <nav>
       <div class="container flex items-center justify-between flex-row-reverse">
-        <div>
+        <div @click="$router.push('/')">
           <img src="~/assets/images/logo/layout-logo.png" alt="" />
         </div>
         <div class="flex itmes-center">

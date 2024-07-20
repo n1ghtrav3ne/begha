@@ -4,9 +4,9 @@
       <div class="container">
         <PrayBanner />
         <ServicesButtons />
-        <FollowEvents />
+        <FollowEvents @click="$router.push('/begha-events')" />
         <WorkEventBanner class="mt-8" />
-        <PopularBegha />
+        <PopularBegha @click="$router.push('/begha-detail/1')" />
         <NextPlans />
       </div>
     </div>
