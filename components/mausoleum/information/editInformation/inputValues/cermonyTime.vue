@@ -48,11 +48,11 @@
 
                     <div class="inputsContainer">
 
-                        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number"maxlength = "2">
+                        <input v-model="endMinute" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number"maxlength = "2">
 
                         <span>:</span>
 
-                        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number"maxlength = "2">
+                        <input v-model="endHour" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number"maxlength = "2">
 
                     </div>
 
@@ -78,16 +78,19 @@ const mausoleumStore=useMausoleumStore()
 
 defineComponent({BaseDialog})
 
-const minute=ref()
+    const minute = ref()
 
-const hour=ref()
+    const hour = ref()
 
-const timeValue=ref()
+    const endMinute = ref()
 
-watch([minute,hour],()=>{
-    timeValue.value=minute,hour
-    console.log(timeValue);
-    
+    let endHour = ref()
+
+    let timeValue=ref()
+
+watch([minute,hour,endMinute,endHour],()=>{
+    timeValue.value=[hour.value , minute.value , endHour.value , endMinute.value]
+    mausoleumStore.setCermonyTime(timeValue.value)    
 })
 
 </script>

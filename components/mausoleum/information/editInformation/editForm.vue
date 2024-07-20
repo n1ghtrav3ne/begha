@@ -188,8 +188,10 @@ watch(text, (newValue) => {
 
   const selectedCermony=ref()
 
+  const selectedTime=ref()
+
   watch(()=>mausoleumStore.isOpenWeeklyCermony,(newValue=>{
-    if(!newValue){
+    if(!newValue && !!mausoleumStore.modals.setWeekCermony){
         selectedCermony.value=mausoleumStore.modals.setWeekCermony 
         selectedCermony.value.forEach((cermony:any) => {
       if (!weekPrograms.value.find((program) => program.name === cermony)) {
@@ -198,12 +200,32 @@ watch(text, (newValue) => {
     })}
   }))
 
+  watch(() => mausoleumStore.isOpenCermonyTime, (newValue) => {
+  if (!newValue &&!!mausoleumStore.modals.setCermonyTime) {
+    selectedTime.value = mausoleumStore.modals.setCermonyTime;
+    addCompleteProgram()
+  }
+})
+
   const weekPrograms=ref<{name:any}[]
+  >([])
+
+  const completeWeekPrograms=ref<{name:string ; time:any}[]
   >([])
 
   const addCermonyToWeekPrograms=(cermony:any)=>{
     weekPrograms.value.push({name:cermony})
   }
+
+  const addCompleteProgram = () => {
+  if (selectedCermony.value && selectedTime.value) {
+    completeWeekPrograms.value.push({
+      name: selectedCermony.value[selectedCermony.value.length - 1],
+      time: selectedTime.value
+    });
+  }
+}
+	
 
   const deleteCermony=(index:number)=>{
     weekPrograms.value.splice(index ,1)
