@@ -204,6 +204,8 @@ watch(text, (newValue) => {
   if (!newValue &&!!mausoleumStore.modals.setCermonyTime) {
     selectedTime.value = mausoleumStore.modals.setCermonyTime;
     addCompleteProgram()
+    console.log(completeWeekPrograms.value);
+    
   }
 })
 
