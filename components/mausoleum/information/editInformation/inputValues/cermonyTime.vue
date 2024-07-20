@@ -84,13 +84,28 @@ defineComponent({BaseDialog})
 
     const endMinute = ref()
 
-    let endHour = ref()
+    const endHour = ref()
 
-    let timeValue=ref()
+    let StartTimeValue=ref()
 
-watch([minute,hour,endMinute,endHour],()=>{
-    timeValue.value=[hour.value , minute.value , endHour.value , endMinute.value]
-    mausoleumStore.setCermonyTime(timeValue.value)    
+    let endTimeValue=ref()
+
+watch([minute,hour],()=>{
+
+    StartTimeValue.value=[hour.value , minute.value]
+
+    if(!!minute.value && !!hour.value){
+    mausoleumStore.setStartTime(StartTimeValue.value)    
+    }
+})
+
+watch([endMinute,endHour],()=>{
+    
+    endTimeValue.value=[endHour.value , endMinute.value]
+
+    if(!!endMinute.value && !!endHour.value){
+    mausoleumStore.setEndTime(endTimeValue.value)    
+    }
 })
 
 </script>

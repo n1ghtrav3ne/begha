@@ -106,7 +106,18 @@
 
                         <span class="cermony">{{ item.name }}</span>
 
-                        <span @click="mausoleumStore.changeCermonyTime('active')" class="time">ساعت شروع و پایان</span>
+                        <div class="time">
+
+                            <!-- <span v-if="!programCheck" @click="mausoleumStore.changeCermonyTime('active')">ساعت شروع و پایان</span> -->
+
+                            <span>{{ item.startTime }}</span>
+
+                            <span @click="mausoleumStore.changeCermonyTime('active'),deleteCermony(index)" class="mx-[4px]">{{ item.text }}</span>
+
+                            <span>{{ item.endTime }}</span>
+
+                        </div>
+
 
                     </div>
 
@@ -115,6 +126,32 @@
                     </span>
 
                 </div>
+
+
+
+                 <!-- <div v-if="programCheck" v-for="(item , index) in completeWeekPrograms" :key="index" class="item">
+
+                    <div class="info">
+
+                        <span class="cermony">{{ item.name }}</span>
+
+                        <div class="time">
+
+                            <span>{{ item.startTime }}</span>
+
+                            <span class="mx-[4px]">الی</span>
+
+                            <span>{{ item.endTime }}</span>
+
+                        </div>
+
+                    </div>
+
+                    <span @click="deleteCompleteCermony(index)" class="material-symbols-outlined">
+                    delete
+                    </span>
+
+                </div> -->
 
             </div>
 
@@ -188,11 +225,13 @@ watch(text, (newValue) => {
 
   const selectedCermony=ref()
 
-  const selectedTime=ref()
+  const selectedStartTime=ref()
+
+  const selectedEndTime=ref()
 
   watch(()=>mausoleumStore.isOpenWeeklyCermony,(newValue=>{
     if(!newValue && !!mausoleumStore.modals.setWeekCermony){
-        selectedCermony.value=mausoleumStore.modals.setWeekCermony 
+        selectedCermony.value=mausoleumStore.modals.setWeekCermony; 
         selectedCermony.value.forEach((cermony:any) => {
       if (!weekPrograms.value.find((program) => program.name === cermony)) {
         addCermonyToWeekPrograms(cermony)
@@ -200,34 +239,62 @@ watch(text, (newValue) => {
     })}
   }))
 
+  const programCheck=ref(false)
+
   watch(() => mausoleumStore.isOpenCermonyTime, (newValue) => {
-  if (!newValue &&!!mausoleumStore.modals.setCermonyTime) {
-    selectedTime.value = mausoleumStore.modals.setCermonyTime;
+  if (!newValue && !!mausoleumStore.modals.setStartTime && !!mausoleumStore.modals.setEndTime) {
 
-    completeWeekPrograms.value.push({
-        name:selectedCermony.value,
-        time:selectedTime.value
-    })
+    selectedStartTime.value = mausoleumStore.modals.setStartTime.toString().replace(/[\[\],]/g, ':');
 
-    console.log(completeWeekPrograms.value);
+    selectedEndTime.value=mausoleumStore.modals.setEndTime.toString().replace(/[\[\],]/g, ':')
+
+    weekPrograms.value.push({
+        name:selectedCermony.value.toString().replace(/[\[\],]/g, ':'),
+        hasTime:true,
+        text:'الی',
+        startTime:selectedStartTime.value,
+        endTime:selectedEndTime.value
+    })    
+
     
   }
+  weekPrograms.value.forEach(program => {  
+  if (!program.hasTime) {  
+    programCheck.value=true   
+  }  
+})
 })
 
-  const weekPrograms=ref<{name:any}[]
+  const weekPrograms=ref<{name:any ; hasTime:boolean ; text:string ; startTime:any ; endTime:any}[]
   >([])
 
-  const completeWeekPrograms=ref<{name:string ; time:any}[]
-  >([])
 
   const addCermonyToWeekPrograms=(cermony:any)=>{
-    weekPrograms.value.push({name:cermony})
+    weekPrograms.value.push({
+        name:cermony,
+        hasTime:false,
+        text:'ساعت شروع و پایان',
+        startTime:'',
+        endTime:''
+    })
   }
-
 
   const deleteCermony=(index:number)=>{
-    weekPrograms.value.splice(index ,1)
+    if(programCheck){
+
+        weekPrograms.value.splice(weekPrograms.value.length - 1, 1)
+
+    }
   }
+
+//   const deleteCompleteCermony = (index: number) => {
+//   completeWeekPrograms.value = completeWeekPrograms.value.filter((item, idx) => idx!== index);
+//   mausoleumStore.modals.setStartTime  =  ref()
+//   mausoleumStore.modals.setEndTime = ref()
+//   if (!!completeWeekPrograms) {
+//     programCheck.value = false;
+//   }
+// }
 
 </script>
 
@@ -515,12 +582,19 @@ watch(text, (newValue) => {
                 }
 
                 .time{
-                    font-size: 12px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                    color: $secondary;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    span{
+                        color: $secondary;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                    }
                 }
+
             }
 
             .material-symbols-outlined{

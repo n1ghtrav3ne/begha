@@ -10,7 +10,8 @@ export const useMausoleumStore = defineStore('modalStore', {
         weeklyCermony:false,
         setWeekCermony:ref(),
         cermonyTime:false,
-        setCermonyTime:ref(),
+        setStartTime:ref(),
+        setEndTime:ref(),
     }
   }),
   getters: {
@@ -61,8 +62,11 @@ export const useMausoleumStore = defineStore('modalStore', {
         this.modals.cermonyTime=false
       }
     },
-    setCermonyTime(time:any){
-      this.modals.setCermonyTime=time
+    setStartTime(time:any){
+      this.modals.setStartTime=time
+    },
+    setEndTime(time:any){
+      this.modals.setEndTime=time
     }
   },
 })
