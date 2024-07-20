@@ -45,7 +45,7 @@ const servicesList = ref<
     iconClass: "icon-Book-Iran",
     colorClass: "btn-bg-green",
     badgeColorClass : 'success-bg-color' , 
-    link : '' , 
+    link : '/library' , 
   },
   {
     title: "قبور",

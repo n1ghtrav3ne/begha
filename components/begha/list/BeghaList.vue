@@ -2,7 +2,7 @@
   <div>
     <div class="back-navbar container flex items-center justify-between">
       <span
-        ><span class="material-symbols-outlined back-icon ml-2">
+        ><span @click="$router.push('/')" class="material-symbols-outlined back-icon ml-2">
           trending_flat </span
         ><span class="back-title">بقاع متبرکه</span></span
       >
@@ -31,7 +31,7 @@
           </span>
         </div>
         <div class="popular-begha">
-          <PopularBegha />
+          <PopularBegha @click="$router.push('/begha-detail/1')" />
         </div>
         <div class="popular-begha">
           <BeghaListItems />

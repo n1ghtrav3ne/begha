@@ -42,7 +42,7 @@ const servicesList = ref<
     iconClass: "icon-House-Iran",
     colorClass: "btn-bg-blue",
     badgeColorClass : 'error-bg-color' , 
-    link : '/begha-media/asdasd'
+    link : ''
   },
   {
     title: "رسانه",
