@@ -52,14 +52,14 @@ const servicesList = ref<
     iconClass: "icon-Ghabr-Iran",
     colorClass: "btn-bg-yellow",
     badgeColorClass : 'error-bg-color' , 
-    link : '' , 
+    link : '/cemetery' , 
   },
   {
     title: "سالن مراسم",
     iconClass: "icon-Hall-Iran",
     colorClass: "btn-bg-green-light",
     badgeColorClass : 'success-bg-color' , 
-    link : '' , 
+    link : '/cermonyHall' , 
   },
   {
     title: "آموزشی",
