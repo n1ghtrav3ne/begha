@@ -203,7 +203,12 @@ watch(text, (newValue) => {
   watch(() => mausoleumStore.isOpenCermonyTime, (newValue) => {
   if (!newValue &&!!mausoleumStore.modals.setCermonyTime) {
     selectedTime.value = mausoleumStore.modals.setCermonyTime;
-    addCompleteProgram()
+
+    completeWeekPrograms.value.push({
+        name:selectedCermony.value,
+        time:selectedTime.value
+    })
+
     console.log(completeWeekPrograms.value);
     
   }
@@ -219,15 +224,6 @@ watch(text, (newValue) => {
     weekPrograms.value.push({name:cermony})
   }
 
-  const addCompleteProgram = () => {
-  if (selectedCermony.value && selectedTime.value) {
-    completeWeekPrograms.value.push({
-      name: selectedCermony.value[selectedCermony.value.length - 1],
-      time: selectedTime.value
-    });
-  }
-}
-	
 
   const deleteCermony=(index:number)=>{
     weekPrograms.value.splice(index ,1)
