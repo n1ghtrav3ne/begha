@@ -4,7 +4,7 @@
 
     <div class="firstItem">
 
-        <span class="material-symbols-outlined ">
+        <span @click="$router.push('../information')" class="material-symbols-outlined ">
         arrow_right_alt
     </span>
 
@@ -108,11 +108,9 @@
 
                         <div class="time">
 
-                            <!-- <span v-if="!programCheck" @click="mausoleumStore.changeCermonyTime('active')">ساعت شروع و پایان</span> -->
-
                             <span>{{ item.startTime }}</span>
 
-                            <span @click="mausoleumStore.changeCermonyTime('active'),deleteCermony(index)" class="mx-[4px]">{{ item.text }}</span>
+                            <span @click="mausoleumStore.changeCermonyTime('active'),selectCermonyName(item.name)" class="mx-[4px]">{{ item.text }}</span>
 
                             <span>{{ item.endTime }}</span>
 
@@ -128,31 +126,6 @@
                 </div>
 
 
-
-                 <!-- <div v-if="programCheck" v-for="(item , index) in completeWeekPrograms" :key="index" class="item">
-
-                    <div class="info">
-
-                        <span class="cermony">{{ item.name }}</span>
-
-                        <div class="time">
-
-                            <span>{{ item.startTime }}</span>
-
-                            <span class="mx-[4px]">الی</span>
-
-                            <span>{{ item.endTime }}</span>
-
-                        </div>
-
-                    </div>
-
-                    <span @click="deleteCompleteCermony(index)" class="material-symbols-outlined">
-                    delete
-                    </span>
-
-                </div> -->
-
             </div>
 
 
@@ -162,12 +135,39 @@
 
             <span>اوقات برگزاری نماز</span>
 
-            <div class="inputContainer">
+            <div @click="mausoleumStore.changePrayTimes('active')" class="inputContainer">
 
                 <input value="انتخاب کنید" type="button">
 
 
                     <span class="icon-Arrow-Bottom-Iran"></span>
+
+            </div>
+
+            <div class="chosenItems">
+
+                <div v-for="(item , index) in prayPlans" :key="index" class="item">
+
+                    <div class="info">
+
+                        <span class="cermony">{{ item.name }}</span>
+
+                        <div class="time">
+
+
+                            <span @click="mausoleumStore.changeImamName('active'),selectItem(item.name)" class="mx-[4px]">{{ item.text }}</span>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <span @click="deletePlan(index)" class="material-symbols-outlined">
+                    delete
+                    </span>
+
+                </div>
 
 
             </div>
@@ -184,6 +184,10 @@
 
     <cermonyTime v-if="mausoleumStore.isOpenCermonyTime" />
 
+    <prayTimes v-if="mausoleumStore.isOpenPrayTimes" />
+
+    <selectImam v-if="mausoleumStore.isOpenImamName" />
+
 </template>
 
 <script setup lang="ts">
@@ -194,11 +198,15 @@ import weeklyCermony from "./inputValues/weeklyCermony.vue"
 
 import cermonyTime from "./inputValues/cermonyTime.vue"
 
+import prayTimes from "./inputValues/prayTimes.vue"
+
+import selectImam from "./inputValues/selectImam.vue"
+
 import {useMausoleumStore} from "~/stores/m-modals-store"
 
 const mausoleumStore=useMausoleumStore()
 
-defineComponent({weeklyCermony,cermonyTime})
+defineComponent({weeklyCermony,cermonyTime,prayTimes,selectImam})
 
 const fileInput = ref();
 const currentImage = ref();
@@ -229,17 +237,29 @@ watch(text, (newValue) => {
 
   const selectedEndTime=ref()
 
+  let programIdCounter=ref(0)
+
+    const selectedName=ref()
+
+    const selectedItemNames = ref<{ [key: number]: string }>({});
+
+
+  const selectCermonyName=(itemName:string)=>{
+    selectedName.value=itemName
+  }
+
   watch(()=>mausoleumStore.isOpenWeeklyCermony,(newValue=>{
     if(!newValue && !!mausoleumStore.modals.setWeekCermony){
         selectedCermony.value=mausoleumStore.modals.setWeekCermony; 
         selectedCermony.value.forEach((cermony:any) => {
       if (!weekPrograms.value.find((program) => program.name === cermony)) {
-        addCermonyToWeekPrograms(cermony)
+        addCermonyToWeekPrograms(cermony)        
       }
     })}
   }))
 
   const programCheck=ref(false)
+
 
   watch(() => mausoleumStore.isOpenCermonyTime, (newValue) => {
   if (!newValue && !!mausoleumStore.modals.setStartTime && !!mausoleumStore.modals.setEndTime) {
@@ -248,15 +268,31 @@ watch(text, (newValue) => {
 
     selectedEndTime.value=mausoleumStore.modals.setEndTime.toString().replace(/[\[\],]/g, ':')
 
-    weekPrograms.value.push({
-        name:selectedCermony.value.toString().replace(/[\[\],]/g, ':'),
-        hasTime:true,
-        text:'الی',
-        startTime:selectedStartTime.value,
-        endTime:selectedEndTime.value
-    })    
-
     
+    const newId = programIdCounter.value;
+    selectedItemNames.value[newId] = selectedName.value;
+    
+
+      weekPrograms.value.push({
+        id: newId,
+        name: selectedItemNames.value[newId],
+        hasTime: true,
+        text: 'الی',
+        startTime: selectedStartTime.value,
+        endTime: selectedEndTime.value
+      });    
+
+      mausoleumStore.modals.setStartTime=ref()
+
+      mausoleumStore.modals.setEndTime=ref()
+
+      programIdCounter.value++;
+
+      const indexToDelete = weekPrograms.value.findIndex((program) =>!program.hasTime && program.name === selectedName.value);
+      if (indexToDelete!== -1) {
+        weekPrograms.value.splice(indexToDelete, 1);
+      }
+
   }
   weekPrograms.value.forEach(program => {  
   if (!program.hasTime) {  
@@ -265,36 +301,113 @@ watch(text, (newValue) => {
 })
 })
 
-  const weekPrograms=ref<{name:any ; hasTime:boolean ; text:string ; startTime:any ; endTime:any}[]
-  >([])
 
 
-  const addCermonyToWeekPrograms=(cermony:any)=>{
+const weekPrograms = ref<{ id: number; name: any; hasTime: boolean; text: string; startTime: any; endTime: any }[]>([]);
+
+
+const addCermonyToWeekPrograms = (cermony: any) => {
+  const existingProgramIndex = weekPrograms.value.findIndex((p) => p.name === cermony);
+  if (existingProgramIndex!== -1) {
+    weekPrograms.value[existingProgramIndex].hasTime = true;
+  } else {
     weekPrograms.value.push({
-        name:cermony,
-        hasTime:false,
-        text:'ساعت شروع و پایان',
-        startTime:'',
-        endTime:''
-    })
+        id:programIdCounter.value++,
+        name: cermony,
+        hasTime: false,
+        text: 'ساعت شروع و پایان',
+        startTime: '',
+        endTime: '',
+    });
   }
+};
 
-  const deleteCermony=(index:number)=>{
-    if(programCheck){
+  const deleteCermony = (index: number) => {
+  weekPrograms.value = weekPrograms.value.filter((item, idx) => idx!== index);
+  mausoleumStore.modals.setStartTime  =  ref()
+  mausoleumStore.modals.setEndTime = ref()
+  mausoleumStore.modals.setWeekCermony=ref()
+  if (!!weekPrograms) {
+    programCheck.value = false;
+  }
+}
 
-        weekPrograms.value.splice(weekPrograms.value.length - 1, 1)
+
+const prayPlans=ref<{id:number ; name:string ; text:string ; hasImam:boolean}[]
+>([])
+
+const selectedPlan=ref()
+
+const chosenPlan=ref()
+
+const selectedImam=ref()
+
+const prayIdCounter=ref()
+
+const chosenItemPlan= ref<{ [key: number]: string }>({});
+
+const selectItem=(name:string)=>{
+    chosenPlan.value=name
+    
+}
+
+watch(()=>mausoleumStore.isOpenPrayTimes,(newValue)=>{
+    if(!newValue && !!mausoleumStore.modals.setPray){
+        selectedPlan.value=mausoleumStore.modals.setPray
+        selectedPlan.value.forEach((plan:any)=>{
+            if(!prayPlans.value.find((program)=>{program.name === plan})){
+                addPrayToPrayPlans(plan)                
+            }
+        })
+
 
     }
-  }
+})
 
-//   const deleteCompleteCermony = (index: number) => {
-//   completeWeekPrograms.value = completeWeekPrograms.value.filter((item, idx) => idx!== index);
-//   mausoleumStore.modals.setStartTime  =  ref()
-//   mausoleumStore.modals.setEndTime = ref()
-//   if (!!completeWeekPrograms) {
-//     programCheck.value = false;
-//   }
-// }
+watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
+    if(!newValue && !!mausoleumStore.modals.setImamName){
+        selectedImam.value=mausoleumStore.modals.setImamName
+
+        const newId = prayIdCounter.value;
+        chosenItemPlan.value[newId] = chosenPlan.value;        
+
+        prayPlans.value.push({
+        id: newId,
+        name: chosenItemPlan.value[newId],
+        hasImam: true,
+        text: selectedImam.value,
+      });    
+
+      mausoleumStore.modals.setImamName=ref()
+
+      programIdCounter.value++;
+
+      const indexToDelete = prayPlans.value.findIndex((program) =>!program.hasImam && program.name === chosenItemPlan.value[newId]);
+      if (indexToDelete!== -1) {
+        prayPlans.value.splice(indexToDelete, 1);
+      }
+    }
+})
+
+    const addPrayToPrayPlans=(pray:any)=>{
+        const existingProgramIndex=prayPlans.value.findIndex((p)=> p.name === pray)
+        if (existingProgramIndex!== -1) {
+            prayPlans.value[existingProgramIndex].hasImam = true;
+        } else {
+            prayPlans.value.push({
+                id:prayIdCounter.value++,
+                name: pray,
+                hasImam: false,
+                text: 'انتخاب نام امام جماعت ',
+            });
+        }
+    }
+
+    const deletePlan = (index: number) => {
+        prayPlans.value = prayPlans.value.filter((item, idx) => idx!== index);
+        mausoleumStore.modals.setImamName  =  ref()
+        mausoleumStore.modals.setImamName=ref()
+}
 
 </script>
 
@@ -648,6 +761,61 @@ watch(text, (newValue) => {
         }
     
 
+    }
+
+    .chosenItems{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .item{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-right: 16px;
+            padding-left: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            justify-content: space-between;
+            background: $surface-variant;
+            border-radius: 8px;
+
+            .info{
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .cermony{
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    color: $surface-on;
+                }
+
+                .time{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    span{
+                        color: $secondary;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                    }
+                }
+
+            }
+
+            .material-symbols-outlined{
+                color: $error;
+                transform: scale(1.5);
+                margin-bottom: 5%;
+            }
+        }
     }
  
 

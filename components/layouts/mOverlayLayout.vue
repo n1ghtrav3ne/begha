@@ -16,6 +16,8 @@
     mausoleumStore.changeSelectUserType('deactive');
     mausoleumStore.changeWeeklyCermony('deactive');
     mausoleumStore.changeCermonyTime('deactive');
+    mausoleumStore.changePrayTimes('deactive');
+    mausoleumStore.changeImamName('deactive');
   };
   </script>
   
