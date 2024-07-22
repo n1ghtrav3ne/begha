@@ -1,50 +1,50 @@
 <template>
 
-    <div class="cermonyCard mx-auto gap-[8px] justify-between w-full rounded-[16px] h-[145px] py-[16px] px-[12px] mb-[16px] flex flex-col">
+    <div class="cermonyCard">
 
-        <div class="flex flex-row w-full h-[57px] gap-[8px]">
+        <div class="firstPart">
 
-            <img class="w-[57px] h-[57px] rounded-[16px]" src="~/assets/images/cermony/cermonyHall.png" alt="cermonyHall">
+            <img class="mausoleumImg" src="~/assets/images/cermony/cermonyHall.png" alt="cermonyHall">
 
-            <div class="flex flex-col w-full">
+            <div class="explanation">
 
-                <p class="cardTitle h-[22px]">{{ item.title }}</p>
+                <p class="cardTitle">{{ item.title }}</p>
 
-                <p class="members  h-[19px] mt-[8px]">{{ item.members }}</p>
+                <p class="members">{{ item.members }}</p>
 
             </div>
 
-            <div class="w-fit h-fit flex-row flex gap-[2px] justify-center items-center">
+            <div class="rating">
 
-                <p class="w-[17px] flex items-center h-[19px] pt-1 text-[12px]">{{ item.rating }}</p>
+                <p class="ratingNumber">{{ item.rating.toLocaleString('fa-IR') }}</p>
 
-                <img class="w-[16px] h-[16px]" src="~/assets/images/cermony/ant-design_star-filled.png" alt="">
+                <img class="ratingImg" src="~/assets/images/cermony/ant-design_star-filled.png" alt="">
 
             </div>
 
         </div>
 
-        <hr class="w-full m-0 h-0">
+        <hr>
 
-        <div class="w-full justify-between flex flex-row items-center h-auto">
+        <div class="lastItem">
 
-            <div class="w-[119px] flex h-full gap-[4px] items-center">
+            <div class="capacityHolder">
 
-                <img class="w-[16px] h-[16px]" src="~/assets/images/cermony/profile-2user.svg" alt="capacityImg">
+                <div class="capacityIconHolder">
 
-                <p class="text-[11px]">{{ item.capacity }}</p>
+                    <img src="~/assets/images/cermony/profile-2user copy.svg" alt="capacityImg">
+
+                </div>
+
+                <p class="pt-1">ظرفیت {{ item.capacity.toLocaleString('fa-IR') }} نفر</p>
 
             </div>
 
-            <div class="nameOfMausoleum rounded-[8px] px-[10px] flex items-center py-[4px] gap-[4px] w-[133px] h-full">
-
-                <span class="w-[24px] h-[24px] flex items-center justify-center">
+            <div class="nameOfMausoleum">
 
                     <img src="~/assets/images/cermony/holyBegha.svg" alt="mosque">
 
-                </span>
-
-                <p class="text-[11px]">{{ item.mausoleum }}</p>
+                    <p>{{ item.mausoleum }}</p>
 
 
             </div>
@@ -66,38 +66,160 @@
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
 
-@font-face {
-    font-family: yekanBakh;
-    src: url("~/assets/fonts/yekanBakh/YekanBakh-Regular.woff");
-}
 
 .cermonyCard{
-    font-family: yekanBakh;
+    font-family: 'yekan-regular';
     border: 1px solid $outline-variant;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 145px;
+    padding: 16px 12px;
+    margin-bottom: 16px;
+    border-radius: 16px;
 
-    .cardTitle{
-        font-weight: 400;
-        font-size: 14px;
-    }
+    .firstPart{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 57px;
+        gap: 8px;
+
+        .mausoleumImg{
+            width: 57px;
+            height: 57px;
+            border-radius: 8px;
+        }
+
+        .explanation{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+            color: $surface-on;
+             .cardTitle{
+                font-weight: 400;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                }
     
-    .members{
-        font-weight: 400;
-        font-size: 12px;
+            .members{
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                }
+        }
+
+        .rating{
+            display: flex; 
+            flex-direction: row; 
+            justify-content: space-between; 
+            align-items: center; 
+            height: fit-content; 
+            width: fit-content;
+            margin-left: 12px;
+            gap: 3px;
+            margin-bottom: auto;
+            .ratingNumber{
+                display: flex; 
+                padding-top: 3px; 
+                align-items: center; 
+                width: 17px;
+                height: 19px;
+                color: 12px;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            .ratingImg{
+                width: 16px;
+                height: 16px;
+            }
+        }
     }
+
+   
 
     hr{
         color: $outline-variant;
+        width: 100%;
+        margin-bottom: 12px;
+        margin-top: 12px;
     }
 
-    .nameOfMausoleum{
-        background-color: $semantic-success;
+    .lastItem{
+    
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center; 
+        width: 100%; 
+        height: auto; 
 
-        p{
-            font-weight: 400;
-            color: $secondary-on-container;
-            line-height: 16px;
+        .capacityHolder{
+            display: flex; 
+            align-items: center; 
+            flex-direction: row;
+            height: 100%; 
+            width: 119px;
+            font-size: 11px;
+            gap: 4px;
+
+            .capacityIconHolder{
+
+                display: flex;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                background: $secondary-container;
+                border-radius: 100%;
+                align-items: center;
+
+                img{
+                width: 16px;
+                height: 16px;
+            }
+
+            }
+
+
         }
+
+        .nameOfMausoleum{
+            background-color: $secondary-container;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            height: 100%; 
+            width: 133px;
+            border-radius: 8px;
+            padding-bottom: 4px;
+            padding-top: 4px;
+            padding-right: 10px;
+            padding-left: 10px;
+            p{
+                color: $secondary-on-container;
+                font-size: 11px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 16px;
+            }
+            img{
+                padding-bottom: 5px;
+            }
     }
+    }
+
+   
 
 }
 </style>

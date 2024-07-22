@@ -11,33 +11,33 @@
 
         <template #body>
 
-            <div class="itemsContainer flex flex-col w-full h-[156px] mt-[16px]  gap-[12px]">
+            <div class="itemsContainer">
 
-                <div @click="activateItem(0)" :class="{'active':selectedItem===0}" class="itemOne w-full h-[44px] px-[12px] py-[16px] flex flex-row justify-between items-center">
+                <div @click="activateItem(0)" :class="{'active':selectedItem===0}" class="item">
 
                     <p>همه</p>
 
-                    <span class="material-symbols-outlined hidden check-icon items-center">
+                    <span class="material-symbols-outlined hidden check-icon">
                         check_circle
                     </span>               
 
                 </div>
 
-                <div @click="activateItem(2)" :class="{'active':selectedItem===2}" class="itemTwo w-full h-[44px] px-[12px] py-[16px] flex flex-row justify-between items-center">
+                <div @click="activateItem(2)" :class="{'active':selectedItem===2}" class="item">
 
                     <p>محبوب ترین ها</p>
 
-                    <span class="material-symbols-outlined hidden check-icon items-center">
+                    <span class="material-symbols-outlined hidden check-icon">
                         check_circle
                     </span>               
 
                 </div>
 
-                <div @click="activateItem(3)" :class="{'active':selectedItem===3}" class="itemThree w-full h-[44px] px-[12px] py-[16px] flex flex-row justify-between items-center">
+                <div @click="activateItem(3)" :class="{'active':selectedItem===3}" class="item">
 
                     <p>ظرفیت خالی</p>
 
-                    <span class="material-symbols-outlined hidden check-icon items-center">
+                    <span class="material-symbols-outlined hidden check-icon">
                         check_circle
                     </span>               
 
@@ -65,7 +65,7 @@ const selectedItem=ref(0)
 const activateItem=(index:number)=>{
     selectedItem.value=index;
     if(selectedItem.value!==0){
-        modalStore.changeCermonyHallRequestFilterActive        
+        modalStore.changeCermonyHallRequestFilterActive('active')        
     }
 }
 
@@ -73,6 +73,26 @@ const activateItem=(index:number)=>{
 <style lang="scss" scoped>
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
+
+.itemsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 156px;
+    margin-top: 16px;
+    justify-content: space-between;
+
+    .item{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 44px;
+        padding: 16px 12px;
+    }
+}
 
 .active{
 

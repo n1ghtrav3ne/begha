@@ -74,7 +74,7 @@ export default defineNuxtConfig({
       baseURL: process.env.NUXT_PUBLIC_API_URL,
     },
   },
-  plugins: ["~/plugins/sw.client.js"],
+  plugins: ["~/plugins/sw.client.js",],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -91,4 +91,6 @@ export default defineNuxtConfig({
   experimental: {
     renderJsonPayloads: true,
   },
+   
 });
+

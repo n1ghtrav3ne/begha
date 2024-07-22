@@ -4,9 +4,9 @@
       <div class="container">
         <PrayBanner />
         <ServicesButtons />
-        <FollowEvents />
+        <FollowEvents @click="$router.push('/begha-events')" />
         <WorkEventBanner class="mt-8" />
-        <PopularBegha />
+        <PopularBegha @click="$router.push('/begha-detail/1')" />
         <NextPlans />
       </div>
     </div>
@@ -29,6 +29,8 @@ import { useModalStore } from "@/stores/modals-store";
 defineComponent({ SplashLoading , PrayBanner , ServicesButtons , FollowEvents , WorkEventBanner , PopularBegha , NextPlans , MoreServicesButtons });
 const initStore = useInitialApp();
 const modalStore = useModalStore();
+
+
 </script>
 
 <style lang="scss" scoped>

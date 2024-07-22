@@ -2,7 +2,7 @@
   <div>
     <div class="back-navbar container flex items-center justify-between">
       <span
-        ><span class="material-symbols-outlined back-icon ml-2">
+        ><span @click="$router.push('/begha-detail/1')" class="material-symbols-outlined back-icon ml-2">
           trending_flat </span
         ><span class="back-title">اخبار</span></span
       >

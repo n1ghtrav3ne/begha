@@ -1,6 +1,20 @@
 <template>
   <div>
-    <div class="base-modal h-full">
+    <div class="base-modal" :style="`height: ${props.modalHeight + '% !important'};padding:${$props.baseModalPadding + 'px !important'}`">
+
+      <div :style="`display:${$props.modalDisplay}`" class="base-modal-header">
+        <span class="base-modal-stick"></span>
+        <div class="modal-head-title flex items-center justify-between">
+          <slot name="headerText"></slot>
+          <span
+            @click="closeModal()"
+            class="material-symbols-outlined close-modal-icon"
+          >
+            close
+          </span>
+        </div>
+      </div>
+      
       <div
         :style="`padding: ${props.modalPadding} !important`"
         class="base-modal-body"
@@ -19,7 +33,7 @@
 import OverlayLayout from "../layouts/OverlayLayout.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineNuxtComponent({ OverlayLayout });
-const props = defineProps(["modalHeight", "modalPadding"]);
+const props = defineProps(["modalHeight", "modalPadding",'modalDisplay','baseModalPadding']);
 const modalStore = useModalStore();
 const closeModal = () => {
   modalStore.changeBeghaListProvinceFiltersActive("deactive");
@@ -29,6 +43,7 @@ const closeModal = () => {
   modalStore.changeRequestsFilterActive("deactive");
   modalStore.changeCancelRequestModalActive("deactive");
   modalStore.changeMediaBeghaFilterActive("deactive");
+  modalStore.changeReservingCermonyHall("deactive");
 };
 </script>
 
@@ -38,7 +53,8 @@ const closeModal = () => {
 .base-modal {
   background-color: #fff;
   z-index: 9999;
-
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
   width: 100%;
   position: fixed;
   bottom: 0;

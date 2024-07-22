@@ -4,7 +4,7 @@
       <div class="begha-page-banner">
         <div class="flex items-center justify-between p-2 pt-3 pl-4">
           <div class="flex items-center">
-            <span class="library-page-icon material-symbols-outlined ml-2">
+            <span @click="$router.push('../')" class="library-page-icon material-symbols-outlined ml-2">
               arrow_right_alt
             </span>
             <span class="library-page-title">کتابخانه</span>

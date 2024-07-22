@@ -45,10 +45,9 @@
           <span class="begha-profile-name">امام زاده صالح</span>
         </div>
         <div class="begha-media-posts">
-          <MainMediaPostItem />
-          <MainMediaPostItem />
-          <MainMediaPostItem />
-          <MainMediaPostItem />
+
+          <MainMediaPostItem @click="$router.push('/begha-media/1')" v-for="index in 4" :key="index" />
+
         </div>
       </div>
     </div>
