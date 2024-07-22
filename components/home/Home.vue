@@ -29,6 +29,8 @@ import { useModalStore } from "@/stores/modals-store";
 defineComponent({ SplashLoading , PrayBanner , ServicesButtons , FollowEvents , WorkEventBanner , PopularBegha , NextPlans , MoreServicesButtons });
 const initStore = useInitialApp();
 const modalStore = useModalStore();
+
+
 </script>
 
 <style lang="scss" scoped>
