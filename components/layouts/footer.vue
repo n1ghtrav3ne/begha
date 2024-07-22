@@ -94,8 +94,10 @@ const handleFooterAction = (clickedItem: { active: boolean; link: string }) => {
   z-index: 99;
   position: fixed;
   bottom: 0;
-  right: 0;
-  width: 100%;
+  left: 0; /* add this line */
+  right: 0; /* add this line */
+  max-width: 600px; /* add this line to set the maximum width */
+  margin: 0 auto; /* add this line to center the footer menu */
   border-top: 1px solid $outline-variant;
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;

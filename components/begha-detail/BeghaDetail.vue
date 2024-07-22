@@ -21,7 +21,7 @@
             <span class="status-icon icon-Mosque-Iran"></span>
             <span class="status-text">بسته</span>
           </span>
-          <span class="begha-notif flex items-center justify-center mr-3">
+          <span @click="$router.push('/begha-news/1')" class="begha-notif flex items-center justify-center mr-3">
             <span class="material-symbols-outlined"> notifications </span>
           </span>
         </div>

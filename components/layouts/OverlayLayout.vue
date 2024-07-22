@@ -7,9 +7,14 @@
 <script lang="ts" setup>
 import { useAppSidebar } from "~/stores/layout-store";
 import { useModalStore } from "~/stores/modals-store";
+import {useReservationStore} from "~/stores/graveRequest-store";
+import {useMausoleumStore} from "~/stores/m-modals-store"
+
 
 const appSidebar = useAppSidebar();
 const modalStore = useModalStore();
+const reservationStore=useReservationStore();
+const mausoleumStore=useMausoleumStore();
 
 const closeOverlayApp = () => {
   appSidebar.changeSidebarStateActive("deactive");
@@ -22,6 +27,21 @@ const closeOverlayApp = () => {
   modalStore.changeCancelRequestModalActive("deactive");
   modalStore.changeMediaBeghaFilterActive("deactive");
   modalStore.changeCermonyHallRequestFilterActive("deactive");
+  modalStore.changeCermonyHallSearchCities("deactive");
+  modalStore.changeFacilitiesSearchFilter("deactive")
+  modalStore.changeReservingCermonyHall("deactive");
+  modalStore.changeBeghaCemeteryFilter("deactive");
+  modalStore.changeDeceasedInfo("deactive");
+  modalStore.changeCemeterySearchFilter("deactive");
+  reservationStore.changeTermsConfirmation("deactive")
+  reservationStore.changeDateOfDeath("deactive");
+  reservationStore.changePersonalRatio('deactive');
+  reservationStore.changeSectionPart("deactive");
+  modalStore.changeCermonyHallReservationHours('deactive');
+  modalStore.changeProfileSearchCities('deactive');
+  modalStore.changeExitAccount('deactive');
+  modalStore.changeimagePicker('deactive');
+  mausoleumStore.changeServiceButtons('deactive');
 };
 </script>
 
