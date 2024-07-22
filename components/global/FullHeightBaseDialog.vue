@@ -57,6 +57,7 @@ const closeModal = () => {
   border-top-left-radius: 25px;
   width: 100%;
   position: fixed;
+  max-width: 600px;
   bottom: 0;
   padding: 30px 25px;
   overflow: initial !important;

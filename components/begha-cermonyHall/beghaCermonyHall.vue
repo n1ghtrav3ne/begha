@@ -504,8 +504,12 @@ defineComponent({cermonyHallReservation,reservationHours})
         flex-direction: row; 
         justify-content: space-between; 
         top: 90%;
-        width: 95%;
-        height: 44px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        right: 0;
+        left: 0;
+        padding: 16px;
 
         .reservationButton{
             width:85%;

@@ -44,9 +44,9 @@
             <span>آرامستان</span>
         </div>
 
-        <div class="cemeteryCardContainer grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <div class="cemeteryCardContainer">
 
-                <NuxtLink to="begha-cemetery/3242" class="card md:mt-[16px]" v-for="(item,index) in cemeteryInfo" :key="index">
+                <NuxtLink to="begha-cemetery/3242" class="card" v-for="(item,index) in cemeteryInfo" :key="index">
 
                     <cemeteryCard :item="item" />
 
@@ -170,16 +170,12 @@ const cemeteryInfo=ref<{name:string}[]
 }
 
 .cemeteryCardContainer{
-    height: fit-content;
+    height: auto;
     margin-top: 24px;
     width: 100%;  
     gap: 16px;
-    gap: 16px;
-
-    .card{
-        width: fit-content;
-        height: fit-content;
-    }
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
 }

@@ -26,7 +26,7 @@
 
             <span class="first">تصویر پروفایل شما</span>
 
-            <span class="second">حذف تصویر</span>
+            <span @click="deleteImage" class="second">حذف تصویر</span>
 
             </div>
 
@@ -55,11 +55,11 @@
 
             <div class="inputsContainer">
 
-                <input type="number" placeholder="شماره تماس بقعه را وارد کنید">
+                <input class="phoneNumberInput" type="number" placeholder="شماره تماس بقعه را وارد کنید">
 
                 <hr class="my-[16px]">
 
-                <input type="number" placeholder="شماره تماس بقعه را وارد کنید">
+                <input class="phoneNumberInput" type="number" placeholder="شماره تماس بقعه را وارد کنید">
 
 
             </div>
@@ -223,6 +223,10 @@ const handleFileChange = (event:any) => {
   reader.readAsDataURL(file);
 };
 
+const deleteImage=()=>{
+    imageUrl.value=''
+}
+
 const text=ref('')
 
 const charNumber=ref(0)
@@ -253,7 +257,7 @@ watch(text, (newValue) => {
         selectedCermony.value=mausoleumStore.modals.setWeekCermony; 
         selectedCermony.value.forEach((cermony:any) => {
       if (!weekPrograms.value.find((program) => program.name === cermony)) {
-        addCermonyToWeekPrograms(cermony)        
+        addCermonyToWeekPrograms(cermony)   
       }
     })}
   }))
@@ -288,9 +292,9 @@ watch(text, (newValue) => {
 
       programIdCounter.value++;
 
-      const indexToDelete = weekPrograms.value.findIndex((program) =>!program.hasTime && program.name === selectedName.value);
+      const indexToDelete = weekPrograms.value.findIndex((program) =>!program.hasTime && program.name === selectedName.value || program.hasTime && program.name === selectedName.value);
       if (indexToDelete!== -1) {
-        weekPrograms.value.splice(indexToDelete, 1);
+        deleteCermony(indexToDelete)
       }
 
   }
@@ -382,9 +386,9 @@ watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
 
       programIdCounter.value++;
 
-      const indexToDelete = prayPlans.value.findIndex((program) =>!program.hasImam && program.name === chosenItemPlan.value[newId]);
+      const indexToDelete = prayPlans.value.findIndex((program) =>!program.hasImam && program.name === chosenItemPlan.value[newId] || program.hasImam && program.name === chosenItemPlan.value[newId]);
       if (indexToDelete!== -1) {
-        prayPlans.value.splice(indexToDelete, 1);
+        deletePlan(indexToDelete)
       }
     }
 })
@@ -525,6 +529,10 @@ watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
         padding-bottom: 23%;
     }
 
+    textarea::-webkit-scrollbar{
+        display: none;
+    }
+
     textarea:focus{
         border: 1px solid var(--Secondary-S-400, #B5D9FB);
         box-shadow: 0px 1px 8px 0px rgba(66, 159, 245, 0.45);
@@ -556,7 +564,7 @@ watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
             color: $outline-variant;
         }
 
-        input{
+        .phoneNumberInput{
             font-size: 14px;
             font-style: normal;
             font-weight: 400;
@@ -565,6 +573,16 @@ watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
             background: transparent;
             outline: 0;
         }
+
+        .phoneNumberInput::-webkit-inner-spin-button{
+            display: none !important;
+        }
+
+        .phoneNumberInput::-webkit-outer-spin-button{
+            display: none;
+        }
+
+
     }
 }
 
