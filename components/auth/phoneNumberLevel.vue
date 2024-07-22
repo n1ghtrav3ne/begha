@@ -4,7 +4,6 @@
       label=" کاربر گرامی لطفا شماره خود را وارد کنید ."
       placeholder="مثال : ۰۹۱۲۳۴۵۶۷۸۹"
       v-model="object.cellNumber"
-      type="number"
       :error="inputError(errors, 'cellNumber')"
       @change="emit('update:modelValue', object.cellNumber)"
     >
@@ -55,6 +54,7 @@ const useAuth = useAuthStore();
 async function getCode() {
   if (phoneRule.value) {
     loading.value = true;
+    object.cellNumber = String(object.cellNumber);
     const { data, error } = await useAuth.getSendCOde(object);
     if (data?.value) {
       emit("changeLevel", data.value.verificationId);
