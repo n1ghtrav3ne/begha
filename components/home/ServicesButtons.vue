@@ -38,7 +38,7 @@ const servicesList = ref<
     iconClass: "icon-House-Iran",
     colorClass: "btn-bg-blue",
     badgeColorClass : 'error-bg-color' , 
-    link : '' , 
+    link : '/zaer-sara/list' , 
   },
   {
     title: "کتابخانه",
