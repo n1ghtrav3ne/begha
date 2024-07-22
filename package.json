@@ -24,6 +24,7 @@
     "workbox-routing": "^7.0.0"
   },
   "devDependencies": {
+    "@nuxtjs/device": "^3.1.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@vite-pwa/nuxt": "^0.6.0",
     "autoprefixer": "^10.4.19",

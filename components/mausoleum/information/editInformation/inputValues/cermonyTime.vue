@@ -24,11 +24,11 @@
 
                     <div class="inputsContainer">
 
-                        <input v-model="minute" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number"maxlength = "2">
+                        <input v-model="minute" @input="limitInput($event, 2)" type = "number" maxlength = "2">
 
                         <span>:</span>
 
-                        <input v-model="hour" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number"maxlength = "2">
+                        <input v-model="hour" @input="limitInput($event, 2)" type = "number"maxlength = "2">
 
                     </div>
 
@@ -48,11 +48,11 @@
 
                     <div class="inputsContainer">
 
-                        <input v-model="endMinute" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number"maxlength = "2">
+                        <input v-model="endMinute" @input="limitInput($event, 2)" type = "number"maxlength = "2">
 
                         <span>:</span>
 
-                        <input v-model="endHour" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number"maxlength = "2">
+                        <input v-model="endHour" @input="limitInput($event, 2)" type = "number"maxlength = "2">
 
                     </div>
 
@@ -76,6 +76,12 @@ import {useMausoleumStore} from "~/stores/m-modals-store"
 
 const mausoleumStore=useMausoleumStore()
 
+function limitInput(event:any, maxLength:any) {
+    if (event.target.value.length > maxLength) {
+        event.target.value = event.target.value.slice(0, maxLength);
+    }
+}
+
 defineComponent({BaseDialog})
 
     const minute = ref()
@@ -84,13 +90,28 @@ defineComponent({BaseDialog})
 
     const endMinute = ref()
 
-    let endHour = ref()
+    const endHour = ref()
 
-    let timeValue=ref()
+    let StartTimeValue=ref()
 
-watch([minute,hour,endMinute,endHour],()=>{
-    timeValue.value=[hour.value , minute.value , endHour.value , endMinute.value]
-    mausoleumStore.setCermonyTime(timeValue.value)    
+    let endTimeValue=ref()
+
+watch([minute,hour],()=>{
+
+    StartTimeValue.value=[hour.value , minute.value]
+
+    if(!!minute.value && !!hour.value){
+    mausoleumStore.setStartTime(StartTimeValue.value)    
+    }
+})
+
+watch([endMinute,endHour],()=>{
+    
+    endTimeValue.value=[endHour.value , endMinute.value]
+
+    if(!!endMinute.value && !!endHour.value){
+    mausoleumStore.setEndTime(endTimeValue.value)    
+    }
 })
 
 </script>

@@ -1,6 +1,5 @@
 
 import { defineStore } from "pinia";
-import CermonyTime from "~/components/mausoleum/information/editInformation/inputValues/cermonyTime.vue";
 
 export const useMausoleumStore = defineStore('modalStore', {
   state: () => ({
@@ -10,7 +9,12 @@ export const useMausoleumStore = defineStore('modalStore', {
         weeklyCermony:false,
         setWeekCermony:ref(),
         cermonyTime:false,
-        setCermonyTime:ref(),
+        setStartTime:ref(),
+        setEndTime:ref(),
+        prayTimes:false,
+        setPray:ref(),
+        imamName:false,
+        setImamName:ref(),
     }
   }),
   getters: {
@@ -26,6 +30,12 @@ export const useMausoleumStore = defineStore('modalStore', {
     },
     isOpenCermonyTime():boolean{
       return this.modals.cermonyTime
+    },
+    isOpenPrayTimes():boolean{
+      return this.modals.prayTimes
+    },
+    isOpenImamName():boolean{
+      return this.modals.imamName
     }
 
   },
@@ -61,8 +71,31 @@ export const useMausoleumStore = defineStore('modalStore', {
         this.modals.cermonyTime=false
       }
     },
-    setCermonyTime(time:any){
-      this.modals.setCermonyTime=time
+    setStartTime(time:any){
+      this.modals.setStartTime=time
+    },
+    setEndTime(time:any){
+      this.modals.setEndTime=time
+    },
+    changePrayTimes(operator:string){
+      if(operator==='active'){
+        this.modals.prayTimes=true;
+      }else{
+        this.modals.prayTimes=false;
+      }
+    },
+    setPray(pray:any){
+      this.modals.setPray=pray
+    },
+    changeImamName(operator:string){
+      if(operator==='active'){
+        this.modals.imamName=true;
+      }else{
+        this.modals.imamName=false;
+      }
+    },
+    settingImamName(imam:any){
+      this.modals.setImamName=imam
     }
   },
 })

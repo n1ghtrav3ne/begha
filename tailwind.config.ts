@@ -17,6 +17,18 @@ export default {
       xl: '1440px',
     },
     colors: {
+      white: "#FFFFFF",
+      'primary': '#09D374',
+      surface: {
+        30: '#FBFBFB',
+        50: "#F1F1F1",
+        100: "#DFDFDF",
+        200: '#FBFBFB',
+        300: '#C6C6C6',
+        400: '#A5A5A5',
+        500: '#7E7E7E',
+        600: '#0B0B0B',
+      },
       'blue': '#1fb6ff',
       'purple': '#7e5bef',
       'pink': '#ff49db',
@@ -26,12 +38,13 @@ export default {
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
+      error: "#ef4444"
     },
     fontFamily: {
-      yakan : ['"yekan-regular"' , '"yekan-bold"'],
-      peyda : ['"peyda.regular"' , '"peyda-bold"'],
+      yakan: ['"yekan-regular"', '"yekan-bold"'],
+      peyda: ['"peyda.regular"', '"peyda-bold"'],
     },
-  } , 
+  },
   plugins: [],
 } satisfies Config
 

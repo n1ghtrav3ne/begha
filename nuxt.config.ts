@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@vite-pwa/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "nuxt-swiper",
+    '@nuxtjs/device',
   ],
 
   app: {
@@ -69,21 +70,41 @@ export default defineNuxtConfig({
     // modules: ['navigation', 'pagination'], // all modules are imported by default
   },
 
+  routeRules: {
+    '/': { ssr: true },
+    '/auth/**': { ssr: false },
+  },
+
+
+
   runtimeConfig: {
     public: {
-      baseURL: process.env.NUXT_PUBLIC_API_URL,
+      baseURL: process.env.NUXT_PUBLIC_BASE_URL,
+      appUrl: process.env.NUXT_PUBLIC_APP_URL
     },
   },
-  plugins: ["~/plugins/sw.client.js",],
+
+  nitro: {
+    devProxy: {
+      "/gate": {
+        target: process.env.NUXT_PUBLIC_BASE_URL,
+        changeOrigin: true,
+      },
+    },
+  },
+
+  plugins: ["~/plugins/sw.client.js"],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  pinia: {
-    storesDirs: ["./stores/**", "./custom-folder/stores/**"],
-  },
+
+  // pinia: {
+  //   storesDirs: ["./stores/**", "./custom-folder/stores/**"],
+  // },
+
   typescript: {
     typeCheck: true,
     strict: true,
@@ -91,6 +112,4 @@ export default defineNuxtConfig({
   experimental: {
     renderJsonPayloads: true,
   },
-   
 });
-
