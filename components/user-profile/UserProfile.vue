@@ -11,19 +11,21 @@
             </div>
           </div>
           <div class="login">
-            <span class="login-btn">
-              <span class="material-symbols-outlined arrow-icon">
-                trending_flat
+            <NuxtLink to="/auth">
+              <span class="login-btn">
+                <span class="material-symbols-outlined arrow-icon">
+                  trending_flat
+                </span>
+                <span>ورود</span>
               </span>
-              <span>ورود</span>
-            </span>
+            </NuxtLink>
           </div>
         </div>
       </div>
       <div class="profile-options">
         <ul class="options-list">
           <li
-          @click="optionsAction(item)"
+            @click="optionsAction(item)"
             v-for="(item, index) in profileOptions"
             :key="index"
             class="option flex items-center"
@@ -51,7 +53,7 @@
 import SwitchAccount from "./SwitchAccountModal.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineComponent([SwitchAccount]);
-const modalStore = useModalStore()
+const modalStore = useModalStore();
 
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]
@@ -109,13 +111,13 @@ const profileOptions = ref<{ title: string; icon: string; notif: boolean }[]>([
   },
 ]);
 
-const optionsAction = (item:{title:string}) => {
-    if (item.title === 'تغییر نوع کاربری') {
-        modalStore.changeSwitchAccountActive('active')
-    }else if(item.title === 'درخواست های من'){
-      useRouter().push('/profile/requests/')
-    }
- }
+const optionsAction = (item: { title: string }) => {
+  if (item.title === "تغییر نوع کاربری") {
+    modalStore.changeSwitchAccountActive("active");
+  } else if (item.title === "درخواست های من") {
+    useRouter().push("/profile/requests/");
+  }
+};
 </script>
 
 <style lang="scss" scoped>
