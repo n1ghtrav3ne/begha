@@ -6,7 +6,8 @@
 
 <script lang="ts" setup>
 import Home from '@/components/home/Home.vue';
-defineComponent({Home})
+import DatePicker from '@/components/global/date-picker/DatePicker.vue';
+defineComponent({Home,DatePicker})
 definePageMeta({
   layout : 'default'
 })

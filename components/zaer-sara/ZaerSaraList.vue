@@ -41,6 +41,15 @@
     </div>
     <div>
     <div class="date-card ">
+      <BaseDialog
+      :modalHeight="552"
+      :modalPadding="'20px 0 35px 0'"
+
+    >
+
+    <DatePicker :modal=true :show="true" :dualInput="true" :mode="'range'" :column="1" :title="'انتخاب تاریخ ورود'" />
+    </BaseDialog>
+
         <div class="date-title">
 
             <span >تاریخ ورود و خروج</span>
