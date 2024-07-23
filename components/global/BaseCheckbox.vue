@@ -35,7 +35,7 @@
           </svg>
         </span>
       </label>
-      <label
+      <label @click="item.isChecked =!item.isChecked"
         :style="`font-size: ${fns}`"
         class="mt-px font-light text-gray-700 cursor-pointer select-none"
         htmlFor="check"

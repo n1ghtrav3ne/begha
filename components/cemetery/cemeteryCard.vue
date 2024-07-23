@@ -24,7 +24,6 @@ const props =defineProps(['item'])
 .cardContainer{
     display: flex;
     flex-direction: column;
-    height: 189px;
     padding-bottom: 24px;
     width: 100%;
     gap: 16px;

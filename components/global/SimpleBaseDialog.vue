@@ -11,12 +11,20 @@
         </div>
         
       </div>
+
       <OverlayLayout />
+
     </div>
   </template>
   
   <script lang="ts" setup>
+
   import OverlayLayout from "~/components/layouts/mOverlayLayout.vue";
+
+  const modalStore = useModalStore();
+  const mausoleumStore=useMausoleumStore();
+
+
   
   defineNuxtComponent({ OverlayLayout });
 
@@ -38,6 +46,10 @@
     bottom: 0;
     padding: 30px 25px;
     overflow: initial !important;
+    max-width: 600px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
    
       .base-modal-stick {
         width: 75px;
@@ -45,7 +57,9 @@
         background-color: $primary;
         position: absolute;
         top: 33px;
-        right: 40%;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
         margin-top: -29px;
         border-radius: 20px;
       }
@@ -56,9 +70,23 @@
     .base-modal-body {
       height: 100%;
       overflow-y: scroll !important;
-
-
     }
+
+    .base-modal-body::-webkit-scrollbar{
+      display: none !important;
+    }
+  }
+
+  .overlay{
+    background-color: #000;
+    opacity: 0.2;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: all ease-in-out 0.13s;
+    z-index: 999
   }
   </style>
   

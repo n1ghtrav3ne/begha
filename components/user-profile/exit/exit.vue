@@ -57,6 +57,8 @@
     bottom: 0;
     padding: 30px 25px;
     overflow: initial !important;
+    max-width: 600px;
+    
    
       .base-modal-stick {
         width: 75px;
