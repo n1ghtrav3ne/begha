@@ -33,7 +33,7 @@
         
     </div>
 
-    <div v-if="deleteC" class="container">
+    <div v-if="!showContent" class="container">
 
         <div class="nameContainer">
 
@@ -69,11 +69,12 @@
 
        
 
-     <div class="newContainer">
+     <div v-if="showContent" class="newContainer">
 
          <div class="profileImageContainer">
 
-            <img class="w-full h-full rounded-full" src="~/assets/images/cemetery/cemetery.png" alt="">
+            <img @click="mausoleumStore.changeInfoImage('active')" v-if="showContent" class="w-full h-full rounded-full" :src="pageData[0].image" alt="">
+
 
         </div>
 
@@ -88,7 +89,7 @@
 
             </div>
 
-            <button class="editInfo">ویرایش اطلاعات</button>
+            <button @click="$router.push('/mausoleum/information/edit_information')" class="editInfo">ویرایش اطلاعات</button>
 
             </div>
 
@@ -102,7 +103,7 @@
 
                     <span>درباره امام زاده</span>
 
-                    <p class="text">در داخل حریم وسیع امامزاده صالح، صندوقی چوبین وجود دارد که احتمالاً به دوران اواخر صفوی یا افشار تعلق دارد و ضریح ممتاز نقره‌ای آن که اضلاع شرقی و شمال شرقی و غربی آن دارای محفظه مشبک مزین به نقره و ضلع جنوبی آن مشبک چوبی است از وقفیات میرزا سعیدخان، وزیر امور خارجه اواخر قاجار است.</p>
+                    <p class="text" v-if="showContent">{{ pageData[0].about }}</p>
 
                 </div>
 
@@ -112,7 +113,7 @@
 
                         <span class="addressTitle">آدرس</span>
 
-                        <span class="address">تهران، میدان تجریش، حرم امامزاده صالح (ع)</span>
+                        <span class="address" v-if="showContent">{{ pageData[0].address }}</span>
 
                     </div>
 
@@ -132,7 +133,7 @@
 
                         <span class="phoneTitle">اطلاعات تماس</span>
 
-                        <span class="phone">۰۹۱۲۳۴۵۶۷۸۹ و ۰۹۱۳۱۹۴۰۴۰۴۹۴</span>
+                        <span class="phone" v-if="showContent">{{ pageData[0].firstNumber }} و {{ pageData[0].secondNumber }}</span>
 
                     </div>
 
@@ -153,13 +154,24 @@
 
     <input @change="handleFileChange" ref="fileInput" type="file" class="hidden" accept=".jpg,.png">
 
+    <ChangeImage v-if="mausoleumStore.isOpenInfoImage" :image="pageData[0].image" />
+
+
 </template>
 
 <script lang="ts" setup>
 
 import adminBanner from "~/components/mausoleum/information/adminPanelBanner.vue"
 
-defineComponent({adminBanner})
+import profileImage from "~/assets/images/cemetery/cemetery.png";
+
+import ChangeImage from "~/components/mausoleum/information/editInformation/inputValues/ChangeImage.vue"
+
+import {useMausoleumStore} from "~/stores/m-modals-store"
+
+const mausoleumStore=useMausoleumStore()
+
+defineComponent({adminBanner,ChangeImage})
 
 const fileInput=ref()
 
@@ -174,7 +186,24 @@ const handleFileChange=(event:any)=>{
     hasImage.value=true
 }
 
-const deleteC =ref(false)
+const showContent =ref(false)
+
+const pageData=ref<{image:any; about:string ; address:string ; firstNumber:string ; secondNumber?:string}[]
+>([
+    {
+        image:profileImage,
+        about:"در داخل حریم وسیع امامزاده صالح، صندوقی چوبین وجود دارد که احتمالاً به دوران اواخر صفوی یا افشار تعلق دارد و ضریح ممتاز نقره‌ای آن که اضلاع شرقی و شمال شرقی و غربی آن دارای محفظه مشبک مزین به نقره و ضلع جنوبی آن مشبک چوبی است از وقفیات میرزا سعیدخان، وزیر امور خارجه اواخر قاجار است.",
+        address:'تهران، میدان تجریش، حرم امامزاده صالح (ع)',
+        firstNumber:'091223456789',
+        secondNumber:'09123456789'
+    }
+])
+
+watchEffect(()=>{
+    if(pageData.value.length > 0){
+        showContent.value=!showContent.value
+    }
+})
 
 </script>
 
@@ -407,7 +436,6 @@ const deleteC =ref(false)
 .aboutMas{
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     padding-top: 12px;
     border-top: 1px solid $outline-variant;
