@@ -41,16 +41,9 @@
     </div>
     <div>
     <div class="date-card ">
-      <BaseDialog
-      :modalHeight="552"
-      :modalPadding="'20px 0 35px 0'"
 
-    >
 
-    <DatePicker :modal=true :show="true" :dualInput="true" :mode="'range'" :column="1" :title="'انتخاب تاریخ ورود'" />
-    </BaseDialog>
-
-        <div class="date-title">
+        <div  @click="modalStore.ChangezaerSaraSelectDate('active')" class="date-title">
 
             <span >تاریخ ورود و خروج</span>
             <span class="material-symbols-outlined">
@@ -76,6 +69,20 @@
       <div>
         <ZaerSaraItem/>
       </div>
+      <BaseDialog
+      v-if="modalStore.isOpenZaerSelectDate"
+        :modalHeight="520"
+
+        >
+<template #headerText>انتخاب تاریخ ورود</template>
+<template #body>
+
+  <DatePicker  :show="true" :dualInput="true" :mode="'range'" :column="1"  />
+  
+ 
+</template>
+    </BaseDialog>
+
   </div>
       </div>
     </div>
@@ -344,6 +351,7 @@ const modalStore = useModalStore();</script>
   }
 }
 .zaersara-reserve {
+  
     .zaersara-icon {
       padding: 12px;
       border-radius: 16px;
@@ -388,6 +396,7 @@ const modalStore = useModalStore();</script>
   border: 1px solid $outline-variant;
   padding: 16px 24px;
   .date-title{
+    cursor: pointer;
     display: flex;
     align-items: center;
     color:$secondary;
@@ -442,4 +451,5 @@ line-height: normal;
   }
     }
   }
+ 
 </style>

@@ -27,7 +27,8 @@ export const useModalStore = defineStore('modalStore', {
       completeProfile:false,
       profileSearchCities:false,
       imagePicker:false,
-      exitAccount:false
+      exitAccount:false,
+      zaerSaraSelectDate:false
     }
   }),
   getters: {
@@ -102,7 +103,10 @@ export const useModalStore = defineStore('modalStore', {
     },
     isOpenExitAccount():boolean{
       return this.modals.exitAccount
-    }
+    },
+    isOpenZaerSelectDate(): boolean {
+      return this.modals.zaerSaraSelectDate
+    },
   },
   actions: {
     changeBeghaListProvinceFiltersActive(operator:string) {
@@ -272,6 +276,13 @@ export const useModalStore = defineStore('modalStore', {
       }else{
         this.modals.exitAccount=false
       }
-    }
+    },
+    ChangezaerSaraSelectDate(operator:string){
+      if(operator==='active'){
+        this.modals.zaerSaraSelectDate=true;
+      }else{
+        this.modals.zaerSaraSelectDate=false;
+      }
+    },
   },
 })

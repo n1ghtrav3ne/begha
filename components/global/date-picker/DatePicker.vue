@@ -1,7 +1,7 @@
 <template>
     <div
       ref="root"
-      v-click-outside="onClickOutside"
+
       :class="[
         'pdp',
         { 'pdp-range': mode === 'range' },
@@ -10,11 +10,11 @@
         lang.dir.input,
       ]"
     >
-      <div v-bind="attrs.div">
-        <div class="input-group">
+      <div  v-bind="attrs.div">
+        <div class="input-group " style="display: none;">
           <template v-for="(input, index) in inputs" :key="input">
             <div
-              class="full-width"
+              class="full-width "
               :class="input == 'firstInput' ? 'date local' : 'date return'"
             >
               <div class="floating-label">
@@ -57,14 +57,12 @@
         :format="formats.alt"
         :dates="(selectedDates as any[])"
       />
-      <div v-if="showDatePicker">
+      <!-- //todo:check this condation -->
+      <div v-if="showDatePicker ">
         <div class="pdp-overlay" @click="showDatePicker = false"></div>
         <div v-bind="attrs.picker" ref="pdpPicker">
-          <div class="pdp-auto">
-            <div class="title-container px-1">
-              <span class="title">{{ title }}</span>
-              <span >x</span>
-            </div>
+          <div class="pdp-auto ">
+            
             <div class="today-date-container">
               <span class="title">{{getTodayDate}}</span>
               <span
@@ -344,6 +342,7 @@
                 </div>
               </div>
             </div>
+            <button class="confirm" >انتخاب</button>
             <!-- <div class="pdp-footer d-none">
               <div>
                 <slot name="footer"></slot>
@@ -561,10 +560,7 @@
       label: {
         type: String,
       },
-      title: {
-        defualt: "انتخاب تاریخ",
-        type: String,
-      },
+
       /**
        * text for label tag
        * @type String
@@ -1891,6 +1887,18 @@ line-height: normal;
 color:$secondary;
 cursor: pointer;
     }
+  }
+  .confirm{
+    display: flex;
+width: 100%;
+height: 44px;
+padding: 8px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+background-color: $primary;
+color: #ffffff;
+border-radius: 8px;
   }
   </style>
   

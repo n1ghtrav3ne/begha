@@ -4,7 +4,7 @@
 @mixin little-flag {
 	&:after {
 		content: "";
-		position: absolute;
+		position: relative;
 		bottom: 100%;
 		//--- right of datepicker ---//
 		// right: 1.2rem;
@@ -16,6 +16,8 @@
 		border-bottom-color: $background;
 		border-bottom-color: var(--background);
 		border-width: 0.4rem;
+		
+		
 	}
 }
 
@@ -92,6 +94,7 @@
 
 @media (max-width: 700px) {
 	.pdp-picker {
+		
 		flex-direction: column-reverse;
 	}
 
@@ -106,6 +109,7 @@
 
 .pdp {
 	position: relative;
+	
 
 	&:not(.pdp-range) .pdp-day.start-range {
 		border-radius: $radius !important;
@@ -282,6 +286,7 @@
 	}
 
 	.pdp-overlay {
+
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -294,20 +299,21 @@
 	}
 
 	.pdp-picker {
+		width: 100%;
+		
 		display: flex;
 		position: absolute;
 		color: $text-color;
 		color: var(--text-color);
 		background: $background;
 		background: var(--background);
-		box-shadow: $main-box-shadow;
-		box-shadow: var(--main-box-shadow);
+		// box-shadow: $main-box-shadow;
+		// box-shadow: var(--main-box-shadow);
 		z-index: $z-index + 1;
 		z-index: calc(var(--z-index) + 1);
 		border-radius: $radius;
 		border-radius: var(--radius);
 		transition: all 1s ease;
-		margin-top: 0.5rem;
 		padding: 0.3rem 0.6rem;
 		animation: start 0.1s;
 
@@ -380,13 +386,7 @@
 			all: unset;
 		}
 
-		.pdp-auto {
-
-			&,
-			&>div {
-				background: inherit;
-			}
-		}
+		
 
 		.pdp-select-year,
 		.pdp-select-month {
@@ -525,7 +525,7 @@
 
 				.pdp-column {
 					margin: 0 1rem;
-
+											
 					.pdp-week {
 						background: inherit;
 						margin-bottom: 0.3rem;
@@ -773,7 +773,6 @@
 	}
 
 	.pdp-auto {
-		margin: auto;
-		position: relative;
+	width: 100%;
 	}
 }

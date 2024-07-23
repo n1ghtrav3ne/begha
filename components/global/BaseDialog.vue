@@ -60,6 +60,7 @@ const closeModal = () => {
   reservationStore.changeSectionPart("deactive");
   modalStore.changeCermonyHallReservationHours('deactive');
   modalStore.changeProfileSearchCities('deactive');
+  modalStore.ChangezaerSaraSelectDate('deactive');
 };
 </script> 
 
