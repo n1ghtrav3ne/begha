@@ -15,7 +15,8 @@ export const useMausoleumStore = defineStore('modalStore', {
         setPray:ref(),
         imamName:false,
         setImamName:ref(),
-        infoImage:false
+        infoImage:false,
+        infoPoster:false
     }
   }),
   getters: {
@@ -40,6 +41,9 @@ export const useMausoleumStore = defineStore('modalStore', {
     },
     isOpenInfoImage():boolean{
       return this.modals.infoImage
+    },
+    isOpenInfoPoster():boolean{
+      return this.modals.infoPoster
     }
   },
   actions: {
@@ -105,6 +109,13 @@ export const useMausoleumStore = defineStore('modalStore', {
         this.modals.infoImage=true
       }else{
         this.modals.infoImage=false
+      }
+    },
+    changeInfoPoster(operator:string){
+      if(operator==='active'){
+        this.modals.infoPoster=true;
+      }else{
+        this.modals.infoPoster=false;
       }
     }
   },

@@ -18,7 +18,8 @@
     mausoleumStore.changeCermonyTime('deactive');
     mausoleumStore.changePrayTimes('deactive');
     mausoleumStore.changeImamName('deactive');
-    mausoleumStore.changeInfoImage('deactive')
+    mausoleumStore.changeInfoImage('deactive');
+    mausoleumStore.changeInfoPoster('deactive');
   };
   </script>
   

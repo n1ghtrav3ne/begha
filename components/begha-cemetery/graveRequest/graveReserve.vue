@@ -359,4 +359,7 @@ const uploadFile=()=>{
     color: $secondary !important;
 }
 
+.gravePage::-webkit-scrollbar{
+    display: none;
+}
 </style>
