@@ -44,8 +44,6 @@ const object = reactive({
   appVersion: "1",
 });
 
-console.log("deviceType", deviceType.value);
-
 import { useAuthStore } from "@/stores/useAuthStore";
 const useAuth = useAuthStore();
 
@@ -58,7 +56,7 @@ async function getGuestLogin() {
   }
 }
 
-getGuestLogin();
+// getGuestLogin();
 </script>
 
 <style lang="scss" scoped>

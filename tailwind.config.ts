@@ -29,6 +29,9 @@ export default {
         500: '#7E7E7E',
         600: '#0B0B0B',
       },
+      secondary: {
+        400: "#B5D9FB"
+      },
       'blue': '#1fb6ff',
       'purple': '#7e5bef',
       'pink': '#ff49db',
