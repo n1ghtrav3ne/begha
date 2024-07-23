@@ -84,11 +84,19 @@
 
                 </div>
 
-                      
+
+
 
             </div>
 
-            <button class="confirmingReservation">ثبت رزرو</button>
+            <div class="buttonContainer">
+
+                <button class="confirmingReservation">ثبت رزرو</button>
+
+            </div>
+
+
+
 
         </template>
     
@@ -258,7 +266,7 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
         .checkBox{
             position: relative;
             top: 4%;
-            left: 3%;
+            left: 2%;
             font-size: 12px;
             font-style: normal;
             font-weight: 400;
@@ -269,22 +277,29 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
     }
 }
 
-.confirmingReservation{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $primary;
-    padding: 8px;
-    color: $primary-on;
-    width: 90%;
-    height: 44px;
-    border-radius: 8px;
+.buttonContainer{
     position: fixed;
-    bottom: 2%;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    
+    bottom: 3%;
+    width: 100%;
+    max-width: 600px;
+
+    .confirmingReservation{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $primary;
+        padding: 8px;
+        color: $primary-on;
+        height: 44px;
+        border-radius: 8px;
+        bottom: 2%;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        width: 90%;
+   
 }
+}
+
 </style>

@@ -76,6 +76,7 @@ const closeModal = () => {
   bottom: 0;
   padding: 30px 25px;
   overflow: initial !important;
+  max-width: 600px;
   .base-modal-header {
     padding-bottom: 20px;
     border-bottom: 2px solid $outline-variant;
@@ -98,6 +99,9 @@ const closeModal = () => {
   .base-modal-body {
     height: 100%;
     overflow-y: scroll !important;
+  }
+  .base-modal-body::-webkit-scrollbar{
+    display: none !important;
   }
 }
 </style>

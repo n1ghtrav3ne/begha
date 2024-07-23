@@ -34,6 +34,7 @@ const mausoleumStore=useMausoleumStore()
 
 defineComponent({BaseDialog,BaseCheckbox})
 
+
 const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
   {
     id: 1,

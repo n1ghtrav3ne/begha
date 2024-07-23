@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="back-support flex flex-col items-center">
-        <span class="flex items-center justify-center support-btn"
+        <span class="flex max-w-[600px] items-center justify-center support-btn"
           >رزرو کتاب</span
         >
       </div>
