@@ -11,19 +11,21 @@
             </div>
           </div>
           <div class="login">
-            <span class="login-btn">
-              <span class="material-symbols-outlined arrow-icon">
-                trending_flat
+            <NuxtLink to="/auth">
+              <span class="login-btn">
+                <span class="material-symbols-outlined arrow-icon">
+                  trending_flat
+                </span>
+                <span>ورود</span>
               </span>
-              <span>ورود</span>
-            </span>
+            </NuxtLink>
           </div>
         </div>
       </div>
       <div class="profile-options">
         <ul class="options-list">
           <li
-          @click="optionsAction(item)"
+            @click="optionsAction(item)"
             v-for="(item, index) in profileOptions"
             :key="index"
             class="option flex items-center"
