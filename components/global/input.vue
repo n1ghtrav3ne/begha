@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="w-full h-full">
     <label class="font-normal text-sm text-surface-600">
       {{ props.label }}
     </label>
     <div
       id="input-elem"
-      class="w-full h-11 mt-4 flex items-center p-4"
-      :class="`rounded-${props.rounded} bg-${props.color}`"
+      class="w-full h-full mt-4 flex items-center justify-between px-4"
+      :class="`bg-${props.color} rounded-${props.rounded} `"
     >
       <slot name="prepend"> </slot>
 
       <input
-        class="w-full h-full outline-none py-4"
+        class="h-full outline-none py-6"
         :class="`rounded-${props.rounded} bg-${props.color}`"
         :placeholder="props.placeholder"
         :type="props.type"
@@ -63,16 +63,18 @@ const props = defineProps({
 const activeInput = ref(false);
 
 onMounted(() => {
+  const elem = document.getElementById("input-elem");
   document.addEventListener("click", function (event) {
-    const elem = document.getElementById("input-elem");
     const input = document.getElementsByTagName("input");
     const outsideClick = !elem.contains(event.target);
+
     if (outsideClick) {
       activeInput.value = false;
       elem.classList.remove("border-[1px]");
       elem.classList.remove("border-secondary-400");
       elem.classList.remove("border-shadow");
       if (props.border) {
+        elem.classList.add("border-[1px]");
         elem.classList.add("border-surface-100");
       }
     } else {
@@ -86,10 +88,14 @@ onMounted(() => {
   });
 
   if (props.border) {
-    const elem = document.getElementById("input-elem");
     elem.classList.add("border-[1px]");
     elem.classList.add("border-surface-100");
+    elem.classList.add("border-[1px]");
   }
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
 });
 </script>
 

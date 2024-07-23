@@ -1,0 +1,47 @@
+<template>
+  <div>
+    <!-- page header component -->
+    <cart-header></cart-header>
+    <!-- page body -->
+    <div class="p-6">
+      <!-- description  -->
+      <p class="text-sm text-justify text-surface-600">
+        {{ data.description }}
+      </p>
+
+      <!-- divider -->
+      <div class="h-[1px] w-full my-6 bg-surface-100/50"></div>
+
+      <!-- discount section component -->
+      <discount />
+    </div>
+
+    <div class="p-3">
+      <price :data="data"></price>
+    </div>
+
+    <bottomSheets v-if="useStore.getDialogShow">
+      <plans />
+    </bottomSheets>
+  </div>
+</template>
+
+<script setup>
+const useStore = useDefaultStore();
+
+import discount from "./discount.vue";
+import price from "./price.vue";
+import plans from "./plans.vue";
+import bottomSheets from "../global/bottomSheets.vue";
+
+const data = {
+  description:
+    "این متن دارای توضیح است. این متن دارای توضیح است. این متن دارای توضیح است.",
+  orginal_price: "2000000",
+  price: "2500000",
+  discount_price: "500000",
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

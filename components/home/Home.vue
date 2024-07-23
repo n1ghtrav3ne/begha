@@ -26,15 +26,21 @@ import NextPlans from "./NextPlans.vue";
 import MoreServicesButtons from "./MoreServicesButtons.vue";
 import { useInitialApp } from "@/stores/init-app";
 import { useModalStore } from "@/stores/modals-store";
-defineComponent({ SplashLoading , PrayBanner , ServicesButtons , FollowEvents , WorkEventBanner , PopularBegha , NextPlans , MoreServicesButtons });
+defineComponent({
+  SplashLoading,
+  PrayBanner,
+  ServicesButtons,
+  FollowEvents,
+  WorkEventBanner,
+  PopularBegha,
+  NextPlans,
+  MoreServicesButtons,
+});
 const initStore = useInitialApp();
 const modalStore = useModalStore();
-
-
 </script>
 
 <style lang="scss" scoped>
 @import "../../assets/css/icons.scss";
 @import "../../assets/css/colors.scss";
-
 </style>
