@@ -57,7 +57,7 @@ const props=defineProps(['item','id'])
         padding: 12px;
 
         input{
-        font-family: "Yekan Bakh FaNum";
+        
         font-size: 12px;
         font-style: normal;
         font-weight: 400;

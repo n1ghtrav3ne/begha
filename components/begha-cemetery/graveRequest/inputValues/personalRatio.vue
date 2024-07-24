@@ -88,7 +88,7 @@ const activation=(index:number)=>{
         border-radius: 8px;
         color: var(--Key-Surface-On-Surface, #0B0B0B);
         text-align: right;
-        font-family: "Yekan Bakh FaNum";
+        
         font-size: 14px;
         font-style: normal;
         font-weight: 400;

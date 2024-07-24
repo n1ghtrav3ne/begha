@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@alireza-ab/persian-date": "^2.6.2",
     "@pinia/nuxt": "^0.5.1",
     "jalali-moment": "^3.3.11",
     "nuxt": "^3.11.2",
