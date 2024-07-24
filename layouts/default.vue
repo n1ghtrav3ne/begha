@@ -16,7 +16,7 @@ const initStore = useInitialApp();
 const device = useDevice();
 
 setTimeout(() => {
-  initStore.changeLoadingState();
+  initStore.changeLoadingState(false);
 }, 1000);
 
 const deviceType = computed(() => {
