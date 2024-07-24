@@ -25,7 +25,7 @@
             placeholder="جستجو اماکن متبرکه"
           />
           <span
-            @click="modalStore.changeBeghaListEventFiltersActive('active')"
+            @click="showSelectedSort=true"
             class="material-symbols-outlined search-input-icon"
           >
             tune
@@ -43,7 +43,7 @@
     <div class="date-card ">
 
 
-        <div  @click="modalStore.ChangezaerSaraSelectDate('active')" class="date-title">
+        <div  @click="showSelectDate=true" class="date-title">
 
             <span >تاریخ ورود و خروج</span>
             <span class="material-symbols-outlined">
@@ -70,20 +70,16 @@
         <ZaerSaraItem/>
         <ZaerSaraItem/>
       </div>
-      <BaseDialog
-      v-if="modalStore.isOpenZaerSelectDate"
-        :modalHeight="520"
+      <BottomSheets  v-model="showSelectDate">
+        
+        <DatePicker   :show="true" :dualInput="true" :mode="'range'" :column="1"  />
 
-        >
-<template #headerText>انتخاب تاریخ ورود</template>
-<template #body>
-
-  <DatePicker  :show="true" :dualInput="true" :mode="'range'" :column="1"  />
-  
- 
-</template>
-    </BaseDialog>
-
+    </BottomSheets>
+    <BottomSheets :title="'ترتیب نمایش بر اساس'"  v-model="showSelectedSort">
+        
+        <ZaerSaraSort />
+            </BottomSheets>
+      
   </div>
       </div>
     </div>
@@ -91,10 +87,14 @@
 </template>
 <script lang="ts" setup>
 import ZaerSaraItem from "./ZaerSaraItem.vue";
+import ZaerSaraSort from "./ZaerSaraSort.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineComponent([ZaerSaraItem]);
-const modalStore = useModalStore();</script>
-
+const modalStore = useModalStore();
+    const showSelectDate=ref(false);
+    const showSelectedSort=ref(false);
+    
+  </script>
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";

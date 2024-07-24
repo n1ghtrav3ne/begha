@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!initStore.isLoading" class="app-home">
+    <div  class="app-home">
       <div class="container">
         <PrayBanner />
         <ServicesButtons />
@@ -10,7 +10,7 @@
         <NextPlans />
       </div>
     </div>
-    <SplashLoading v-if="initStore.isLoading" />
+    <!-- <SplashLoading v-if="initStore.isLoading" /> -->
     <MoreServicesButtons v-if="modalStore.isOpenMoreServicesButtons" />
   </div>
 </template>
