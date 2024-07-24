@@ -68,6 +68,7 @@
       </div>
       <div>
         <ZaerSaraItem/>
+        <ZaerSaraItem/>
       </div>
       <BaseDialog
       v-if="modalStore.isOpenZaerSelectDate"

@@ -256,7 +256,7 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
 
     .list{
         overflow-y: auto;
-        font-family: "Yekan Bakh FaNum";
+        
         font-size: 14px;
         font-style: normal;
         font-weight: 400;

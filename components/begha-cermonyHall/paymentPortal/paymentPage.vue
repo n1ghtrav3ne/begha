@@ -116,7 +116,7 @@
 
     .explanation{
         width: 100%;
-        font-family: "Yekan Bakh FaNum";
+        
         font-size: 14px;
         font-style: normal;
         font-weight: 400;

@@ -15,7 +15,9 @@
 
 </div>
 <div class="location">
-    <img src="@/assets/images/icons/location.svg"  alt="">
+  
+  <img src="@/assets/images/icons/location.svg"  alt="">
+  <span class="ms-1" >اصفهان، اصفهان</span>
 </div>
     </div>
     </div>
@@ -38,6 +40,7 @@
   }
   .title{
     padding: 12px;
+    padding-bottom: 0;
     text-align: right;
   
     font-size: 12px;
@@ -59,7 +62,7 @@ line-height: normal;
 
 text-align: right;
 
-font-family: "Yekan Bakh FaNum";
+
 font-size: 12px;
 font-style: normal;
 font-weight: 400;
@@ -72,5 +75,11 @@ line-height: normal;
 }
 
   }
+}
+.location{
+  display: flex;
+  align-items: center;
+  padding: 12px;
+
 }
 </style>
