@@ -2,7 +2,7 @@
   <div>
     <!-- discount btn  -->
     <div
-      @click="useStore.changeDialogStatus(true)"
+      @click="emit('openDialog', true)"
       class="w-full h-[54px] border-[1px] py-4 px-3 border-surface-100 rounded-2xl flex items-center justify-between"
     >
       <span class="text-sm text-surface-600">طرح‌های تخفیفی</span>
@@ -35,10 +35,10 @@
 </template>
 
 <script setup>
-const useStore = useDefaultStore();
 import BaseInput from "../global/input.vue";
 import BaseButton from "../global/button.vue";
 defineComponent([BaseInput, BaseButton]);
+const emit = defineEmits(["openDialog"]);
 </script>
 
 <style lang="scss" scoped>

@@ -13,22 +13,21 @@
       <div class="h-[1px] w-full my-6 bg-surface-100/50"></div>
 
       <!-- discount section component -->
-      <discount />
+      <discount @open-dialog="getOpenDialog($event)" />
     </div>
 
     <div class="p-3">
       <price :data="data"></price>
     </div>
 
-    <bottomSheets v-if="useStore.getDialogShow">
+    <bottomSheets v-model="discountPlans">
       <plans />
     </bottomSheets>
   </div>
 </template>
 
 <script setup>
-const useStore = useDefaultStore();
-
+const discountPlans = ref(false);
 import discount from "./discount.vue";
 import price from "./price.vue";
 import plans from "./plans.vue";
@@ -41,6 +40,8 @@ const data = {
   price: "2500000",
   discount_price: "500000",
 };
+
+const getOpenDialog = (e) => (discountPlans.value = e);
 </script>
 
 <style lang="scss" scoped>

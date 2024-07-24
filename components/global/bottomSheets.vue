@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="useStore.getDialogShow"
+    v-if="props.modelValue"
     class="absolute top-0 w-full h-screen bg-surface-400/40 overflow-hidden"
     @click="handleOutsideClick"
   >
@@ -16,12 +16,12 @@
         ></div>
         <div class="p-4 w-full">
           <div class="w-full flex justify-between items-center my-2">
-            <span>{{ props?.title }}</span>
+            <span :class="props.class">{{ props?.title }}</span>
 
             <div
               v-if="props?.closable"
               class="size-6 cursor-pointer"
-              @click="useStore.changeDialogStatus(false)"
+              @click="closeSheet()"
             >
               <img src="~/assets/images/icons/close.svg" class="size-6" />
             </div>
@@ -34,18 +34,23 @@
 </template>
 
 <script setup>
-const useStore = useDefaultStore();
-
+const sheetStatus = ref(false);
 const props = defineProps({
   title: { type: String },
   closable: { type: Boolean },
+  modelValue: {},
+  class: {},
 });
+const emit = defineEmits(["update:modelValue"]);
+const closeSheet = () => emit("update:modelValue", false);
+
+sheetStatus.value = props.modelValue;
 
 const sheetElem = ref(null);
 
 const handleOutsideClick = (event) => {
   if (sheetElem.value && !sheetElem.value.contains(event.target)) {
-    useStore.changeDialogStatus(false); // Assuming this method sets useStore.dialog to false
+    closeSheet();
   }
 };
 </script>
