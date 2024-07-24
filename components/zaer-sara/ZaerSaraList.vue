@@ -25,7 +25,7 @@
             placeholder="جستجو اماکن متبرکه"
           />
           <span
-            @click="modalStore.changeBeghaListEventFiltersActive('active')"
+            @click="showSelectedSort=true"
             class="material-symbols-outlined search-input-icon"
           >
             tune
@@ -70,13 +70,15 @@
         <ZaerSaraItem/>
         <ZaerSaraItem/>
       </div>
-      <BottomSheets v-model="showSelectDate">
+      <BottomSheets  v-model="showSelectDate">
         
-    
-          <DatePicker  :show="true" :dualInput="true" :mode="'range'" :column="1"  />
-          
-      
+        <DatePicker   :show="true" :dualInput="true" :mode="'range'" :column="1"  />
+
     </BottomSheets>
+    <BottomSheets :title="'ترتیب نمایش بر اساس'"  v-model="showSelectedSort">
+        
+        <ZaerSaraSort />
+            </BottomSheets>
       
   </div>
       </div>
@@ -85,10 +87,13 @@
 </template>
 <script lang="ts" setup>
 import ZaerSaraItem from "./ZaerSaraItem.vue";
+import ZaerSaraSort from "./ZaerSaraSort.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineComponent([ZaerSaraItem]);
 const modalStore = useModalStore();
     const showSelectDate=ref(false);
+    const showSelectedSort=ref(false);
+    
   </script>
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
