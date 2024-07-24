@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 
 export const useInitialApp = defineStore('initialApp', {
   state: () => ({
-    isLoading : true
+    isLoading: true
   }),
   getters: {
     isLoadingApp(): boolean {
@@ -11,8 +11,8 @@ export const useInitialApp = defineStore('initialApp', {
     },
   },
   actions: {
-    changeLoadingState() {
-      this.isLoading = !this.isLoading;
+    changeLoadingState(value: any) {
+      this.isLoading = value;
     }
   },
 })
