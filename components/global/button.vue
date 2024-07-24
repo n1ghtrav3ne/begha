@@ -1,9 +1,7 @@
 <template>
-  <div class="w-full h-11">
-    <button class="w-full h-full rounded-xl p-2" :class="`bg-${props.color}`">
-      <slot></slot>
-    </button>
-  </div>
+  <button :class="`bg-${props.color}`" class="w-full h-full rounded-xl p-2">
+    <slot></slot>
+  </button>
 </template>
 
 <script setup>
