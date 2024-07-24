@@ -46,8 +46,6 @@ const modalStore = useModalStore();
 let rate = ref(0);
 let stars = ref([1, 2, 3, 4, 5]);
 const closeModal = () => {
-  modalStore.changeBeghaListProvinceFiltersActive("deactive");
-  modalStore.changeBeghaListEventFiltersActive("deactive");
   modalStore.changeMoreServicesButtonsActive("deactive");
 };
 

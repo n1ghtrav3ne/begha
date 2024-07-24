@@ -45,18 +45,27 @@
         </ul>
       </div>
     </div>
-    <SwitchAccount />
+
+    <BottomSheets v-model="openUserChange">
+
+      <SwitchAccount />
+
+    </BottomSheets>
     <exit v-if="modalStore.isOpenExitAccount" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import SwitchAccount from "./SwitchAccountModal.vue";
+import BottomSheets from "../global/bottomSheets.vue";
 
 import exit from "./exit/exit.vue"
 
 import { useModalStore } from "~/stores/modals-store";
-defineComponent([SwitchAccount,exit]);
+defineComponent([SwitchAccount,exit,BottomSheets]);
+
+const openUserChange=ref(false)
+
 const modalStore = useModalStore()
 
 const cities = ref<
@@ -117,7 +126,7 @@ const profileOptions = ref<{ title: string; icon: string; notif: boolean }[]>([
 
 const optionsAction = (item:{title:string}) => {
     if (item.title === 'تغییر نوع کاربری') {
-        modalStore.changeSwitchAccountActive('active')
+        openUserChange.value=true
     }else if(item.title === 'درخواست های من'){
       useRouter().push('/profile/requests/')
     }else if(item.title==='تکمیل پروفایل'){

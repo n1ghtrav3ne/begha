@@ -1,13 +1,5 @@
 <template>
 
-    <FullHeightBaseDialog :modalHeight="100"> 
-
-        <template #headerText>
-            <span class="base-modal-header">رزرو سالن مراسم</span>
-        </template>
-
-        <template #body>
-
             <div class="chooseTime">
 
                 <span class="choosingTimeTitle">انتخاب ساعت</span>
@@ -95,13 +87,6 @@
 
             </div>
 
-
-
-
-        </template>
-    
-    
-    </FullHeightBaseDialog>
 
 </template>
 <script setup lang="ts"> 
@@ -277,22 +262,28 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
     }
 }
 
+.list::-webkit-scrollbar{
+    display: none;
+}
+
 .buttonContainer{
-    position: fixed;
-    bottom: 3%;
     width: 100%;
     max-width: 600px;
+    bottom: 3%;
 
-    .ingReservation{
+    .confirmingReservation{
+        position: fixed;
         display: flex;
         align-items: center;
         justify-content: center;
         background: $primary;
         padding: 8px;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
         color: $primary-on;
         height: 44px;
         border-radius: 8px;
-        bottom: 2%;
         font-size: 12px;
         font-style: normal;
         font-weight: 400;

@@ -27,7 +27,7 @@
             placeholder="جستجو اماکن متبرکه"
           />
           <span
-            @click="modalStore.changeBeghaListEventFiltersActive('active')"
+            @click="BeghaEventFilterModalSheet=true"
             class="material-symbols-outlined search-input-icon"
           >
             tune
@@ -45,7 +45,12 @@
       <BeghaProvinceFilter />
     </BottomSheets>
 
-    <BeghaEventFilterModal />
+    <BottomSheets v-model="BeghaEventFilterModalSheet">
+
+      <BeghaEventFilterModal />
+
+    </BottomSheets>
+
   </div>
 </template>
 
@@ -54,7 +59,6 @@ import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
 import BeghaProvinceFilter from "./BeghaProvinceFilter.vue";
 import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
-import { useModalStore } from "~/stores/modals-store";
 import BottomSheets from "~/components/global/bottomSheets.vue";
 defineNuxtComponent({
   PopularBegha,
@@ -63,8 +67,8 @@ defineNuxtComponent({
   BeghaEventFilterModal,
   BottomSheets
 });
-const modalStore = useModalStore();
 const filterProvinceBottomSheet=ref(false);
+const BeghaEventFilterModalSheet=ref(false)
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]
 >([

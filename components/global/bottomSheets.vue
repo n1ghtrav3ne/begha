@@ -7,7 +7,7 @@
     <div
       id="sheet-elem"
       ref="sheetElem"
-      class="w-full sheetElem max-h-[800px] bg-white bottom-0 absolute rounded-t-2xl translate-y-full animate-slide-up overflow-scroll"
+      class="w-full sheetElem max-h-[800px] bg-white bottom-0 absolute rounded-t-2xl translate-y-full animate-slide-up overflow-auto"
       @click.stop
     >
       <div class="w-full h-full relative">
@@ -21,7 +21,7 @@
 
             <div
               v-if="props?.closable"
-              class="size-6 body cursor-pointer"
+              class="size-6 overflow-auto body cursor-pointer"
               @click="closeSheet()"
             >
               <img src="~/assets/images/icons/close.svg" class="size-6" />

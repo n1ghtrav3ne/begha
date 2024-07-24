@@ -41,13 +41,7 @@ const modalStore = useModalStore();
 const reservationStore=useReservationStore();
 
 const closeModal = () => {
-  modalStore.changeBeghaListProvinceFiltersActive("deactive");
-  modalStore.changeBeghaListEventFiltersActive("deactive");
   modalStore.changeMoreServicesButtonsActive("deactive");
-  modalStore.changeSwitchAccountActive("deactive");
-  modalStore.changeRequestsFilterActive("deactive");
-  modalStore.changeCancelRequestModalActive("deactive");
-  modalStore.changeMediaBeghaFilterActive("deactive");  
   modalStore.changeCermonyHallRequestFilterActive("deactive");
   modalStore.changeCermonyHallSearchCities("deactive");
   modalStore.changeFacilitiesSearchFilter("deactive")

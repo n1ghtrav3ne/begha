@@ -1,13 +1,7 @@
 <template>
   <div>
-    <FullHeightBaseDialog
-      :modalHeight="552"
-      :modalPadding="'0 0 10px 0'"
-      class="filter-event-modal"
-    >
-      <template #body>
         <div class="filter-modal-body">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center flex-row-reverse justify-between">
             <div class="search-box-input">
               <input class="search-input" type="text" placeholder="نام رسانه" />
               <span class="material-symbols-outlined search-input-icon">
@@ -15,17 +9,15 @@
               </span>
             </div>
             <span
-              @click="modalStore.changeBeghaMediaPostFilterActive('deactive')"
               class="material-symbols-outlined back-icon"
             >
-              arrow_left_alt
+              arrow_right_alt
             </span>
           </div>
 
           <div class="search-result">
             <ul class="result-items">
               <li
-                @click="modalStore.changeBeghaMediaPostFilterActive('deactive')"
                 class="result-item"
               >
                 <div class="item-content flex items-center">
@@ -39,7 +31,6 @@
                 </div>
               </li>
               <li
-                @click="modalStore.changeBeghaMediaPostFilterActive('deactive')"
                 class="result-item"
               >
                 <div class="item-content flex items-center">
@@ -53,7 +44,6 @@
                 </div>
               </li>
               <li
-                @click="modalStore.changeBeghaMediaPostFilterActive('deactive')"
                 class="result-item"
               >
                 <div class="item-content flex items-center">
@@ -69,52 +59,11 @@
             </ul>
           </div>
         </div>
-      </template>
-    </FullHeightBaseDialog>
   </div>
 </template>
 
 <script lang="ts" setup>
-import FullHeightBaseDialog from "~/components/global/FullHeightBaseDialog.vue";
-import { useModalStore } from "~/stores/modals-store";
-defineNuxtComponent({ FullHeightBaseDialog });
-const modalStore = useModalStore();
-let selectedEvents = ref<{ isChecked: boolean; label: string; id: number }[]>(
-  []
-);
-const cities = ref<{ begha: string; iconClass: string; isActive: boolean }[]>([
-  {
-    begha: "همه",
-    isActive: true,
-    iconClass: "apps",
-  },
-  {
-    begha: "امام زاده صالح",
-    isActive: false,
-    iconClass: "location_on",
-  },
-  {
-    begha: "امام زاده صالح",
-    isActive: false,
-    iconClass: "location_on",
-  },
-  {
-    begha: "امام زاده صالح",
-    isActive: false,
-    iconClass: "location_on",
-  },
-]);
-const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
-  {
-    id: 1,
-    label: "بقاع دنبال شده",
-    isChecked: false,
-  },
-]);
 
-const selectedEventsFilter = (emited: any) => {
-  selectedEvents.value = emited;
-};
 </script>
 
 <style lang="scss" scoped>

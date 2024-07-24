@@ -33,7 +33,7 @@
         <span>رویداد های پیش رو</span>
       </div>
 
-      <div class="filter">
+      <div @click="openSearchFilter = true" class="filter">
         <span class="icon">همه بقعه ها</span>
 
         <span class="icon-Arrow-Bottom-Iran"></span>
@@ -72,28 +72,37 @@
       </Swiper>
     </div>
 
-    <BottomSheets :line="true" title="انتخاب تاریخ " v-model="openSheet">
+      <BottomSheets :line="true" title="انتخاب تاریخ " v-model="openDate">
 
       <DatePickers :show="true" :dualInput="true" :mode="'range'" :column="1" />
 
     </BottomSheets>
+
+    <BottomSheets :line="true" title="انتخاب بقعه مورد نظر خود را انتخاب کنید" v-model="openSearchFilter">
+
+      <SearchFilter />
+
+    </BottomSheets>
+
   </div>
 </template>
 
 <script setup lang="ts">
 import followEvents from "./FollowEvents.vue";
-
+import SearchFilter from "~/components/main-events/SearchFilter.vue"
 import EventCard from "~/components/main-events/EventCard.vue";
 import DatePickers from "~/components/global/date-picker/DatePicker.vue"
 import BottomSheets from "~/components/global/bottomSheets.vue";
 
 
-defineComponent({ followEvents, EventCard, BottomSheets,DatePickers });
+defineComponent({ followEvents, EventCard, BottomSheets,DatePickers,SearchFilter });
 
-const openSheet = ref(false);
+const openDate = ref(false);
+
+const openSearchFilter=ref(false)
 
 const openBase = () => {
-  openSheet.value = !openSheet.value;
+  openDate.value = !openDate.value;
 };
 
 const eventItems = ref<

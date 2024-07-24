@@ -1,15 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="394">
-
-        <template #headerText>
-
-            <span class="text-[14px]">جستجو بر اساس امکانات</span>
-
-        </template>
-
-        <template #body>
-
             <div class="facilitiesContainer">
 
                 <div @click="()=> itemOne=!itemOne" class="iconContainer">
@@ -111,11 +101,6 @@
             <button class="confirmingFilter">
                 اعمال فیلتر
             </button>
-            
-
-        </template>
-
-    </BaseDialog>
 
 </template>
 <script lang="ts" setup>

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="search-box-input">
         <span
-          @click="modalStore.changeMediaBeghaFilterActive('active')"
+          @click="MainMediaBeghaFilterSheet=true"
           class="select-begha-filter flex items-center"
         >
           <span class="filter-title">انتخاب بقعه</span>
@@ -11,7 +11,7 @@
             keyboard_arrow_down
           </span>
         </span>
-        <input
+        <input @click="MainMediaPostFilterSheets=true"
           class="search-input"
           type="text"
           placeholder="نام رسانه"
@@ -51,19 +51,29 @@
         </div>
       </div>
     </div>
-    <MainMediaBeghaFilter v-if="modalStore.isOpenMediaBeghaFilterModal" />
-    <MainMediaPostFilter v-if="modalStore.isOpenMainMediaPostFilter" />
+    <BottomSheets v-model="MainMediaBeghaFilterSheet">
+
+      <MainMediaBeghaFilter />
+
+    </BottomSheets>
+
+    <BottomSheets v-model="MainMediaPostFilterSheets">
+
+      <MainMediaPostFilter />
+
+    </BottomSheets>
   </div>
 </template>
 
 <script lang="ts" setup>
 import "swiper/css";
 import "swiper/css/pagination";
+import BottomSheets from "../global/bottomSheets.vue";
 import MainMediaPostItem from "./MainMediaPostItem.vue";
 import MainMediaBeghaFilter from "./MainMediaBeghaFilter.vue";
 import MainMediaPostFilter from "./MainMediaPostFilter.vue";
-import { useModalStore } from "~/stores/modals-store";
-const modalStore = useModalStore();
+const MainMediaBeghaFilterSheet=ref(false) 
+const MainMediaPostFilterSheets=ref(false)
 const beghaNews = ref<
   {
     id: number;

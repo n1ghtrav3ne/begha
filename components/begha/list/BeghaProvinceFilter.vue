@@ -88,7 +88,6 @@ const cities = ref<
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 
-.filter-province-modal {
   .modal-head-title {
     font-size: 14px;
     font-family: "yekan-regular";
@@ -179,5 +178,5 @@ const cities = ref<
       }
     }
   }
-}
+
 </style>

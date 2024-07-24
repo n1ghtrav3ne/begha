@@ -1,15 +1,5 @@
 <template>
   <div>
-    <BaseDialog
-      :modalHeight="552"
-      :modalPadding="'20px 0 35px 0'"
-      v-if="modalStore.isOpenBeghaListEventFilter"
-      class="filter-event-modal"
-    >
-      <template #headerText>
-        <span class="modal-head-title">جستجو بر اساس خدمات و مراسمات جاری</span>
-      </template>
-      <template #body>
         <div class="filter-modal-body">
           <div class="services-container pb-5 grid grid-rows-1">
             <div class="grid grid-cols-5 flex">
@@ -82,8 +72,6 @@
             </div>
           </div>
         </div>
-      </template>
-    </BaseDialog>
   </div>
 </template>
 
@@ -168,7 +156,6 @@ const selectedEventsFilter = (emited: any) => {
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 
-.filter-event-modal {
   .modal-head-title {
     font-size: 14px;
     font-family: "yekan-regular";
@@ -181,6 +168,7 @@ const selectedEventsFilter = (emited: any) => {
     background: $surface-variant;
     padding: 15px;
     border-radius: 10px;
+  
     input {
       width: 100%;
       padding: 0 25px;
@@ -274,7 +262,7 @@ const selectedEventsFilter = (emited: any) => {
       }
     }
   }
-}
+
 
 .services-container {
   border-bottom: 3px solid $secondary-container;
