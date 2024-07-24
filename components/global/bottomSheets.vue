@@ -40,7 +40,7 @@
 const sheetStatus = ref(false);
 const props = defineProps({
   title: { type: String },
-  closable: { type: Boolean },
+  closable: { type: Boolean,default:true },
   modelValue: {},
   class: {},
   line:{type:Boolean}

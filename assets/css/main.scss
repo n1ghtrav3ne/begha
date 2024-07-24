@@ -13,6 +13,11 @@ html{
 body{
     font-family: 'yekan-regular';
     font-size: 14px;
+    color: #0B0B0B;
     max-width: 600px;
     margin: 0 auto;
 }
+
+.check-icon {
+    color: $secondary;
+  }
