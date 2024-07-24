@@ -16,11 +16,19 @@
 
     <div ref="poster" class="poster">
 
-        <div :class="{active:hasImage}" @click="fileInput.click()" class="addImage">
+        <div class="addImage">
 
-            <span class="addText">افزودن تصویر کاور</span>
+            <span v-if="!hasImage" class="addText">افزودن تصویر کاور</span>
 
-            <div class="iconContainer">
+            <div  @click="fileInput.click()" v-if="!hasImage" class="iconContainer">
+
+                <span class="material-symbols-outlined">
+                border_color
+                </span>
+
+            </div>
+
+            <div @click="mausoleumStore.changeInfoPoster('active')" class="activeImage" v-if="hasImage">
 
                 <span class="material-symbols-outlined">
                 border_color
@@ -156,12 +164,16 @@
 
     <ChangeImage v-if="mausoleumStore.isOpenInfoImage" :image="pageData[0].image" />
 
+    <ChangePoster v-if="mausoleumStore.isOpenInfoPoster" :image="posterImage" />
+
 
 </template>
 
 <script lang="ts" setup>
 
 import adminBanner from "~/components/mausoleum/information/adminPanelBanner.vue"
+
+import ChangePoster from "~/components/mausoleum/information/editInformation/inputValues/ChangePoster.vue"
 
 import profileImage from "~/assets/images/cemetery/cemetery.png";
 
@@ -171,7 +183,7 @@ import {useMausoleumStore} from "~/stores/m-modals-store"
 
 const mausoleumStore=useMausoleumStore()
 
-defineComponent({adminBanner,ChangeImage})
+defineComponent({adminBanner,ChangeImage,ChangePoster})
 
 const fileInput=ref()
 
@@ -179,11 +191,14 @@ const poster=ref()
 
 const hasImage = ref(false)
 
+const posterImage=ref('')
+
 const handleFileChange=(event:any)=>{
     const file=event.target.files[0]
     const url=URL.createObjectURL(file)
     poster.value.style.backgroundImage=`url(${url})`
     hasImage.value=true
+    posterImage.value=url
 }
 
 const showContent =ref(false)
@@ -271,6 +286,22 @@ watchEffect(()=>{
             width: 32px;
             height: 32px;
             border-radius: 100%;
+
+            span{
+                transform: scale(0.8);
+            }
+        }
+
+        .activeImage{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px;
+            border-radius: 50%;
+            color: $primary;
+            background: $surface;
+            width: 32px;
+            height: 32px;
 
             span{
                 transform: scale(0.8);

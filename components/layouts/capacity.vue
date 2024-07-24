@@ -1,27 +1,24 @@
 <template>
     <div  :style="`height: ${props.modalHeight + 'px !important'};`" class="capacityContainer">
 
-        <div dir="ltr" class="labelContainer">
 
-            <div :style="`width: ${inputValue/10}%`" class="effectingLable">
+               <label  :style="`transform: translateX(${inputValue * 2}%)`" class="rangeLabel">
 
-            </div>
+                    {{ inputValue }}
 
-            <label class="rangeLabel">
+                </label>
+  
 
-            {{ inputValue }}
+        <div class="whole">
 
-        </label>
+              <input type="range" min="0" max="1000" list="numbers" v-model="inputValue" />
+
+        <hr class="fill" :style="`width: ${inputValue/10}%`">
 
         </div>
 
 
-            <input type="range" min="0" max="1000" list="numbers" v-model="inputValue" />
-
-
-
-
-        <hr class="fill" :style="`width: ${inputValue/10}%`">
+          
 <!-- 
         <datalist id="numbers">
             <div value="0"></div>
@@ -69,18 +66,8 @@ const inputValue=ref(0)
     width: 100%;
     direction: ltr;
 
-    .labelContainer{
-        height: fit-content;
-        position: relative;
-        width: 100%;
-        height: 24px;
-        direction: ltr;
-        display: flex;
-        flex-direction: row;
-        bottom: 5px;
-        .effectingLable{
-            height: 100%;
-        }
+
+        
         .rangeLabel{
             height: 24px;
             display: flex;
@@ -89,10 +76,13 @@ const inputValue=ref(0)
             font-size: 11px;
             font-weight: 400;
             position: relative;
+            bottom: 0;
             color: $secondary-on;
             width: 26px;
             background-image: url('~/assets/images/cermony/bg.svg');
         }
+    
+
 
     }
         
@@ -126,11 +116,21 @@ const inputValue=ref(0)
         opacity: 0.6;
     }
     
+    .whole{
+        direction: ltr;
+        width: 96%;
+        position: relative;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
 
-}
+        
 .fill{
     position: relative;
-    bottom: 4px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    bottom: 13px;
     border: 2px solid $secondary;
     height: 4px;
     border-radius: 100px;
@@ -143,13 +143,19 @@ input[type="range"]::-webkit-slider-thumb {
     z-index: 9999;
     position: relative;
     bottom: 4px;
-    background: blue;
+    background: $surface;
+    fill: var(--Key-Surface-Surface, #FBFBFB);
+    stroke: var(--Key-Surface-Surface, #FBFBFB);
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.10));
 }
 input{
     accent-color: $secondary;
     -webkit-appearance: none;
     appearance: none;
     width:100%;
+    position: relative;
+    right: 0;
+    left: 0;
     direction:ltr;
     height: 100%;
     margin-left: auto;
@@ -161,5 +167,8 @@ input[type=range]::-webkit-slider-runnable-track  {
     border-radius: 100px;
     width: 100%;
 }
+    }
+
+
 
 </style>
