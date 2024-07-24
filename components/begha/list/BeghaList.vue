@@ -2,12 +2,15 @@
   <div>
     <div class="back-navbar container flex items-center justify-between">
       <span
-        ><span @click="$router.push('/')" class="material-symbols-outlined back-icon ml-2">
+        ><span
+          @click="$router.push('/')"
+          class="material-symbols-outlined back-icon ml-2"
+        >
           trending_flat </span
         ><span class="back-title">بقاع متبرکه</span></span
       >
       <div
-        @click="modalStore.changeBeghaListProvinceFiltersActive('active')"
+        @click="filterProvinceBottomSheet=true"
         class="choose-location flex items-center mr-3"
       >
         <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
@@ -38,7 +41,10 @@
         </div>
       </div>
     </div>
-    <BeghaProvinceFilterModal />
+    <BottomSheets v-model="filterProvinceBottomSheet" >
+      <BeghaProvinceFilter />
+    </BottomSheets>
+
     <BeghaEventFilterModal />
   </div>
 </template>
@@ -46,16 +52,19 @@
 <script lang="ts" setup>
 import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
-import BeghaProvinceFilterModal from "./BeghaProvinceFilterModal.vue";
+import BeghaProvinceFilter from "./BeghaProvinceFilter.vue";
 import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
 import { useModalStore } from "~/stores/modals-store";
+import BottomSheets from "~/components/global/bottomSheets.vue";
 defineNuxtComponent({
   PopularBegha,
   BeghaListItems,
-  BeghaProvinceFilterModal,
+  BeghaProvinceFilter,
   BeghaEventFilterModal,
+  BottomSheets
 });
 const modalStore = useModalStore();
+const filterProvinceBottomSheet=ref(false);
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]
 >([

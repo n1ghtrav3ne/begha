@@ -1153,16 +1153,16 @@
         else this.onDisplay = clone;
       },
       subscribeData() {
-        this.currentLocale = "fa";
-        const store = credentialStore();
-        store.$subscribe((mount, state) => {
-            const selectedLocale = "fa";
-        //   if (this.currentLocale !== this.$i18n.locale) {
-        //     const selectedLocale = this.$i18n.locale == "fa" ? "fa" : "en";
-        //     this.changeLocale(selectedLocale);
-        //     this.showSelectedDates();
-        //   }
-        });
+        // this.currentLocale = "fa";
+        // const store = credentialStore();
+        // store.$subscribe((mount, state) => {
+        //     const selectedLocale = "fa";
+        // //   if (this.currentLocale !== this.$i18n.locale) {
+        // //     const selectedLocale = this.$i18n.locale == "fa" ? "fa" : "en";
+        // //     this.changeLocale(selectedLocale);
+        // //     this.showSelectedDates();
+        // //   }
+        // });
       },
       changeSelectedYear(year: number): void {
         this.onDisplay!.year(year);

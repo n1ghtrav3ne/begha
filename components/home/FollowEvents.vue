@@ -171,7 +171,6 @@ const servicesList = ref<
     img {
       border-top-right-radius: 16px;
       border-top-left-radius: 16px;
-      max-width: 350px !important;
       width: 100% !important;
     }
   }
