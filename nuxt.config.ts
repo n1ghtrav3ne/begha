@@ -56,9 +56,9 @@ export default defineNuxtConfig({
     },
   },
 
-  components: {
-    dirs: ["~/components/global/"],
-  },
+  // components: {
+  //   dirs: ["~/components/global/"],
+  // },
 
   css: ["~/assets/css/main.scss"],
 

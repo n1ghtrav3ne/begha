@@ -17,8 +17,11 @@ export default {
       xl: '1440px',
     },
     colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      inherit: "inherit",
       white: "#FFFFFF",
-      'primary': '#09D374',
+      primary: '#09D374',
       surface: {
         30: '#FBFBFB',
         50: "#F1F1F1",
@@ -29,16 +32,20 @@ export default {
         500: '#7E7E7E',
         600: '#0B0B0B',
       },
-      'blue': '#1fb6ff',
-      'purple': '#7e5bef',
-      'pink': '#ff49db',
-      'orange': '#ff7849',
-      'green': '#13ce66',
-      'yellow': '#ffc82c',
+      secondary: {
+        400: "#B5D9FB"
+      },
+      blue: '#1fb6ff',
+      purple: '#7e5bef',
+      pink: '#ff49db',
+      orange: '#ff7849',
+      green: '#13ce66',
+      yellow: '#ffc82c',
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
-      error: "#ef4444"
+      error: "#ef4444",
+      red: "#DB2929"
     },
     fontFamily: {
       yakan: ['"yekan-regular"', '"yekan-bold"'],

@@ -1,20 +1,29 @@
 <template>
-  <div>
+  <div class="w-full h-full">
     <label class="font-normal text-sm text-surface-600">
       {{ props.label }}
     </label>
-    <div class="w-full h-11 mt-4">
+    <div
+      id="input-elem"
+      class="w-full h-full mt-4 flex items-center justify-between px-4"
+      :class="`bg-${props.color} rounded-${props.rounded} `"
+    >
+      <slot name="prepend"> </slot>
+
       <input
-        class="w-full h-full bg-surface-50 outline-1 outline-primary p-4 rounded-lg"
+        class="h-full outline-none py-6"
+        :class="`rounded-${props.rounded} bg-${props.color}`"
         :placeholder="props.placeholder"
         :type="props.type"
         v-model="input"
         @change="emit('update:modelValue', input)"
       />
-      <span class="text-error text-sm" v-if="props.error">
-        {{ props.error }}
-      </span>
+
+      <slot name="append"> </slot>
     </div>
+    <span class="text-error text-sm" v-if="props.error">
+      {{ props.error }}
+    </span>
   </div>
 </template>
 
@@ -22,6 +31,10 @@
 const emit = defineEmits(["update:modelValue"]);
 const input = ref();
 const props = defineProps({
+  color: {
+    type: String,
+    default: "surface-50",
+  },
   placeholder: {
     typeof: String,
   },
@@ -36,8 +49,63 @@ const props = defineProps({
   error: {
     type: String,
   },
+  rounded: {
+    type: String,
+    default: "lg",
+  },
+
+  border: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const activeInput = ref(false);
+
+onMounted(() => {
+  const elem = document.getElementById("input-elem");
+  document.addEventListener("click", function (event) {
+    const input = document.getElementsByTagName("input");
+    const outsideClick = !elem.contains(event.target);
+
+    if (outsideClick) {
+      activeInput.value = false;
+      elem.classList.remove("border-[1px]");
+      elem.classList.remove("border-secondary-400");
+      elem.classList.remove("border-shadow");
+      if (props.border) {
+        elem.classList.add("border-[1px]");
+        elem.classList.add("border-surface-100");
+      }
+    } else {
+      activeInput.value = true;
+      elem.classList.add("border-[1px]");
+      elem.classList.remove("border-surface-100");
+      elem.classList.add("border-secondary-400");
+      elem.classList.add("border-shadow");
+      input[0].focus();
+    }
+  });
+
+  if (props.border) {
+    elem.classList.add("border-[1px]");
+    elem.classList.add("border-surface-100");
+    elem.classList.add("border-[1px]");
+  }
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+::placeholder {
+  font-size: 14px;
+  color: #7e7e7e;
+}
+
+.border-shadow {
+  box-shadow: 0px 1px 8px 0px #429ff573;
+}
 </style>
