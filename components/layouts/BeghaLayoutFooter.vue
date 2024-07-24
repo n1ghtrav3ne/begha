@@ -42,7 +42,7 @@ const servicesList = ref<
     iconClass: "icon-House-Iran",
     colorClass: "btn-bg-blue",
     badgeColorClass : 'error-bg-color' , 
-    link : ''
+    link : '/begha-services'
   },
   {
     title: "رسانه",
@@ -68,6 +68,9 @@ const servicesList = ref<
   width: 100%;
   position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   flex-direction: column;
     justify-content: center;
     align-items: center;

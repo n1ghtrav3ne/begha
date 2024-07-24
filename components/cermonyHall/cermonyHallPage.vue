@@ -84,6 +84,7 @@
     import cermonyHallFilter from "./cermonyHallFilter.vue"
     import cermonySearchCities from "./cermonySearchCities.vue"
     import CermonyCard from "./cermonyCard.vue";
+    import facilitiesSearchFilter from "./facilitiesSearchFilter.vue"
     import { useModalStore } from "~/stores/modals-store";
     const modalStore = useModalStore();
 
