@@ -1,5 +1,5 @@
 <template>
-<div>
+<nuxt-link :to="'./12'">
     <div class="zaer-card">
 <img class="zaer-img" src="@/assets/images/zaersara/zaersara.png" >
 <div class="title ">
@@ -20,7 +20,7 @@
   <span class="ms-1" >اصفهان، اصفهان</span>
 </div>
     </div>
-    </div>
+</nuxt-link>
 
 </template>
 

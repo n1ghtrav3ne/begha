@@ -7,7 +7,7 @@
         ><span class="back-title">زائر سرا</span></span
       >
       <div
-        
+        @click="showProvince=true"
         class="choose-location flex items-center mr-3"
       >
         <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
@@ -31,7 +31,7 @@
             tune
           </span>
         </div>
-        <div @click="$router.push('/library/basket')" class="zaersara-reserve">
+        <div @click="showdelete=true" class="zaersara-reserve">
           <span class="zaersara-icon flex items-center justify-center">
             <span class="material-symbols-outlined"> local_library </span>
           </span>
@@ -70,7 +70,14 @@
         <ZaerSaraItem/>
         <ZaerSaraItem/>
       </div>
-      <BottomSheets  v-model="showSelectDate">
+
+              
+
+  </div>
+      </div>
+    </div>
+    </div>
+    <BottomSheets  v-model="showSelectDate">
         
         <DatePicker   :show="true" :dualInput="true" :mode="'range'" :column="1"  />
 
@@ -79,11 +86,12 @@
         
         <ZaerSaraSort />
             </BottomSheets>
-      
-  </div>
-      </div>
-    </div>
-    </div>
+            <BottomSheets :title="'شهر مورد نظر خود را انتخاب کنید'"  v-model="showProvince">
+              <Provinces/>          
+            </BottomSheets>
+            <BottomSheets   v-model="showdelete">
+              <DeleteConfirm/>
+          </BottomSheets>
 </template>
 <script lang="ts" setup>
 import ZaerSaraItem from "./ZaerSaraItem.vue";
@@ -93,6 +101,8 @@ defineComponent([ZaerSaraItem]);
 const modalStore = useModalStore();
     const showSelectDate=ref(false);
     const showSelectedSort=ref(false);
+    const showProvince=ref(false);
+    const showdelete=ref(false);
     
   </script>
 <style lang="scss" scoped>
