@@ -118,7 +118,7 @@ const inputValue=ref(0)
     
     .whole{
         direction: ltr;
-        width: 96%;
+        width: 97%;
         position: relative;
         right: 0;
         left: 0;

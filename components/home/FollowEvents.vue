@@ -22,9 +22,9 @@
         }"
       >
         <SwiperSlide v-for="slide in 3" :key="slide">
-          <div class="card-box">
-            <div class="card-image">
-              <img src="~/assets/images/home/eid-fetr.jpg" alt="" />
+          <div class="card-box !w-full">
+            <div class="!w-full card-image">
+              <img class="!w-full" src="~/assets/images/home/eid-fetr.jpg" alt="" />
             </div>
             <div class="card-info">
               <div class="card-title-head">
@@ -129,7 +129,6 @@ const servicesList = ref<
 }
 
 .swiper-slide img {
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -165,6 +164,10 @@ const servicesList = ref<
   .card-image {
     border-top-right-radius: 16px !important;
     border-top-left-radius: 16px !important;
+    background-image: url('~/assets/images/home/eid-fetr.jpg');
+    background-size: contain;
+    background-position: 100%;
+    background-repeat: no-repeat;
     img {
       border-top-right-radius: 16px;
       border-top-left-radius: 16px;
