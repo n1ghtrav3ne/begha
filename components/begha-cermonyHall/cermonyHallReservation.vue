@@ -256,7 +256,7 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
 
     .list{
         overflow-y: auto;
-        font-family: "Yekan Bakh FaNum";
+        
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -283,7 +283,7 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
     width: 100%;
     max-width: 600px;
 
-    .confirmingReservation{
+    .ingReservation{
         display: flex;
         align-items: center;
         justify-content: center;

@@ -55,6 +55,7 @@ import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
 import BaseDialog from "~/components/global/BaseDialog.vue";
 import { useModalStore } from "~/stores/modals-store";
+
 defineNuxtComponent({ PopularBegha, BeghaListItems, BaseDialog });
 const modalStore = useModalStore();
 const cities = ref<{ province: string; city: string; iconClass : string; isActive: boolean }[]>([
