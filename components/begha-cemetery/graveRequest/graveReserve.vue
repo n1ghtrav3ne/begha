@@ -250,10 +250,13 @@ const uploadFile=()=>{
     width: 100%;
     position: fixed;
     background: $surface;
-    z-index: 9999;
+    max-width: 600px;
     top: 0;
     overflow: scroll !important;
     height: 100%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
 
     .greenBox{
     background-color: $primary;
@@ -356,4 +359,7 @@ const uploadFile=()=>{
     color: $secondary !important;
 }
 
+.gravePage::-webkit-scrollbar{
+    display: none;
+}
 </style>

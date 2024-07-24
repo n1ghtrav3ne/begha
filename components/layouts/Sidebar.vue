@@ -66,14 +66,16 @@ const appSidebar = useAppSidebar();
   .container {
     position: relative;
   }
-  // font-family: "yekan-regular" !important;
   color: $surface-on;
   background-color: $surface;
   height: 100%;
-  width: 85%;
+  max-width: 600px;
   position: absolute;
   top: 0;
   right: 0;
+  left:1rem;
+  margin: 0 auto;
+  max-width: 600px;
   transition: all ease-in-out 0.13s;
   transform: translateX(0);
   z-index: 9999;

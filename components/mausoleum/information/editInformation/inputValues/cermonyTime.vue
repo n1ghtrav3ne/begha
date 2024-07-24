@@ -24,11 +24,11 @@
 
                     <div class="inputsContainer">
 
-                        <input v-model="minute" @input="limitInput($event, 2)" type = "number" maxlength = "2">
+                        <input pattern="[0-9]*" v-model="minute" @input="limitInput($event, 2)" type = "tel" maxlength = "2">
 
                         <span>:</span>
 
-                        <input v-model="hour" @input="limitInput($event, 2)" type = "number"maxlength = "2">
+                        <input v-model="hour" @input="limitInput($event, 2)" type = "tel" maxlength = "2">
 
                     </div>
 
@@ -48,11 +48,11 @@
 
                     <div class="inputsContainer">
 
-                        <input v-model="endMinute" @input="limitInput($event, 2)" type = "number"maxlength = "2">
+                        <input v-model="endMinute" @input="limitInput($event, 2)" type = "tel"maxlength = "2">
 
                         <span>:</span>
 
-                        <input v-model="endHour" @input="limitInput($event, 2)" type = "number"maxlength = "2">
+                        <input v-model="endHour" @input="limitInput($event, 2)" type = "tel"maxlength = "2">
 
                     </div>
 
@@ -81,6 +81,7 @@ function limitInput(event:any, maxLength:any) {
         event.target.value = event.target.value.slice(0, maxLength);
     }
 }
+
 
 defineComponent({BaseDialog})
 
@@ -136,6 +137,8 @@ watch([endMinute,endHour],()=>{
     padding-top: 26px;
     width: 100%;
     justify-content: space-between;
+    -webkit-scrollbar: none !important;
+
 
     input{
         outline: 0;
@@ -155,6 +158,14 @@ watch([endMinute,endHour],()=>{
         border: 1px solid var(--Secondary-S-400, #B5D9FB);
         background: var(--Secondary-S-100, #F3F9FE);
         box-shadow: 0px 1px 8px 0px rgba(66, 159, 245, 0.27);
+    }
+
+    input::-webkit-inner-spin-button{
+        display: none;
+    }
+
+    input::-webkit-outer-spin-button{
+        display: none;
     }
 
     hr{
