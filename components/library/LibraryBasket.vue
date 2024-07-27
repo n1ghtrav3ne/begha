@@ -4,7 +4,10 @@
       <div class="begha-page-banner">
         <div class="flex items-center justify-between p-2 pt-3 pl-4">
           <div class="flex items-center">
-            <span @click="$router.push('/library')" class="library-page-icon material-symbols-outlined ml-2">
+            <span
+              @click="$router.push('/library')"
+              class="library-page-icon material-symbols-outlined ml-2"
+            >
               arrow_right_alt
             </span>
             <span class="library-page-title">تکمیل رزرو</span>
@@ -21,7 +24,7 @@
       </div>
       <div class="book-description mt-8">
         <div class="flex items-center">
-          <span class="book-genre-icon flex items-center justify-center">
+          <span class="book-genre-icon centered">
             <span class="material-symbols-outlined"> menu_book </span>
           </span>
           <span class="book-desc-title">درباره کتاب نهج البلاغه</span>

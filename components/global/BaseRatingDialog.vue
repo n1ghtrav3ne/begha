@@ -4,7 +4,7 @@
       :style="`height: ${props.modalHeight + 'px !important'};`"
       class="base-modal"
     >
-      <div class="base-modal-header flex items-center justify-center">
+      <div class="base-modal-header centered">
         <img src="~/assets/images/rating/rating-img.svg" alt="" />
       </div>
       <div

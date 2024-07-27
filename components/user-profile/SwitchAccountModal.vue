@@ -1,40 +1,36 @@
 <template>
   <div>
-        <div class="filter-modal-body">
-          <div class="selectable-provinces mt-8">
-            <div
-              v-for="(item, index) in cities"
-              :key="index"
-              :class="item.isActive ? 'selected' : ''"
-              class="select-item available-province mt-3 flex items-center justify-between"
-            >
-              <div class="flex items-center">
-                <div class="accounts flex items-center">
-                  <img src="~/assets/images/user/avatar.svg" alt="" />
-                  <div class="name-login-text flex items-start flex-col">
-                    <span class="login-state-text">احمد حسینی</span>
-                    <span class="user-phone">کاربر عادی</span>
-                  </div>
-                </div>
-              </div>
-              <div v-if="item.isActive">
-                <span
-                  class="material-symbols-outlined flex check-icon items-center"
-                >
-                  check_circle
-                </span>
+    <div class="filter-modal-body">
+      <div class="selectable-provinces mt-8">
+        <div
+          v-for="(item, index) in cities"
+          :key="index"
+          :class="item.isActive ? 'selected' : ''"
+          class="select-item available-province mt-3 flex items-center justify-between"
+        >
+          <div class="flex items-center">
+            <div class="accounts flex items-center">
+              <img src="~/assets/images/user/avatar.svg" alt="" />
+              <div class="name-login-text flex items-start flex-col">
+                <span class="login-state-text">احمد حسینی</span>
+                <span class="user-phone">کاربر عادی</span>
               </div>
             </div>
           </div>
+          <div v-if="item.isActive">
+            <span
+              class="material-symbols-outlined flex check-icon items-center"
+            >
+              check_circle
+            </span>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import BaseDialog from "@/components/global/BaseDialog.vue";
-import { useModalStore } from "~/stores/modals-store";
-defineComponent([BaseDialog]);
-const modalStore = useModalStore()
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]
 >([

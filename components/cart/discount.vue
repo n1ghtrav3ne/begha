@@ -7,7 +7,7 @@
     >
       <span class="text-sm text-surface-600">طرح‌های تخفیفی</span>
       <!-- icon -->
-      <div class="size-6 flex items-center justify-center">
+      <div class="size-6 centered">
         <img src="~/assets/images/icons/arrow-left.svg" alt="" />
       </div>
     </div>

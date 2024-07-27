@@ -1,75 +1,74 @@
 <template>
   <div>
-        <div class="filter-modal-body">
-          <div class="services-container pb-5 grid grid-rows-1">
-            <div class="grid grid-cols-5 flex">
-              <div
-                v-for="(item, index) in servicesList"
-                :key="index"
-                class="flex mt-5 flex-col items-center justify-center"
-              >
-                <span
-                  :class="`${item.colorClass}`"
-                  class="service-btn flex flex-col items-center justify-center"
-                >
-                  <span class="material-symbols-outlined">
-                    {{ item.iconClass }}
-                  </span>
-                </span>
-                <span class="service-title mt-2">{{ item.title }}</span>
-              </div>
-            </div>
+    <div class="filter-modal-body">
+      <div class="services-container pb-5 grid grid-rows-1">
+        <div class="grid grid-cols-5 flex">
+          <div
+            v-for="(item, index) in servicesList"
+            :key="index"
+            class="flex mt-5 flex-col items-center justify-center"
+          >
+            <span
+              :class="`${item.colorClass}`"
+              class="service-btn flex flex-col items-center justify-center"
+            >
+              <span class="material-symbols-outlined">
+                {{ item.iconClass }}
+              </span>
+            </span>
+            <span class="service-title mt-2">{{ item.title }}</span>
           </div>
-          <div class="selectable-provinces">
-            <div class="filters-checkboxes">
-              <!-- <label class="input-container"
+        </div>
+      </div>
+      <div class="selectable-provinces">
+        <div class="filters-checkboxes">
+          <!-- <label class="input-container"
               ><span class="checkbox-label"></span>
               <input type="checkbox" :checked="true" />
               <span class="checkmark"></span>
             </label> -->
-              <label>
-                <BaseCheckbox
-                  @updateCheckBoxes="selectedEventsFilter"
-                  :items="checkboxes"
-                />
-              </label>
-            </div>
-          </div>
+          <label>
+            <BaseCheckbox
+              @updateCheckBoxes="selectedEventsFilter"
+              :items="checkboxes"
+            />
+          </label>
         </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
-import BaseDialog from "~/components/global/BaseDialog.vue";
-import { useModalStore } from "~/stores/modals-store";
-defineNuxtComponent({ PopularBegha, BeghaListItems, BaseDialog });
-const modalStore = useModalStore();
+
+defineNuxtComponent({ PopularBegha, BeghaListItems });
 let selectedEvents = ref<{ isChecked: boolean; label: string; id: number }[]>(
   []
 );
-const checkboxes = ref<{ id: number; label: string; isChecked: boolean; status:string }[]>([
+const checkboxes = ref<
+  { id: number; label: string; isChecked: boolean; status: string }[]
+>([
   {
     id: 1,
     label: "تائيد شده ها",
     isChecked: false,
-    status : 'success' , 
+    status: "success",
   },
 
   {
     id: 2,
     label: "رد شده ها",
     isChecked: false,
-    status : 'error' , 
+    status: "error",
   },
   {
     id: 3,
     label: "رد شده ها توسط شما ",
     isChecked: false,
-    status : 'error' , 
+    status: "error",
   },
-
 ]);
 const servicesList = ref<
   { title: string; iconClass: string; colorClass: string }[]
@@ -110,7 +109,7 @@ const selectedEventsFilter = (emited: any) => {
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 
-.checkbox-container{
+.checkbox-container {
   background-color: red;
   margin: 10px;
 }

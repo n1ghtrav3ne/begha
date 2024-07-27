@@ -7,10 +7,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
+html {
     background-color: $surface;
 }
-body{
+
+body {
     font-family: 'yekan-regular';
     font-size: 14px;
     color: #0B0B0B;
@@ -18,6 +19,14 @@ body{
     margin: 0 auto;
 }
 
-.check-icon {
-    color: $secondary;
-  }
+@layer components {
+
+    .divider {
+        @apply w-full bg-surface-100/50 h-[1px]
+    }
+
+    .centered {
+        @apply flex items-center justify-center
+    }
+
+}

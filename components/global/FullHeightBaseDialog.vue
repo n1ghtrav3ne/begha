@@ -1,7 +1,11 @@
 <template>
   <div>
-    <div class="base-modal" :style="`height: ${props.modalHeight + '% !important'};padding:${$props.baseModalPadding + 'px !important'}`">
-
+    <div
+      class="base-modal"
+      :style="`height: ${props.modalHeight + '% !important'};padding:${
+        $props.baseModalPadding + 'px !important'
+      }`"
+    >
       <div :style="`display:${$props.modalDisplay}`" class="base-modal-header">
         <span class="base-modal-stick"></span>
         <div class="modal-head-title flex items-center justify-between">
@@ -14,7 +18,7 @@
           </span>
         </div>
       </div>
-      
+
       <div
         :style="`padding: ${props.modalPadding} !important`"
         class="base-modal-body"
@@ -25,18 +29,19 @@
         <slot name="footer"></slot>
       </div>
     </div>
-    <OverlayLayout />
   </div>
 </template>
 
 <script lang="ts" setup>
-import OverlayLayout from "../layouts/OverlayLayout.vue";
 import { useModalStore } from "~/stores/modals-store";
-defineNuxtComponent({ OverlayLayout });
-const props = defineProps(["modalHeight", "modalPadding",'modalDisplay','baseModalPadding']);
+const props = defineProps([
+  "modalHeight",
+  "modalPadding",
+  "modalDisplay",
+  "baseModalPadding",
+]);
 const modalStore = useModalStore();
-const closeModal = () => {
-};
+const closeModal = () => {};
 </script>
 
 <style lang="scss" scoped>

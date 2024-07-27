@@ -1,32 +1,25 @@
 <template>
   <div>
-    <BaseDialog :modalHeight="189">
-      <template #headerText>
-        <span class="modal-head-title">سایر خدمات</span>
-      </template>
-      <template #body>
-        <div class="services-container grid grid-rows-1">
-          <div class="grid grid-cols-4 flex">
-            <div
-              v-for="(item, index) in servicesList"
-              :key="index"
-              class="flex mt-5 flex-col items-center justify-center"
+    <div class="services-container grid grid-rows-1">
+      <div class="grid grid-cols-4 flex">
+        <div
+          v-for="(item, index) in servicesList"
+          :key="index"
+          class="flex mt-5 flex-col items-center justify-center"
+        >
+          <span
+            :class="`${item.colorClass}`"
+            class="service-btn flex flex-col items-center justify-center"
+          >
+            <span :class="`${item.badgeColorClass}`" class="btn-badge"
+              >جدید</span
             >
-              <span
-                :class="`${item.colorClass}`"
-                class="service-btn flex flex-col items-center justify-center"
-              >
-                <span :class="`${item.badgeColorClass}`" class="btn-badge"
-                  >جدید</span
-                >
-                <span class="service-btn-icons" :class="item.iconClass"> </span>
-              </span>
-              <span class="service-title mt-2">{{ item.title }}</span>
-            </div>
-          </div>
+            <span class="service-btn-icons" :class="item.iconClass"> </span>
+          </span>
+          <span class="service-title mt-2">{{ item.title }}</span>
         </div>
-      </template>
-    </BaseDialog>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -39,7 +32,6 @@ const servicesList = ref<
     badgeColorClass: string;
   }[]
 >([
-  
   {
     title: "سالن مراسم",
     iconClass: "icon-Hall-Iran",

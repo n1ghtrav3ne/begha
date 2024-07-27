@@ -8,16 +8,18 @@
       class="w-full h-full mt-4 flex items-center justify-between px-4"
       :class="`bg-${props.color} rounded-${props.rounded} `"
     >
-      <slot name="prepend"> </slot>
+      <div class="centered">
+        <slot name="prepend"> </slot>
 
-      <input
-        class="h-full outline-none py-6"
-        :class="`rounded-${props.rounded} bg-${props.color}`"
-        :placeholder="props.placeholder"
-        :type="props.type"
-        v-model="input"
-        @change="emit('update:modelValue', input)"
-      />
+        <input
+          class="h-full outline-none py-6"
+          :class="`rounded-${props.rounded} bg-${props.color}`"
+          :placeholder="props.placeholder"
+          :type="props.type"
+          v-model="input"
+          @change="emit('update:modelValue', input)"
+        />
+      </div>
 
       <slot name="append"> </slot>
     </div>
@@ -92,10 +94,6 @@ onMounted(() => {
     elem.classList.add("border-surface-100");
     elem.classList.add("border-[1px]");
   }
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside);
 });
 </script>
 

@@ -35,9 +35,11 @@
           </svg>
         </span>
       </label>
-      <label @click="item.isChecked =!item.isChecked"
+      <label
+        @click="item.isChecked = !item.isChecked"
         :style="`font-size: ${fns}`"
         class="mt-px font-light text-gray-700 cursor-pointer select-none"
+        :class="`text-${item.textColor}`"
         htmlFor="check"
       >
         {{ item.label }}
