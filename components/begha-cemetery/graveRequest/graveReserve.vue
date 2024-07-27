@@ -6,7 +6,7 @@
 
         <div class="firstItem">
 
-            <span @click="reservationStore.changeGraveReservation('deactive')" class="material-symbols-outlined ">
+            <span @click="$emit('close')" class="material-symbols-outlined ">
             arrow_right_alt
         </span>
 
@@ -51,7 +51,7 @@
                 <div class="terms">
                    
                     <BaseCheckbox class="pt-3" :items="checkboxes" />
-                    <span @click="reservationStore.changeTermsConfirmation('active')" class="txt">را مطالعه کرده و آن را می پذیرم.</span>
+                    <span @click="termsSheet=true" class="txt">را مطالعه کرده و آن را می پذیرم.</span>
                 </div>
 
                 <button>پرداخت بیعانه (۴۰٬۰۰۰٬۰۰۰ تومان)</button>
@@ -60,13 +60,31 @@
 
         </div>
 
-        <terms v-if="reservationStore.isOpnenTermsConfirmation" />
+        <BottomSheets :line="true" title="مطالعه قوانین و مقررات" v-model="termsSheet">
 
-        <dateOfDeath v-if="reservationStore.isOpenDateOfDeath" />
+            <terms />
 
-        <personalRatio v-if="reservationStore.isOpenPersonalRatio" />
+        </BottomSheets>
 
-        <graveSection v-if="reservationStore.isOpensectionPart" />
+
+        <BottomSheets title="تاریخ فوت متوفی را انتخاب کنید." :line="true" v-model="dateOfDeathSheet">
+
+            <dateOfDeath />
+
+        </BottomSheets>
+
+        <BottomSheets title="نسبت شما با متوفی" :line="true" v-model="personalRatioSheet">
+
+            <personalRatio />
+
+        </BottomSheets>
+
+
+        <BottomSheets :line="true" title="قطعه مورد نظر خود را انتخاب کنید."  v-model="graveSectionSheet">
+
+            <graveSection />
+
+        </BottomSheets>
         
         <input class="hidden" ref="fileInput" @change="uploadFile" type="file" accept=".pdf,.jpg,.png">
     </div>
@@ -88,12 +106,19 @@ import personalRatio from "./inputValues/personalRatio.vue"
 
 import graveSection from "./inputValues/graveSection.vue"
 
-import {useReservationStore} from "~/stores/graveRequest-store";
+import { useModalStore } from "~/stores/modals-store";
 
-const reservationStore=useReservationStore();
+const modalStore = useModalStore();
 
+const dateOfDeathSheet=ref(false)
+
+const personalRatioSheet=ref(false)
+
+const graveSectionSheet=ref(false)
 
 defineComponent({inputOnes,facilities,BaseCheckbox,terms,dateOfDeath,personalRatio,graveSection})
+
+const termsSheet=ref(false)
 
 const inputItems=ref<{name:string;val:string;txt:string;type:string;iconClass:string;iconName:string;warning:string}[]
 >([
@@ -194,39 +219,39 @@ const fileInput=ref()
 
 const showInputValues=(index:number)=>{
     if(index===2){
-        reservationStore.changeDateOfDeath('active')  
+        dateOfDeathSheet.value=true  
     }
     if(index===3){
-        reservationStore.changePersonalRatio('active')
+        personalRatioSheet.value=true
     }
     if(index===4){
         fileInput.value.click()
     }
     if(index===5){
-        reservationStore.changeSectionPart('active')
+        graveSectionSheet.value=true
     }
 }
 
-watch(()=>reservationStore.isOpenDateOfDeath,(newValue)=>{
+watch(()=>dateOfDeathSheet.value,(newValue)=>{
     if(!newValue){
-        chosenDate.value = reservationStore.modals.Date;  
+        chosenDate.value = modalStore.modals.Date;  
         inputItems.value[2].val=chosenDate.value.join(' ')
     }
 })
 
 const chosenPerson=ref()
-watch(()=>reservationStore.isOpenPersonalRatio,(newValue)=>{
+watch(()=>personalRatioSheet.value,(newValue)=>{
     if(!newValue){
-        chosenPerson.value=reservationStore.modals.theChosenPerson;
+        chosenPerson.value=modalStore.modals.theChosenPerson;
         inputItems.value[3].val=chosenPerson.value        
     }
 })
 
 const chosenSection=ref()
 
-watch(()=>reservationStore.isOpensectionPart,(newValue)=>{
+watch(()=>graveSectionSheet.value,(newValue)=>{
     if(!newValue){
-        chosenSection.value=reservationStore.modals.sectionName
+        chosenSection.value=modalStore.modals.sectionName
         inputItems.value[5].val=chosenSection.value
     }
 })

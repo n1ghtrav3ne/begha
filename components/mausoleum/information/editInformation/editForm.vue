@@ -14,7 +14,7 @@
 
     </div>
 
-    <div class="container">
+    <div class="container overflow-auto h-full">
 
           <div class="profileDetail">
 
@@ -43,7 +43,7 @@
 
         <div class="explanationContainer">
 
-            <span>توضیحات (۱۰۰۰/{{ charNumber.toLocaleString('fa-IR')  }})</span>
+            <span>توضیحات (۱۰۰۰/{{ charNumber }})</span>
 
             <textarea v-model="text" placeholder="متن مورد نظر خود را وارد کنید" maxlength="1000"></textarea>
 
@@ -89,7 +89,7 @@
 
             <span>برنامه های هفتگی بقعه</span>
 
-            <div @click="mausoleumStore.changeWeeklyCermony('active')" class="inputContainer">
+            <div @click="weeklyCermonySheet=true" class="inputContainer">
 
                 <input value="انتخاب کنید" type="button">
 
@@ -110,7 +110,7 @@
 
                             <span>{{ item.startTime }}</span>
 
-                            <span @click="mausoleumStore.changeCermonyTime('active'),selectCermonyName(item.name)" class="mx-[4px]">{{ item.text }}</span>
+                            <span @click="cermonyTimeSheet=true,selectCermonyName(item.name)" class="mx-[4px]">{{ item.text }}</span>
 
                             <span>{{ item.endTime }}</span>
 
@@ -135,7 +135,7 @@
 
             <span>اوقات برگزاری نماز</span>
 
-            <div @click="mausoleumStore.changePrayTimes('active')" class="inputContainer">
+            <div @click="prayTimesSheet=true" class="inputContainer">
 
                 <input value="انتخاب کنید" type="button">
 
@@ -155,7 +155,7 @@
                         <div class="time">
 
 
-                            <span @click="mausoleumStore.changeImamName('active'),selectItem(item.name)" class="mx-[4px]">{{ item.text }}</span>
+                            <span @click="selectImamSheet=true,selectItem(item.name)" class="mx-[4px]">{{ item.text }}</span>
 
 
                         </div>
@@ -175,18 +175,37 @@
 
         </div>
 
-        <button class="setUpChanges">اعمال تغییرات</button>
+        <button class="setUpChanges mb-20">اعمال تغییرات</button>
 
 
     </div>
 
-    <weeklyCermony v-if="mausoleumStore.isOpenWeeklyCermony" />
+    <BottomSheets :line="true" title="مراسم ادعیه هفتگی" v-model="weeklyCermonySheet">
 
-    <cermonyTime v-if="mausoleumStore.isOpenCermonyTime" />
+        <weeklyCermony />
+        
+    </BottomSheets>
 
-    <prayTimes v-if="mausoleumStore.isOpenPrayTimes" />
+    <BottomSheets :line="true" title="ساعت شروع و پایان را انتخاب کنید." v-model="cermonyTimeSheet">
 
-    <selectImam v-if="mausoleumStore.isOpenImamName" />
+        <cermonyTime @close="cermonyTimeSheet=false" />
+
+    </BottomSheets>
+
+
+    <BottomSheets title="اوقات برگزاری نماز" v-model="prayTimesSheet" :line="true">
+
+        <prayTimes />
+
+    </BottomSheets>
+
+    <BottomSheets v-model="selectImamSheet" title="نام امام جماعت را وارد کنید." :line="true">
+
+        <selectImam />
+
+    </BottomSheets>
+
+
 
 </template>
 
@@ -202,11 +221,20 @@ import prayTimes from "./inputValues/prayTimes.vue"
 
 import selectImam from "./inputValues/selectImam.vue"
 
-import {useMausoleumStore} from "~/stores/m-modals-store"
 
-const mausoleumStore=useMausoleumStore()
+import { useModalStore } from "~/stores/modals-store";
+
+const modalStore = useModalStore();
 
 defineComponent({weeklyCermony,cermonyTime,prayTimes,selectImam})
+
+const weeklyCermonySheet=ref(false)
+
+const cermonyTimeSheet=ref(false)
+
+const prayTimesSheet=ref(false)
+
+const selectImamSheet=ref(false)
 
 const fileInput = ref();
 const currentImage = ref();
@@ -252,12 +280,14 @@ watch(text, (newValue) => {
     selectedName.value=itemName
   }
 
-  watch(()=>mausoleumStore.isOpenWeeklyCermony,(newValue=>{
-    if(!newValue && !!mausoleumStore.modals.setWeekCermony){
-        selectedCermony.value=mausoleumStore.modals.setWeekCermony; 
+  watch(()=>weeklyCermonySheet.value ,(newValue=>{
+    if(!newValue && !!modalStore.modals.setWeekCermony){
+        selectedCermony.value=modalStore.modals.setWeekCermony; 
         selectedCermony.value.forEach((cermony:any) => {
       if (!weekPrograms.value.find((program) => program.name === cermony)) {
         addCermonyToWeekPrograms(cermony)   
+        console.log(selectedCermony);
+        
       }
     })}
   }))
@@ -265,12 +295,12 @@ watch(text, (newValue) => {
   const programCheck=ref(false)
 
 
-  watch(() => mausoleumStore.isOpenCermonyTime, (newValue) => {
-  if (!newValue && !!mausoleumStore.modals.setStartTime && !!mausoleumStore.modals.setEndTime) {
+  watch(() => cermonyTimeSheet.value, (newValue) => {
+  if (!newValue && !!modalStore.modals.setStartTime && !!modalStore.modals.setEndTime) {
 
-    selectedStartTime.value = mausoleumStore.modals.setStartTime.toString().replace(/[\[\],]/g, ':');
+    selectedStartTime.value = modalStore.modals.setStartTime.toString().replace(/[\[\],]/g, ':');
 
-    selectedEndTime.value=mausoleumStore.modals.setEndTime.toString().replace(/[\[\],]/g, ':')
+    selectedEndTime.value=modalStore.modals.setEndTime.toString().replace(/[\[\],]/g, ':')
 
     
     const newId = programIdCounter.value;
@@ -286,9 +316,9 @@ watch(text, (newValue) => {
         endTime: selectedEndTime.value
       });    
 
-      mausoleumStore.modals.setStartTime=ref()
+      modalStore.modals.setStartTime=ref()
 
-      mausoleumStore.modals.setEndTime=ref()
+      modalStore.modals.setEndTime=ref()
 
       programIdCounter.value++;
 
@@ -328,9 +358,9 @@ const addCermonyToWeekPrograms = (cermony: any) => {
 
   const deleteCermony = (index: number) => {
   weekPrograms.value = weekPrograms.value.filter((item, idx) => idx!== index);
-  mausoleumStore.modals.setStartTime  =  ref()
-  mausoleumStore.modals.setEndTime = ref()
-  mausoleumStore.modals.setWeekCermony=ref()
+  modalStore.modals.setStartTime  =  ref()
+  modalStore.modals.setEndTime = ref()
+  modalStore.modals.setWeekCermony=ref()
   if (!!weekPrograms) {
     programCheck.value = false;
   }
@@ -355,9 +385,9 @@ const selectItem=(name:string)=>{
     
 }
 
-watch(()=>mausoleumStore.isOpenPrayTimes,(newValue)=>{
-    if(!newValue && !!mausoleumStore.modals.setPray){
-        selectedPlan.value=mausoleumStore.modals.setPray
+watch(()=>prayTimesSheet.value,(newValue)=>{
+    if(!newValue && !!modalStore.modals.setPray){
+        selectedPlan.value=modalStore.modals.setPray
         selectedPlan.value.forEach((plan:any)=>{
             if(!prayPlans.value.find((program)=>{program.name === plan})){
                 addPrayToPrayPlans(plan)                
@@ -368,9 +398,9 @@ watch(()=>mausoleumStore.isOpenPrayTimes,(newValue)=>{
     }
 })
 
-watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
-    if(!newValue && !!mausoleumStore.modals.setImamName){
-        selectedImam.value=mausoleumStore.modals.setImamName
+watch(()=>selectImamSheet.value,(newValue)=>{
+    if(!newValue && !!modalStore.modals.setImamName){
+        selectedImam.value=modalStore.modals.setImamName
 
         const newId = prayIdCounter.value;
         chosenItemPlan.value[newId] = chosenPlan.value;        
@@ -382,7 +412,7 @@ watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
         text: selectedImam.value,
       });    
 
-      mausoleumStore.modals.setImamName=ref()
+      modalStore.modals.setImamName=ref()
 
       programIdCounter.value++;
 
@@ -409,8 +439,8 @@ watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
 
     const deletePlan = (index: number) => {
         prayPlans.value = prayPlans.value.filter((item, idx) => idx!== index);
-        mausoleumStore.modals.setImamName  =  ref()
-        mausoleumStore.modals.setImamName=ref()
+        modalStore.modals.setImamName  =  ref()
+        modalStore.modals.setImamName=ref()
 }
 
 </script>
@@ -443,6 +473,10 @@ watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
     }
 
    
+}
+
+.container::-webkit-scrollbar{
+    display: none;
 }
 
 .profileDetail{
@@ -849,6 +883,7 @@ watch(()=>mausoleumStore.isOpenImamName,(newValue)=>{
     background: $primary;
     color: $primary-on;
     width: 100%;
+    height: 44px;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;

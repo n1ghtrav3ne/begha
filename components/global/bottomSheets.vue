@@ -7,7 +7,7 @@
     <div
       id="sheet-elem"
       ref="sheetElem"
-      class="w-full sheetElem max-h-[800px] bg-white bottom-0 absolute rounded-t-2xl translate-y-full animate-slide-up overflow-auto"
+      class="w-full sheetElem max-h-[800px] bg-white bottom-0  absolute rounded-t-2xl translate-y-full animate-slide-up overflow-auto"
       @click.stop
     >
       <div class="w-full h-full relative">
@@ -37,6 +37,11 @@
 </template>
 
 <script setup>
+
+import { useModalStore } from "~/stores/modals-store";
+
+const modalStore = useModalStore();
+
 const sheetStatus = ref(false);
 const props = defineProps({
   title: { type: String },
@@ -55,8 +60,13 @@ const sheetElem = ref(null);
 const handleOutsideClick = (event) => {
   if (sheetElem.value && !sheetElem.value.contains(event.target)) {
     closeSheet();
-  }z
+    closeModal()
+  }
 };
+
+const closeModal=()=>{
+    modalStore.activeUserSelection('deactive')
+}
 </script>
 
 <style lang="scss" scoped>

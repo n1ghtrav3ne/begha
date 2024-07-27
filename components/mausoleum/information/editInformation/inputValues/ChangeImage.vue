@@ -1,9 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="270">
-
-        <template #body>
-
             <img :src="image || defaultImage" alt="">
 
             <hr>
@@ -33,17 +29,12 @@
             </div>
 
             <input @change="handleFileChange" ref="inputFile" type="file" class="hidden" accept=".jpg,.png">
-
-
-        </template>
     
-    </BaseDialog>
     
 </template>
 
 <script lang="ts" setup>
 
-import BaseDialog from "~/components/global/SimpleBaseDialog.vue"
 
 import defaultImage from "~/assets/images/mausoleumInformation/frame.svg"
 

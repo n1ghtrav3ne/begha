@@ -1,15 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="400">
-
-        <template #headerText>
-
-            <span class="headerText">نسبت شما با متوفی</span>
-
-        </template>
-
-        <template #body>
-
             <div class="peopleContainer">
 
                 <div @click="activation(index)" :class="{active: index===activeItem}" v-for="(item,index) in items" :key="index" class="person">
@@ -22,10 +12,6 @@
 
             </div>
 
-        </template>
-    
-    </BaseDialog>
-
     
 </template>
 
@@ -33,9 +19,9 @@
 
 import BaseDialog from "~/components/global/BaseDialog.vue"
 
-import {useReservationStore} from "~/stores/graveRequest-store";
+import { useModalStore } from "~/stores/modals-store";
 
-const reservationStore=useReservationStore();
+const modalStore = useModalStore();
 
 defineComponent({BaseDialog})
 
@@ -45,13 +31,13 @@ const activeItem=ref(0)
 
 let selectedPerson=items[0]
 
-reservationStore.setPerson(selectedPerson)
+modalStore.setPerson(selectedPerson)
 
 
 const activation=(index:number)=>{
     activeItem.value=index
     selectedPerson=items[index]
-    reservationStore.setPerson(selectedPerson)
+    modalStore.setPerson(selectedPerson)
 }
 
 </script>
@@ -74,7 +60,6 @@ const activation=(index:number)=>{
     gap: 12px;
     width: 100%;
     height: auto;
-    padding-top: 26px;
     padding-bottom: 30px;
 
     .person{

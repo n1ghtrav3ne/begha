@@ -33,7 +33,7 @@
 
         <hr class="w-full h-[4px]">
 
-        <div @click="deactiveFilter" :class="{deactive:filterCheck===false}" class="filter">
+        <div :class="{deactive:filterCheck===false}" class="filter">
 
             <img src="~/assets/images/cermony/menu.svg" alt="">
 
@@ -78,13 +78,6 @@ const modalStore = useModalStore();
 defineComponent({BaseDialog})
 
 const filterCheck=ref(true);
-const deactiveFilter=()=>{
-    filterCheck.value=!filterCheck.value;
-    modalStore.changeCermonyHallSearchFilterActive('deactive')
-    if(filterCheck){
-        modalStore.changeCermonyHallSearchFilterActive('active')
-    }
-}
 
 </script>
 <style lang="scss" scoped>

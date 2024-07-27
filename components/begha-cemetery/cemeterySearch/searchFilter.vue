@@ -1,15 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="329"> 
-
-        <template #headerText>
-
-            <span class="headerText">جستجو بر اساس قطعات</span>
-
-        </template>
-
-        <template #body>
-
             <div class="sectionContainer">
 
                 <div class="section">
@@ -20,10 +10,6 @@
 
 
             </div>
-
-        </template>
-    
-    </BaseDialog>
 
 </template>
 <script setup lang="ts">

@@ -12,7 +12,7 @@
 
 </div>    
 
-    <img @click="modalStore.changeCemeterySearch('active')" class="mr-auto" src="~/assets/images/cemetery/search-normal copy.svg" alt="">
+    <img @click="searchIsOpen=true" class="mr-auto" src="~/assets/images/cemetery/search-normal copy.svg" alt="">
 
 </div>
 
@@ -40,7 +40,7 @@
 
         </div>
 
-        <div @click="reservationStore.changeGraveReservation('active')" class="graveReq">
+        <div @click="graveReservationOpen=true" class="graveReq">
 
             <div class="imgHolder">
 
@@ -62,7 +62,7 @@
 
         <span class="theDeceased">متوفیان</span>
 
-        <div @click="modalStore.changeBeghaCemeteryFilter('active')" class="sectionFilter">
+        <div @click="orderingFilterSheet=true" class="sectionFilter">
             <span>همه قطعه ها</span>
             <img src="~/assets/images/cemetery/arrow-down.svg" alt="">
         </div>
@@ -73,7 +73,7 @@
 
         <div v-for="(item,index) in theDeceaseds" :key="index">
 
-            <deceasedCard @click="modalStore.changeDeceasedInfo('active')" :item="item" />
+            <deceasedCard @click="deceasedInfoSheet=true" :item="item" />
 
         </div>
 
@@ -81,13 +81,23 @@
 
 </div>
 
-    <orderingFilter v-if="modalStore.isOpenBeghaCemeteryFilter" />
 
-    <deceasedInfo v-if="modalStore.isOpenDeceasedInfo" />
+    <BottomSheets title="مرتب سازی بر اساس" :line="true" v-model="orderingFilterSheet">
+        
+        <orderingFilter />
 
-    <search v-if="modalStore.isOpenCemeterySearch" />
+    </BottomSheets>
 
-    <graveReserve v-if="reservationStore.isOpenGraveReservation" />
+    <BottomSheets v-model="deceasedInfoSheet">
+
+        <deceasedInfo />
+
+    </BottomSheets>
+
+
+    <search @close="searchIsOpen=false" v-if="searchIsOpen" />
+
+    <graveReserve @close="graveReservationOpen=false" v-if="graveReservationOpen" />
 
 </template>
 <script setup lang="ts">
@@ -102,15 +112,15 @@ import search from "./cemeterySearch/search.vue"
 
 import graveReserve from "./graveRequest/graveReserve.vue"
 
-import { useModalStore } from "~/stores/modals-store";
-
-import {useReservationStore} from "~/stores/graveRequest-store";
-
-const reservationStore=useReservationStore();
-
-const modalStore = useModalStore();
-
 defineComponent({deceasedCard,orderingFilter,deceasedInfo,search,graveReserve})
+
+const orderingFilterSheet=ref(false)
+
+const deceasedInfoSheet=ref(false)
+
+const searchIsOpen=ref(false)
+
+const graveReservationOpen=ref(false)
 
 const theDeceaseds=ref<{name:string;fatherName:string;section:string}[]
 >([

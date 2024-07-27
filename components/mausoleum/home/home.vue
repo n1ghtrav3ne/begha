@@ -6,15 +6,23 @@
 
         <profile />
 
-        <serviceButtons />
+        <serviceButtons @close="moreServiceButtonsSheet=true" />
 
         <newRequest />
 
     </div>
 
-    <moreServiceButtons v-if="mausoleumStore.isOpenServiceButtons" />
+    <BottomSheets :closable="false" v-model="moreServiceButtonsSheet">
 
-    <userSelection v-if="mausoleumStore.isOpenSelectUserType" />
+        <moreServiceButtons />
+
+    </BottomSheets>
+
+    <BottomSheets title="انتخاب کنید" :line="true" v-model="userSelectionSheet">
+
+        <userSelection />
+
+    </BottomSheets>
 
 
 </template>
@@ -32,13 +40,19 @@ import moreServiceButtons from "./moreServiceButtons.vue"
 
 import userSelection from "./userSelection.vue";
 
-import {useMausoleumStore} from "~/stores/m-modals-store"
+import { useModalStore } from "~/stores/modals-store";
 
-const mausoleumStore=useMausoleumStore()
-
+const modalStore = useModalStore();
 
 defineComponent({facilitiesBanner,profile,serviceButtons,newRequest,moreServiceButtons})
 
+const moreServiceButtonsSheet=ref(false)
+
+const userSelectionSheet=ref(false)
+
+watch(()=>modalStore.isOpenUserSelection,(newValue)=>{
+    userSelectionSheet.value=newValue
+})
 
 </script>
 

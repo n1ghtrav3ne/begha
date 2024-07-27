@@ -36,7 +36,7 @@
             </span>
             <span class="option-text">{{ item.title }}</span>
           </li>
-          <li  @click="modalStore.changeExitAccount('active')" class="option flex items-center">
+          <li  @click="openExit=true" class="option flex items-center">
             <span class="option-icon logout flex items-center justify-center">
               <span class="material-symbols-outlined"> logout </span>
             </span>
@@ -51,7 +51,7 @@
       <SwitchAccount />
 
     </BottomSheets>
-    <exit v-if="modalStore.isOpenExitAccount" />
+
   </div>
 </template>
 
@@ -59,14 +59,14 @@
 import SwitchAccount from "./SwitchAccountModal.vue";
 import BottomSheets from "../global/bottomSheets.vue";
 
-import exit from "./exit/exit.vue"
-
 import { useModalStore } from "~/stores/modals-store";
-defineComponent([SwitchAccount,exit,BottomSheets]);
+defineComponent([SwitchAccount,BottomSheets]);
 
 const openUserChange=ref(false)
 
 const modalStore = useModalStore()
+
+const openExit=ref(false)
 
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]

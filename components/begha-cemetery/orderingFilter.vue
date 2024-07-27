@@ -1,16 +1,6 @@
 <template>
 
-    <BaseDialog :modalHeight="552">
-
-        <template #headerText>
-
-            <span class="header">مرتب سازی بر اساس</span>
-
-        </template>
-
-        <template #body>
-
-            <div class="sectionContainer pt-[26px]">
+            <div class="sectionContainer">
 
                 <div @click="selectItem(0)" :class="{active:selectedIndex===0}" class="mainItem px-[12px] py-[8px]">
 
@@ -33,10 +23,6 @@
                 </div>
 
             </div>
-
-        </template>
-    
-    </BaseDialog>
 
 </template>
 <script setup lang="ts">

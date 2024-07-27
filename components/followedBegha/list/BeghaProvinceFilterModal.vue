@@ -1,10 +1,5 @@
 <template>
   <div>
-    <BaseDialog :modalPadding="'20px 0 35px 0'" :modalHeight="523" v-if="modalStore.isOpenBeghaListProvinceFilter" class="filter-province-modal">
-        <template #headerText>
-          <span class="modal-head-title">شهر مورد نظر خود را انتخاب کنید</span>
-        </template>
-        <template #body>
           <div class="filter-modal-body">
             <div class="filter-province">
               <span class="material-symbols-outlined search-filter-icon">
@@ -45,8 +40,7 @@
               </div>
             </div>
           </div>
-        </template>
-      </BaseDialog>
+  
   </div>
 </template>
 
@@ -90,7 +84,6 @@ const cities = ref<{ province: string; city: string; iconClass : string; isActiv
 @import "~/assets/css/colors.scss";
 
 
-.filter-province-modal {
   .modal-head-title {
     font-size: 14px;
     font-family: "yekan-regular";
@@ -181,6 +174,6 @@ const cities = ref<{ province: string; city: string; iconClass : string; isActiv
       }
     }
   }
-}
+
 
 </style>
