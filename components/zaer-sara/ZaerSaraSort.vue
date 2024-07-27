@@ -1,59 +1,58 @@
 <template>
-      <div class="filter-modal-body">
-      <div class="item-layout mt-3 " v-for="(item,i) in items" :class="i==1 && 'active'">
-
-          {{ item.label }}
-          <span v-if="i==1" class="material-symbols-outlined check-icon">
-                        check_circle
-                </span> 
-        </div>
-        </div>
+  <div class="filter-modal-body">
+    <div
+      class="item-layout mt-3"
+      v-for="(item, i) in items"
+      :class="i == 1 && 'active'"
+    >
+      {{ item.label }}
+      <span v-if="i == 1" class="material-symbols-outlined check-icon">
+        check_circle
+      </span>
+    </div>
+  </div>
 </template>
 <script lang="ts" setup>
 import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
-import BaseDialog from "~/components/global/BaseDialog.vue";
-import { useModalStore } from "~/stores/modals-store";
-defineNuxtComponent({ PopularBegha, BeghaListItems, BaseDialog });
-const modalStore = useModalStore();
+
+defineNuxtComponent({ PopularBegha, BeghaListItems });
 let selectedEvents = ref<{ isChecked: boolean; label: string; id: number }[]>(
   []
 );
-const items = ref<{ id: number; label: string; }[]>([
+const items = ref<{ id: number; label: string }[]>([
   {
     id: 1,
-    label: "همه"
+    label: "همه",
   },
   {
     id: 2,
-    label: "محبوب ترین ها"
+    label: "محبوب ترین ها",
   },
   {
     id: 3,
-    label: "تخفیف خورده ها"
+    label: "تخفیف خورده ها",
   },
   {
     id: 4,
-    label: "ارزان ترین‌ها"
+    label: "ارزان ترین‌ها",
   },
-  
 ]);
-
 </script>
 
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 
-.item-layout{
+.item-layout {
   display: flex;
   justify-content: space-between;
-height: 44px;
-padding: 16px 12px;
-align-items: center;
-gap: 24px;
+  height: 44px;
+  padding: 16px 12px;
+  align-items: center;
+  gap: 24px;
 }
-.active{
+.active {
   background-color: $secondary-container;
 }
 </style>

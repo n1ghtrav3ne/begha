@@ -20,9 +20,11 @@
 
     <div class="container begha-events-detail">
       <div class="flex items-center justify-between mb-4">
-          <span class="begha-profile-name">حرم امام زاده صالح (ع)</span>
-          <span @click="baseratingSheet=true" class="score-btn">امتیاز شما</span>
-        </div>
+        <span class="begha-profile-name">حرم امام زاده صالح (ع)</span>
+        <span @click="baseratingSheet = true" class="score-btn"
+          >امتیاز شما</span
+        >
+      </div>
       <div class="page-image-banner">
         <img
           src="https://s3-alpha-sig.figma.com/img/7c63/dfd8/1a1d080913720fe29a79311a56cd7ab3?Expires=1716163200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JICfUNn1MmRF0RAOa46bmeVBFiCu7w8SPIEBKc1so3iT3kMhhiBhVHBf6Gn2Kj4R7CNGpCL6r04wFWruQwyo8uu3cvJr8FmnbR7MRhWQyo01zjIDwt9hfRVnmza5IXrPhyY~khO7iEPIymlvNhkXTI1ICJH77jmNso0B5F5pSh3uDhkJp85yLf0-ouFt8Y9CZBV9R5zCaeGFRxhanYTPmqwYW~pPgVUmJPU4hU6Wc8EmA1Fq0SxGUAPPk4Le8pjMbvc-8brWFv4lRMMS1kAfENymcqH-LZYTE~vrpwdIThNll7XaVfntUG5CaELd8~GzEgpUuRLvXJ6QHN4wqEAToQ__"
@@ -53,20 +55,15 @@
       </div>
     </div>
 
-
     <BaseRatingDialog v-model="baseratingSheet" />
-
-
   </div>
 </template>
 
 <script lang="ts" setup>
 import EventsItem from "./EventsItem.vue";
 import BaseRatingDialog from "@/components/global/BaseRatingDialog.vue";
-import { useModalStore } from '~/stores/modals-store';
-const modalStore = useModalStore();
 
-const baseratingSheet=ref(false)
+const baseratingSheet = ref(false);
 
 const beghaNews = ref<
   {
@@ -113,7 +110,7 @@ const beghaNews = ref<
     bogheName: "امام زاده صالح (ع)",
   },
 ]);
-defineComponent([EventsItem , BaseRatingDialog]);
+defineComponent([EventsItem, BaseRatingDialog]);
 const sendNewsNotification = (emited: boolean) => {
   console.log(emited, "tooooogle");
 };
@@ -140,18 +137,18 @@ const sendNewsNotification = (emited: boolean) => {
   }
 }
 
-.begha-events-detail{
+.begha-events-detail {
   margin-top: 36px !important;
 }
 
-.begha-profile-name{
+.begha-profile-name {
   color: $surface-on;
   font-size: 16px;
   font-weight: 700;
-  font-family: 'yekan-regular';
+  font-family: "yekan-regular";
 }
 
-.score-btn{
+.score-btn {
   background-color: $primary;
   color: $primary-on;
   padding: 8px;
@@ -160,7 +157,7 @@ const sendNewsNotification = (emited: boolean) => {
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  font-family: 'yekan-regular';
+  font-family: "yekan-regular";
   font-weight: 400;
 }
 

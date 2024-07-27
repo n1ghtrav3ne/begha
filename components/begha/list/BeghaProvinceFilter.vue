@@ -50,10 +50,7 @@
 import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
 
-import { useModalStore } from "~/stores/modals-store";
-
 defineNuxtComponent({ PopularBegha, BeghaListItems });
-const modalStore = useModalStore();
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]
 >([
@@ -88,95 +85,94 @@ const cities = ref<
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 
-  .modal-head-title {
+.modal-head-title {
+  font-size: 14px;
+  font-family: "yekan-regular";
+  color: $surface-on;
+}
+.filter-province {
+  position: relative;
+  width: 100%;
+  background: $surface-variant;
+  padding: 15px;
+  border-radius: 10px;
+  input {
+    width: 100%;
+    padding: 0 25px;
+    background: transparent;
+    outline: none;
+    border: none;
+    &::placeholder {
+      color: $surface-on-variant;
+      font-size: 14px;
+      font-family: "yekan-regular";
+    }
+    &:focus {
+      caret-color: $primary;
+    }
+  }
+  .search-filter-icon {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+  }
+}
+.current-location {
+  width: 100%;
+  padding: 10px 0 15px 0;
+  .current-location-text {
+    color: $surface-on;
     font-size: 14px;
     font-family: "yekan-regular";
+  }
+  .current-location-province {
     color: $surface-on;
+    font-size: 11px;
+    font-family: "yekan-regular";
   }
-  .filter-province {
-    position: relative;
-    width: 100%;
-    background: $surface-variant;
-    padding: 15px;
+  .cerrent-location-icon {
+    color: $secondary;
+    background: #d7ecff;
+    border-radius: 50%;
+    padding: 8px;
+  }
+  border-bottom: 3px solid $secondary-container;
+}
+.selectable-provinces {
+  .selected {
+    background: $secondary-container !important;
+    .check-icon {
+      color: $secondary;
+    }
+  }
+  .select-item {
+    padding: 12px 15px;
+    background: #fff;
     border-radius: 10px;
-    input {
-      width: 100%;
-      padding: 0 25px;
-      background: transparent;
-      outline: none;
-      border: none;
-      &::placeholder {
-        color: $surface-on-variant;
-        font-size: 14px;
-        font-family: "yekan-regular";
-      }
-      &:focus {
-        caret-color: $primary;
-      }
+    .all-icon {
+      font-size: 25px;
+      color: $surface-on-variant;
     }
-    .search-filter-icon {
-      position: absolute;
-      top: 15px;
-      right: 10px;
+    .all-title {
+      color: $surface-on;
+      font-size: 14px !important;
+      font-family: "yekan-regular";
     }
-  }
-  .current-location {
-    width: 100%;
-    padding: 10px 0 15px 0;
-    .current-location-text {
+    .city-name {
       color: $surface-on;
       font-size: 14px;
       font-family: "yekan-regular";
     }
-    .current-location-province {
+    .province-name {
       color: $surface-on;
       font-size: 11px;
       font-family: "yekan-regular";
     }
-    .cerrent-location-icon {
-      color: $secondary;
-      background: #d7ecff;
-      border-radius: 50%;
-      padding: 8px;
-    }
-    border-bottom: 3px solid $secondary-container;
-  }
-  .selectable-provinces {
-    .selected {
-      background: $secondary-container !important;
-      .check-icon {
-        color: $secondary;
-      }
-    }
-    .select-item {
-      padding: 12px 15px;
-      background: #fff;
-      border-radius: 10px;
-      .all-icon {
-        font-size: 25px;
-        color: $surface-on-variant;
-      }
-      .all-title {
-        color: $surface-on;
-        font-size: 14px !important;
-        font-family: "yekan-regular";
-      }
-      .city-name {
-        color: $surface-on;
-        font-size: 14px;
-        font-family: "yekan-regular";
-      }
-      .province-name {
-        color: $surface-on;
-        font-size: 11px;
-        font-family: "yekan-regular";
-      }
-      .selectable-location-icon {
-        font-size: 30px;
-        color: $surface-on-variant;
-        margin-left: 5px;
-      }
+    .selectable-location-icon {
+      font-size: 30px;
+      color: $surface-on-variant;
+      margin-left: 5px;
     }
   }
-
+}
 </style>

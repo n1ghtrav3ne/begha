@@ -45,15 +45,12 @@
           </div>
         </div>
       </nav>
-      <OverlayLayout />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import OverlayLayout from "./OverlayLayout.vue";
 import { useAppSidebar } from "~/stores/layout-store";
-defineComponent({ OverlayLayout });
 const appSidebar = useAppSidebar();
 </script>
 
