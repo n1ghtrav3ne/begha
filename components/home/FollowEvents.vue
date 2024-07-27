@@ -9,6 +9,7 @@
             alt="new events"
           />رویداد های پیش رو</span
         >
+        <span class="see-all">مشاهده همه</span>
       </div>
       <Swiper
         class=""
@@ -110,7 +111,9 @@ const servicesList = ref<
 <style lang="scss" scoped>
 @import "../../assets/css/icons.scss";
 @import "../../assets/css/colors.scss";
-
+.see-all{
+  color: $secondary;
+}
 .swiper {
   width: 100%;
   height: 100%;
@@ -136,6 +139,7 @@ const servicesList = ref<
 }
 
 .swiper-slide {
+  margin-left: 16px !important;
   width: 75%;
   border-radius: 16px;
   border: 1px solid $outline-variant;
@@ -190,14 +194,14 @@ const servicesList = ref<
     font-size: 24px;
   }
   .event-location {
-    margin-bottom: 25px;
+    margin-bottom: 12px;
     .event-location-title {
       font-size: 11px;
       font-family: "yekan-regular";
       color: $surface-on;
       background-color: $surface-container-lowest;
       padding: 5px 12px;
-      border-radius: 20px;
+      border-radius: 8px;
       margin-right: 10px;
     }
     .event-location-icon {
@@ -227,15 +231,17 @@ const servicesList = ref<
   margin-bottom: 40px;
   .new-events {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
     .new-events-shape {
       width: 28px !important;
       height: 12px !important;
     }
-    span {
-      color: $surface-on;
-      font-size: 14px;
-      font-family: "yekan-regular";
-    }
+    // span {
+    //   color: $surface-on;
+    //   font-size: 14px;
+    //   font-family: "yekan-regular";
+    // }
   }
 }
 .service-btn {

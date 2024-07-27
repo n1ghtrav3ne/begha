@@ -66,7 +66,7 @@ export default {
     color: $error-on;
   }
   .do-pray {
-    background: $secondary-container;
+    background: $error-on;
     border-radius: 25px;
     width: 170px;
     .do-pray-word {
