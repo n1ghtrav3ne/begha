@@ -24,7 +24,7 @@
         </BaseButton>
       </div>
     </div>
-    <div class="w-full bg-surface-100 h-[1px]"></div>
+    <div class="divider"></div>
     <div class="w-full text-center my-6">
       <div>
         <BaseTimer :key="loading"></BaseTimer>

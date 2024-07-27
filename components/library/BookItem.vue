@@ -17,8 +17,8 @@
         </div>
         <div class="book-footer flex items-center justify-between">
           <div>
-            <span class="book-genre-info flex items-center justify-center">
-              <span class="book-genre-icon flex items-center justify-center">
+            <span class="book-genre-info centered">
+              <span class="book-genre-icon centered">
                 <span class="material-symbols-outlined"> menu_book </span>
               </span>
               <span class="book-genre"> مذهبی-اسلامی </span>

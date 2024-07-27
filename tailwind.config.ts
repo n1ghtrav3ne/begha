@@ -1,4 +1,3 @@
-import type { Config } from 'tailwindcss'
 
 export default {
   content: [
@@ -10,6 +9,7 @@ export default {
     "./error.vue",
   ],
   theme: {
+    extend: {},
     screens: {
       sm: '480px',
       md: '768px',
@@ -35,11 +35,12 @@ export default {
       secondary: {
         400: "#B5D9FB"
       },
+      orange: '#FEBC09',
       blue: '#1fb6ff',
+      "blue-light": '#1fb6ff',
       purple: '#7e5bef',
       pink: '#ff49db',
-      orange: '#ff7849',
-      green: '#13ce66',
+      green: '#22B945',
       yellow: '#ffc82c',
       'gray-dark': '#273444',
       'gray': '#8492a6',
@@ -53,5 +54,5 @@ export default {
     },
   },
   plugins: [],
-} satisfies Config
+}
 

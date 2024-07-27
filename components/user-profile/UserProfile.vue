@@ -30,14 +30,17 @@
             :key="index"
             class="option flex items-center"
           >
-            <span class="option-icon flex items-center justify-center">
+            <span class="option-icon centered">
               <span v-if="item.notif" class="red-dot"></span>
               <span class="material-symbols-outlined"> {{ item.icon }} </span>
             </span>
             <span class="option-text">{{ item.title }}</span>
           </li>
-          <li  @click="modalStore.changeExitAccount('active')" class="option flex items-center">
-            <span class="option-icon logout flex items-center justify-center">
+          <li
+            @click="modalStore.changeExitAccount('active')"
+            class="option flex items-center"
+          >
+            <span class="option-icon logout centered">
               <span class="material-symbols-outlined"> logout </span>
             </span>
             <span class="option-text">خروج</span>
@@ -53,11 +56,11 @@
 <script lang="ts" setup>
 import SwitchAccount from "./SwitchAccountModal.vue";
 
-import exit from "./exit/exit.vue"
+import exit from "./exit/exit.vue";
 
 import { useModalStore } from "~/stores/modals-store";
-defineComponent([SwitchAccount,exit]);
-const modalStore = useModalStore()
+defineComponent([SwitchAccount, exit]);
+const modalStore = useModalStore();
 
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]
@@ -115,18 +118,17 @@ const profileOptions = ref<{ title: string; icon: string; notif: boolean }[]>([
   },
 ]);
 
-const optionsAction = (item:{title:string}) => {
-    if (item.title === 'تغییر نوع کاربری') {
-        modalStore.changeSwitchAccountActive('active')
-    }else if(item.title === 'درخواست های من'){
-      useRouter().push('/profile/requests/')
-    }else if(item.title==='تکمیل پروفایل'){
-      useRouter().push('/profile/completion/')
-    }else if(item.title==="ذخیره شده ها"){
-      useRouter().push('/profile/savedMedia/')
-    }
- }
-
+const optionsAction = (item: { title: string }) => {
+  if (item.title === "تغییر نوع کاربری") {
+    modalStore.changeSwitchAccountActive("active");
+  } else if (item.title === "درخواست های من") {
+    useRouter().push("/profile/requests/");
+  } else if (item.title === "تکمیل پروفایل") {
+    useRouter().push("/profile/completion/");
+  } else if (item.title === "ذخیره شده ها") {
+    useRouter().push("/profile/savedMedia/");
+  }
+};
 </script>
 
 <style lang="scss" scoped>

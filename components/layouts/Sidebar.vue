@@ -14,35 +14,33 @@
                 @click="appSidebar.changeSidebarStateActive('deactive')"
                 class="icon-Close-Iran"
               >
-                
               </span>
             </div>
           </div>
           <div class="sidebar-items">
             <ul class="sidebar-list mt-5">
               <li class="sidebar-item">
-                <span class="icon-Pray-Counter-Iran"> </span>ذکر
-                شمار
+                <span class="icon-Pray-Counter-Iran"> </span>ذکر شمار
               </li>
               <li class="sidebar-item">
-                <span class="icon-Calender-Iran">  </span>
+                <span class="icon-Calender-Iran"> </span>
                 تقویم
               </li>
               <li class="sidebar-item">
-                <span class="icon-Support-Iran">  </span>
+                <span class="icon-Support-Iran"> </span>
                 ارتباط با پشتیبانی
               </li>
               <li class="sidebar-item">
-                <span class="icon-Help-Iran">  </span>
+                <span class="icon-Help-Iran"> </span>
                 راهنمای برنامه
               </li>
               <li class="sidebar-item">
-                <span class="icon-Guides-Iran">  </span>
+                <span class="icon-Guides-Iran"> </span>
                 قوانین و مقررات
               </li>
             </ul>
           </div>
-          <div class="sidebar-app-version flex items-center justify-center">
+          <div class="sidebar-app-version centered">
             <span class="text-center">نسخه 1.1.1</span>
           </div>
         </div>
@@ -73,7 +71,7 @@ const appSidebar = useAppSidebar();
   position: absolute;
   top: 0;
   right: 0;
-  left:1rem;
+  left: 1rem;
   margin: 0 auto;
   max-width: 600px;
   transition: all ease-in-out 0.13s;

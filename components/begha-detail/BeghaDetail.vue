@@ -21,7 +21,10 @@
             <span class="status-icon icon-Mosque-Iran"></span>
             <span class="status-text">بسته</span>
           </span>
-          <span @click="$router.push('/begha-news/1')" class="begha-notif flex items-center justify-center mr-3">
+          <span
+            @click="$router.push('/begha-news/1')"
+            class="begha-notif centered mr-3"
+          >
             <span class="material-symbols-outlined"> notifications </span>
           </span>
         </div>
@@ -32,9 +35,7 @@
           <span class="begha-followers">۳۴۹ نفر دنبال کننده</span>
         </div>
         <div>
-          <span class="begha-follow-btn flex items-center justify-center"
-            >دنبال کردن</span
-          >
+          <span class="begha-follow-btn centered">دنبال کردن</span>
         </div>
       </div>
     </div>
@@ -61,7 +62,7 @@
                 >تهران، میدان تجریش، حرم امامزاده صالح (ع)</span
               >
             </div>
-            <span class="address-icon-bg flex items-center justify-center">
+            <span class="address-icon-bg centered">
               <span class="material-symbols-outlined"> notifications </span>
             </span>
           </div>
@@ -70,7 +71,7 @@
               <span class="contact-title">اطلاعات تماس</span>
               <span class="contact-numbers">۰۹۱۲۳۴۵۶۷۸۹ و ۰۹۱۳۱۹۴۰۴۰۴۹۴</span>
             </div>
-            <span class="contact-icon-bg flex items-center justify-center">
+            <span class="contact-icon-bg centered">
               <span class="material-symbols-outlined"> call </span>
             </span>
           </div>
@@ -120,7 +121,7 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
       background-color: $secondary;
       width: 36px;
       height: 36px;
-      span{
+      span {
         font-size: 20px;
       }
     }
@@ -147,7 +148,7 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
       background-color: $secondary;
       width: 36px;
       height: 36px;
-      span{
+      span {
         font-size: 20px;
       }
     }
@@ -245,7 +246,7 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
     }
   }
 }
-.begha-profile-content{
+.begha-profile-content {
   margin-bottom: 150px !important;
 }
 </style>

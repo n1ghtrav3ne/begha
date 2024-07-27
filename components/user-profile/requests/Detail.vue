@@ -2,7 +2,10 @@
   <div>
     <div class="back-navbar container flex items-center justify-between">
       <span
-        ><span @click="$router.push('../')" class="material-symbols-outlined back-icon ml-2">
+        ><span
+          @click="$router.push('../')"
+          class="material-symbols-outlined back-icon ml-2"
+        >
           trending_flat </span
         ><span class="back-title">درخواست های من</span></span
       >
@@ -12,9 +15,7 @@
       <div class="heading-info">
         <div class="flex items-center justify-between title-state">
           <span class="request-title">اتاق ۱۲ نفره</span>
-          <span class="status-badge success flex items-center justify-center"
-            >تایید شده</span
-          >
+          <span class="status-badge success centered">تایید شده</span>
         </div>
         <div class="request-location">
           <span class="location">
@@ -71,17 +72,13 @@
         </div>
       </div>
       <div class="back-support flex flex-col items-center">
-        <span class="flex items-center justify-center support-btn"
-          >ارتباط با پشتیبانی</span
-        >
+        <span class="centered support-btn">ارتباط با پشتیبانی</span>
         <span
           @click="modalStore.changeCancelRequestModalActive('active')"
-          class="flex items-center justify-center cancel-btn"
+          class="centered cancel-btn"
           >لغو درخواست</span
         >
-        <span class="flex items-center justify-center back-btn"
-          >رفتن به صفحه زائرسرا</span
-        >
+        <span class="centered back-btn">رفتن به صفحه زائرسرا</span>
       </div>
     </div>
     <CancelRequestModal v-if="modalStore.isOpenCancelRequestModal" />

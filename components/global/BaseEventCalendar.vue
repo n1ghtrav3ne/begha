@@ -3,7 +3,7 @@
     <div class="event-calendar">
       <div v-if="calendarView" class="calendar-view">
         <div class="calendar-navigation">
-          <div class="flex items-center justify-center">
+          <div class="centered">
             <span
               @click="changeWeek(-1)"
               class="icon-Arrow-Bottom-Iran navigate-right"
@@ -45,12 +45,14 @@
       </div>
       <div v-if="selectMonthView" class="all-month-view">
         <ul class="">
-          <li
-
-            class="grid grid-cols-3 flex"
-          >
-            <span @click="updateCalendar(month, selectedYear)"  v-for="(month, index) in months"
-            :key="index" class="flex items-center justify-center  p-2">{{ month }}</span>
+          <li class="grid grid-cols-3 flex">
+            <span
+              @click="updateCalendar(month, selectedYear)"
+              v-for="(month, index) in months"
+              :key="index"
+              class="centered p-2"
+              >{{ month }}</span
+            >
           </li>
         </ul>
       </div>
@@ -60,7 +62,7 @@
             v-for="(year, index) in years"
             :key="index"
             @click="updateCalendar(selectedMonth, year)"
-            class="flex items-center justify-center flex-col p-2"
+            class="centered flex-col p-2"
           >
             <span>{{ year }}</span>
           </li>

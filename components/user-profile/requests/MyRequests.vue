@@ -2,7 +2,10 @@
   <div>
     <div class="back-navbar container flex items-center justify-between">
       <span
-        ><span @click="$router.push('/profile')" class="material-symbols-outlined back-icon ml-2">
+        ><span
+          @click="$router.push('/profile')"
+          class="material-symbols-outlined back-icon ml-2"
+        >
           trending_flat </span
         ><span class="back-title">درخواست های من</span></span
       >
@@ -32,9 +35,7 @@
             </div>
           </div>
           <div class="status">
-            <span class="status-badge warning flex items-center justify-center"
-              >در حال بررسی</span
-            >
+            <span class="status-badge warning centered">در حال بررسی</span>
           </div>
         </div>
       </div>
@@ -51,9 +52,7 @@
             </div>
           </div>
           <div class="status">
-            <span class="status-badge success flex items-center justify-center"
-              >تایید شده</span
-            >
+            <span class="status-badge success centered">تایید شده</span>
           </div>
         </div>
       </div>
@@ -71,9 +70,7 @@
             </div>
           </div>
           <div class="status">
-            <span class="status-badge error flex items-center justify-center"
-              >رد شده</span
-            >
+            <span class="status-badge error centered">رد شده</span>
           </div>
         </div>
       </div>

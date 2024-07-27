@@ -5,7 +5,7 @@
         <div class="flex items-center justify-end p-2 pt-3 pl-4">
           <span
             @click="modalStore.changeBeghaMediaPostFilterActive('active')"
-            class="material-symbols-outlined flex items-center justify-center"
+            class="material-symbols-outlined centered"
           >
             search
           </span>
@@ -26,9 +26,7 @@
           <span class="begha-profile-name">حرم امام زاده صالح (ع)</span>
           <span class="flex items-center mt-2">
             <span class="media-count-icon ml-2">
-              <span
-                class="icon-Calender-Iran flex items-center justify-center"
-              ></span>
+              <span class="icon-Calender-Iran centered"></span>
             </span>
             <span>23 رسانه</span>
           </span>

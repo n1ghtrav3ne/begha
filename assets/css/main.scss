@@ -7,12 +7,25 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
+html {
     background-color: $surface;
 }
-body{
+
+body {
     font-family: 'yekan-regular';
     font-size: 14px;
     max-width: 600px;
     margin: 0 auto;
+}
+
+@layer components {
+
+    .divider {
+        @apply w-full bg-surface-100/50 h-[1px]
+    }
+
+    .centered {
+        @apply flex items-center justify-center
+    }
+
 }
