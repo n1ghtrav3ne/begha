@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- <SplashLoading v-if="initStore.isLoading" /> -->
-    <MoreServicesButtons v-if="modalStore.isOpenMoreServicesButtons" />
+    <MoreServicesButtons />
   </div>
 </template>
 

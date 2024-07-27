@@ -1,11 +1,5 @@
 <template>
   <div>
-    
-    <BaseDialog v-if="modalStore.isOpenSwitchAccount">
-      <template #headerText>
-        <span class="modal-head-title">انتخاب کنید.</span>
-      </template>
-      <template #body>
         <div class="filter-modal-body">
           <div class="selectable-provinces mt-8">
             <div
@@ -33,8 +27,6 @@
             </div>
           </div>
         </div>
-      </template>
-    </BaseDialog>
   </div>
 </template>
 

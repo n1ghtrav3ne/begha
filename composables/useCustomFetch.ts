@@ -12,7 +12,7 @@ export const useCustomFetch = (url: string, options: object) => {
     },
     onResponse({ request, response, options }) {
       // Process the response data
-      localStorage.setItem("token", response._data.token);
+      // localStorage.setItem("token", response._data.token);
     },
     onResponseError({ request, response, options }) {
       // Handle the response errors

@@ -6,7 +6,7 @@
             <img src="~/assets/images/logo/layout-logo.png" alt="" />
           </div>
           
-          <div class="profile">
+          <div @click="modalStore.activeUserSelection('active')" class="profile">
 
             <img src="~/assets/images/cemetery/noOne.png" alt="">
 
@@ -34,10 +34,11 @@
   </template>
   
   <script lang="ts" setup>
-  import Sidebar from "./Sidebar.vue";
-  import { useAppSidebar } from "~/stores/layout-store";
-  defineComponent({ Sidebar });
-  const appSidebar = useAppSidebar();
+
+    import { useModalStore } from "~/stores/modals-store";
+
+    const modalStore = useModalStore();
+
   </script>
   
   <style lang="scss" scoped>

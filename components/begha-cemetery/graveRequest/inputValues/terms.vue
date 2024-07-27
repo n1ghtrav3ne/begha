@@ -1,14 +1,5 @@
 <template>
-    
-    <BaseDialog :modalHeight="619">
 
-        <template #headerText>
-
-            <span class="headerText">مطالعه قوانین و مقررات</span>
-
-        </template>
-
-        <template #body>
 
             <div class="termsContainer">
 
@@ -16,18 +7,10 @@
                     
             </div>
 
-        </template>
-    
-    </BaseDialog>
-
 
 </template>
 
 <script setup lang="ts">
-
-import BaseDialog from "~/components/global/BaseDialog.vue"
-
-defineComponent({BaseDialog})
 
 
 </script>

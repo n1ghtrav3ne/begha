@@ -1,15 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="330">
-
-        <template #headerText>
-
-            <span class="headerText">ساعت شروع و پایان را انتخاب کنید.</span>
-
-        </template>
-
-        <template #body>
-
             <div class="timeContainer">
 
                 <div class="hourSelector">
@@ -60,30 +50,20 @@
 
             </div>
 
-            <button @click="mausoleumStore.changeCermonyTime('deactive')">تمام</button>
-
-        </template>
-    
-    </BaseDialog>
+            <button @click="$emit('close')">تمام</button>
 
 </template>
 <script setup lang="ts">
 
-import BaseDialog from "~/components/global/mBaseDialog.vue"
+import { useModalStore } from "~/stores/modals-store";
 
-
-import {useMausoleumStore} from "~/stores/m-modals-store"
-
-const mausoleumStore=useMausoleumStore()
+const modalStore = useModalStore();
 
 function limitInput(event:any, maxLength:any) {
     if (event.target.value.length > maxLength) {
         event.target.value = event.target.value.slice(0, maxLength);
     }
 }
-
-
-defineComponent({BaseDialog})
 
     const minute = ref()
 
@@ -102,7 +82,7 @@ watch([minute,hour],()=>{
     StartTimeValue.value=[hour.value , minute.value]
 
     if(!!minute.value && !!hour.value){
-    mausoleumStore.setStartTime(StartTimeValue.value)    
+    modalStore.setStartTime(StartTimeValue.value)    
     }
 })
 
@@ -111,7 +91,7 @@ watch([endMinute,endHour],()=>{
     endTimeValue.value=[endHour.value , endMinute.value]
 
     if(!!endMinute.value && !!endHour.value){
-    mausoleumStore.setEndTime(endTimeValue.value)    
+    modalStore.setEndTime(endTimeValue.value)    
     }
 })
 

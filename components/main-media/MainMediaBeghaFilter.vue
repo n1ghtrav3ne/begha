@@ -1,14 +1,5 @@
 <template>
   <div>
-    <BaseDialog
-      :modalHeight="552"
-      :modalPadding="'20px 0 35px 0'"
-      class="filter-event-modal"
-    >
-      <template #headerText>
-        <span class="modal-head-title">بقعه مورد نظر خود را انتخاب کنید</span>
-      </template>
-      <template #body>
         <div class="filter-modal-body">
           <div class="selected-filters">
             <div class="filter-province">
@@ -59,8 +50,6 @@
             </div>
           </div>
         </div>
-      </template>
-    </BaseDialog>
   </div>
 </template>
 
@@ -68,9 +57,7 @@
 import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
 import BaseDialog from "~/components/global/BaseDialog.vue";
-import { useModalStore } from "~/stores/modals-store";
 defineNuxtComponent({ PopularBegha, BeghaListItems, BaseDialog });
-const modalStore = useModalStore();
 let selectedEvents = ref<{ isChecked: boolean; label: string; id: number }[]>(
   []
 );
@@ -113,7 +100,6 @@ const selectedEventsFilter = (emited: any) => {
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 
-.filter-event-modal {
   .modal-head-title {
     font-size: 14px;
     font-family: "yekan-regular";
@@ -283,7 +269,6 @@ const selectedEventsFilter = (emited: any) => {
       }
     }
   }
-}
 
 .services-container {
   border-bottom: 3px solid $secondary-container;

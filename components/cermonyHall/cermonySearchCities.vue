@@ -1,17 +1,5 @@
 <template>
 
-<BaseDialog :modalHeight="523">
-
-    <template #headerText>
-
-        <span class="modal-head-title text-[14px]">شهر مورد نظر خود را انتخاب کنید</span>
-
-    </template>
-
-
-    <template #body>
-
-
         <div class="search">
 
             <div class="searchBox">
@@ -45,7 +33,7 @@
 
         <hr class="w-full h-[4px]">
 
-        <div @click="deactiveFilter" :class="{deactive:filterCheck===false}" class="filter">
+        <div :class="{deactive:filterCheck===false}" class="filter">
 
             <img src="~/assets/images/cermony/menu.svg" alt="">
 
@@ -81,11 +69,6 @@
 
         </div>
 
-        
-
-    </template>
-</BaseDialog>
-
 </template>
 <script lang="ts" setup>
 import BaseDialog from "~/components/global/BaseDialog.vue"
@@ -95,13 +78,6 @@ const modalStore = useModalStore();
 defineComponent({BaseDialog})
 
 const filterCheck=ref(true);
-const deactiveFilter=()=>{
-    filterCheck.value=!filterCheck.value;
-    modalStore.changeCermonyHallSearchFilterActive('deactive')
-    if(filterCheck){
-        modalStore.changeCermonyHallSearchFilterActive('active')
-    }
-}
 
 </script>
 <style lang="scss" scoped>

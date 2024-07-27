@@ -1,16 +1,4 @@
 <template>
-
-    <BaseDialog :modalHeight="523">
-    
-        <template #headerText>
-    
-            <span class="modal-head-title text-[14px]">شهر مورد نظر خود را انتخاب کنید</span>
-    
-        </template>
-    
-    
-        <template #body>
-    
     
             <div class="search">
     
@@ -45,11 +33,6 @@
                 </div>
     
             </div>
-    
-            
-    
-        </template>
-    </BaseDialog>
     
     </template>
     <script lang="ts" setup>

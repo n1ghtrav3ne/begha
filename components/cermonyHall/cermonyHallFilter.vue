@@ -1,16 +1,5 @@
 <template>
 
-
-        <BaseDialog
-        :modalHeight="302"
-        >
-
-        <template #headerText>
-        <span class="modal-head-title">ترتیب نمایش براساس</span>
-        </template>
-
-        <template #body>
-
             <div class="itemsContainer">
 
                 <div @click="activateItem(0)" :class="{'active':selectedItem===0}" class="item">
@@ -44,29 +33,14 @@
                 </div>
 
             </div>
-            
-
-        </template>
-        
-        </BaseDialog>
-
-    
+             
 
 </template>
 <script lang="ts" setup>
 
-import BaseDialog from "~/components/global/BaseDialog.vue"
-import { useModalStore } from "~/stores/modals-store";
-const modalStore = useModalStore();
-
-defineComponent({BaseDialog})
-
 const selectedItem=ref(0)
 const activateItem=(index:number)=>{
     selectedItem.value=index;
-    if(selectedItem.value!==0){
-        modalStore.changeCermonyHallRequestFilterActive('active')        
-    }
 }
 
 </script>

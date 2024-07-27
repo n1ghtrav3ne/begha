@@ -4,7 +4,7 @@
         
         <div class="inputContainer">
 
-            <img @click="modalStore.changeCemeterySearch('deactive')" class="w-[36px] h-[36px]" src="~/assets/images/cemetery/Back Icon.svg" alt="">
+            <img @click="$emit('close')" class="w-[36px] h-[36px]" src="~/assets/images/cemetery/Back Icon.svg" alt="">
 
             <div class="input grid grid-cols-5 items-center">
 
@@ -14,7 +14,7 @@
 
                 <input class="col-span-2" placeholder="نام متوفی" type="text">
 
-                <div @click="modalStore.changeCemeterySearchFilter('active')" class="iconHolder col-span-1">
+                <div @click="searchFilterSheet=true" class="iconHolder col-span-1">
                     <img src="~/assets/images/cermony/Group 48096574.svg" alt="">
                 </div>
 
@@ -27,18 +27,27 @@
 
     </div>
 
-    <searchFilter v-if="modalStore.isOpenCemeterySearchFilter" />
+    <BottomSheets title="جستجو بر اساس قطعات" :line="true" v-model="searchFilterSheet">
+
+        <searchFilter />
+
+    </BottomSheets>
+
 
 </template>
 <script setup lang="ts">
 
 import searchFilter from "./searchFilter.vue"
 
+import bottomSheets from "~/components/global/bottomSheets.vue";
+
 import { useModalStore } from "~/stores/modals-store";
 
 const modalStore = useModalStore();
 
 defineComponent({searchFilter})
+
+const searchFilterSheet=ref(false)
 
 </script>
 <style scoped lang="scss">

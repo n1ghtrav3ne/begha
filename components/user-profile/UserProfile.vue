@@ -36,7 +36,7 @@
             </span>
             <span class="option-text">{{ item.title }}</span>
           </li>
-          <li  @click="modalStore.changeExitAccount('active')" class="option flex items-center">
+          <li  @click="openExit=true" class="option flex items-center">
             <span class="option-icon logout flex items-center justify-center">
               <span class="material-symbols-outlined"> logout </span>
             </span>
@@ -45,19 +45,28 @@
         </ul>
       </div>
     </div>
-    <SwitchAccount />
-    <exit v-if="modalStore.isOpenExitAccount" />
+
+    <BottomSheets v-model="openUserChange">
+
+      <SwitchAccount />
+
+    </BottomSheets>
+
   </div>
 </template>
 
 <script lang="ts" setup>
 import SwitchAccount from "./SwitchAccountModal.vue";
-
-import exit from "./exit/exit.vue"
+import BottomSheets from "../global/bottomSheets.vue";
 
 import { useModalStore } from "~/stores/modals-store";
-defineComponent([SwitchAccount,exit]);
+defineComponent([SwitchAccount,BottomSheets]);
+
+const openUserChange=ref(false)
+
 const modalStore = useModalStore()
+
+const openExit=ref(false)
 
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]
@@ -117,7 +126,7 @@ const profileOptions = ref<{ title: string; icon: string; notif: boolean }[]>([
 
 const optionsAction = (item:{title:string}) => {
     if (item.title === 'تغییر نوع کاربری') {
-        modalStore.changeSwitchAccountActive('active')
+        openUserChange.value=true
     }else if(item.title === 'درخواست های من'){
       useRouter().push('/profile/requests/')
     }else if(item.title==='تکمیل پروفایل'){

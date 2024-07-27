@@ -1,15 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="307">
-        
-        <template #headerText>
-
-            <span class="headerText">تاریخ فوت متوفی را انتخاب کنید.</span>
-
-        </template>
-
-        <template #body>
-
             <div class="swiperContainer">
 
                  <Swiper 
@@ -80,21 +70,16 @@
 
             </div>
 
-        </template>
-
-       
-    </BaseDialog>
-
 </template>
 <script setup lang="ts">
 
 import BaseDialog from "~/components/global/BaseDialog.vue"
 
-import {useReservationStore} from "~/stores/graveRequest-store";
+import { useModalStore } from "~/stores/modals-store";
 
-const reservationStore=useReservationStore();
+const modalStore = useModalStore();
+
  
-
 defineComponent({BaseDialog})
     
 const initialSlide = ref(0);
@@ -179,7 +164,7 @@ const selectedYear = computed(() => years.value[activeYearSlide.value]);
 
 const selectedDate = computed(() => [selectedDay.value, selectedMonth.value, selectedYear.value]);
 
-reservationStore.setDate(selectedDate)
+modalStore.setDate(selectedDate)
 
 
 </script>
@@ -245,7 +230,7 @@ reservationStore.setDate(selectedDate)
     height: 37px;
     width: 100%;
     right: 0;
-    bottom: 34%;
+    bottom: 5.3rem;
 
     .bar{
         border-top: 1px solid $outline-variant;

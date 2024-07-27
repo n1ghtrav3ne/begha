@@ -1,15 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="307">
-
-        <template #headerText>
-
-            <span class="headerText">ویرایش تصویر کاور</span>
-
-        </template>
-
-        <template #body>
-
             <img :src="image" alt="">
 
             <hr>
@@ -39,17 +29,11 @@
             </div>
 
             <input @change="handleFileChange" ref="inputFile" type="file" class="hidden" accept=".jpg,.png">
-
-
-        </template>
-    
-    </BaseDialog>
     
 </template>
 
 <script lang="ts" setup>
 
-import BaseDialog from "~/components/global/mBaseDialog.vue"
 
 const props=defineProps(['image'])
 

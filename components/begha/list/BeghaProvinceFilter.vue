@@ -1,87 +1,85 @@
 <template>
-  <div>
-    <BaseDialog :modalPadding="'20px 0 35px 0'" :modalHeight="523" v-if="modalStore.isOpenBeghaListProvinceFilter" class="filter-province-modal">
-        <template #headerText>
-          <span class="modal-head-title">شهر مورد نظر خود را انتخاب کنید</span>
-        </template>
-        <template #body>
-          <div class="filter-modal-body">
-            <div class="filter-province">
-              <span class="material-symbols-outlined search-filter-icon">
-                search
-              </span>
-              <input type="text" placeholder="جستجوی شهر یا استان" />
-            </div>
-            <div class="current-location mt-4 flex items-center">
-              <div>
-                <span class="material-symbols-outlined cerrent-location-icon">
-                  location_searching
-                </span>
-              </div>
-              <div class="flex items-center flex-col mr-3">
-                <span class="current-location-text">مکان فعلی شما</span>
-                <span class="current-location-province">اصفهان، اصفهان</span>
-              </div>
-            </div>
+  <div class="filter-modal-body">
+    <div class="filter-province">
+      <span class="material-symbols-outlined search-filter-icon"> search </span>
+      <input type="text" placeholder="جستجوی شهر یا استان" />
+    </div>
+    <div class="current-location mt-4 flex items-center">
+      <div>
+        <span class="material-symbols-outlined cerrent-location-icon">
+          location_searching
+        </span>
+      </div>
+      <div class="flex items-center flex-col mr-3">
+        <span class="current-location-text">مکان فعلی شما</span>
+        <span class="current-location-province">اصفهان، اصفهان</span>
+      </div>
+    </div>
 
-            <div class="selectable-provinces mt-8">
-              <div v-for="(item , index) in cities" :key="index" :class="item.isActive ? 'selected' : ''" class="select-item available-province mt-3 flex items-center justify-between">
-                <div class="flex items-center">
-                  <span
-                    class="material-symbols-outlined selectable-location-icon"
-                  >
-                    {{item.iconClass}}
-                  </span>
-                  <div class="flex flex-col">
-                    <span class="city-name">{{item.city}}</span>
-                    <span :class="item.province === 'همه' ? 'all-title' : ''" class="province-name mt-1">{{item.province}}</span>
-                  </div>
-                </div>
-                <div v-if="item.isActive">
-                  <span class="material-symbols-outlined flex check-icon items-center">
-                    check_circle
-                  </span>
-                </div>
-              </div>
-            </div>
+    <div class="selectable-provinces mt-8">
+      <div
+        v-for="(item, index) in cities"
+        :key="index"
+        :class="item.isActive ? 'selected' : ''"
+        class="select-item available-province mt-3 flex items-center justify-between"
+      >
+        <div class="flex items-center">
+          <span class="material-symbols-outlined selectable-location-icon">
+            {{ item.iconClass }}
+          </span>
+          <div class="flex flex-col">
+            <span class="city-name">{{ item.city }}</span>
+            <span
+              :class="item.province === 'همه' ? 'all-title' : ''"
+              class="province-name mt-1"
+              >{{ item.province }}</span
+            >
           </div>
-        </template>
-      </BaseDialog>
+        </div>
+        <div v-if="item.isActive">
+          <span class="material-symbols-outlined flex check-icon items-center">
+            check_circle
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
-import BaseDialog from "~/components/global/BaseDialog.vue";
+
 import { useModalStore } from "~/stores/modals-store";
 
-defineNuxtComponent({ PopularBegha, BeghaListItems, BaseDialog });
+defineNuxtComponent({ PopularBegha, BeghaListItems });
 const modalStore = useModalStore();
-const cities = ref<{ province: string; city: string; iconClass : string; isActive: boolean }[]>([
+const cities = ref<
+  { province: string; city: string; iconClass: string; isActive: boolean }[]
+>([
   {
     province: "همه",
     city: "",
     isActive: true,
-    iconClass : 'apps'
+    iconClass: "apps",
   },
   {
     province: "اصفهان",
     city: "نجف آباد",
     isActive: false,
-    iconClass : 'location_on'
+    iconClass: "location_on",
   },
   {
     province: "اصفهان",
     city: "نجف آباد",
     isActive: false,
-    iconClass : 'location_on'
+    iconClass: "location_on",
   },
   {
     province: "اصفهان",
     city: "نجف آباد",
     isActive: false,
-    iconClass : 'location_on'
+    iconClass: "location_on",
   },
 ]);
 </script>
@@ -90,8 +88,6 @@ const cities = ref<{ province: string; city: string; iconClass : string; isActiv
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 
-
-.filter-province-modal {
   .modal-head-title {
     font-size: 14px;
     font-family: "yekan-regular";
@@ -146,9 +142,9 @@ const cities = ref<{ province: string; city: string; iconClass : string; isActiv
     border-bottom: 3px solid $secondary-container;
   }
   .selectable-provinces {
-    .selected{
+    .selected {
       background: $secondary-container !important;
-      .check-icon{
+      .check-icon {
         color: $secondary;
       }
     }
@@ -182,6 +178,5 @@ const cities = ref<{ province: string; city: string; iconClass : string; isActiv
       }
     }
   }
-}
 
 </style>

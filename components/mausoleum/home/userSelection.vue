@@ -1,14 +1,4 @@
 <template>
-    
-    <mBaseDialog :modalHeight="314">
-
-        <template #headerText>
-
-            <span class="headertext">انتخاب کنید.</span>
-
-        </template>
-
-        <template #body>
 
             <div class="itemContainer">
 
@@ -31,10 +21,6 @@
                 </div>
 
             </div>
-
-        </template>
-    
-    </mBaseDialog>
 
 </template>
 
@@ -87,7 +73,6 @@ const items=[
     align-items: center;
     gap: 12px;
     width: 100%;
-    padding-top: 16px;
 
     .item{
         display: flex;

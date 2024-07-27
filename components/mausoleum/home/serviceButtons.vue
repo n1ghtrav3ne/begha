@@ -19,7 +19,7 @@
 
         </div>
 
-         <div @click="mausoleumStore.changeServiceButtons('active')" class="icon">
+         <div @click="$emit('close')" class="icon">
 
             <div class="moreIcon">
 

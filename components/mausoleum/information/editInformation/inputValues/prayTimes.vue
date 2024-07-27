@@ -1,38 +1,23 @@
 <template>
-    
-    <BaseDialog :modalHeight="401">
-
-        <template #headerText>
-
-            <span class="headerText">اوقات برگزاری نماز</span>
-
-        </template>
-
-        <template #body>
 
             <BaseCheckbox class="pt-3 text-[14px] font-normal" :items="checkboxes" />
 
-            <button  @click="mausoleumStore.changePrayTimes('deactive')" class="finish">تمام</button>
-
-        </template>
-    
-    </BaseDialog>
+            <button  @click="$emit('close')" class="finish">تمام</button>
 
 
 </template>
 
 <script lang="ts" setup>
 
-import BaseDialog from "~/components/global/mBaseDialog.vue"
 
 import BaseCheckbox from '~/components/global/BaseCheckbox.vue';
 
-import {useMausoleumStore} from "~/stores/m-modals-store"
+import { useModalStore } from "~/stores/modals-store";
 
-const mausoleumStore=useMausoleumStore()
+const modalStore = useModalStore();
 
 
-defineComponent({BaseDialog,BaseCheckbox})
+defineComponent({BaseCheckbox})
 
 const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
   {
@@ -66,7 +51,7 @@ watchEffect(() => {
     });  
 
   if (checkedLabels.length > 0) {  
-    mausoleumStore.setPray(checkedLabels);      
+    modalStore.setPray(checkedLabels);      
   }   
 });
 

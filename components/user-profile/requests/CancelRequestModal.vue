@@ -1,30 +1,18 @@
 <template>
   <div>
-    <BaseDialog :modalHeight="189">
-      <template #headerText>
         <span class="modal-head-title"
           >درخواست شما در حال بررسی می‌باشد. آیا می خواهید آن را لغو کنید؟</span
         >
-      </template>
-      <template #body>
         <div class="services-container grid grid-rows-1">
           <div class="grid grid-cols-2 flex mt-6">
             <span class="cancel-request-btn"> لغو درخواست </span>
-            <span @click="closeModal()" class="cancel-btn"> انصراف </span>
+            <span @click="$emit('close')" class="cancel-btn"> انصراف </span>
           </div>
         </div>
-      </template>
-    </BaseDialog>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useModalStore } from "~/stores/modals-store";
-const modalStore = useModalStore();
-
-const closeModal = () => {
-  modalStore.changeCancelRequestModalActive("deactive");
-};
 </script>
 
 <style lang="scss" scoped>

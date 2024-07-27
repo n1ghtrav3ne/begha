@@ -1,15 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="550">
-
-        <template #headerText>
-
-            <span class="headerText">قطعه مورد نظر خود را انتخاب کنید.</span>
-
-        </template>
-
-        <template #body>
-
             <div class="sectionContainer">
 
                 <div @click="selectItem(index)" :class="{active:index===activeItem && !section.capacity}" v-for="(section,index) in sections" :key="index" class="section">
@@ -36,19 +26,15 @@
                 </div>
 
             </div>
-    
-        </template>
-    
-    </BaseDialog>
-    
+
 </template>
 
 <script setup lang="ts">
 import BaseDialog from "~/components/global/BaseDialog.vue"
 
-import {useReservationStore} from "~/stores/graveRequest-store";
+import { useModalStore } from "~/stores/modals-store";
 
-const reservationStore=useReservationStore();
+const modalStore = useModalStore();
 
 defineComponent({BaseDialog})
 
@@ -76,15 +62,22 @@ const sections=ref<{name:string;capacity:boolean}[]
     },
 ])
 
-const activeItem=ref()
+const activeItem=ref(0)
 
 const selectedSection=ref()
+
+
 
 const selectItem=(index:number)=>{
     activeItem.value=index
     selectedSection.value=sections.value[index].name
-    reservationStore.setSection(selectedSection)
+    modalStore.setSection(selectedSection)
 }
+
+onMounted(()=>{
+    selectItem(0)
+})
+
 </script>
 
 <style lang="scss" scoped>
@@ -104,7 +97,6 @@ const selectItem=(index:number)=>{
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    padding-top: 26px;
     width: 100%;
     height: auto;
     .section{
