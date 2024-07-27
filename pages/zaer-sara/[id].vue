@@ -1,5 +1,5 @@
 <template>
-    <div>
+
     <div class="back-navbar container flex items-center justify-between">
       <span
         ><span @click="$router.go(-1)" class="material-symbols-outlined back-icon ml-2">
@@ -20,7 +20,8 @@
           </span>
       </div>
     </div>
-    <div class="date-card ">
+    <div class="container">
+      <div class="date-card ">
 
 
 <div   class="date-title">
@@ -32,9 +33,55 @@
 </div>
 <span class="date-sub-title">۲۰ اردیبهشت ۱۴۰۳ تا ۲۳ اردیبهشت ۱۴۰۳</span>
 </div>
+
+<div class="zaer-sara">
+  <div class="flex">
+  <img class="zaer-sara-img" src="@/assets/images/zaersara/zaersara.png" >
+  <div class="zaer-sara-info ">
+<span>زائرسرا امام زاده صالح (ع)</span>
+<div class="flex">
+  <img src="@/assets/images/icons/black-location.svg" >
+  <span class="ms-1">اصفهان، نجف آباد</span>
+</div>
+</div>
+</div>
+
+<div >
+  <button class="flex justify-center items-center gap-1 w-20 h-9 p-3   rounded-3xl border zaer-sara-status">
+      <img src="@/assets/images/icons/Mosque.png" >
+      
+  باز
+</button> </div>
+</div>
+<div class="about mt-8">
+  <span class="title mb-3">درباره زائرسرا</span>
+  <span class="content ">
+    در مورد اهمیت و ارزش ادبی و بلاغت نهج‌البلاغه سخنان متعددی از اندیشمندان زبان عربی نقل شده است[۲۰] برخی یکی از دلایل ماندگاری این کتاب را فصاحت و بلاغت موجود در این کتاب دانسته‌اند
+  </span>
+</div>
+<div class="select-room">
+        <div class="room-switch">
+            <div class="switch-item active-switch">اتاق</div>
+            <div class="switch-item">سوئیت</div>
+        </div>
+        <div class="room-list">
+
+          <span class="title">لیست اتاق ها</span>
+          <div class="room-container">
+
+            <RoomItem/>
+            <RoomItem/>
+            <RoomItem/>
+            <RoomItem/>
+          </div>
+        </div>
     </div>
+    </div>
+
+  
 </template>
 <script lang="ts" setup>
+import RoomItem from '~/components/zaer-sara/RoomItem.vue';
  const route = useRoute()
  const id = route.params.id
  definePageMeta({
@@ -49,6 +96,7 @@
   background: $primary;
   display: flex;
   align-items: center;
+  
   padding: 5px 10px;
   span.back-title {
     font-size: 16px;
@@ -65,7 +113,7 @@
   }
   .nav-icon{
     background-color: #ffff;
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 6px;
   }
 }
@@ -97,4 +145,98 @@ line-height: normal;
   }
  
 }
+.zaer-sara{
+  margin-top: 24px;
+  display: flex;  
+  justify-content: space-between;
+  
+  .zaer-sara-img{
+    width: 72px;
+height: 72px;
+border-radius: 8px;
+  }
+  .zaer-sara-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 8px;
+  }
+  .zaer-sara-status{
+border:1px $primary solid;
+background:$primary-container;
+color: $primary;
+  }
+  
+  
+}
+.about{
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--Key-Outline-Outline-Variant, rgba(223, 223, 223, 0.50));
+  .title{
+
+    font-size: 16px ; 
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: block;
+  }
+  .content{
+    text-align: justify;
+  }
+        
+  }
+  .select-room{
+        margin-top: 32px;
+    
+        
+        .room-switch{   
+            display: flex;
+height: 36px;
+padding: 2px;
+justify-content: center;
+align-items: center;
+align-self: stretch;
+
+.switch-item{
+    width: 50%;
+    display: flex;
+height: 36px;
+padding: 2px;
+justify-content: center;
+align-items: center;
+align-self: stretch;
+border-radius: 8px;
+color: #7E7E7E;
+
+
+}
+.active-switch{
+    color: #0B0B0B;
+    border: 0.5px solid  rgba(223, 223, 223, 0.50);
+background: $surface;
+box-shadow: 0px 3px 1px 0px rgba(0, 0, 0, 0.04);
+}
+.room-options{
+    margin-top: 18px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+        }
+        .room-list{
+
+          padding-top: 24px;
+  padding-bottom: 24px;
+  .title{
+    font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+  }
+}
+.room-container{
+  display: flex;
+  flex-direction: column;
+}
+    }
 </style>

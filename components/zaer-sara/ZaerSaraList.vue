@@ -31,7 +31,7 @@
             tune
           </span>
         </div>
-        <div @click="showdelete=true" class="zaersara-reserve">
+        <div @click="showSearch=true" class="zaersara-reserve">
           <span class="zaersara-icon flex items-center justify-center">
             <span class="material-symbols-outlined"> local_library </span>
           </span>
@@ -89,20 +89,22 @@
             <BottomSheets :title="'شهر مورد نظر خود را انتخاب کنید'"  v-model="showProvince">
               <Provinces/>          
             </BottomSheets>
-            <BottomSheets   v-model="showdelete">
-              <DeleteConfirm/>
+            <BottomSheets :title="'جستجو بر اساس امکانات'"   v-model="showSearch">
+              
+              <ZaerSaraFacilitiesSearch />
           </BottomSheets>
 </template>
 <script lang="ts" setup>
 import ZaerSaraItem from "./ZaerSaraItem.vue";
 import ZaerSaraSort from "./ZaerSaraSort.vue";
+import ZaerSaraFacilitiesSearch from "./ZaerSaraFacilitiesSearch.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineComponent([ZaerSaraItem]);
 const modalStore = useModalStore();
     const showSelectDate=ref(false);
     const showSelectedSort=ref(false);
     const showProvince=ref(false);
-    const showdelete=ref(false);
+    const showSearch=ref(false);
     
   </script>
 <style lang="scss" scoped>
