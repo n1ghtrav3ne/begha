@@ -9,6 +9,7 @@
             alt="new events"
           />رویداد های پیش رو</span
         >
+        <span class="see-all">مشاهده همه</span>
       </div>
       <Swiper
         class=""
@@ -22,9 +23,9 @@
         }"
       >
         <SwiperSlide v-for="slide in 3" :key="slide">
-          <div class="card-box">
-            <div class="card-image">
-              <img src="~/assets/images/home/eid-fetr.jpg" alt="" />
+          <div class="card-box !w-full">
+            <div class="!w-full card-image">
+              <img class="!w-full" src="~/assets/images/home/eid-fetr.jpg" alt="" />
             </div>
             <div class="card-info">
               <div class="card-title-head">
@@ -110,7 +111,9 @@ const servicesList = ref<
 <style lang="scss" scoped>
 @import "../../assets/css/icons.scss";
 @import "../../assets/css/colors.scss";
-
+.see-all{
+  color: $secondary;
+}
 .swiper {
   width: 100%;
   height: 100%;
@@ -129,13 +132,13 @@ const servicesList = ref<
 }
 
 .swiper-slide img {
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .swiper-slide {
+  margin-left: 16px !important;
   width: 75%;
   border-radius: 16px;
   border: 1px solid $outline-variant;
@@ -165,10 +168,13 @@ const servicesList = ref<
   .card-image {
     border-top-right-radius: 16px !important;
     border-top-left-radius: 16px !important;
+    background-image: url('~/assets/images/home/eid-fetr.jpg');
+    background-size: contain;
+    background-position: 100%;
+    background-repeat: no-repeat;
     img {
       border-top-right-radius: 16px;
       border-top-left-radius: 16px;
-      max-width: 350px !important;
       width: 100% !important;
     }
   }
@@ -190,14 +196,14 @@ const servicesList = ref<
     font-size: 24px;
   }
   .event-location {
-    margin-bottom: 25px;
+    margin-bottom: 12px;
     .event-location-title {
       font-size: 11px;
       font-family: "yekan-regular";
       color: $surface-on;
       background-color: $surface-container-lowest;
       padding: 5px 12px;
-      border-radius: 20px;
+      border-radius: 8px;
       margin-right: 10px;
     }
     .event-location-icon {
@@ -227,15 +233,17 @@ const servicesList = ref<
   margin-bottom: 40px;
   .new-events {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
     .new-events-shape {
       width: 28px !important;
       height: 12px !important;
     }
-    span {
-      color: $surface-on;
-      font-size: 14px;
-      font-family: "yekan-regular";
-    }
+    // span {
+    //   color: $surface-on;
+    //   font-size: 14px;
+    //   font-family: "yekan-regular";
+    // }
   }
 }
 .service-btn {

@@ -13,7 +13,6 @@
             <span class="library-page-title">کتابخانه</span>
           </div>
           <div
-            @click="modalStore.changeBeghaListProvinceFiltersActive('active')"
             class="choose-location flex items-center mr-3"
           >
             <span class="icon-Arrow-Bottom-Iran ml-1"> </span>
@@ -33,7 +32,6 @@
             placeholder="نام کتاب، دسته بندی و بقعه متبرکه"
           />
           <span
-            @click="modalStore.changeBeghaListEventFiltersActive('active')"
             class="material-symbols-outlined search-input-icon"
           >
             search

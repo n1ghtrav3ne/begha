@@ -15,7 +15,7 @@
 
         
 
-        <div @click="modalStore.changeCermonyHallSearchCities('active')" class="secondItem">
+        <div @click="cermonySearchCitiesSheets=true" class="secondItem">
             <img src="~/assets/images/cermony/arrow-down.svg" alt="">
 
         <span>
@@ -33,7 +33,7 @@
 
         <input placeholder="جست و جو اماکن متبرکه" type="text">
 
-        <div @click="modalStore.changeFacilitiesSearchFilter('active')" class="searchIconContainer">
+        <div @click="facilitiesSearchFilterSheets=true" class="searchIconContainer">
             <img src="~/assets/images/cermony/Group 48096574.svg" alt="img">
         </div>
 
@@ -55,7 +55,7 @@
 
         <p class="firstTxt w-[83px] h-[25px] text-[16px] mr-[8px]">سالن مراسم</p>
 
-        <div @click="modalStore.changeCermonyHallRequestFilterActive('active')" class="filter">
+        <div @click="cermonyHallFilterSheets=true" class="filter">
             <p class="secondTxt">ترتیب یر اساس</p>
             <p class="thirdTxt">محبوب ترین</p>
         </div>
@@ -72,10 +72,23 @@
         
         </div>
 
-        <cermonyHallFilter  v-if="modalStore.isOpenCermonyHallrequestFilter" />
-        <cermonySearchCities v-if="modalStore.isOpenCermonyHallSearchCities" />
+        <BottomSheets v-model="cermonyHallFilterSheets">
 
-        <facilitiesSearchFilter v-if="modalStore.isOpenFacilitiesSearchFilter" />
+            <cermonyHallFilter />
+
+        </BottomSheets>
+
+        <BottomSheets v-model="cermonySearchCitiesSheets">
+
+            <cermonySearchCities />
+
+        </BottomSheets>
+
+        <BottomSheets v-model="facilitiesSearchFilterSheets">
+
+            <facilitiesSearchFilter />
+
+        </BottomSheets>
 
     
 </template>
@@ -85,8 +98,13 @@
     import cermonySearchCities from "./cermonySearchCities.vue"
     import CermonyCard from "./cermonyCard.vue";
     import facilitiesSearchFilter from "./facilitiesSearchFilter.vue"
-    import { useModalStore } from "~/stores/modals-store";
-    const modalStore = useModalStore();
+    import BottomSheets from "../global/bottomSheets.vue";
+
+    const cermonyHallFilterSheets=ref(false)
+
+    const cermonySearchCitiesSheets=ref(false)
+
+    const facilitiesSearchFilterSheets=ref(false)
 
     const beghaCermonyHallItems=ref<
     {title:string; members:string; rating:number; capacity:number; mausoleum:string}[]
@@ -184,7 +202,7 @@
     width: 100%;
     input{
         outline: 0;
-        background-color: $surface;
+        background-color: transparent;
         font-size: 12px;
         width:90%;
     }

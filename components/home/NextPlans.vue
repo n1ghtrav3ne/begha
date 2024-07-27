@@ -182,7 +182,7 @@ const servicesList = ref<
     box-shadow: 3px 4px 19px 0px rgba(0, 0, 0, 0.01);
   }
   .event-title {
-    font-family: "yekan-regular";
+  text-align: right;
     font-size: 11px;
     color: $surface-on;
     width: 70%;

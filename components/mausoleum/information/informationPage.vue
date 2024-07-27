@@ -28,7 +28,7 @@
 
             </div>
 
-            <div @click="mausoleumStore.changeInfoPoster('active')" class="activeImage" v-if="hasImage">
+            <div @click="changePosterSheet=true" class="activeImage" v-if="hasImage">
 
                 <span class="material-symbols-outlined">
                 border_color
@@ -81,7 +81,7 @@
 
          <div class="profileImageContainer">
 
-            <img @click="mausoleumStore.changeInfoImage('active')" v-if="showContent" class="w-full h-full rounded-full" :src="pageData[0].image" alt="">
+            <img @click="changeImageSheet=true" v-if="showContent" class="w-full h-full rounded-full" :src="pageData[0].image" alt="">
 
 
         </div>
@@ -162,9 +162,18 @@
 
     <input @change="handleFileChange" ref="fileInput" type="file" class="hidden" accept=".jpg,.png">
 
-    <ChangeImage v-if="mausoleumStore.isOpenInfoImage" :image="pageData[0].image" />
+    <BottomSheets :closable="false" v-model="changeImageSheet">
 
-    <ChangePoster v-if="mausoleumStore.isOpenInfoPoster" :image="posterImage" />
+        <ChangeImage :image="pageData[0].image" />
+
+    </BottomSheets>
+
+    <BottomSheets :closable="false" v-model="changePosterSheet">
+
+        <ChangePoster :image="posterImage" />
+
+    </BottomSheets>
+
 
 
 </template>
@@ -179,11 +188,12 @@ import profileImage from "~/assets/images/cemetery/cemetery.png";
 
 import ChangeImage from "~/components/mausoleum/information/editInformation/inputValues/ChangeImage.vue"
 
-import {useMausoleumStore} from "~/stores/m-modals-store"
-
-const mausoleumStore=useMausoleumStore()
 
 defineComponent({adminBanner,ChangeImage,ChangePoster})
+
+const changeImageSheet=ref(false)
+
+const changePosterSheet=ref(false)
 
 const fileInput=ref()
 

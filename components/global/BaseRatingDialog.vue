@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="props.modelValue">
     <div
       :style="`height: ${props.modalHeight + 'px !important'};`"
       class="base-modal"
@@ -33,23 +33,23 @@
         <span class="register-rate">ثبت امتیاز</span>
       </div>
     </div>
-    <OverlayLayout />
+    <div @click="close" class="base fixed base top-0   h-screen bg-surface-400/40 overflow-auto"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import OverlayLayout from "../layouts/OverlayLayout.vue";
 import { useModalStore } from "~/stores/modals-store";
-defineNuxtComponent({ OverlayLayout });
-const props = defineProps(["modalHeight", "modalPadding"]);
+const props = defineProps(["modalHeight", "modalPadding","modelValue"]);
 const modalStore = useModalStore();
 let rate = ref(0);
 let stars = ref([1, 2, 3, 4, 5]);
-const closeModal = () => {
-  modalStore.changeBeghaListProvinceFiltersActive("deactive");
-  modalStore.changeBeghaListEventFiltersActive("deactive");
-  modalStore.changeMoreServicesButtonsActive("deactive");
+
+const emit = defineEmits(['update:modelValue']);
+
+const close = () => {
+  emit('update:modelValue', false);
 };
+
 
 const setStars = (star: number) => {
   if (star <= rate.value) {
@@ -63,6 +63,14 @@ const setStars = (star: number) => {
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
+.base{
+  max-width: 600px;
+  width: 100% !important;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  
+}
 .base-modal {
   margin: 16px 12px;
   background-color: #fff;
@@ -70,6 +78,10 @@ const setStars = (star: number) => {
   border-radius: 16px;
   width: 94%;
   position: fixed;
+  right: 0;
+  left:0;
+  margin: 0 auto;
+  max-width: 600px;
   bottom: 0;
   padding: 16px 35px;
   overflow: initial !important;

@@ -4,7 +4,7 @@
       <div class="begha-page-banner">
         <div class="flex items-center justify-end p-2 pt-3 pl-4">
           <span
-            @click="modalStore.changeBeghaMediaPostFilterActive('active')"
+            @click="BeghaMediaPostFilterSheet = true"
             class="material-symbols-outlined centered"
           >
             search
@@ -54,17 +54,21 @@
         </div>
       </div>
     </div>
-    <BeghaMediaPostFilter v-if="modalStore.isOpenBeghaMediaPostFilter" />
+    <BottomSheets v-model="BeghaMediaPostFilterSheet">
+      <BeghaMediaPostFilter />
+    </BottomSheets>
   </div>
 </template>
 
 <script lang="ts" setup>
 import "swiper/css";
 import "swiper/css/pagination";
+import BottomSheets from "../global/bottomSheets.vue";
 import MediaPostItem from "./MediaPostItem.vue";
 import BeghaMediaPostFilter from "./BeghaMediaPostFilter.vue";
 import { useModalStore } from "~/stores/modals-store";
 const modalStore = useModalStore();
+const BeghaMediaPostFilterSheet = ref(false);
 const beghaNews = ref<
   {
     id: number;

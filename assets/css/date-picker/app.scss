@@ -109,7 +109,7 @@
 
 .pdp {
 	position: relative;
-	
+	min-height: 400px;
 
 	&:not(.pdp-range) .pdp-day.start-range {
 		border-radius: $radius !important;

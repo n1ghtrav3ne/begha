@@ -9,7 +9,10 @@
           trending_flat </span
         ><span class="back-title">زائر سرا</span></span
       >
-      <div class="choose-location flex items-center mr-3">
+      <div
+        @click="showProvince = true"
+        class="choose-location flex items-center mr-3"
+      >
         <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
         <span class="location-title-text">اصفهان، نجف آباد</span>
         <span class="icon-Arrow-Bottom-Iran mr-1"> </span>
@@ -25,27 +28,21 @@
               placeholder="جستجو اماکن متبرکه"
             />
             <span
-              @click="modalStore.changeBeghaListEventFiltersActive('active')"
+              @click="showSelectedSort = true"
               class="material-symbols-outlined search-input-icon"
             >
               tune
             </span>
           </div>
-          <div
-            @click="$router.push('/library/basket')"
-            class="zaersara-reserve"
-          >
-            <span class="zaersara-icon centered">
+          <div @click="showSearch = true" class="zaersara-reserve">
+            <span class="zaersara-icon flex items-center justify-center">
               <span class="material-symbols-outlined"> local_library </span>
             </span>
           </div>
         </div>
         <div>
           <div class="date-card">
-            <div
-              @click="modalStore.ChangezaerSaraSelectDate('active')"
-              class="date-title"
-            >
+            <div @click="showSelectDate = true" class="date-title">
               <span>تاریخ ورود و خروج</span>
               <span class="material-symbols-outlined"> arrow_drop_down </span>
             </div>
@@ -71,33 +68,38 @@
             <ZaerSaraItem />
             <ZaerSaraItem />
           </div>
-          <BaseDialog v-if="modalStore.isOpenZaerSelectDate" :modalHeight="520">
-            <template #headerText>انتخاب تاریخ ورود</template>
-            <template #body>
-              <DatePicker
-                :show="true"
-                :dualInput="true"
-                :mode="'range'"
-                :column="1"
-              /> </template
-          ></BaseDialog>
         </div>
       </div>
     </div>
   </div>
+  <BottomSheets v-model="showSelectDate">
+    <DatePicker :show="true" :dualInput="true" :mode="'range'" :column="1" />
+  </BottomSheets>
+  <BottomSheets :title="'ترتیب نمایش بر اساس'" v-model="showSelectedSort">
+    <ZaerSaraSort />
+  </BottomSheets>
+  <BottomSheets
+    :title="'شهر مورد نظر خود را انتخاب کنید'"
+    v-model="showProvince"
+  >
+    <Provinces />
+  </BottomSheets>
+  <BottomSheets :title="'جستجو بر اساس امکانات'" v-model="showSearch">
+    <ZaerSaraFacilitiesSearch />
+  </BottomSheets>
 </template>
-    </BaseDialog>
 
-  </div>
-      </div>
-    </div>
-    </div>
-</template>
 <script lang="ts" setup>
 import ZaerSaraItem from "./ZaerSaraItem.vue";
+import ZaerSaraSort from "./ZaerSaraSort.vue";
+import ZaerSaraFacilitiesSearch from "./ZaerSaraFacilitiesSearch.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineComponent([ZaerSaraItem]);
 const modalStore = useModalStore();
+const showSelectDate = ref(false);
+const showSelectedSort = ref(false);
+const showProvince = ref(false);
+const showSearch = ref(false);
 </script>
 
 <style lang="scss" scoped>

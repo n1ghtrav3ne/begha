@@ -1,8 +1,4 @@
 <template>
-    
-    <SimpleBaseDialog :modalHeight="139">
-
-        <template #body>
 
             <div class="buttonsContainer">
 
@@ -33,10 +29,6 @@
                 </div>
 
             </div>
-
-        </template>
-    
-    </SimpleBaseDialog>
 
 </template>
 

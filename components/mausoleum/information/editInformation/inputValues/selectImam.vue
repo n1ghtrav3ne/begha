@@ -1,39 +1,20 @@
 <template>
 
-    <BaseDialog :modalHeight="163">
-
-        <template #headerText>
-
-            <span class="headerText">نام امام جماعت را وارد کنید.</span>
-
-        </template>
-
-        <template #body>
-
-
                 <input placeholder="نام و نام خانوادگی امام جماعت" v-model="imam" type="text" >
-
-
-        </template>
-    
-    </BaseDialog>
     
 </template>
 
 <script lang="ts" setup>
-import BaseDialog from "~/components/global/mBaseDialog.vue"
-defineComponent({BaseDialog})
 
+import { useModalStore } from "~/stores/modals-store";
 
-import {useMausoleumStore} from "~/stores/m-modals-store"
-
-const mausoleumStore=useMausoleumStore()
+const modalStore = useModalStore();
 
 const imam=ref()
 
 watch(imam,()=>{
     if(!!imam.value){
-        mausoleumStore.settingImamName(imam)        
+        modalStore.settingImamName(imam)        
     }
 })
 </script>
@@ -55,7 +36,6 @@ input{
     color: $surface-on;
     outline: 0;
     width:100%;
-    margin-top: 16px;
     border-radius: 8px;
     background: #F1F1F1;
     font-size: 14px;

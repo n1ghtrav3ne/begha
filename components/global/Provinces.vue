@@ -1,11 +1,6 @@
 <template>
-  <div>
-    <BaseDialog :modalPadding="'20px 0 35px 0'" :modalHeight="523" v-if="modalStore.isOpenBeghaListProvinceFilter" class="filter-province-modal">
-        <template #headerText>
-          <span class="modal-head-title">شهر مورد نظر خود را انتخاب کنید</span>
-        </template>
-        <template #body>
-          <div class="filter-modal-body">
+    <div class="filter-province-modal">
+ <div class="filter-modal-body">
             <div class="filter-province">
               <span class="material-symbols-outlined search-filter-icon">
                 search
@@ -45,18 +40,9 @@
               </div>
             </div>
           </div>
-        </template>
-      </BaseDialog>
-  </div>
+        </div>
 </template>
-
 <script lang="ts" setup>
-import PopularBegha from "~/components/home/PopularBegha.vue";
-import BeghaListItems from "~/components/home/BeghaListItems.vue";
-import BaseDialog from "~/components/global/BaseDialog.vue";
-import { useModalStore } from "~/stores/modals-store";
-
-defineNuxtComponent({ PopularBegha, BeghaListItems, BaseDialog });
 const modalStore = useModalStore();
 const cities = ref<{ province: string; city: string; iconClass : string; isActive: boolean }[]>([
   {
@@ -85,7 +71,6 @@ const cities = ref<{ province: string; city: string; iconClass : string; isActiv
   },
 ]);
 </script>
-
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";

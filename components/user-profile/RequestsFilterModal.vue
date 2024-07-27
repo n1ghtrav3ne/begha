@@ -1,15 +1,5 @@
 <template>
   <div>
-    <BaseDialog
-      :modalHeight="552"
-      :modalPadding="'20px 0 35px 0'"
-      v-if="modalStore.isOpenRequestsFilterModal"
-      class="filter-event-modal"
-    >
-      <template #headerText>
-        <span class="modal-head-title">جستجو درخواست</span>
-      </template>
-      <template #body>
         <div class="filter-modal-body">
           <div class="services-container pb-5 grid grid-rows-1">
             <div class="grid grid-cols-5 flex">
@@ -46,8 +36,6 @@
             </div>
           </div>
         </div>
-      </template>
-    </BaseDialog>
   </div>
 </template>
 

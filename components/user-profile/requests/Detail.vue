@@ -74,22 +74,33 @@
       <div class="back-support flex flex-col items-center">
         <span class="centered support-btn">ارتباط با پشتیبانی</span>
         <span
+<<<<<<< HEAD
           @click="modalStore.changeCancelRequestModalActive('active')"
           class="centered cancel-btn"
+=======
+          @click="CancelRequestModalSheet=true"
+          class="flex items-center justify-center cancel-btn"
+>>>>>>> origin/develop
           >لغو درخواست</span
         >
         <span class="centered back-btn">رفتن به صفحه زائرسرا</span>
       </div>
     </div>
-    <CancelRequestModal v-if="modalStore.isOpenCancelRequestModal" />
+    <BottomSheets v-model="CancelRequestModalSheet">
+
+      <CancelRequestModal @close="CancelRequestModalSheet=false"  />
+
+    </BottomSheets>
   </div>
 </template>
 
 <script lang="ts" setup>
 import CancelRequestModal from "./CancelRequestModal.vue";
-import { useModalStore } from "~/stores/modals-store";
+import BottomSheets from "~/components/global/bottomSheets.vue";
 defineComponent([CancelRequestModal]);
-const modalStore = useModalStore();
+
+const CancelRequestModalSheet=ref(false)
+
 </script>
 
 <style lang="scss" scoped>

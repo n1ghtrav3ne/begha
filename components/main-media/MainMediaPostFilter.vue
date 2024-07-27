@@ -1,11 +1,5 @@
 <template>
   <div>
-    <FullHeightBaseDialog
-      :modalHeight="552"
-      :modalPadding="'0 0 10px 0'"
-      class="filter-event-modal"
-    >
-      <template #body>
         <div class="filter-modal-body">
           <div class="flex items-center justify-between">
             <div class="search-box-input">
@@ -15,7 +9,6 @@
               </span>
             </div>
             <span
-              @click="modalStore.changeMainMediaPostFilterActive('deactive')"
               class="material-symbols-outlined back-icon"
             >
               arrow_left_alt
@@ -25,7 +18,6 @@
           <div class="search-result">
             <ul class="result-items">
               <li
-                @click="modalStore.changeMainMediaPostFilterActive('deactive')"
                 class="result-item"
               >
                 <div class="item-content flex items-center">
@@ -39,7 +31,6 @@
                 </div>
               </li>
               <li
-                @click="modalStore.changeMainMediaPostFilterActive('deactive')"
                 class="result-item"
               >
                 <div class="item-content flex items-center">
@@ -53,7 +44,6 @@
                 </div>
               </li>
               <li
-                @click="modalStore.changeMainMediaPostFilterActive('deactive')"
                 class="result-item"
               >
                 <div class="item-content flex items-center">
@@ -69,16 +59,10 @@
             </ul>
           </div>
         </div>
-      </template>
-    </FullHeightBaseDialog>
   </div>
 </template>
 
 <script lang="ts" setup>
-import FullHeightBaseDialog from "~/components/global/FullHeightBaseDialog.vue";
-import { useModalStore } from "~/stores/modals-store";
-defineNuxtComponent({ FullHeightBaseDialog });
-const modalStore = useModalStore();
 let selectedEvents = ref<{ isChecked: boolean; label: string; id: number }[]>(
   []
 );

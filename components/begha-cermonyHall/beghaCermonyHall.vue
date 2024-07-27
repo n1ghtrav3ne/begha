@@ -101,7 +101,7 @@
                     ظرفیت حداکثر ۲۰۰ نفر 
                     </span>
 
-                <div @click="modalStore.changeCermonyHallReservationHours('active')" class="reservationHours">
+                <div @click="reservationHoursSheet=true" class="reservationHours">
 
                     <span class="text">مشاهده ساعات رزرو</span>
                     
@@ -139,7 +139,7 @@
 
             <div class="reservationRequest">
 
-                <button @click="modalStore.changeReservingCermonyHall('active')" class="reservationButton">
+                <button @click="cermonyHallReservationSheet=true" class="reservationButton">
 
                     <span>درخواست رزرو</span>
 
@@ -157,19 +157,28 @@
 
     </div>
 
-    <cermonyHallReservation v-if="modalStore.isOpenReservingCermonyHall" />
+    <BottomSheets :line="true" title="رزرو سالن مراسم" v-model="cermonyHallReservationSheet">
 
-    <reservationHours v-if="modalStore.isOpenCermonyHallReservationHours" />
+        <cermonyHallReservation />
+
+    </BottomSheets>
+
+    <BottomSheets v-model="reservationHoursSheet">
+
+        <reservationHours />
+
+    </BottomSheets>
+
       
 </template>
 <script setup lang="ts">
 import cermonyHallReservation from "./cermonyHallReservation.vue"
-
+import BottomSheets from "../global/bottomSheets.vue";
 import reservationHours from "./reservationHours.vue"
-import { useModalStore } from "~/stores/modals-store";
 
-const modalStore = useModalStore();
+const cermonyHallReservationSheet=ref(false)
 
+const reservationHoursSheet=ref(false)
 
 defineComponent({cermonyHallReservation,reservationHours})
 </script>

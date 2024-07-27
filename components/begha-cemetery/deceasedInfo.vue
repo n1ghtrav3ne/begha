@@ -1,15 +1,5 @@
 <template>
 
-    <BaseDialog :modalHeight="758">
-
-        <template #headerText>
-
-            <span class="headerText">اطلاعات متوفی</span>
-
-        </template>
-
-        <template #body>
-
             <div class="infoContainer">
 
                 <div class="profile">
@@ -67,10 +57,6 @@
                 </div>
 
             </div>
-
-        </template>
-    
-    </BaseDialog>
 
 </template>
 <script setup lang="ts">

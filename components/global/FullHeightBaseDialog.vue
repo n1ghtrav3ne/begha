@@ -36,14 +36,6 @@ defineNuxtComponent({ OverlayLayout });
 const props = defineProps(["modalHeight", "modalPadding",'modalDisplay','baseModalPadding']);
 const modalStore = useModalStore();
 const closeModal = () => {
-  modalStore.changeBeghaListProvinceFiltersActive("deactive");
-  modalStore.changeBeghaListEventFiltersActive("deactive");
-  modalStore.changeMoreServicesButtonsActive("deactive");
-  modalStore.changeSwitchAccountActive("deactive");
-  modalStore.changeRequestsFilterActive("deactive");
-  modalStore.changeCancelRequestModalActive("deactive");
-  modalStore.changeMediaBeghaFilterActive("deactive");
-  modalStore.changeReservingCermonyHall("deactive");
 };
 </script>
 

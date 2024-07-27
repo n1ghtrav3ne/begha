@@ -25,7 +25,7 @@
 
             <span class="first">تصویر پروفایل شما</span>
 
-            <span class="second">حذف تصویر</span>
+            <span @click="deleteImg" class="second">حذف تصویر</span>
 
             </div>
 
@@ -62,7 +62,7 @@
 
                 <span>شهر</span>
 
-                <div @click="modalStore.changeProfileSearchCities('active')" class="cityInput">
+                <div @click="searchCitiesSheet=true" class="cityInput">
 
                     <input type="button" value="انتخاب کنید">
 
@@ -80,9 +80,11 @@
 
     </div>
 
-    <searchCities v-if="modalStore.isOpenProfileSearchCities" />
+    <BottomSheets :line="true" title="شهر مورد نظر خود را انتخاب کنید" v-model="searchCitiesSheet">
 
-    <gallery v-if="modalStore.isOpenImagePicker" />
+        <searchCities />
+
+    </BottomSheets>
 
 </template>
 
@@ -90,16 +92,11 @@
 
 import defaultImage from "~/assets/images/mausoleumInformation/frame.svg"
 
-
 import searchCities from "./searchCities.vue"
 
-import gallery from "./gallery.vue"
-
-import { useModalStore } from "~/stores/modals-store";
-
-const modalStore = useModalStore();
-
 defineComponent({searchCities})
+
+const searchCitiesSheet=ref(false)
 
 const fileInput = ref();
 const currentImage = ref();
@@ -115,6 +112,10 @@ const handleFileChange = (event:any) => {
 
   reader.readAsDataURL(file);
 };
+
+const deleteImg=()=>{
+    imageUrl.value=''
+}
 
 </script>
 

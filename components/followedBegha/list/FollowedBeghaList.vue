@@ -3,13 +3,12 @@
     <div class="app-home">
       <div class="container">
         <div class="search-box-input">
-          <input
+          <input @click="BeghaProvinceFilterModalSheet=true"
             class="search-input"
             type="text"
             placeholder="جستجو اماکن متبرکه"
           />
-          <span
-            @click="modalStore.changeBeghaListEventFiltersActive('active')"
+          <span @click="BeghaEventFilterModalSheet=true"
             class="material-symbols-outlined search-input-icon"
           >
             tune
@@ -21,8 +20,19 @@
         </div>
       </div>
     </div>
-    <BeghaProvinceFilterModal />
-    <BeghaEventFilterModal />
+
+    <BottomSheets v-model="BeghaProvinceFilterModalSheet">
+
+      <BeghaProvinceFilterModal />
+
+    </BottomSheets>
+
+    <BottomSheets v-model="BeghaEventFilterModalSheet">
+
+      <BeghaEventFilterModal />
+
+    </BottomSheets>
+
   </div>
 </template>
 
@@ -39,34 +49,11 @@ defineNuxtComponent({
   BeghaEventFilterModal,
 });
 const modalStore = useModalStore();
-const cities = ref<
-  { province: string; city: string; iconClass: string; isActive: boolean }[]
->([
-  {
-    province: "همه",
-    city: "",
-    isActive: true,
-    iconClass: "apps",
-  },
-  {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
-  },
-  {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
-  },
-  {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
-  },
-]);
+
+const BeghaProvinceFilterModalSheet=ref(false)
+
+const BeghaEventFilterModalSheet=ref(true)
+
 </script>
 
 <style lang="scss" scoped>
