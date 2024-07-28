@@ -72,8 +72,14 @@
       </div>
     </div>
   </div>
+
   <BottomSheets v-model="showSelectDate">
-    <DatePicker :show="true" :dualInput="true" :mode="'range'" :column="1" />
+    <DatePicker
+      :show="true"
+      :mode="'range'"
+      :column="1"
+      @close="showSelectDate = false"
+    />
   </BottomSheets>
   <BottomSheets :title="'ترتیب نمایش بر اساس'" v-model="showSelectedSort">
     <ZaerSaraSort />
@@ -100,6 +106,7 @@ const showSelectDate = ref(false);
 const showSelectedSort = ref(false);
 const showProvince = ref(false);
 const showSearch = ref(false);
+const ssss = ref();
 </script>
 
 <style lang="scss" scoped>
