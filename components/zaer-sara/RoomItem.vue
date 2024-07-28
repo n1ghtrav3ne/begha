@@ -1,6 +1,6 @@
 <template>
   <nuxt-link to="./room/12">
-    <div class="info-container blue">
+    <div class="info-container blue mt-4">
       <div class="top-section">
         <img class="room-img" src="@/assets/images/zaersara/room.jpg" />
         <div class="room-info w-full">
@@ -23,13 +23,21 @@
             </div>
           </div>
           <span style="color: #7e7e7e">امام زاده صالح(ع)</span>
-          <div class="rating">
+          <div v-if="!fromCheckout" class="rating">
             <img
               v-for="i in 4"
               class="star"
               src="@/assets/images/icons/star.svg"
             />
             <span class="ms-2">5</span>
+          </div>
+          <div class="flex justify-between align-middle" v-else>
+            <span class="text-error">حذف از لیست رزرو</span>
+            <span class="text-error">
+              <img
+                src="@/assets/images/icons/trash-error.png"
+              />
+            </span>
           </div>
         </div>
       </div>
@@ -42,11 +50,17 @@
           </div>
         </div>
       </div>
-    
     </div>
   </nuxt-link>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps({
+  fromCheckout: {
+    type: Boolean,
+    default: false,
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
