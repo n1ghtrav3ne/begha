@@ -10,7 +10,7 @@
       </p>
 
       <!-- divider -->
-      <div class="h-[1px] w-full my-6 bg-surface-100/50"></div>
+      <div class="divider my-6"></div>
 
       <!-- discount section component -->
       <discount @open-dialog="getOpenDialog($event)" />

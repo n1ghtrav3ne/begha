@@ -16,7 +16,7 @@
             <span class="icon-Location-Iran location-choose-icon ml-1">
             </span>
             <span class="location-title-text">اصفهان، نجف آباد</span>
-            <span class="icon-Arrow-Bottom-Iran mr-1">
+            <span class="icon-Arrow-Bottom-Iran mr-1" >
               
             </span>
           </div>
@@ -62,5 +62,8 @@ const appSidebar = useAppSidebar();
 .slide-fade-leave-to {
   opacity: 0;
   transition: all ease-in-out 0.15ms;
+}
+.icon-Arrow-Bottom-Iran{
+  font-size: 18px;
 }
 </style>

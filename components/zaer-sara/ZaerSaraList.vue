@@ -1,13 +1,16 @@
 <template>
-    <div>
+  <div>
     <div class="back-navbar container flex items-center justify-between">
       <span
-        ><span @click="$router.push('/')" class="material-symbols-outlined back-icon ml-2">
+        ><span
+          @click="$router.push('/')"
+          class="material-symbols-outlined back-icon ml-2"
+        >
           trending_flat </span
         ><span class="back-title">زائر سرا</span></span
       >
       <div
-        
+        @click="showProvince = true"
         class="choose-location flex items-center mr-3"
       >
         <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
@@ -16,85 +19,89 @@
       </div>
     </div>
     <div class="app-home">
-        <div class="container">
-          <div class="flex items-center justify-between mt-2"> 
-        <div class="search-box-input">
-          <input
-            class="search-input"
-            type="text"
-            placeholder="جستجو اماکن متبرکه"
-          />
-          <span
-            @click="showSelectedSort=true"
-            class="material-symbols-outlined search-input-icon"
-          >
-            tune
-          </span>
-        </div>
-        <div @click="$router.push('/library/basket')" class="zaersara-reserve">
-          <span class="zaersara-icon flex items-center justify-center">
-            <span class="material-symbols-outlined"> local_library </span>
-          </span>
-        </div>
-
-        
-    </div>
-    <div>
-    <div class="date-card ">
-
-
-        <div  @click="showSelectDate=true" class="date-title">
-
-            <span >تاریخ ورود و خروج</span>
-            <span class="material-symbols-outlined">
-            arrow_drop_down
-        </span>
-        </div>
-      <span class="date-sub-title">۲۰ اردیبهشت ۱۴۰۳ تا ۲۳ اردیبهشت ۱۴۰۳</span>
-    </div>
-    <div class="zaer-heading flex items-center justify-between">
-        <div class="zaer-title flex items-center">
-          <img src="~/assets/images/home/popular-begha-shape.png" alt="" />
-          <span> زائرسرا ها</span>
-        </div>
-        <div class="zaer-filter flex items-center">
-          <span class="filter-base-text"> ترتیب بر اساس </span>
-          <span class="flex items-center">
-            <span class="active-filter"> محبوب ترین </span>
-            <span class="icon-Arrow-Bottom-Iran filter-choose-icon mr-1">
+      <div class="container">
+        <div class="flex items-center justify-between mt-2">
+          <div class="search-box-input">
+            <input
+              class="search-input"
+              type="text"
+              placeholder="جستجو اماکن متبرکه"
+            />
+            <span
+              @click="showSelectedSort = true"
+              class="material-symbols-outlined search-input-icon"
+            >
+              tune
             </span>
-          </span>
+          </div>
+          <div @click="showSearch = true" class="zaersara-reserve">
+            <span class="zaersara-icon flex items-center justify-center">
+              <span class="material-symbols-outlined"> local_library </span>
+            </span>
+          </div>
+        </div>
+        <div>
+          <div class="date-card">
+            <div @click="showSelectDate = true" class="date-title">
+              <span>تاریخ ورود و خروج</span>
+              <span class="material-symbols-outlined"> arrow_drop_down </span>
+            </div>
+            <span class="date-sub-title"
+              >۲۰ اردیبهشت ۱۴۰۳ تا ۲۳ اردیبهشت ۱۴۰۳</span
+            >
+          </div>
+          <div class="zaer-heading flex items-center justify-between">
+            <div class="zaer-title flex items-center">
+              <img src="~/assets/images/home/popular-begha-shape.png" alt="" />
+              <span> زائرسرا ها</span>
+            </div>
+            <div class="zaer-filter flex items-center">
+              <span class="filter-base-text"> ترتیب بر اساس </span>
+              <span class="flex items-center">
+                <span class="active-filter"> محبوب ترین </span>
+                <span class="icon-Arrow-Bottom-Iran filter-choose-icon mr-1">
+                </span>
+              </span>
+            </div>
+          </div>
+          <div>
+            <ZaerSaraItem />
+            <ZaerSaraItem />
+          </div>
         </div>
       </div>
-      <div>
-        <ZaerSaraItem/>
-        <ZaerSaraItem/>
-      </div>
-      <BottomSheets  v-model="showSelectDate">
-        
-        <DatePicker   :show="true" :dualInput="true" :mode="'range'" :column="1"  />
-
-    </BottomSheets>
-    <BottomSheets :title="'ترتیب نمایش بر اساس'"  v-model="showSelectedSort">
-        
-        <ZaerSaraSort />
-            </BottomSheets>
-      
+    </div>
   </div>
-      </div>
-    </div>
-    </div>
+  <BottomSheets v-model="showSelectDate">
+    <DatePicker :show="true" :dualInput="true" :mode="'range'" :column="1" />
+  </BottomSheets>
+  <BottomSheets :title="'ترتیب نمایش بر اساس'" v-model="showSelectedSort">
+    <ZaerSaraSort />
+  </BottomSheets>
+  <BottomSheets
+    :title="'شهر مورد نظر خود را انتخاب کنید'"
+    v-model="showProvince"
+  >
+    <Provinces />
+  </BottomSheets>
+  <BottomSheets :title="'جستجو بر اساس امکانات'" v-model="showSearch">
+    <ZaerSaraFacilitiesSearch />
+  </BottomSheets>
 </template>
+
 <script lang="ts" setup>
 import ZaerSaraItem from "./ZaerSaraItem.vue";
 import ZaerSaraSort from "./ZaerSaraSort.vue";
+import ZaerSaraFacilitiesSearch from "./ZaerSaraFacilitiesSearch.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineComponent([ZaerSaraItem]);
 const modalStore = useModalStore();
-    const showSelectDate=ref(false);
-    const showSelectedSort=ref(false);
-    
-  </script>
+const showSelectDate = ref(false);
+const showSelectedSort = ref(false);
+const showProvince = ref(false);
+const showSearch = ref(false);
+</script>
+
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
@@ -352,17 +359,16 @@ const modalStore = useModalStore();
   }
 }
 .zaersara-reserve {
-  
-    .zaersara-icon {
-      padding: 12px;
-      border-radius: 16px;
-      background-color: $primary;
-      span {
-        font-size: 22px;
-        color: $primary-on;
-      }
+  .zaersara-icon {
+    padding: 12px;
+    border-radius: 16px;
+    background-color: $primary;
+    span {
+      font-size: 22px;
+      color: $primary-on;
     }
   }
+}
 .choose-location {
   cursor: pointer;
   .icon-Arrow-Bottom-Iran {
@@ -396,61 +402,58 @@ const modalStore = useModalStore();
   border-radius: 16px;
   border: 1px solid $outline-variant;
   padding: 16px 24px;
-  .date-title{
+  .date-title {
     cursor: pointer;
     display: flex;
     align-items: center;
-    color:$secondary;
+    color: $secondary;
     font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 
-margin-bottom: 4px;
+    margin-bottom: 4px;
   }
-  .date-sub-title{
+  .date-sub-title {
     font-size: 12px;
 
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
- 
 }
 .zaer-heading {
-    margin-top: 40px;
-    .zaer-title {
-      span {
-        color: $surface-on;
-        text-align: right;
-        font-family: "yekan-regular";
-        font-size: 16px;
-        font-weight: 700;
-        margin-right: 8px;
-      }
-    }
-    .zaer-filter {
-      .filter-base-text {
-        color: $surface-on;
-        text-align: right;
-        font-family: "yekan-regular";
-        font-size: 11px;
-        font-weight: 400;
-        margin-right: 8px;
-      }
-      .active-filter {
-        color: $secondary;
-        text-align: right;
-        font-family: "yekan-regular";
-        font-size: 11px;
-        font-weight: 400;
-        margin-right: 5px;
-      }
-      .icon-Arrow-Bottom-Iran {
-    color: $secondary;
-  }
+  margin-top: 40px;
+  .zaer-title {
+    span {
+      color: $surface-on;
+      text-align: right;
+      font-family: "yekan-regular";
+      font-size: 16px;
+      font-weight: 700;
+      margin-right: 8px;
     }
   }
- 
+  .zaer-filter {
+    .filter-base-text {
+      color: $surface-on;
+      text-align: right;
+      font-family: "yekan-regular";
+      font-size: 11px;
+      font-weight: 400;
+      margin-right: 8px;
+    }
+    .active-filter {
+      color: $secondary;
+      text-align: right;
+      font-family: "yekan-regular";
+      font-size: 11px;
+      font-weight: 400;
+      margin-right: 5px;
+    }
+    .icon-Arrow-Bottom-Iran {
+      color: $secondary;
+    }
+  }
+}
 </style>

@@ -5,19 +5,22 @@
     </label>
     <div
       id="input-elem"
-      class="w-full h-full mt-4 flex items-center justify-between px-4"
-      :class="`bg-${props.color} rounded-${props.rounded} `"
+      class="w-full h-full flex items-center justify-between px-4"
+      :class="`bg-${props.color} rounded-${props.rounded} ${
+        props.label && 'mt-4'
+      }`"
     >
-      <slot name="prepend"> </slot>
-
-      <input
-        class="h-full outline-none py-6"
-        :class="`rounded-${props.rounded} bg-${props.color}`"
-        :placeholder="props.placeholder"
-        :type="props.type"
-        v-model="input"
-        @change="emit('update:modelValue', input)"
-      />
+      <div class="centered">
+        <slot name="prepend"> </slot>
+        <input
+          class="h-full outline-none p-2"
+          :class="`rounded-${props.rounded} bg-${props.color}`"
+          :placeholder="props.placeholder"
+          :type="props.type"
+          v-model="input"
+          @change="emit('update:modelValue', input)"
+        />
+      </div>
 
       <slot name="append"> </slot>
     </div>
@@ -58,6 +61,9 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  primary: {
+    type: Boolean,
+  },
 });
 
 const activeInput = ref(false);
@@ -71,7 +77,9 @@ onMounted(() => {
     if (outsideClick) {
       activeInput.value = false;
       elem.classList.remove("border-[1px]");
-      elem.classList.remove("border-secondary-400");
+      elem.classList.remove(
+        props.primary ? `border-primary` : "border-secondary-400"
+      );
       elem.classList.remove("border-shadow");
       if (props.border) {
         elem.classList.add("border-[1px]");
@@ -81,7 +89,9 @@ onMounted(() => {
       activeInput.value = true;
       elem.classList.add("border-[1px]");
       elem.classList.remove("border-surface-100");
-      elem.classList.add("border-secondary-400");
+      elem.classList.add(
+        props.primary ? `border-primary` : "border-secondary-400"
+      );
       elem.classList.add("border-shadow");
       input[0].focus();
     }
@@ -92,10 +102,6 @@ onMounted(() => {
     elem.classList.add("border-surface-100");
     elem.classList.add("border-[1px]");
   }
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside);
 });
 </script>
 

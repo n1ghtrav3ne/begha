@@ -1,13 +1,13 @@
 <template>
   <div
     v-if="props.modelValue"
-    class="fixed base top-0  h-screen bg-surface-400/40 overflow-auto"
+    class="absolute top-0 right-0 w-full z-[99] max-w-[600px] mx-auto left-0 h-screen bg-surface-600/70 overflow-hidden"
     @click="handleOutsideClick"
   >
     <div
       id="sheet-elem"
       ref="sheetElem"
-      class="w-full sheetElem max-h-[800px] bg-white bottom-0  absolute rounded-t-2xl translate-y-full animate-slide-up overflow-auto"
+      class="w-full sheetElem max-h-[800px] bg-white bottom-0 absolute rounded-t-2xl translate-y-full animate-slide-up overflow-auto"
       @click.stop
     >
       <div class="w-full h-full relative">
@@ -18,7 +18,6 @@
           <div class="w-full flex justify-between items-center my-2">
             <span :class="props.class">{{ props?.title }}</span>
 
-
             <div
               v-if="props?.closable"
               class="size-6 overflow-auto body cursor-pointer"
@@ -28,7 +27,7 @@
             </div>
           </div>
 
-          <hr v-if="props?.line" class="line">
+          <hr v-if="props?.line" class="line" />
           <slot></slot>
         </div>
       </div>
@@ -37,7 +36,6 @@
 </template>
 
 <script setup>
-
 import { useModalStore } from "~/stores/modals-store";
 
 const modalStore = useModalStore();
@@ -45,10 +43,10 @@ const modalStore = useModalStore();
 const sheetStatus = ref(false);
 const props = defineProps({
   title: { type: String },
-  closable: { type: Boolean,default:true },
+  closable: { type: Boolean, default: true },
   modelValue: {},
   class: {},
-  line:{type:Boolean}
+  line: { type: Boolean },
 });
 const emit = defineEmits(["update:modelValue"]);
 const closeSheet = () => emit("update:modelValue", false);
@@ -60,20 +58,18 @@ const sheetElem = ref(null);
 const handleOutsideClick = (event) => {
   if (sheetElem.value && !sheetElem.value.contains(event.target)) {
     closeSheet();
-    closeModal()
+    closeModal();
   }
 };
 
-const closeModal=()=>{
-    modalStore.activeUserSelection('deactive')
-}
+const closeModal = () => {
+  modalStore.activeUserSelection("deactive");
+};
 </script>
 
 <style lang="scss" scoped>
-
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
-
 
 @keyframes slideUp {
   from {
@@ -85,10 +81,10 @@ const closeModal=()=>{
 }
 
 .animate-slide-up {
-  animation: slideUp 0.5s ease-out forwards;
+  animation: slideUp 0.3s ease-out forwards;
 }
 
-.base{
+.base {
   max-width: 600px;
   width: 100% !important;
   right: 0;
@@ -97,19 +93,19 @@ const closeModal=()=>{
   z-index: 9999;
 }
 
-.base::-webkit-scrollbar{
+.base::-webkit-scrollbar {
   display: none !important;
 }
 
-.body::-webkit-scrollbar{
+.body::-webkit-scrollbar {
   display: none !important;
 }
 
-.sheetElem::-webkit-scrollbar{
+.sheetElem::-webkit-scrollbar {
   display: none;
 }
 
-.line{
+.line {
   width: 100%;
   margin-top: 18px;
   margin-bottom: 18px;

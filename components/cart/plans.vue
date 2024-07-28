@@ -9,7 +9,7 @@
     >
       <div class="w-full flex items-center">
         <div
-          class="size-10 rounded-full flex items-center justify-center"
+          class="size-10 rounded-full centered"
           :class="activePlan == p ? 'bg-[#429FF5]' : 'bg-[#E4F1FE]'"
         >
           <img

@@ -20,7 +20,7 @@
           disableOnInteraction: true,
         }"
       >
-        <SwiperSlide v-for="slide in 3" :key="slide">
+        <SwiperSlide v-for="slide in 3" :key="slide" style="margin-left: 16px;">
           <div class="card-box">
             <div class="card-image">
               <img src="~/assets/images/home/eid-fetr.jpg" alt="" />

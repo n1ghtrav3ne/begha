@@ -91,8 +91,8 @@ const servicesList = ref<
 .service-btn {
   // padding: 5px;
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
   border-radius: 15px;
   color: #fff;
 }
@@ -119,7 +119,7 @@ const servicesList = ref<
   color: $surface-on;
 }
 .service-btn-icons {
-  font-size: 32px;
+  font-size: 42px;
 }
 
 .btn-bg-green {

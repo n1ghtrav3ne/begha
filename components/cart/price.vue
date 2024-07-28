@@ -13,7 +13,7 @@
       <span class="text-xs font-normal"> مبلغ قابل پرداخت </span>
     </div>
     <!-- divider -->
-    <div class="h-[1px] w-full my-6 bg-surface-100/50"></div>
+    <div class="divider my-6"></div>
 
     <!-- show price and discount price  -->
     <div>

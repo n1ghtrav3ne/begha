@@ -1,139 +1,120 @@
 <template>
+  <div class="searchPage container">
+    <div class="inputContainer">
+      <img
+        @click="$emit('close')"
+        class="w-[36px] h-[36px]"
+        src="~/assets/images/cemetery/Back Icon.svg"
+        alt=""
+      />
 
-    <div class="searchPage container">
-        
-        <div class="inputContainer">
+      <div class="input grid grid-cols-5 items-center">
+        <span class="mausoleumName col-span-2">امام زاده صالح</span>
 
-            <img @click="$emit('close')" class="w-[36px] h-[36px]" src="~/assets/images/cemetery/Back Icon.svg" alt="">
+        <input class="col-span-2" placeholder="نام متوفی" type="text" />
 
-            <div class="input grid grid-cols-5 items-center">
-
-                <span class="mausoleumName col-span-2">امام زاده صالح</span>
-
-
-
-                <input class="col-span-2" placeholder="نام متوفی" type="text">
-
-                <div @click="searchFilterSheet=true" class="iconHolder col-span-1">
-                    <img src="~/assets/images/cermony/Group 48096574.svg" alt="">
-                </div>
-
-
-               
-
-            </div>
-
+        <div @click="searchFilterSheet = true" class="iconHolder col-span-1">
+          <img src="~/assets/images/cermony/Group 48096574.svg" alt="" />
         </div>
-
+      </div>
     </div>
+  </div>
 
-    <BottomSheets title="جستجو بر اساس قطعات" :line="true" v-model="searchFilterSheet">
-
-        <searchFilter />
-
-    </BottomSheets>
-
-
+  <BottomSheets
+    title="جستجو بر اساس قطعات"
+    :line="true"
+    v-model="searchFilterSheet"
+  >
+    <searchFilter />
+  </BottomSheets>
 </template>
 <script setup lang="ts">
-
-import searchFilter from "./searchFilter.vue"
+import searchFilter from "./searchFilter.vue";
 
 import bottomSheets from "~/components/global/bottomSheets.vue";
 
-import { useModalStore } from "~/stores/modals-store";
+defineComponent({ searchFilter });
 
-const modalStore = useModalStore();
-
-defineComponent({searchFilter})
-
-const searchFilterSheet=ref(false)
-
+const searchFilterSheet = ref(false);
 </script>
 <style scoped lang="scss">
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
 
-.searchPage{
-    position: fixed;
-    top: 0;
-    z-index: 50;
-    background-color: $surface;
-    width:100%;
-    height:100%;
+.searchPage {
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  background-color: $surface;
+  width: 100%;
+  height: 100%;
 
-    .inputContainer{
-        width:100%;
+  .inputContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 54px;
+    margin-top: 16px;
+
+    .input {
+      width: 100%;
+      height: 100%;
+      border: 1px solid $outline;
+      border-radius: 16px;
+
+      .mausoleumName {
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: $surface-on;
+        font-size: 14px;
         display: flex;
-        flex-direction: row;
+        justify-content: center;
         align-items: center;
-        height: 54px;
-        margin-top: 16px;
+        border-left: 1px solid $outline;
+      }
 
-        .input{
-            width: 100%;
-            height: 100%;
-            border: 1px solid $outline;
-            border-radius: 16px;
-            
+      hr {
+        height: 20px;
+        width: 1px;
+        color: $outline;
+        background: $outline;
+      }
 
-            .mausoleumName{
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                color: $surface-on;
-                font-size: 14px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-left: 1px solid $outline;
-            }
+      input {
+        background: transparent;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        outline: 0;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        padding-right: 8px;
+      }
 
-            hr{
-                height: 20px;
-                width: 1px;
-                color: $outline;
-                background: $outline;
-            }
+      .iconHolder {
+        background: $secondary-container;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px;
+        width: 30px;
+        height: 30px;
+        margin-right: 30%;
 
-            input{
-                background: transparent;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                outline: 0;
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                padding-right: 8px;
-            }
-
-            .iconHolder{
-                background: $secondary-container;
-                border-radius:100%;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                padding:3px;
-                width: 30px;
-                height: 30px;
-                margin-right: 30%;
-            
-                img{
-                   width: 90%;
-                   height: 90%;
-
-                }
-                
-            }
+        img {
+          width: 90%;
+          height: 90%;
         }
-
-        .input:hover{
-            border: 1px solid $primary;
-        }
-
+      }
     }
+
+    .input:hover {
+      border: 1px solid $primary;
+    }
+  }
 }
-
-
 </style>

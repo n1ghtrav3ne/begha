@@ -4,7 +4,10 @@
       <div class="begha-page-banner">
         <div class="flex items-center justify-between p-2 pt-3 pl-4">
           <div class="flex items-center">
-            <span @click="$router.push('/')" class="library-page-icon material-symbols-outlined ml-2">
+            <span
+              @click="$router.push('/')"
+              class="library-page-icon material-symbols-outlined ml-2"
+            >
               arrow_right_alt
             </span>
             <span class="library-page-title">کتابخانه</span>
@@ -35,7 +38,7 @@
           </span>
         </div>
         <div @click="$router.push('/library/basket')" class="library-reserve">
-          <span class="library-icon flex items-center justify-center">
+          <span class="library-icon centered">
             <span class="material-symbols-outlined"> local_library </span>
           </span>
         </div>
