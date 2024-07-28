@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="props.modelValue"
-    class="absolute top-0 right-0 w-full max-w-[600px] mx-auto left-0 h-screen bg-surface-400/40 overflow-hidden"
+    class="absolute top-0 right-0 w-full z-[99] max-w-[600px] mx-auto left-0 h-screen bg-surface-600/70 overflow-hidden"
     @click="handleOutsideClick"
   >
     <div
@@ -81,7 +81,7 @@ const closeModal = () => {
 }
 
 .animate-slide-up {
-  animation: slideUp 0.5s ease-out forwards;
+  animation: slideUp 0.3s ease-out forwards;
 }
 
 .base {
