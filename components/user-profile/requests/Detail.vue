@@ -3,7 +3,7 @@
     <div class="back-navbar container flex items-center justify-between">
       <span
         ><span
-          @click="$router.push('../')"
+          @click="$router.go(-1)"
           class="material-symbols-outlined back-icon ml-2"
         >
           trending_flat </span
@@ -78,7 +78,7 @@
           class="centered cancel-btn"
           >لغو درخواست</span
         >
-        <span class="centered back-btn">رفتن به صفحه زائرسرا</span>
+        <span @click="$router.push('/zaer-sara/list')" class="centered back-btn">رفتن به صفحه زائرسرا</span>
       </div>
     </div>
     <BottomSheets v-model="CancelRequestModalSheet">

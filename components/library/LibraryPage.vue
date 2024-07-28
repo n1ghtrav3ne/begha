@@ -5,7 +5,7 @@
         <div class="flex items-center justify-between p-2 pt-3 pl-4">
           <div class="flex items-center">
             <span
-              @click="$router.push('/')"
+              @click="$router.go(-1)"
               class="library-page-icon material-symbols-outlined ml-2"
             >
               arrow_right_alt

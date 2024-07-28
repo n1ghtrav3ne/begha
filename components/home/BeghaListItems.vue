@@ -2,7 +2,7 @@
   <div>
     <div class="begha-list">
       <ul class="begha-items">
-        <li v-for="(item , index) in beghaItems" :key="index" class="begha-item flex items-center justify-between">
+        <li  @click="$router.push('/begha-detail/asdasdasd')" v-for="(item , index) in beghaItems" :key="index" class="begha-item flex items-center justify-between">
           <div class="begha-info flex">
             <div class="begha-image">
               <img
@@ -10,7 +10,7 @@
                 alt=""
               />
             </div>
-            <div @click="$router.push('/begha-detail/asdasdasd')" class="begha-head-text flex flex-col">
+            <div class="begha-head-text flex flex-col">
               <span class="begha-title">{{item.name}}</span>
               <span class="begha-subtitle">{{item.location}}</span>
             </div>

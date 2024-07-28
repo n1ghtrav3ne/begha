@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="back-navbar container flex items-center justify-between">
-      <NuxtLink to="/begha-news/list">
+      <div @click="$router.go(-1)">
         <span
         ><span class="material-symbols-outlined back-icon ml-2">
           trending_flat </span
         ><span class="back-title">اخبار</span></span
       >
-      </NuxtLink>
+        </div>
       <div class="choose-location flex items-center mr-3">
         <span class="material-symbols-outlined"> share </span>
       </div>
