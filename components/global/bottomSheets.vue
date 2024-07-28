@@ -40,7 +40,6 @@ import { useModalStore } from "~/stores/modals-store";
 
 const modalStore = useModalStore();
 
-const sheetStatus = ref(false);
 const props = defineProps({
   title: { type: String },
   closable: { type: Boolean, default: true },
@@ -51,19 +50,12 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 const closeSheet = () => emit("update:modelValue", false);
 
-sheetStatus.value = props.modelValue;
-
 const sheetElem = ref(null);
 
 const handleOutsideClick = (event) => {
   if (sheetElem.value && !sheetElem.value.contains(event.target)) {
     closeSheet();
-    closeModal();
   }
-};
-
-const closeModal = () => {
-  modalStore.activeUserSelection("deactive");
 };
 </script>
 

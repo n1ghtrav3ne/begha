@@ -91,7 +91,7 @@ const handleFooterAction = (clickedItem: { active: boolean; link: string }) => {
 
 .footer-menu {
   background-color: $surface;
-  z-index: 99;
+  z-index: 80;
   position: fixed;
   bottom: 0;
   left: 0; /* add this line */

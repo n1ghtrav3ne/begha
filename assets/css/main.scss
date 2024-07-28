@@ -19,6 +19,11 @@ body {
     margin: 0 auto;
 }
 
+
+.disabled-scroll {
+    overflow-y: hidden !important;
+}
+
 @layer components {
 
     .divider {
