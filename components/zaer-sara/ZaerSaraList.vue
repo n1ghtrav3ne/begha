@@ -1,18 +1,9 @@
 <template>
   <div>
     <div class="back-navbar container flex items-center justify-between">
-      <span
-        ><span
-          @click="$router.push('/')"
-          class="material-symbols-outlined back-icon ml-2"
-        >
-          trending_flat </span
-        ><span class="back-title">زائر سرا</span></span
-      >
-      <div
-        @click="showProvince = true"
-        class="choose-location flex items-center mr-3"
-      >
+      <span><span @click="$router.push('/')" class="material-symbols-outlined back-icon ml-2">
+          trending_flat </span><span class="back-title">زائر سرا</span></span>
+      <div @click="showProvince = true" class="choose-location flex items-center mr-3">
         <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
         <span class="location-title-text">اصفهان، نجف آباد</span>
         <span class="icon-Arrow-Bottom-Iran mr-1"> </span>
@@ -22,15 +13,8 @@
       <div class="container">
         <div class="flex items-center justify-between mt-2">
           <div class="search-box-input">
-            <input
-              class="search-input"
-              type="text"
-              placeholder="جستجو اماکن متبرکه"
-            />
-            <span
-              @click="showSelectedSort = true"
-              class="material-symbols-outlined search-input-icon"
-            >
+            <input class="search-input" type="text" placeholder="جستجو اماکن متبرکه" />
+            <span @click="showSelectedSort = true" class="material-symbols-outlined search-input-icon">
               tune
             </span>
           </div>
@@ -46,9 +30,7 @@
               <span>تاریخ ورود و خروج</span>
               <span class="material-symbols-outlined"> arrow_drop_down </span>
             </div>
-            <span class="date-sub-title"
-              >۲۰ اردیبهشت ۱۴۰۳ تا ۲۳ اردیبهشت ۱۴۰۳</span
-            >
+            <span class="date-sub-title">۲۰ اردیبهشت ۱۴۰۳ تا ۲۳ اردیبهشت ۱۴۰۳</span>
           </div>
           <div class="zaer-heading flex items-center justify-between">
             <div class="zaer-title flex items-center">
@@ -58,7 +40,7 @@
             <div class="zaer-filter flex items-center">
               <span class="filter-base-text"> ترتیب بر اساس </span>
               <span class="flex items-center">
-                <span class="active-filter"> محبوب ترین </span>
+                <span @click="showMap=true" class="active-filter"> محبوب ترین </span>
                 <span class="icon-Arrow-Bottom-Iran filter-choose-icon mr-1">
                 </span>
               </span>
@@ -74,24 +56,20 @@
   </div>
 
   <BottomSheets v-model="showSelectDate">
-    <DatePicker
-      :show="true"
-      :mode="'range'"
-      :column="1"
-      @close="showSelectDate = false"
-    />
+    <!-- <Map/> -->
+    <DatePicker :show="true" :mode="'range'" :column="1" @close="showSelectDate = false"  />
   </BottomSheets>
   <BottomSheets :title="'ترتیب نمایش بر اساس'" v-model="showSelectedSort">
     <ZaerSaraSort />
   </BottomSheets>
-  <BottomSheets
-    :title="'شهر مورد نظر خود را انتخاب کنید'"
-    v-model="showProvince"
-  >
+  <BottomSheets :title="'شهر مورد نظر خود را انتخاب کنید'" v-model="showProvince">
     <Provinces />
   </BottomSheets>
   <BottomSheets :title="'جستجو بر اساس امکانات'" v-model="showSearch">
     <ZaerSaraFacilitiesSearch />
+  </BottomSheets>
+  <BottomSheets v-model="showMap">
+    <Map />
   </BottomSheets>
 </template>
 
@@ -100,29 +78,35 @@ import ZaerSaraItem from "./ZaerSaraItem.vue";
 import ZaerSaraSort from "./ZaerSaraSort.vue";
 import ZaerSaraFacilitiesSearch from "./ZaerSaraFacilitiesSearch.vue";
 import { useModalStore } from "~/stores/modals-store";
+
 defineComponent([ZaerSaraItem]);
 const modalStore = useModalStore();
 const showSelectDate = ref(false);
+const showMap = ref(false);
 const showSelectedSort = ref(false);
 const showProvince = ref(false);
 const showSearch = ref(false);
+const updateDate = ref('');
 const ssss = ref();
 </script>
 
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
+
 .back-navbar {
   height: 48px;
   background: $primary;
   display: flex;
   align-items: center;
   padding: 5px 10px;
+
   span.back-title {
     font-size: 16px;
     font-family: "yekan-regular";
     color: $primary-on;
   }
+
   span.back-icon {
     color: $primary-on;
     font-size: 25px;
@@ -138,22 +122,27 @@ const ssss = ref();
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   &:focus-within {
     border: 2px solid $primary !important;
   }
+
   .search-province {
     border-left: 2px solid $outline;
     display: flex;
     align-items: center;
+
     .arrow-down {
       color: $surface-on;
     }
+
     .province-title {
       color: $surface-on;
       font-size: 14px;
       font-family: "yekan-regular";
     }
   }
+
   .search-input-icon {
     color: $secondary;
     font-size: 23px;
@@ -161,6 +150,7 @@ const ssss = ref();
     background-color: #e5f0fb;
     border-radius: 50%;
   }
+
   .search-input {
     background-color: transparent;
     outline: none;
@@ -169,11 +159,13 @@ const ssss = ref();
     color: $surface-on;
     font-size: 14px;
     font-family: "yekan-regular";
+
     &::placeholder {
       color: $surface-on-variant;
       font-size: 14px;
       font-family: "yekan-regular";
     }
+
     &:focus {
       caret-color: $primary;
     }
@@ -186,84 +178,102 @@ const ssss = ref();
     font-family: "yekan-regular";
     color: $surface-on;
   }
+
   .filter-province {
     position: relative;
     width: 100%;
     background: $surface-variant;
     padding: 15px;
     border-radius: 10px;
+
     input {
       width: 100%;
       padding: 0 25px;
       background: transparent;
       outline: none;
       border: none;
+
       &::placeholder {
         color: $surface-on-variant;
         font-size: 14px;
         font-family: "yekan-regular";
       }
+
       &:focus {
         caret-color: $primary;
       }
     }
+
     .search-filter-icon {
       position: absolute;
       top: 15px;
       right: 10px;
     }
   }
+
   .current-location {
     width: 100%;
     padding: 10px 0 15px 0;
+
     .current-location-text {
       color: $surface-on;
       font-size: 14px;
       font-family: "yekan-regular";
     }
+
     .current-location-province {
       color: $surface-on;
       font-size: 11px;
       font-family: "yekan-regular";
     }
+
     .cerrent-location-icon {
       color: $secondary;
       background: #d7ecff;
       border-radius: 50%;
       padding: 8px;
     }
+
     border-bottom: 3px solid $secondary-container;
   }
+
   .selectable-provinces {
     .selected {
       background: $secondary-container !important;
+
       .check-icon {
         color: $secondary;
       }
     }
+
     .select-item {
       padding: 12px 15px;
       background: #fff;
       border-radius: 10px;
+
       .all-icon {
         font-size: 25px;
         color: $surface-on-variant;
       }
+
       .all-title {
         color: $surface-on;
         font-size: 14px !important;
         font-family: "yekan-regular";
       }
+
       .city-name {
         color: $surface-on;
         font-size: 14px;
         font-family: "yekan-regular";
       }
+
       .province-name {
         color: $surface-on;
         font-size: 11px;
         font-family: "yekan-regular";
       }
+
       .selectable-location-icon {
         font-size: 30px;
         color: $surface-on-variant;
@@ -279,84 +289,102 @@ const ssss = ref();
     font-family: "yekan-regular";
     color: $surface-on;
   }
+
   .filter-province {
     position: relative;
     width: 100%;
     background: $surface-variant;
     padding: 15px;
     border-radius: 10px;
+
     input {
       width: 100%;
       padding: 0 25px;
       background: transparent;
       outline: none;
       border: none;
+
       &::placeholder {
         color: $surface-on-variant;
         font-size: 14px;
         font-family: "yekan-regular";
       }
+
       &:focus {
         caret-color: $primary;
       }
     }
+
     .search-filter-icon {
       position: absolute;
       top: 15px;
       right: 10px;
     }
   }
+
   .current-location {
     width: 100%;
     padding: 10px 0 15px 0;
+
     .current-location-text {
       color: $surface-on;
       font-size: 14px;
       font-family: "yekan-regular";
     }
+
     .current-location-province {
       color: $surface-on;
       font-size: 11px;
       font-family: "yekan-regular";
     }
+
     .cerrent-location-icon {
       color: $secondary;
       background: #d7ecff;
       border-radius: 50%;
       padding: 8px;
     }
+
     border-bottom: 3px solid $secondary-container;
   }
+
   .selectable-provinces {
     .selected {
       background: $secondary-container !important;
+
       .check-icon {
         color: $secondary;
       }
     }
+
     .select-item {
       padding: 12px 15px;
       background: #fff;
       border-radius: 10px;
+
       .all-icon {
         font-size: 25px;
         color: $surface-on-variant;
       }
+
       .all-title {
         color: $surface-on;
         font-size: 14px !important;
         font-family: "yekan-regular";
       }
+
       .city-name {
         color: $surface-on;
         font-size: 14px;
         font-family: "yekan-regular";
       }
+
       .province-name {
         color: $surface-on;
         font-size: 11px;
         font-family: "yekan-regular";
       }
+
       .selectable-location-icon {
         font-size: 30px;
         color: $surface-on-variant;
@@ -365,27 +393,33 @@ const ssss = ref();
     }
   }
 }
+
 .zaersara-reserve {
   .zaersara-icon {
     padding: 12px;
     border-radius: 16px;
     background-color: $primary;
+
     span {
       font-size: 22px;
       color: $primary-on;
     }
   }
 }
+
 .choose-location {
   cursor: pointer;
+
   .icon-Arrow-Bottom-Iran {
     color: $primary-on;
   }
 }
+
 .location-choose-icon {
   font-size: 20px;
   color: $primary-on;
 }
+
 .location-title-text {
   font-family: "yekan-regular";
   font-size: 12px;
@@ -409,6 +443,7 @@ const ssss = ref();
   border-radius: 16px;
   border: 1px solid $outline-variant;
   padding: 16px 24px;
+
   .date-title {
     cursor: pointer;
     display: flex;
@@ -421,6 +456,7 @@ const ssss = ref();
 
     margin-bottom: 4px;
   }
+
   .date-sub-title {
     font-size: 12px;
 
@@ -429,8 +465,10 @@ const ssss = ref();
     line-height: normal;
   }
 }
+
 .zaer-heading {
   margin-top: 40px;
+
   .zaer-title {
     span {
       color: $surface-on;
@@ -441,6 +479,7 @@ const ssss = ref();
       margin-right: 8px;
     }
   }
+
   .zaer-filter {
     .filter-base-text {
       color: $surface-on;
@@ -450,6 +489,7 @@ const ssss = ref();
       font-weight: 400;
       margin-right: 8px;
     }
+
     .active-filter {
       color: $secondary;
       text-align: right;
@@ -458,6 +498,7 @@ const ssss = ref();
       font-weight: 400;
       margin-right: 5px;
     }
+
     .icon-Arrow-Bottom-Iran {
       color: $secondary;
     }

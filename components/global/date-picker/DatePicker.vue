@@ -1,61 +1,35 @@
 <template>
-  <div
-    ref="root"
-    :class="[
-      'pdp',
-      { 'pdp-range': mode === 'range' },
-      { 'pdp-modal': modal },
-      { 'pdp-dual': dualInput },
-      lang.dir.input,
-    ]"
-  >
+  <div ref="root" :class="[
+    'pdp',
+    { 'pdp-range': mode === 'range' },
+    { 'pdp-modal': modal },
+    { 'pdp-dual': dualInput },
+    lang.dir.input,
+  ]">
     <div v-bind="attrs.div">
       <div class="input-group" style="display: none">
         <template v-for="(input, index) in inputs" :key="input">
-          <div
-            class="full-width"
-            :class="input == 'firstInput' ? 'date local' : 'date return'"
-          >
+          <div class="full-width" :class="input == 'firstInput' ? 'date local' : 'date return'">
             <div class="floating-label">
-              <input
-                :disabled="disabledInput"
-                ref="inputs"
-                v-model="displayValue[index]"
-                class="form-control floating date-input"
-                type="text"
-                autocomplete="off"
-                v-bind="attrs[input]"
-                @focus="showPicker('input', index as 1 | 0)"
-                readonly
-              />
+              <input :disabled="disabledInput" ref="inputs" v-model="displayValue[index]"
+                class="form-control floating date-input" type="text" autocomplete="off" v-bind="attrs[input]"
+                @focus="showPicker('input', index as 1 | 0)" readonly />
 
-              <label
-                :class="displayValue[index] ? 'foucus' : ''"
-                class="textLabel date-lable"
-                >{{ input == "firstInput" ? label : secondeLabel }}</label
-              >
+              <label :class="displayValue[index] ? 'foucus' : ''" class="textLabel date-lable">{{ input == "firstInput"
+                ? label : secondeLabel }}</label>
             </div>
           </div>
 
-          <button
-            v-if="clearable"
-            :key="`clear-${input}`"
-            class="pdp-clear"
-            type="button"
-            @click="clear(input)"
-          >
-            <slot name="clear"><PDPIcon icon="clear"></PDPIcon></slot>
+          <button v-if="clearable" :key="`clear-${input}`" class="pdp-clear" type="button" @click="clear(input)">
+            <slot name="clear">
+              <PDPIcon icon="clear"></PDPIcon>
+            </slot>
           </button>
         </template>
       </div>
     </div>
     <slot name="after"></slot>
-    <PDPAlt
-      v-if="attrs.alt.name"
-      :name="attrs.alt.name"
-      :format="formats.alt"
-      :dates="(selectedDates as any[])"
-    />
+    <PDPAlt v-if="attrs.alt.name" :name="attrs.alt.name" :format="formats.alt" :dates="(selectedDates as any[])" />
     <!-- //todo:check this condation -->
     <div v-if="showDatePicker">
       <div class="pdp-overlay" @click="showDatePicker = false"></div>
@@ -63,53 +37,28 @@
         <div class="pdp-auto">
           <div class="today-date-container">
             <span class="title">{{ getTodayDate }}</span>
-            <span
-              v-if="checkDate(core, 'date')"
-              class="today-lable"
-              :tabindex="tabIndex"
-              @click="goToToday"
-            >
-              {{ lang.translations.now }}</span
-            >
+            <span v-if="checkDate(core, 'date')" class="today-lable" :tabindex="tabIndex" @click="goToToday">
+              {{ lang.translations.now }}</span>
           </div>
           <div v-if="type.includes('date')">
             <ul v-show="showMonthSelect" class="pdp-select-month">
-              <li
-                v-for="(month, index) in months"
-                :key="index"
-                :class="[
-                  { selected: month.selected },
-                  { disabled: month.disabled },
-                ]"
-                @click="changeSelectedMonth(index)"
-              >
+              <li v-for="(month, index) in months" :key="index" :class="[
+                { selected: month.selected },
+                { disabled: month.disabled },
+              ]" @click="changeSelectedMonth(index)">
                 {{ month.label }}
               </li>
             </ul>
-            <ul
-              v-show="showYearSelect"
-              ref="pdpSelectYear"
-              class="pdp-select-year"
-            >
-              <li
-                v-for="(year, index) in years"
-                :key="index"
-                :class="{ selected: onDisplay?.year() == year }"
-                @click="changeSelectedYear(year)"
-              >
+            <ul v-show="showYearSelect" ref="pdpSelectYear" class="pdp-select-year">
+              <li v-for="(year, index) in years" :key="index" :class="{ selected: onDisplay?.year() == year }"
+                @click="changeSelectedYear(year)">
                 {{ year }}
               </li>
             </ul>
           </div>
           <div v-if="type.includes('date')" class="pdp-header">
             <div v-if="locale.includes(',')" class="top">
-              <button
-                v-if="today"
-                class="pdp-today"
-                type="button"
-                :tabindex="tabIndex"
-                @click="goToToday"
-              >
+              <button v-if="today" class="pdp-today" type="button" :tabindex="tabIndex" @click="goToToday">
                 امروز
               </button>
               <!-- <button
@@ -121,127 +70,66 @@
                 </button> -->
             </div>
             <div class="bottom">
-              <button
-                tabindex="-1"
-                type="button"
-                class="ml-3"
-                :class="[
-                  'pdp-arrow',
-                  {
-                    disabled: !checkDate(
-                      onDisplay?.clone().subMonth(),
-                      'month'
-                    ),
-                  },
-                ]"
-                :title="lang.translations.prevMonth"
-                @click="changeSelectedMonth('sub')"
-              >
-                <slot name="right-arrow"
-                  ><PDPArrow
-                    direction="right"
-                    width="10"
-                    height="10"
-                    :inverse="lang.dir.picker == 'ltr'"
-                  ></PDPArrow
-                ></slot>
+              <button tabindex="-1" type="button" class="ml-3" :class="[
+                'pdp-arrow',
+                {
+                  disabled: !checkDate(
+                    onDisplay?.clone().subMonth(),
+                    'month'
+                  ),
+                },
+              ]" :title="lang.translations.prevMonth" @click="changeSelectedMonth('sub')">
+                <slot name="right-arrow">
+                  <PDPArrow direction="right" width="10" height="10" :inverse="lang.dir.picker == 'ltr'"></PDPArrow>
+                </slot>
               </button>
               <div>
-                <div
-                  v-for="(item, i) in columnCount"
-                  :key="i"
-                  class="selectDate"
-                >
-                  <button
-                    v-if="onDisplay"
-                    class="pdp-month"
-                    type="button"
-                    tabindex="-1"
-                    @click="showPart('month')"
-                  >
+                <div v-for="(item, i) in columnCount" :key="i" class="selectDate">
+                  <button v-if="onDisplay" class="pdp-month" type="button" tabindex="-1" @click="showPart('month')">
                     {{
                       months[onDisplay.clone().addMonth(i).month()].label
-                    }}</button
-                  ><button
-                    class="pdp-year"
-                    type="button"
-                    tabindex="-1"
-                    @click="showPart('year')"
-                  >
+                    }}</button><button class="pdp-year" type="button" tabindex="-1" @click="showPart('year')">
                     {{ onDisplay?.clone().addMonth(i).year() }}
                   </button>
                 </div>
               </div>
-              <button
-                tabindex="-1"
-                type="button"
-                class="mr-3"
-                :class="[
-                  'pdp-arrow',
-                  {
-                    disabled: !checkDate(
-                      onDisplay?.clone().addMonth(),
-                      'month'
-                    ),
-                  },
-                ]"
-                :title="lang.translations.nextMonth"
-                @click="changeSelectedMonth('add')"
-              >
-                <slot name="left-arrow"
-                  ><PDPArrow
-                    direction="left"
-                    width="10"
-                    height="10"
-                    :inverse="lang.dir.picker == 'ltr'"
-                  ></PDPArrow
-                ></slot>
+              <button tabindex="-1" type="button" class="mr-3" :class="[
+                'pdp-arrow',
+                {
+                  disabled: !checkDate(
+                    onDisplay?.clone().addMonth(),
+                    'month'
+                  ),
+                },
+              ]" :title="lang.translations.nextMonth" @click="changeSelectedMonth('add')">
+                <slot name="left-arrow">
+                  <PDPArrow direction="left" width="10" height="10" :inverse="lang.dir.picker == 'ltr'"></PDPArrow>
+                </slot>
               </button>
             </div>
           </div>
           <div ref="pdpMain" class="pdp-main">
             <div v-if="type.includes('date')" class="pdp-date">
-              <div
-                v-for="(item, i) in columnCount"
-                :key="i"
-                class="pdp-column"
-                :data-column="i"
-              >
+              <div v-for="(item, i) in columnCount" :key="i" class="pdp-column" :data-column="i">
                 <div class="pdp-week">
-                  <div
-                    v-for="(weekday, index) in lang.weekdays"
-                    :key="index"
-                    class="pdp-weekday"
-                  >
+                  <div v-for="(weekday, index) in lang.weekdays" :key="index" class="pdp-weekday">
                     {{ weekday }}
                   </div>
                 </div>
                 <div class="pdp-days m-0 p-0">
                   <div v-for="(week, wIndex) in monthDays[i]" :key="wIndex">
-                    <div
-                      v-for="day in week"
-                      :key="day.raw ? day.raw.toString() : undefined"
-                      :class="[
-                        'pdp-day',
-                        { empty: day.empty },
-                        { friday: day.friday },
-                        { today: day.today },
-                        { 'start-range': day.startRange },
-                        { 'end-range': day.endRange },
-                        { disabled: day.disabled },
-                        { 'in-range': day.inRange },
-                      ]"
-                      :value="day.val"
-                      @click="selectDate(day?.raw, 'date')"
-                    >
-                      <span
-                        href="#"
-                        class="static-height mb-1"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        :title="toolTipValue"
-                        >{{ day.val }}</span
-                      >
+                    <div v-for="day in week" :key="day.raw ? day.raw.toString() : undefined" :class="[
+                      'pdp-day',
+                      { empty: day.empty },
+                      { friday: day.friday },
+                      { today: day.today },
+                      { 'start-range': day.startRange },
+                      { 'end-range': day.endRange },
+                      { disabled: day.disabled },
+                      { 'in-range': day.inRange },
+                    ]" :value="day.val" @click="selectDate(day?.raw, 'date')">
+                      <span href="#" class="static-height mb-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                        :title="toolTipValue">{{ day.val }}</span>
                     </div>
                   </div>
                 </div>
@@ -251,89 +139,61 @@
               <div v-if="type == 'time'" class="pdp-column">
                 <div v-for="(c, i) in columnCount" :key="i"></div>
               </div>
-              <div
-                :class="[
-                  'pdp-moment',
-                  { 'column-direction': mode == 'range' && columnCount == 1 },
-                ]"
-              >
-                <div
-                  v-for="(n, i) in mode == 'range' ? 2 : 1"
-                  :key="n"
-                  :class="[
-                      {
-                        disabled:
-                          selectedTimes[i] &&
-                          (!checkDate(selectedTimes[i], 'time') ||
-                            isInDisable(selectedTimes[i] as PersianDate)),
-                      }, // FIXME: go to method
-                    ]"
-                >
+              <div :class="[
+                'pdp-moment',
+                { 'column-direction': mode == 'range' && columnCount == 1 },
+              ]">
+                <div v-for="(n, i) in mode == 'range' ? 2 : 1" :key="n" :class="[
+                  {
+                    disabled:
+                      selectedTimes[i] &&
+                      (!checkDate(selectedTimes[i], 'time') ||
+                        isInDisable(selectedTimes[i] as PersianDate)),
+                  }, // FIXME: go to method
+                ]">
                   <div class="hour">
-                    <button
-                      type="button"
-                      class="pb-3"
-                      @touchstart.prevent="startChangeTime(i, 'hour', 'add')"
+                    <button type="button" class="pb-3" @touchstart.prevent="startChangeTime(i, 'hour', 'add')"
                       @mousedown.prevent="startChangeTime(i, 'hour', 'add')"
-                      @keydown.enter.prevent="startChangeTime(i, 'hour', 'add')"
-                      @touchend.prevent="stopChangeTime"
-                      @mouseup.prevent="stopChangeTime"
-                      @keyup.enter.prevent="stopChangeTime"
-                    >
-                      <slot name="up-arrow"><PDPArrow></PDPArrow></slot></button
-                    >{{
+                      @keydown.enter.prevent="startChangeTime(i, 'hour', 'add')" @touchend.prevent="stopChangeTime"
+                      @mouseup.prevent="stopChangeTime" @keyup.enter.prevent="stopChangeTime">
+                      <slot name="up-arrow">
+                        <PDPArrow></PDPArrow>
+                      </slot>
+                    </button>{{
                       selectedTimes[i]
                         ? selectedTimes[i].hour("HH")
                         : core.hour("HH")
-                    }}<button
-                      type="button"
-                      class="pt-3"
-                      @touchstart.prevent="startChangeTime(i, 'hour', 'sub')"
+                    }}<button type="button" class="pt-3" @touchstart.prevent="startChangeTime(i, 'hour', 'sub')"
                       @mousedown.prevent="startChangeTime(i, 'hour', 'sub')"
-                      @keydown.enter.prevent="startChangeTime(i, 'hour', 'sub')"
-                      @touchend.prevent="stopChangeTime"
-                      @mouseup.prevent="stopChangeTime"
-                      @keyup.enter.prevent="stopChangeTime"
-                    >
-                      <slot name="down-arrow"
-                        ><PDPArrow direction="down"></PDPArrow
-                      ></slot>
+                      @keydown.enter.prevent="startChangeTime(i, 'hour', 'sub')" @touchend.prevent="stopChangeTime"
+                      @mouseup.prevent="stopChangeTime" @keyup.enter.prevent="stopChangeTime">
+                      <slot name="down-arrow">
+                        <PDPArrow direction="down"></PDPArrow>
+                      </slot>
                     </button>
                   </div>
                   :
                   <div class="minute">
-                    <button
-                      class="pb-3"
-                      type="button"
-                      @touchstart.prevent="startChangeTime(i, 'minute', 'add')"
-                      @mousedown.prevent="startChangeTime(i, 'minute', 'add')"
-                      @keydown.enter.prevent="
+                    <button class="pb-3" type="button" @touchstart.prevent="startChangeTime(i, 'minute', 'add')"
+                      @mousedown.prevent="startChangeTime(i, 'minute', 'add')" @keydown.enter.prevent="
                         startChangeTime(i, 'minute', 'add')
-                      "
-                      @touchend.prevent="stopChangeTime"
-                      @mouseup.prevent="stopChangeTime"
-                      @keyup.enter.prevent="stopChangeTime"
-                    >
-                      <slot name="up-arrow"><PDPArrow></PDPArrow></slot></button
-                    >{{
+                        " @touchend.prevent="stopChangeTime" @mouseup.prevent="stopChangeTime"
+                      @keyup.enter.prevent="stopChangeTime">
+                      <slot name="up-arrow">
+                        <PDPArrow></PDPArrow>
+                      </slot>
+                    </button>{{
                       selectedTimes[i]
                         ? selectedTimes[i].minute("mm")
                         : core.minute("mm")
-                    }}<button
-                      type="button"
-                      class="pt-3"
-                      @touchstart.prevent="startChangeTime(i, 'minute', 'sub')"
-                      @mousedown.prevent="startChangeTime(i, 'minute', 'sub')"
-                      @keydown.enter.prevent="
+                    }}<button type="button" class="pt-3" @touchstart.prevent="startChangeTime(i, 'minute', 'sub')"
+                      @mousedown.prevent="startChangeTime(i, 'minute', 'sub')" @keydown.enter.prevent="
                         startChangeTime(i, 'minute', 'sub')
-                      "
-                      @touchend.prevent="stopChangeTime"
-                      @mouseup.prevent="stopChangeTime"
-                      @keyup.enter.prevent="stopChangeTime"
-                    >
-                      <slot name="down-arrow"
-                        ><PDPArrow direction="down"></PDPArrow
-                      ></slot>
+                        " @touchend.prevent="stopChangeTime" @mouseup.prevent="stopChangeTime"
+                      @keyup.enter.prevent="stopChangeTime">
+                      <slot name="down-arrow">
+                        <PDPArrow direction="down"></PDPArrow>
+                      </slot>
                     </button>
                   </div>
                 </div>
@@ -372,22 +232,15 @@
               </div>
             </div> -->
         </div>
-        <ul
-          v-if="shortcuts && Object.keys(shortcuts).length > 0"
-          class="pdp-shortcut"
-        >
-          <li
-            v-for="(dates, name) in shortcuts"
-            :key="name"
-            :class="{
-              selected: !dates.some(
-                (date, i) =>
-                  !date.isSame(
-                    selectedDates[i] && selectedDates[i].toString('datetime')
-                  )
-              ),
-            }"
-          >
+        <ul v-if="shortcuts && Object.keys(shortcuts).length > 0" class="pdp-shortcut">
+          <li v-for="(dates, name) in shortcuts" :key="name" :class="{
+            selected: !dates.some(
+              (date, i) =>
+                !date.isSame(
+                  selectedDates[i] && selectedDates[i].toString('datetime')
+                )
+            ),
+          }">
             {{ name }}
           </li>
         </ul>
@@ -961,7 +814,7 @@ export default defineComponent({
     tabIndex(): number | undefined {
       return (
         +(this.attrs.secondInput.tabindex || this.attrs.firstInput.tabindex) +
-          1 || undefined
+        1 || undefined
       );
     },
     shortcuts(): Shortcuts | false {
@@ -978,7 +831,7 @@ export default defineComponent({
         return this.mode === "single"
           ? this.validate(dates[0], part)
           : dates.some((d) => this.validate(d, part)) &&
-              !this.isDisableBetween(...(dates as [PersianDate, PersianDate]));
+          !this.isDisableBetween(...(dates as [PersianDate, PersianDate]));
       };
       const setShortcut = (obj: Shortcuts, fromProps = false) => {
         // for (const phrase in obj) {
@@ -1499,7 +1352,7 @@ export default defineComponent({
       }
     },
     selectInRangeDate(e: any): void {
-  
+
       const target = e.target;
       if (!target.classList.contains("pdp-day")) return;
       document.querySelectorAll(`.pdp .pdp-day`).forEach((el) => {
@@ -1543,6 +1396,7 @@ export default defineComponent({
         if (oldMonth != selectedDate.month()) {
           column += number;
         }
+
         if (
           this.checkDate(selectedDate, "date") &&
           !this.isInDisable(selectedDate)
@@ -1830,6 +1684,7 @@ export default defineComponent({
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
 @import "@/assets/css/date-picker/app.scss";
+
 .date-input {
   text-align: initial !important;
 }
@@ -1838,6 +1693,7 @@ html[lang="en_US"] .date-lable {
   right: unset !important;
   left: 0 !important;
 }
+
 .selectDate button:hover {
   border: 1px solid var(--count-box-color) !important;
   box-shadow: 0 0 3px #a3a3a3;
@@ -1850,11 +1706,13 @@ html[lang="en_US"] .date-lable {
   border: 1px solid #ffffff !important;
   transition: 0.4s;
 }
+
 .title-container {
   display: flex;
   justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid $surface-container-low;
+
   .title {
     font-size: 14px;
     font-style: normal;
@@ -1862,17 +1720,20 @@ html[lang="en_US"] .date-lable {
     line-height: normal;
   }
 }
+
 .today-date-container {
   display: flex;
   justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid $surface-container-low;
+
   .title {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
   }
+
   .today-lable {
     font-size: 14px;
     font-style: normal;
@@ -1882,6 +1743,7 @@ html[lang="en_US"] .date-lable {
     cursor: pointer;
   }
 }
+
 .confirm {
   display: flex;
   width: 100%;

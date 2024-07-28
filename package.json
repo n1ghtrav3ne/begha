@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@alireza-ab/persian-date": "^2.6.2",
+    "@neshan-maps-platform/ol": "^1.0.5",
+    "@neshan-maps-platform/vue3-openlayers": "^2.0.1",
     "@pinia/nuxt": "^0.5.1",
     "jalali-moment": "^3.3.11",
     "nuxt": "^3.11.2",
