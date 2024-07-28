@@ -73,9 +73,8 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { ssr: true },
     '/auth/**': { ssr: false },
+    '/mausoleum/profile/**': { ssr: false },
   },
-
-
 
   runtimeConfig: {
     public: {

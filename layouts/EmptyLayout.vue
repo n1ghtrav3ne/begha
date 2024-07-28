@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white h-screen overflow-y-hidden">
+  <div class="bg-white">
     <VitePwaManifest />
     <slot />
   </div>

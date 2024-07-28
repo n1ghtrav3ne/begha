@@ -47,31 +47,31 @@ const footerItems = ref<
   {
     title: "خانه",
     iconClass: "icon-Home",
-    link: "/",
+    link: "/mausoleum",
     active: true,
   },
   {
     title: "درخواست ها",
     iconClass: "icon-Help-Iran",
-    link: "",
+    link: "#",
     active: false,
   },
   {
     title: "",
     iconClass: "icon-Location-Iran",
-    link: "/",
+    link: "/mausoleum",
     active: false,
   },
   {
     title: "کاربران",
     iconClass: "icon-House-Iran",
-    link: "",
+    link: "/mausoleum/followers",
     active: false,
   },
   {
     title: "پروفایل",
     iconClass: "icon-Profile",
-    link: "",
+    link: "/mausoleum/profile",
     active: false,
   },
 ]);

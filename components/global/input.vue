@@ -1,47 +1,56 @@
 <template>
   <div class="w-full h-full">
     <label class="font-normal text-sm text-surface-600">
-      {{ props.label }}
+      {{ label }}
     </label>
     <div
-      id="input-elem"
-      class="w-full h-full flex items-center justify-between px-4"
-      :class="`bg-${props.color} rounded-${props.rounded} ${
-        props.label && 'mt-4'
-      }`"
+      ref="inputElem"
+      class="w-full h-full flex items-center justify-between px-4 mt-2"
+      :class="[
+        `bg-${color}`,
+        `rounded-${rounded}`,
+        label ? 'mt-1' : '',
+        activeInput
+          ? primary
+            ? 'border-primary border-shadow'
+            : 'border-secondary-400 border-shadow'
+          : border
+          ? 'border-[1px] border-surface-100'
+          : '',
+      ]"
     >
       <div class="centered">
-        <slot name="prepend"> </slot>
+        <slot name="prepend"></slot>
         <input
           class="h-full outline-none p-2"
-          :class="`rounded-${props.rounded} bg-${props.color}`"
-          :placeholder="props.placeholder"
-          :type="props.type"
-          v-model="input"
-          @change="emit('update:modelValue', input)"
+          :class="[`rounded-${rounded}`, `bg-${color}`]"
+          :placeholder="placeholder"
+          :type="type"
+          :value="modelValue"
+          @input="updateValue($event.target.value)"
         />
       </div>
-
-      <slot name="append"> </slot>
+      <slot name="append"></slot>
     </div>
-    <span class="text-error text-sm" v-if="props.error">
-      {{ props.error }}
+    <span class="text-error text-sm" v-if="error">
+      {{ error }}
     </span>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
+
 const emit = defineEmits(["update:modelValue"]);
-const input = ref();
 const props = defineProps({
   color: {
     type: String,
     default: "surface-50",
   },
   placeholder: {
-    typeof: String,
+    type: String,
   },
-  modelValue: {},
+  modelValue: [String, Number],
   type: {
     type: String,
     default: "text",
@@ -56,7 +65,6 @@ const props = defineProps({
     type: String,
     default: "lg",
   },
-
   border: {
     type: Boolean,
     default: false,
@@ -67,41 +75,24 @@ const props = defineProps({
 });
 
 const activeInput = ref(false);
+const inputElem = ref(null);
+
+const updateValue = (value) => {
+  emit("update:modelValue", value);
+};
 
 onMounted(() => {
-  const elem = document.getElementById("input-elem");
-  document.addEventListener("click", function (event) {
-    const input = document.getElementsByTagName("input");
-    const outsideClick = !elem.contains(event.target);
+  document.addEventListener("click", (event) => {
+    if (inputElem.value) {
+      const outsideClick = !inputElem.value.contains(event.target);
 
-    if (outsideClick) {
-      activeInput.value = false;
-      elem.classList.remove("border-[1px]");
-      elem.classList.remove(
-        props.primary ? `border-primary` : "border-secondary-400"
-      );
-      elem.classList.remove("border-shadow");
-      if (props.border) {
-        elem.classList.add("border-[1px]");
-        elem.classList.add("border-surface-100");
+      if (outsideClick) {
+        activeInput.value = false;
+      } else {
+        activeInput.value = true;
       }
-    } else {
-      activeInput.value = true;
-      elem.classList.add("border-[1px]");
-      elem.classList.remove("border-surface-100");
-      elem.classList.add(
-        props.primary ? `border-primary` : "border-secondary-400"
-      );
-      elem.classList.add("border-shadow");
-      input[0].focus();
     }
   });
-
-  if (props.border) {
-    elem.classList.add("border-[1px]");
-    elem.classList.add("border-surface-100");
-    elem.classList.add("border-[1px]");
-  }
 });
 </script>
 
