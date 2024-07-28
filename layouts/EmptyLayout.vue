@@ -1,12 +1,21 @@
 <template>
-  <div class="bg-white h-screen overflow-y-hidden">
-    <VitePwaManifest />
-    <slot />
+  <div class="wrapper">
+    <div class="empty-layout">
+      <VitePwaManifest />
+      <slot />
+    </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-</script>
-
 <style lang="scss" scoped>
+.wrapper {
+  position: relative;
+  height: 100vh;
+}
+
+.empty-layout {
+  max-width: 600px;
+  margin: 0 auto;
+  overflow-y: scroll !important;
+}
 </style>
