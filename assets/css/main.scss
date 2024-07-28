@@ -18,6 +18,9 @@ body {
     max-width: 600px;
     margin: 0 auto;
     overflow-y: scroll;
+    ::-webkit-scrollbar{
+        display: none;
+    }
   }
 @layer components {
 

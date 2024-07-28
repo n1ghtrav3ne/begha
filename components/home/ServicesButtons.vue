@@ -73,7 +73,7 @@ const servicesList = ref<
     iconClass: "icon-Event-Iran",
     colorClass: "btn-bg-blue-kind",
     badgeColorClass : 'error-bg-color' , 
-    link : '' , 
+    link : '/events' , 
   },
   {
     title: "حمایت مالی",
