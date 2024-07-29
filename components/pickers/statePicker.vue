@@ -18,8 +18,6 @@
     <bottomSheets
       v-model="dialog"
       title="استان مورد نظر خود را انتخاب کنید"
-      closable
-      :line="true"
       :search="{ placeholder: 'جستجو بر اساس نام استان' }"
       @update-search="getSearch($event)"
     >

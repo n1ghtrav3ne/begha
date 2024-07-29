@@ -15,9 +15,8 @@
       </span>
     </div>
     <!-- select state dialog  -->
-    <bottomSheets v-model="dialog" title="تحصیلات" closable>
+    <bottomSheets v-model="dialog" title="تحصیلات">
       <div class="py-4 px-6">
-        <div class="divider"></div>
         <!-- show state  -->
         <div class="mt-5" v-if="insurance.length">
           <list

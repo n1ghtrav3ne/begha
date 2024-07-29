@@ -15,11 +15,7 @@
       </span>
     </div>
     <!-- select state dialog  -->
-    <bottomSheets
-      v-model="dialog"
-      title="شهر مورد نظر خود را انتخاب کنید"
-      closable
-    >
+    <bottomSheets v-model="dialog" title="شهر مورد نظر خود را انتخاب کنید">
       <div class="py-4 px-6">
         <div class="divider"></div>
         <!-- search text field -->

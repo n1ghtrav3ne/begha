@@ -15,48 +15,47 @@
           class="w-16 h-[5px] rounded-[20px] bg-primary top-2 absolute left-0 right-0 mx-auto"
         ></div>
         <div class="p-4 w-full">
-          <div class="">
-            <!-- bottom sheet header  -->
+          <!-- bottom sheet header  -->
+          <div
+            class="w-full flex justify-between items-center my-2 overflow-y-hidden"
+            v-if="props.title"
+          >
+            <span :class="props.class">{{ props?.title }}</span>
+
             <div
-              class="w-full flex justify-between items-center my-2 overflow-y-hidden"
+              v-if="props?.title"
+              class="size-6 overflow-auto body cursor-pointer"
+              @click="closeSheet()"
             >
-              <span :class="props.class">{{ props?.title }}</span>
-
-              <div
-                v-if="props?.closable"
-                class="size-6 overflow-auto body cursor-pointer"
-                @click="closeSheet()"
-              >
-                <img src="~/assets/images/icons/close.svg" class="size-6" />
-              </div>
+              <img src="~/assets/images/icons/close.svg" class="size-6" />
             </div>
+          </div>
 
-            <!-- bottom sheet divider -->
-            <div v-if="props?.line" class="pt-4 pb-2 px-6">
-              <div class="divider"></div>
-            </div>
+          <!-- bottom sheet divider -->
+          <div v-if="title" class="pt-4 pb-2 px-6">
+            <div class="divider"></div>
+          </div>
 
-            <!-- bottom sheet search field -->
-            <div v-if="props.search" class="px-6 h-12" ref="inputElem">
-              <base-input
-                :placeholder="props.search.placeholder"
-                v-model="search"
-                class="h-[46px ]"
-                @update:model-value="emit('updateSearch', search)"
-                @status="screenSizeHandler($event)"
-              >
-                <template #prepend>
-                  <div class="cursor-pointer ml-2">
-                    <img src="~/assets/images/icons/search-black.svg" alt="" />
-                  </div>
-                </template>
-              </base-input>
-            </div>
+          <!-- bottom sheet search field -->
+          <div v-if="props.search" class="px-6 h-12" ref="inputElem">
+            <base-input
+              :placeholder="props.search.placeholder"
+              v-model="search"
+              class="h-[46px ]"
+              @update:model-value="emit('updateSearch', search)"
+              @status="screenSizeHandler($event)"
+            >
+              <template #prepend>
+                <div class="cursor-pointer ml-2">
+                  <img src="~/assets/images/icons/search-black.svg" alt="" />
+                </div>
+              </template>
+            </base-input>
           </div>
 
           <div
             class="overflow-y-scroll"
-            :class="fullScreen ? 'h-[700px]' : 'h-[400px]'"
+            :class="fullScreen ? 'max-h-[700px]' : 'max-h-[400px]'"
           >
             <slot></slot>
           </div>
@@ -71,10 +70,8 @@ import BaseInput from "~/components/global/input.vue";
 
 const props = defineProps({
   title: { type: String },
-  closable: { type: Boolean, default: true },
   modelValue: {},
   class: {},
-  line: { type: Boolean },
   search: {
     label: { type: String },
     placeholder: { type: String },
