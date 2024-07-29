@@ -11,7 +11,7 @@
     >
       <template #prepend>
         <div
-          class="size-14 bg-blue/30 rounded-full flex items-center justify-center"
+          class="size-14 bg-blue/15 rounded-full flex items-center justify-center"
         >
           <img
             :src="profileImage || '/icons/userProfile.svg'"

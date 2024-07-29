@@ -23,10 +23,12 @@
         <list
           :title="item.number"
           :subtitle="item.name"
+          class="mt-3"
+          :bordered="i + 1 < followersData?.data?.length"
           subTitleClass="text-surface-500 text-xs"
         >
           <template #prepend>
-            <div class="size-10 bg-blue/20 rounded-full centered">
+            <div class="size-10 bg-blue/15 rounded-full centered">
               <img :src="item.image || '/icons/profile.svg'" />
             </div>
           </template>

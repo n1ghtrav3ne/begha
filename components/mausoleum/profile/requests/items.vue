@@ -14,6 +14,8 @@
             :title="item?.title"
             :subtitle="item?.from"
             subTitleClass="text-[11px] text-surface-500"
+            class="mt-3"
+            :bordered="i + 1 < date.requests?.length"
           >
             <template #prepend>
               <div class="size-11 rounded-full bg-[#E4F1FE] centered">

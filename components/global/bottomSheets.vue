@@ -41,7 +41,6 @@
             <base-input
               :placeholder="props.search.placeholder"
               v-model="search"
-              class="h-[46px ]"
               @update:model-value="emit('updateSearch', search)"
               @status="screenSizeHandler($event)"
             >
