@@ -2,37 +2,78 @@
   <div>
     <div class="app-home">
       <div class="container">
-        <div class="search-box-input">
-          <input @click="BeghaProvinceFilterModalSheet=true"
-            class="search-input"
-            type="text"
+        <div class="h-14">
+          <baseInput
+            color="surface-30"
+            :border="true"
             placeholder="جستجو اماکن متبرکه"
-          />
-          <span @click="BeghaEventFilterModalSheet=true"
-            class="material-symbols-outlined search-input-icon"
+            :primary="true"
           >
-            tune
-          </span>
+            <template #append>
+              <div
+                class="size-8 bg-blue/15 rounded-full flex items-center justify-center text-blue"
+              >
+                <span
+                  @click="BeghaEventFilterModalSheet = true"
+                  class="material-symbols-outlined search-input-icon"
+                >
+                  tune
+                </span>
+              </div>
+            </template>
+          </baseInput>
         </div>
 
-        <div class="popular-begha mt-7 mb-12 pb-8">
-          <BeghaListItems />
+        <!-- begha list items  -->
+        <div class="mt-8" v-if="beghaItems.length">
+          <template v-for="(item, i) in beghaItems" :key="i">
+            <list
+              :title="item.name"
+              :subtitle="item.location"
+              title-class="font-bold"
+              subtitle-class="text-xs text-surface-500"
+              class="p-3"
+              :bordered="i + 1 < beghaItems.length"
+            >
+              <template #prepend>
+                <div
+                  class="size-12 rounded-full flex items-center justify-center"
+                >
+                  <img :src="item.image" class="w-full h-full rounded-full" />
+                </div>
+              </template>
+              <template #append>
+                <button
+                  class="border-[1px] border-surface-100 rounded-lg p-2 text-xs text-surface-600 min-w-28"
+                >
+                  لغو دنبال کردن
+                </button>
+              </template>
+            </list>
+          </template>
+        </div>
+        <div v-else class="w-full flex justify-center mt-44">
+          <div class="text-center">
+            <img
+              src="~/assets/images/empty-data.png"
+              class="w-24 h-[90px] left-0 right-0 mx-auto mb-2"
+            />
+            <span> بقعه ای را دنبال نمی کنید. </span>
+            <br />
+            <NuxtLink to="/begha/list">
+              <button class="text-primary mt-5">رفتن به لیست بقاع</button>
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
 
-    <BottomSheets v-model="BeghaProvinceFilterModalSheet">
-
-      <BeghaProvinceFilterModal />
-
-    </BottomSheets>
-
-    <BottomSheets v-model="BeghaEventFilterModalSheet">
-
+    <BottomSheets
+      v-model="filterDialog"
+      title="جستجو بر اساس خدمات و مراسمات جاری"
+    >
       <BeghaEventFilterModal />
-
     </BottomSheets>
-
   </div>
 </template>
 
@@ -41,6 +82,8 @@ import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
 import BeghaProvinceFilterModal from "./BeghaProvinceFilterModal.vue";
 import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
+import BaseInput from "~/components/global/input.vue";
+import list from "~/components/global/list.vue";
 import { useModalStore } from "~/stores/modals-store";
 defineNuxtComponent({
   PopularBegha,
@@ -48,12 +91,46 @@ defineNuxtComponent({
   BeghaProvinceFilterModal,
   BeghaEventFilterModal,
 });
+
+const filterDialog = ref(true);
+const beghaItems = ref<{ name: string; location: string; image: string }[]>([
+  {
+    name: "امام زاده صالح",
+    location: "تهران،تهران",
+    image:
+      "https://www.gonbadepars.ir/wp-content/uploads/IMG_20151213_222114.jpg",
+  },
+  {
+    name: "امام زاده صالح",
+    location: "تهران،تهران",
+    image:
+      "https://www.gonbadepars.ir/wp-content/uploads/IMG_20151213_222114.jpg",
+  },
+  {
+    name: "امام زاده صالح",
+    location: "تهران،تهران",
+    image:
+      "https://www.gonbadepars.ir/wp-content/uploads/IMG_20151213_222114.jpg",
+  },
+  {
+    name: "امام زاده صالح",
+    location: "تهران،تهران",
+    image:
+      "https://www.gonbadepars.ir/wp-content/uploads/IMG_20151213_222114.jpg",
+  },
+  {
+    name: "امام زاده صالح",
+    location: "تهران،تهران",
+    image:
+      "https://www.gonbadepars.ir/wp-content/uploads/IMG_20151213_222114.jpg",
+  },
+]);
+
 const modalStore = useModalStore();
 
-const BeghaProvinceFilterModalSheet=ref(false)
+const BeghaProvinceFilterModalSheet = ref(false);
 
-const BeghaEventFilterModalSheet=ref(true)
-
+const BeghaEventFilterModalSheet = ref(true);
 </script>
 
 <style lang="scss" scoped>

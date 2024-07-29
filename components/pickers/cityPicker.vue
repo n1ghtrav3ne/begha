@@ -29,7 +29,7 @@
             :title="item.city"
             :subtitle="item.state"
             class="h-14 px-3"
-            sub-title-class="text-[11px]"
+            subtitle-class="text-[11px]"
             :class="selectedCity == item.city ? '  bg-blue/15 rounded-lg' : ''"
             @click="selectedCity = item.city"
           >

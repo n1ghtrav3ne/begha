@@ -14,7 +14,7 @@
         <br v-if="props?.subtitle" />
         <span
           v-if="props?.subtitle"
-          :class="props.subTitleClass"
+          :class="props.subtitleClass"
           @click="$emit('clickSubtitle')"
         >
           {{ props?.subtitle }}
@@ -30,7 +30,7 @@
 const props = defineProps([
   "titleClass",
   "title",
-  "subTitleClass",
+  "subtitleClass",
   "subtitle",
   "bordered",
 ]);

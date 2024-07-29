@@ -12,8 +12,8 @@
         label ? 'mt-1' : '',
         activeInput
           ? primary
-            ? 'border-primary border-shadow'
-            : 'border-secondary-400 border-shadow'
+            ? 'border-[1px] border-primary'
+            : 'border-[1px] border-secondary-400 border-shadow'
           : border
           ? 'border-[1px] border-surface-100'
           : '',

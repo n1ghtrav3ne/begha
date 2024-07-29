@@ -4,7 +4,7 @@
       title="تصویر پروفایل شما"
       title-class="font-bold"
       :subtitle="profileImage ? 'حذف عکس' : 'انتخاب عکس'"
-      :sub-title-class="
+      :subtitle-class="
         profileImage ? 'text-red text-[11px]' : 'text-blue text-[11px]'
       "
       @clickSubtitle="profileImage ? (profileImage = null) : triggerFileInput()"
