@@ -41,7 +41,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "status"]);
 const props = defineProps({
   color: {
     type: String,
@@ -88,8 +88,10 @@ onMounted(() => {
 
       if (outsideClick) {
         activeInput.value = false;
+        emit("status", false);
       } else {
         activeInput.value = true;
+        emit("status", true);
       }
     }
   });

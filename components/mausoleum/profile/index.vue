@@ -48,7 +48,6 @@
 
 <script setup>
 import UserInformation from "./userInformation.vue";
-import userType from "./userType.vue";
 import Lists from "./lists.vue";
 import BottomSheets from "~/components/global/bottomSheets.vue";
 
@@ -59,7 +58,7 @@ const user = reactive({
   phone: "۰۹۱۲۳۴۵۶۷۸۹",
 });
 
-const newRequestDialog = ref(true);
+const newRequestDialog = ref(false);
 </script>
 
 <style lang="scss" scoped>

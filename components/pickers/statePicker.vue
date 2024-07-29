@@ -19,24 +19,11 @@
       v-model="dialog"
       title="استان مورد نظر خود را انتخاب کنید"
       closable
+      :line="true"
+      :search="{ placeholder: 'جستجو بر اساس نام استان' }"
+      @update-search="getSearch($event)"
     >
       <div class="py-4 px-6">
-        <div class="divider"></div>
-        <!-- search text field -->
-        <base-input
-          placeholder="جستجو بر اساس نام استان"
-          v-model="search"
-          class="h-[46px ]"
-          @update:model-value="emit('update:modelValue', search)"
-        >
-          <template #prepend>
-            <div class="cursor-pointer ml-2">
-              <img src="~/assets/images/icons/search-black.svg" alt="" />
-            </div>
-          </template>
-        </base-input>
-
-        <!-- show state  -->
         <div class="mt-5" v-if="states.length">
           <list
             v-for="(item, i) in states"
@@ -71,11 +58,23 @@
 </template>
 
 <script setup>
-import BaseInput from "~/components/global/input.vue";
 const props = defineProps(["label", "placeholder"]);
 const dialog = ref(false);
-const search = ref("");
 const states = ref([
+  "تهران",
+  "اصفهان",
+  "آذربایجان شرقی",
+  "آذربایجان غربی",
+  "خوزستان",
+  "خراسان شمالی",
+  "فارس",
+  "تهران",
+  "اصفهان",
+  "آذربایجان شرقی",
+  "آذربایجان غربی",
+  "خوزستان",
+  "خراسان شمالی",
+  "فارس",
   "تهران",
   "اصفهان",
   "آذربایجان شرقی",
@@ -92,6 +91,10 @@ watch(selectedState, () => {
   emit("update:modelValue", selectedState.value);
   dialog.value = false;
 });
+
+function getSearch(e) {
+  emit("update:modelValue", e);
+}
 </script>
 
 <style lang="scss" scoped>
