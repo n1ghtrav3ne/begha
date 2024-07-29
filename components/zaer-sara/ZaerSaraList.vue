@@ -30,7 +30,7 @@
               <span>تاریخ ورود و خروج</span>
               <span class="material-symbols-outlined"> arrow_drop_down </span>
             </div>
-            <span class="date-sub-title">۲۰ اردیبهشت ۱۴۰۳ تا ۲۳ اردیبهشت ۱۴۰۳</span>
+            <span class="date-sub-title">{{ dateText }}</span>
           </div>
           <div class="zaer-heading flex items-center justify-between">
             <div class="zaer-title flex items-center">
@@ -40,15 +40,16 @@
             <div class="zaer-filter flex items-center">
               <span class="filter-base-text"> ترتیب بر اساس </span>
               <span class="flex items-center">
-                <span @click="showMap=true" class="active-filter"> محبوب ترین </span>
+                <span @click="showMap = true" class="active-filter"> محبوب ترین </span>
                 <span class="icon-Arrow-Bottom-Iran filter-choose-icon mr-1">
                 </span>
               </span>
             </div>
           </div>
           <div>
-            <ZaerSaraItem />
-            <ZaerSaraItem />
+            <ZaerSaraItem @click="dateText ? $router.push('./12') : showSelectDate = true" />
+            <ZaerSaraItem @click="dateText ? $router.push('./12') : showSelectDate = true" />
+            <ZaerSaraItem @click="dateText ? $router.push('./12') : showSelectDate = true" />
           </div>
         </div>
       </div>
@@ -56,8 +57,8 @@
   </div>
 
   <BottomSheets v-model="showSelectDate">
-    <!-- <Map/> -->
-    <DatePicker :show="true" :mode="'range'" :column="1" @close="showSelectDate = false"  />
+    <DatePicker :show="true" :mode="'range'" :column="1" @close="showSelectDate = false"
+      @update:model-value="updateDate($event)" />
   </BottomSheets>
   <BottomSheets :title="'ترتیب نمایش بر اساس'" v-model="showSelectedSort">
     <ZaerSaraSort />
@@ -78,6 +79,8 @@ import ZaerSaraItem from "./ZaerSaraItem.vue";
 import ZaerSaraSort from "./ZaerSaraSort.vue";
 import ZaerSaraFacilitiesSearch from "./ZaerSaraFacilitiesSearch.vue";
 import { useModalStore } from "~/stores/modals-store";
+import moment, { type MomentInput } from "jalali-moment";
+const { getDateWithMounthName } = mixin;
 
 defineComponent([ZaerSaraItem]);
 const modalStore = useModalStore();
@@ -86,8 +89,15 @@ const showMap = ref(false);
 const showSelectedSort = ref(false);
 const showProvince = ref(false);
 const showSearch = ref(false);
-const updateDate = ref('');
-const ssss = ref();
+const dateText = ref('');
+
+function updateDate(date: string[]) {
+  const firstDate = getDateWithMounthName(date[0]);
+  const secondDate = getDateWithMounthName(date[1]);
+  dateText.value = `${firstDate} تا ${secondDate}`;
+
+}
+
 </script>
 
 <style lang="scss" scoped>
