@@ -110,7 +110,7 @@ defineNuxtComponent({
   BeghaEventFilterModal,
 });
 
-const search = ref("dsfsdf");
+const search = ref("");
 
 const filterDialog = ref(false);
 const beghaItems = ref<{ name: string; location: string; image: string }[]>([
