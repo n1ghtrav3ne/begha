@@ -128,7 +128,9 @@ const beghaItems = ref<{ name: string; location: string; image: string }[]>([
 
 const modalStore = useModalStore();
 
-const BeghaProvinceFilterModalSheet = ref(false);
+const BeghaProvinceFilterModalSheet=ref(false)
+
+const BeghaEventFilterModalSheet=ref(false)
 
 const BeghaEventFilterModalSheet = ref(true);
 </script>

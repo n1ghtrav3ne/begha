@@ -1,10 +1,8 @@
 <template>
   <div class="greenBox container">
     <div class="firstItem">
-      <span
-        @click="$router.push('../information')"
-        class="material-symbols-outlined"
-      >
+
+        <span @click="$router.go(-1)" class="material-symbols-outlined ">
         arrow_right_alt
       </span>
 
