@@ -20,18 +20,14 @@
     </div>
   </div>
 
-  <BottomSheets
-    title="جستجو بر اساس قطعات"
-    :line="true"
-    v-model="searchFilterSheet"
-  >
+  <bottomSheets title="جستجو بر اساس قطعات" v-model="searchFilterSheet">
     <searchFilter />
-  </BottomSheets>
+  </bottomSheets>
 </template>
 <script setup lang="ts">
 import searchFilter from "./searchFilter.vue";
 
-import bottomSheets from "~/components/global/bottomSheets.vue";
+import BottomSheets from "~/components/global/bottomSheets.vue";
 
 defineComponent({ searchFilter });
 

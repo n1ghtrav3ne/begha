@@ -1,17 +1,22 @@
 <template>
   <div
-    class="flex justify-between items-center mt-3 border-b-[1px] border-surface-50 p-2"
+    class="w-full flex justify-between items-center p-2"
+    :class="props?.bordered && 'border-b-[1px] border-surface-100/50'"
   >
     <div class="flex items-center">
       <!-- list icon -->
       <slot name="prepend"></slot>
       <!-- list title -->
-      <div>
-        <span class="mr-2" :class="props.titleClass">
+      <div class="mr-2">
+        <span :class="props.titleClass">
           {{ props?.title }}
         </span>
-        <br />
-        <span class="mr-2" :class="props.subTitleClass">
+        <br v-if="props?.subtitle" />
+        <span
+          v-if="props?.subtitle"
+          :class="props.subtitleClass"
+          @click="$emit('clickSubtitle')"
+        >
           {{ props?.subtitle }}
         </span>
       </div>
@@ -22,7 +27,13 @@
 </template>
 
 <script setup>
-const props = defineProps(["titleClass", "title", "subTitleClass", "subtitle"]);
+const props = defineProps([
+  "titleClass",
+  "title",
+  "subtitleClass",
+  "subtitle",
+  "bordered",
+]);
 </script>
 
 <style lang="scss" scoped>

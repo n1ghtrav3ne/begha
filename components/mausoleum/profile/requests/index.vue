@@ -31,7 +31,23 @@
     <!-- show requests data -->
     <div v-if="requestsData?.length" class="p-4">
       <!-- select request type in toggle btn -->
-      <toggleBtn v-if="!searchBox" v-model="selectedItem"></toggleBtn>
+      <toggleBtn
+        v-if="!searchBox"
+        v-model="selectedItem"
+        first=" کاربر عادی"
+        secend="کاربر بقعه"
+      >
+        <template #append-first>
+          <div class="size-5 bg-red rounded-full mr-2 centered text-white">
+            1
+          </div>
+        </template>
+        <template #append-secend>
+          <div class="size-5 bg-red rounded-full mr-2 centered text-white">
+            1
+          </div>
+        </template>
+      </toggleBtn>
 
       <!-- show requests items  -->
       <div class="my-8" v-if="getRequestsItems.length">
@@ -65,9 +81,8 @@
 
 <script setup>
 import items from "./items.vue";
-import ToggleBtn from "./toggleBtn.vue";
 import SearchBox from "./search.vue";
-const selectedItem = ref("user");
+const selectedItem = ref("first");
 const search = ref("");
 
 const requestsData = ref([
@@ -75,14 +90,14 @@ const requestsData = ref([
     title: "درخواست فرش",
     from: "امام زاده صالح (ع)",
     status: "new",
-    type: "admin",
+    type: "secend",
     date: "2017-10-04T20:24:30+00:00",
   },
   {
     title: "درخواست مصالح ساختمانی",
     from: "امام زاده صالح (ع)",
     status: "pending",
-    type: "admin",
+    type: "secend",
     date: "2017-10-04T20:24:30+00:00",
   },
   {
@@ -90,7 +105,7 @@ const requestsData = ref([
     from: "محمدحسین قربانی",
     status: "new",
     image: "/userRequest.png",
-    type: "user",
+    type: "first",
     date: "2017-10-04T20:24:30+00:00",
   },
   {
@@ -98,7 +113,7 @@ const requestsData = ref([
     from: "محمدحسین قربانی",
     status: "pending",
     image: "/userRequest.png",
-    type: "user",
+    type: "first",
     date: "2017-10-04T20:24:30+00:00",
   },
   {
@@ -107,28 +122,28 @@ const requestsData = ref([
     status: "failed",
     image: "/userRequest.png",
     date: "2017-10-04T20:24:30+00:00",
-    type: "user",
+    type: "first",
   },
 
   {
     title: "درخواست فرش",
     from: "امام زاده صالح (ع)",
     status: "success",
-    type: "admin",
+    type: "secend",
     date: "2017-10-03T20:24:30+00:00",
   },
   {
     title: "درخواست منبر",
     from: "امام زاده صالح (ع)",
     status: "success",
-    type: "admin",
+    type: "secend",
     date: "2017-10-03T20:24:30+00:00",
   },
   {
     title: "درخواست صندوق نذورات",
     from: "امام زاده صالح (ع)",
     status: "failed-user",
-    type: "admin",
+    type: "secend",
     date: "2017-10-03T20:24:30+00:00",
   },
 ]);
@@ -138,7 +153,7 @@ const searchBox = ref(false);
 function getSearch(item) {
   searchBox.value = item;
   if (item) selectedItem.value = null;
-  else selectedItem.value = "user";
+  else selectedItem.value = "first";
 }
 
 const getRequestsItems = computed(() => {

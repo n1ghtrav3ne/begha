@@ -4,14 +4,18 @@
 
     <template v-for="(date, d) in groupArrays" :key="d">
       <div class="mt-10">
-        <span>{{ converDate(date.date) }}</span>
+        <span class="text-surface-400 text-[11px]">{{
+          converDate(date.date)
+        }}</span>
       </div>
       <div>
         <template v-for="(item, i) in date.requests" :key="i">
           <list
             :title="item?.title"
             :subtitle="item?.from"
-            subTitleClass="text-[11px] text-surface-500"
+            subtitleClass="text-[11px] text-surface-500"
+            class="mt-3"
+            :bordered="i + 1 < date.requests?.length"
           >
             <template #prepend>
               <div class="size-11 rounded-full bg-[#E4F1FE] centered">

@@ -1,42 +1,33 @@
 <template>
-    
-    <div class="container">
+  <div class="container">
+    <facilitiesBanner />
 
-        <facilitiesBanner />
+    <profile />
 
-        <profile />
+    <serviceButtons @close="moreServiceButtonsSheet = true" />
 
-        <serviceButtons @close="moreServiceButtonsSheet=true" />
+    <newRequest />
+  </div>
 
-        <newRequest />
+  <BottomSheets :closable="false" v-model="moreServiceButtonsSheet">
+    <moreServiceButtons />
+  </BottomSheets>
 
-    </div>
-
-    <BottomSheets :closable="false" v-model="moreServiceButtonsSheet">
-
-        <moreServiceButtons />
-
-    </BottomSheets>
-
-    <BottomSheets title="انتخاب کنید" :line="true" v-model="userSelectionSheet">
-
-        <userSelection />
-
-    </BottomSheets>
-
-
+  <BottomSheets title="انتخاب کنید" v-model="userSelectionSheet">
+    <userSelection />
+  </BottomSheets>
 </template>
 
 <script setup lang="ts">
-import facilitiesBanner from "./facilitiesBanner.vue"
+import facilitiesBanner from "./facilitiesBanner.vue";
 
-import profile from "./profile.vue"
+import profile from "./profile.vue";
 
 import serviceButtons from "./serviceButtons.vue";
 
-import newRequest from "./newRequest.vue"
+import newRequest from "./newRequest.vue";
 
-import moreServiceButtons from "./moreServiceButtons.vue"
+import moreServiceButtons from "./moreServiceButtons.vue";
 
 import userSelection from "./userSelection.vue";
 
@@ -44,20 +35,27 @@ import { useModalStore } from "~/stores/modals-store";
 
 const modalStore = useModalStore();
 
-defineComponent({facilitiesBanner,profile,serviceButtons,newRequest,moreServiceButtons})
+defineComponent({
+  facilitiesBanner,
+  profile,
+  serviceButtons,
+  newRequest,
+  moreServiceButtons,
+});
 
-const moreServiceButtonsSheet=ref(false)
+const moreServiceButtonsSheet = ref(false);
 
-const userSelectionSheet=ref(false)
+const userSelectionSheet = ref(false);
 
-watch(()=>modalStore.isOpenUserSelection,(newValue)=>{
-    userSelectionSheet.value=newValue
-})
-
+watch(
+  () => modalStore.isOpenUserSelection,
+  (newValue) => {
+    userSelectionSheet.value = newValue;
+  }
+);
 </script>
 
 <style lang="scss" scoped>
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
-
 </style>

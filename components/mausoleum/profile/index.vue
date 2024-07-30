@@ -1,17 +1,17 @@
 <template>
   <div class="m-4">
-    <!-- user type change -->
-    <div>
-      <userType :user="user"></userType>
-    </div>
     <div class="divider my-4"></div>
     <!-- user information -->
     <div>
       <userInformation :user="user"></userInformation>
     </div>
+
+    <!-- profile lists  -->
     <div class="mt-8">
       <lists></lists>
     </div>
+
+    <!-- show new request message in dialog -->
     <div>
       <bottom-sheets v-model="newRequestDialog">
         <div class="mx-6 my-4 text-center">
@@ -32,7 +32,10 @@
               </button>
             </div>
             <div class="w-6/12">
-              <button class="border-[1px] w-full h-11 rounded-lg">
+              <button
+                class="border-[1px] w-full h-11 rounded-lg"
+                @click="newRequestDialog = false"
+              >
                 انصراف
               </button>
             </div>
@@ -45,7 +48,6 @@
 
 <script setup>
 import UserInformation from "./userInformation.vue";
-import userType from "./userType.vue";
 import Lists from "./lists.vue";
 import BottomSheets from "~/components/global/bottomSheets.vue";
 
@@ -56,7 +58,7 @@ const user = reactive({
   phone: "۰۹۱۲۳۴۵۶۷۸۹",
 });
 
-const newRequestDialog = ref(true);
+const newRequestDialog = ref(false);
 </script>
 
 <style lang="scss" scoped>

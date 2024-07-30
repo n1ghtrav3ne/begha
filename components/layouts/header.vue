@@ -6,34 +6,26 @@
           <img src="~/assets/images/logo/layout-logo.png" alt="" />
         </div>
         <div class="flex itmes-center">
-          <span
-            @click="appSidebar.changeSidebarStateActive('active')"
-            class="icon-Menu-Iran"
-          >
-            
-          </span>
+          <span @click="drawer = true" class="icon-Menu-Iran"> </span>
           <div class="choose-location flex items-center mr-3">
-            <span class="icon-Location-Iran location-choose-icon ml-1">
-            </span>
+            <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
             <span class="location-title-text">اصفهان، نجف آباد</span>
-            <span class="icon-Arrow-Bottom-Iran mr-1" >
-              
-            </span>
+            <span class="icon-Arrow-Bottom-Iran mr-1"> </span>
           </div>
         </div>
       </div>
     </nav>
-    <Transition name="slide-fade">
-      <Sidebar v-if="appSidebar.isOpenAppSidebar" />
-    </Transition>
+    <ClientOnly>
+      <Sidebar v-model="drawer" />
+    </ClientOnly>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 import Sidebar from "./Sidebar.vue";
-import { useAppSidebar } from "~/stores/layout-store";
 defineComponent({ Sidebar });
-const appSidebar = useAppSidebar();
+
+const drawer = ref(false);
 </script>
 
 <style lang="scss" scoped>
@@ -53,7 +45,7 @@ const appSidebar = useAppSidebar();
   opacity: 1;
   transition: all ease-in-out 0.15ms;
 }
-.icon-Menu-Iran{
+.icon-Menu-Iran {
   font-size: 30px;
   font-weight: 500;
 }
@@ -63,7 +55,7 @@ const appSidebar = useAppSidebar();
   opacity: 0;
   transition: all ease-in-out 0.15ms;
 }
-.icon-Arrow-Bottom-Iran{
+.icon-Arrow-Bottom-Iran {
   font-size: 18px;
 }
 </style>

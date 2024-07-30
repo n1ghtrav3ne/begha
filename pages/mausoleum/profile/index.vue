@@ -7,7 +7,7 @@
 <script setup>
 import profile from "~/components/mausoleum/profile/index.vue";
 definePageMeta({
-  layout: "empty-layout",
+  layout: "mausoleum",
 });
 </script>
 
