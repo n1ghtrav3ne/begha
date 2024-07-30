@@ -99,7 +99,7 @@ const items = ref<
     image: vector,
     name: "رویدادها",
     badgeColorClass: "success-bg-color",
-    link: "",
+    link: "/mausoleum/events",
   },
   {
     backColor: " linear-gradient(180deg, #83F7BE 0%, #2CD685 100%)",
