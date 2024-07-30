@@ -1,13 +1,13 @@
 <template>
   <div
     v-if="props.modelValue"
-    class="absolute top-0 right-0 w-full z-[99] max-w-[600px] mx-auto left-0 h-screen bg-surface-600/70 overflow-hidden"
+    class="top-0 right-0 max-w-[600px] w-full fixed z-[99] h-screen mx-auto left-0 bg-surface-600/70"
     @click="handleOutsideClick"
   >
     <div
       id="sheet-elem"
       ref="sheetElem"
-      class="w-full sheetElem max-h-[800px] bg-white bottom-0 absolute rounded-t-2xl translate-y-full animate-slide-up overflow-auto"
+      class="w-full sheetElem max-h-[800px] min-h-[200px] bg-white bottom-0 fixed rounded-t-2xl translate-y-full animate-slide-up overflow-auto"
       @click.stop
     >
       <div class="w-full h-full relative">

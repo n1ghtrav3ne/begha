@@ -53,6 +53,9 @@ const lists = ref([
     title: "تکمیل پروفایل",
     description: "تکمیل نشده",
     descriptionColor: "surface-300",
+    click: {
+      url: "/mausoleum/profile/update",
+    },
   },
   {
     icon: "/icons/profile-add.svg",

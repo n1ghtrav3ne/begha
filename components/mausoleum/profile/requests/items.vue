@@ -4,7 +4,9 @@
 
     <template v-for="(date, d) in groupArrays" :key="d">
       <div class="mt-10">
-        <span>{{ converDate(date.date) }}</span>
+        <span class="text-surface-400 text-[11px]">{{
+          converDate(date.date)
+        }}</span>
       </div>
       <div>
         <template v-for="(item, i) in date.requests" :key="i">

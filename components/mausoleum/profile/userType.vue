@@ -9,7 +9,7 @@
           />
         </div>
         <div class="mr-2">
-          <div class="centered cursor-pointer" @click="typeDialog = true">
+          <div class="centered cursor-pointer">
             <span class="font-normal text-sm text-surface-600">
               {{ props?.user?.role }}
             </span>
@@ -24,17 +24,11 @@
         <img src="~/assets/images/logo/layout-logo.png" />
       </div>
     </div>
-    <bottomSheets v-model="typeDialog">
-      <typePlans></typePlans>
-    </bottomSheets>
   </div>
 </template>
   
   <script setup>
-import bottomSheets from "~/components/global/bottomSheets.vue";
-import typePlans from "./typePlans.vue";
 const props = defineProps(["user"]);
-const typeDialog = ref(false);
 </script>
   
   <style  scoped>
