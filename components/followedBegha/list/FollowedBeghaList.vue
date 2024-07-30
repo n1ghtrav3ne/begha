@@ -52,7 +52,7 @@ const modalStore = useModalStore();
 
 const BeghaProvinceFilterModalSheet=ref(false)
 
-const BeghaEventFilterModalSheet=ref(true)
+const BeghaEventFilterModalSheet=ref(false)
 
 </script>
 
