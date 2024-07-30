@@ -74,9 +74,16 @@
 
             <BottomSheets title="رویداد عید فطر" v-model="MediaOptionsSheet">
 
-                <MediaOptions />
+                <MediaOptions @delete="confirmDelete" />
 
             </BottomSheets>
+
+            <BottomSheets v-model="DeleteConfirmSheet">
+
+                <DeleteConfirm color="error" />
+
+            </BottomSheets>
+
 
 </template>
 
@@ -90,8 +97,15 @@ const openSearch=ref(false)
 
 const MediaOptionsSheet=ref(false)
 
+const DeleteConfirmSheet=ref(false)
+
 const medias = ref();
 const emptyCheck = ref(true);
+
+const confirmDelete=()=>{
+    MediaOptionsSheet.value=false
+    DeleteConfirmSheet.value=true
+}
 
 onMounted(() => {
   if (medias.value.children.length === 0) {
