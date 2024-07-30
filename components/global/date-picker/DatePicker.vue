@@ -35,7 +35,7 @@
       <div class="pdp-overlay" @click="showDatePicker = false"></div>
       <div v-bind="attrs.picker" ref="pdpPicker">
         <div class="pdp-auto">
-          <div class="today-date-container">
+          <div v-if="type==='date'" class="today-date-container">
             <span class="title">{{ getTodayDate }}</span>
             <span v-if="checkDate(core, 'date')" class="today-lable" :tabindex="tabIndex" @click="goToToday">
               {{ lang.translations.now }}</span>
@@ -139,6 +139,7 @@
               <div v-if="type == 'time'" class="pdp-column">
                 <div v-for="(c, i) in columnCount" :key="i"></div>
               </div>
+            
               <div :class="[
                 'pdp-moment',
                 { 'column-direction': mode == 'range' && columnCount == 1 },
