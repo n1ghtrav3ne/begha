@@ -15,7 +15,7 @@
         <span class="material-symbols-outlined search-icon"> search </span>
         <input class="search-input" type="text" placeholder="جستجو" />
         <span
-          @click="RequestsFilterModalSheet=true"
+          @click="RequestsFilterModalSheet = true"
           class="material-symbols-outlined search-input-icon"
         >
           tune
@@ -88,7 +88,7 @@ import bottomSheets from "~/components/global/bottomSheets.vue";
 const modalStore = useModalStore();
 defineComponent([RequestsFilterModal]);
 
-const RequestsFilterModalSheet=ref(false)
+const RequestsFilterModalSheet = ref(false);
 </script>
 
 <style lang="scss" scoped>

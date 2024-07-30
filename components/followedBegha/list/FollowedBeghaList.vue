@@ -14,7 +14,7 @@
                 class="size-8 bg-blue/15 rounded-full flex items-center justify-center text-blue"
               >
                 <span
-                  @click="BeghaEventFilterModalSheet = true"
+                  @click="filterDialog = true"
                   class="material-symbols-outlined search-input-icon"
                 >
                   tune
@@ -71,28 +71,28 @@
     <BottomSheets
       v-model="filterDialog"
       title="جستجو بر اساس خدمات و مراسمات جاری"
+      :fullScreen="fullScreen"
     >
-      <BeghaEventFilterModal />
+      <div>
+        <BeghaEventFilterModal @screen-mode="handleScreenMode($event)" />
+      </div>
     </BottomSheets>
   </div>
 </template>
 
 <script lang="ts" setup>
-import PopularBegha from "~/components/home/PopularBegha.vue";
-import BeghaListItems from "~/components/home/BeghaListItems.vue";
-import BeghaProvinceFilterModal from "./BeghaProvinceFilterModal.vue";
 import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
 import BaseInput from "~/components/global/input.vue";
 import list from "~/components/global/list.vue";
-import { useModalStore } from "~/stores/modals-store";
-defineNuxtComponent({
-  PopularBegha,
-  BeghaListItems,
-  BeghaProvinceFilterModal,
-  BeghaEventFilterModal,
-});
 
-const filterDialog = ref(true);
+// defineNuxtComponent({
+//   PopularBegha,
+//   BeghaListItems,
+//   BeghaProvinceFilterModal,
+//   BeghaEventFilterModal,
+// });
+
+const filterDialog = ref(false);
 const beghaItems = ref<{ name: string; location: string; image: string }[]>([
   {
     name: "امام زاده صالح",
@@ -126,11 +126,10 @@ const beghaItems = ref<{ name: string; location: string; image: string }[]>([
   },
 ]);
 
-const modalStore = useModalStore();
-
-const BeghaProvinceFilterModalSheet = ref(false);
-
-const BeghaEventFilterModalSheet = ref(true);
+const fullScreen = ref(false);
+const handleScreenMode = (e: boolean) => {
+  fullScreen.value = e;
+};
 </script>
 
 <style lang="scss" scoped>

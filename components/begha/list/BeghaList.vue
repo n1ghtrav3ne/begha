@@ -10,7 +10,7 @@
         ><span class="back-title">بقاع متبرکه</span></span
       >
       <div
-        @click="filterProvinceBottomSheet=true"
+        @click="filterProvinceBottomSheet = true"
         class="choose-location flex items-center mr-3"
       >
         <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
@@ -27,7 +27,7 @@
             placeholder="جستجو اماکن متبرکه"
           />
           <span
-            @click="BeghaEventFilterModalSheet=true"
+            @click="BeghaEventFilterModalSheet = true"
             class="material-symbols-outlined search-input-icon"
           >
             tune
@@ -41,16 +41,13 @@
         </div>
       </div>
     </div>
-    <BottomSheets v-model="filterProvinceBottomSheet" >
+    <BottomSheets v-model="filterProvinceBottomSheet">
       <BeghaProvinceFilter />
     </BottomSheets>
 
     <BottomSheets v-model="BeghaEventFilterModalSheet">
-
       <BeghaEventFilterModal />
-
     </BottomSheets>
-
   </div>
 </template>
 
@@ -65,10 +62,10 @@ defineNuxtComponent({
   BeghaListItems,
   BeghaProvinceFilter,
   BeghaEventFilterModal,
-  BottomSheets
+  BottomSheets,
 });
-const filterProvinceBottomSheet=ref(false);
-const BeghaEventFilterModalSheet=ref(false)
+const filterProvinceBottomSheet = ref(false);
+const BeghaEventFilterModalSheet = ref(false);
 const cities = ref<
   { province: string; city: string; iconClass: string; isActive: boolean }[]
 >([

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="search-box-input">
         <span
-          @click="MainMediaBeghaFilterSheet=true"
+          @click="MainMediaBeghaFilterSheet = true"
           class="select-begha-filter flex items-center"
         >
           <span class="filter-title">انتخاب بقعه</span>
@@ -11,7 +11,8 @@
             keyboard_arrow_down
           </span>
         </span>
-        <input @click="MainMediaPostFilterSheets=true"
+        <input
+          @click="MainMediaPostFilterSheets = true"
           class="search-input"
           type="text"
           placeholder="نام رسانه"
@@ -45,22 +46,20 @@
           <span class="begha-profile-name">امام زاده صالح</span>
         </div>
         <div class="begha-media-posts">
-
-          <MainMediaPostItem @click="$router.push('/begha-media/1')" v-for="index in 4" :key="index" />
-
+          <MainMediaPostItem
+            @click="$router.push('/begha-media/1')"
+            v-for="index in 4"
+            :key="index"
+          />
         </div>
       </div>
     </div>
     <BottomSheets v-model="MainMediaBeghaFilterSheet">
-
       <MainMediaBeghaFilter />
-
     </BottomSheets>
 
     <BottomSheets v-model="MainMediaPostFilterSheets">
-
       <MainMediaPostFilter />
-
     </BottomSheets>
   </div>
 </template>
@@ -72,8 +71,8 @@ import BottomSheets from "../global/bottomSheets.vue";
 import MainMediaPostItem from "./MainMediaPostItem.vue";
 import MainMediaBeghaFilter from "./MainMediaBeghaFilter.vue";
 import MainMediaPostFilter from "./MainMediaPostFilter.vue";
-const MainMediaBeghaFilterSheet=ref(false) 
-const MainMediaPostFilterSheets=ref(false)
+const MainMediaBeghaFilterSheet = ref(false);
+const MainMediaPostFilterSheets = ref(false);
 const beghaNews = ref<
   {
     id: number;

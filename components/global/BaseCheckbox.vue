@@ -54,10 +54,12 @@ interface CheckBoxItem {
   label: string;
   isChecked: boolean;
 }
-const props = defineProps(["items", "fns"]);
-const emit = defineEmits(["updateCheckBoxes"]);
+const props = defineProps(["items", "fns", "modelValue"]);
+const emit = defineEmits(["updateCheckBoxes", "update:modelValue"]);
 const checkboxItems = props.items;
 let checkedArray: {}[] = [];
+
+const items = ref([]);
 function updateCheckBox(
   allCheckBoxes: CheckBoxItem[],
   updatedCheckBox: CheckBoxItem
@@ -67,8 +69,10 @@ function updateCheckBox(
     allCheckBoxes[index].isChecked = updatedCheckBox.isChecked;
   } else {
     allCheckBoxes.push(updatedCheckBox);
+    console.log("update check box :", updatedCheckBox);
   }
   emit("updateCheckBoxes", JSON.parse(JSON.stringify(allCheckBoxes)));
+  emit("update:modelValue", JSON.parse(JSON.stringify(allCheckBoxes)));
   return allCheckBoxes;
 }
 </script>
