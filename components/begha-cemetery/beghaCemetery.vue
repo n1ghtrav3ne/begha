@@ -9,6 +9,60 @@
       </span>
 
       <span>آرامستان</span>
+<div class="greenBox container">
+
+<div class="firstItem">
+
+    <span @click="$router.go(-1)" class="material-symbols-outlined ">
+    arrow_right_alt
+</span>
+
+<span>آرامستان</span>
+
+</div>    
+
+    <img @click="searchIsOpen=true" class="mr-auto" src="~/assets/images/cemetery/search-normal copy.svg" alt="">
+
+</div>
+
+<div class="container">
+
+    <div class="cemeteryTitle">
+
+        <div class="imgContainer">
+
+            <img class="h-full w-full" src="~/assets/images/one-begha/begha-profile.png" alt="">
+
+        </div>
+
+        <div class="name">
+
+            <span>آرامستان بقیع</span>
+
+            <div class="mausoleumName px-[10px] py-[4px]">
+
+                <img class="pb-[3px]" src="~/assets/images/cemetery/holyBegha.svg" alt="">
+
+                <span>امام زاده صالح (ع)</span>
+
+            </div>
+
+        </div>
+
+        <div @click="graveReservationOpen=true" class="graveReq">
+
+            <div class="imgHolder">
+
+                <img class="graveImg" src="~/assets/images/cemetery/grave-stone.svg" alt="">
+
+                <img class="addImg" src="~/assets/images/cemetery/add-circle.svg" alt="">
+
+            </div>
+
+            <span>درخواست قبر</span>
+
+        </div>
+
     </div>
 
     <img

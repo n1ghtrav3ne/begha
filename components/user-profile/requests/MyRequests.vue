@@ -3,7 +3,7 @@
     <div class="back-navbar container flex items-center justify-between">
       <span
         ><span
-          @click="$router.push('/profile')"
+          @click="$router.go(-1)"
           class="material-symbols-outlined back-icon ml-2"
         >
           trending_flat </span

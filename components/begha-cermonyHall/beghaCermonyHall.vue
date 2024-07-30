@@ -1,9 +1,28 @@
 <template>
-  <div class="greenBox container">
-    <div class="firstItem">
-      <span
-        @click="$router.push('/cermonyHall')"
-        class="material-symbols-outlined"
+    
+    <div class="greenBox container">
+
+        <div class="firstItem">
+
+        <span @click="$router.go(-1)" class="material-symbols-outlined ">
+            arrow_right_alt
+        </span>
+
+        <span class="cermonyTxt">سالن مراسم</span>
+
+        </div>
+
+    </div>
+
+
+    <Swiper
+        :modules="[SwiperPagination, SwiperEffectCreative]"
+        :slidesPerView="'auto'"
+        :loop="false"
+        :autoplay="{
+          delay: 8000,
+          disableOnInteraction: true,
+        }"
       >
         arrow_right_alt
       </span>

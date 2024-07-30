@@ -9,11 +9,9 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="profileDetail">
-      <div class="profileImage">
-        <img :src="imageUrl || defaultImage" ref="currentImage" alt="" />
-      </div>
+            <span @click="$router.go(-1)" class="material-symbols-outlined ">
+            arrow_right_alt
+        </span>
 
       <div class="imageStatus">
         <span class="first">تصویر پروفایل شما</span>

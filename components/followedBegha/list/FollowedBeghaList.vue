@@ -81,9 +81,19 @@
 </template>
 
 <script lang="ts" setup>
+import PopularBegha from "~/components/home/PopularBegha.vue";
+import BeghaListItems from "~/components/home/BeghaListItems.vue";
+import BeghaProvinceFilterModal from "./BeghaProvinceFilterModal.vue";
 import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
 import BaseInput from "~/components/global/input.vue";
 import list from "~/components/global/list.vue";
+import { useModalStore } from "~/stores/modals-store";
+defineNuxtComponent({
+  PopularBegha,
+  BeghaListItems,
+  BeghaProvinceFilterModal,
+  BeghaEventFilterModal,
+});
 
 // defineNuxtComponent({
 //   PopularBegha,

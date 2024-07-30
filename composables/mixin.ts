@@ -1,4 +1,4 @@
-import * as moment from "jalali-moment";
+import moment, { type MomentInput } from "jalali-moment";
 
 function converPrice(input: any) {
     try {
@@ -38,5 +38,64 @@ function converDate(input: string, format?: string, def?: string) {
         return def;
     }
 }
+///
+function getDateWithMounthName(date: string) {
+    const dayOfWeek = moment(date).utc().format("ddd");
+    const monthNumber = moment(date).utc().format("jMM");
 
-export default { converPrice, getUserType, getRequestStatus, converDate }
+    return (
+       
+        moment(date).format("jD") +
+        " " +
+        getMonthName(monthNumber) +
+        " " +
+        moment(date).format("jYYYY")
+    );
+}
+
+function getMonthName(value: string): string {
+    var mounth = "";
+
+    switch (value) {
+        case "01":
+            mounth = "فروردین";
+            break;
+        case "02":
+            mounth = "اردیبهشت";
+            break;
+        case "03":
+            mounth = "خرداد";
+            break;
+        case "04":
+            mounth = "تیر";
+            break;
+        case "05":
+            mounth = "مرداد";
+            break;
+        case "06":
+            mounth = "شهریور";
+            break;
+        case "07":
+            mounth = "مهر";
+            break;
+        case "08":
+            mounth = "آبان";
+            break;
+        case "09":
+            mounth = "آذر";
+            break;
+        case "10":
+            mounth = "دی";
+            break;
+        case "11":
+            mounth = "بهمن";
+            break;
+        case "12":
+            mounth = "اسفند";
+            break;
+    }
+
+    return mounth;
+}
+
+export default { converPrice, getUserType, getRequestStatus, converDate, getDateWithMounthName }
