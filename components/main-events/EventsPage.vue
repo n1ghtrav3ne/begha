@@ -72,34 +72,37 @@
       </Swiper>
     </div>
 
-      <BottomSheets :line="true" title="انتخاب تاریخ " v-model="openDate">
-
+    <BottomSheets title="انتخاب تاریخ " v-model="openDate">
       <DatePickers :show="true" :dualInput="true" :mode="'range'" :column="1" />
-
     </BottomSheets>
 
-    <BottomSheets :line="true" title="انتخاب بقعه مورد نظر خود را انتخاب کنید" v-model="openSearchFilter">
-
+    <BottomSheets
+      title="انتخاب بقعه مورد نظر خود را انتخاب کنید"
+      v-model="openSearchFilter"
+    >
       <SearchFilter />
-
     </BottomSheets>
-
   </div>
 </template>
 
 <script setup lang="ts">
 import followEvents from "./FollowEvents.vue";
-import SearchFilter from "~/components/main-events/SearchFilter.vue"
+import SearchFilter from "~/components/main-events/SearchFilter.vue";
 import EventCard from "~/components/main-events/EventCard.vue";
-import DatePickers from "~/components/global/date-picker/DatePicker.vue"
+import DatePickers from "~/components/global/date-picker/DatePicker.vue";
 import BottomSheets from "~/components/global/bottomSheets.vue";
 
-
-defineComponent({ followEvents, EventCard, BottomSheets,DatePickers,SearchFilter });
+defineComponent({
+  followEvents,
+  EventCard,
+  BottomSheets,
+  DatePickers,
+  SearchFilter,
+});
 
 const openDate = ref(false);
 
-const openSearchFilter=ref(false)
+const openSearchFilter = ref(false);
 
 const openBase = () => {
   openDate.value = !openDate.value;

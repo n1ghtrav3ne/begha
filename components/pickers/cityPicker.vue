@@ -18,38 +18,25 @@
     <bottomSheets
       v-model="dialog"
       title="شهر مورد نظر خود را انتخاب کنید"
-      closable
+      :search="{ placeholder: 'جستجوی شهر' }"
     >
-      <div class="py-4 px-6">
-        <div class="divider"></div>
-        <!-- search text field -->
-        <base-input
-          placeholder="جستجو بر اساس نام شهر"
-          v-model="search"
-          class="h-[46px ]"
-          @update:model-value="emit('update:modelValue', search)"
-        >
-          <template #prepend>
-            <div class="cursor-pointer ml-2">
-              <img src="~/assets/images/icons/search-black.svg" alt="" />
-            </div>
-          </template>
-        </base-input>
-
+      <div class="p-4">
         <!-- show state  -->
-        <div class="mt-5" v-if="states.length">
+        <div class="mt-2" v-if="states.length">
           <list
             v-for="(item, i) in states"
             :key="i"
-            :title="item"
-            class="h-14"
-            :class="selectedCity == item ? 'bg-blue/30 rounded-lg' : ''"
-            @click="selectedCity = item"
+            :title="item.city"
+            :subtitle="item.state"
+            class="h-14 px-3"
+            subtitle-class="text-[11px]"
+            :class="selectedCity == item.city ? '  bg-blue/15 rounded-lg' : ''"
+            @click="selectedCity = item.city"
           >
             <template #prepend>
               <img src="~/assets/images/icons/location2.svg" alt="" />
             </template>
-            <template v-if="selectedCity == item" #append>
+            <template v-if="selectedCity == item.city" #append>
               <div class="bg-blue size-6 centered rounded-full p-1">
                 <img src="/icons/check.svg" class="w-full h-full" />
               </div>
@@ -76,12 +63,14 @@ const props = defineProps(["label", "placeholder", "state"]);
 const dialog = ref(false);
 
 const states = ref([
-  "خمینی شهر",
-  "اصفهان",
-  "لنجان",
-  "گزبرخوار",
-  "نجف آباد",
-  "شاهین شهر",
+  { city: "خمینی شهر", state: "اصفهان" },
+  { city: "نجف آباد", state: "اصفهان" },
+  { city: "شاهین شهر", state: "اصفهان" },
+  { city: "دامنه", state: "اصفهان" },
+  { city: "کوهپایه", state: "اصفهان" },
+  { city: "زرین شهر", state: "اصفهان" },
+  { city: "بهارستان", state: "اصفهان" },
+  { city: "لنجان", state: "اصفهان" },
 ]);
 const emit = defineEmits(["update:modelValue"]);
 

@@ -27,7 +27,7 @@
         <img src="~/assets/images/icons/pencil.svg" />
       </div>
     </div>
-    <bottomSheets v-model="typeDialog">
+    <bottomSheets v-model="typeDialog" title="انتخاب کنید">
       <typePlans></typePlans>
     </bottomSheets>
   </div>

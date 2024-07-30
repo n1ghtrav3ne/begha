@@ -16,9 +16,7 @@
     </div>
     <!-- select address dialog  -->
     <bottomSheets v-model="dialog" title="آدرس خود را انتخاب کنید.">
-      <div>
-        <div class="divider"></div>
-      </div>
+      <div></div>
     </bottomSheets>
   </div>
 </template>

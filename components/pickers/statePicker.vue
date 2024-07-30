@@ -18,44 +18,29 @@
     <bottomSheets
       v-model="dialog"
       title="استان مورد نظر خود را انتخاب کنید"
-      closable
+      :search="{ placeholder: 'جستجو بر اساس نام استان' }"
+      @update-search="getSearch($event)"
     >
-      <div class="py-4 px-6">
-        <div class="divider"></div>
-        <!-- search text field -->
-        <base-input
-          placeholder="جستجو بر اساس نام استان"
-          v-model="search"
-          class="h-[46px ]"
-          @update:model-value="emit('update:modelValue', search)"
-        >
-          <template #prepend>
-            <div class="cursor-pointer ml-2">
-              <img src="~/assets/images/icons/search-black.svg" alt="" />
-            </div>
-          </template>
-        </base-input>
-
-        <!-- show state  -->
-        <div class="mt-5" v-if="states.length">
-          <list
-            v-for="(item, i) in states"
-            :key="i"
-            :title="item"
-            class="h-14"
-            :class="selectedState == item ? 'bg-blue/30 rounded-lg' : ''"
-            @click="selectedState = item"
-          >
-            <template #prepend>
-              <img src="~/assets/images/icons/location2.svg" alt="" />
-            </template>
-            <template v-if="selectedState == item" #append>
-              <div class="bg-blue size-6 centered rounded-full p-1">
-                <img src="/icons/check.svg" class="w-full h-full" />
-              </div>
-            </template>
-          </list>
-        </div>
+      <div class="p-4">
+        <template v-if="states.length">
+          <div v-for="(item, i) in states" :key="i">
+            <list
+              :title="item"
+              class="h-14 px-3"
+              :class="selectedState == item ? '  bg-blue/15 rounded-lg' : ''"
+              @click="selectedState = item"
+            >
+              <template #prepend>
+                <img src="~/assets/images/icons/location2.svg" alt="" />
+              </template>
+              <template v-if="selectedState == item" #append>
+                <div class="bg-blue size-6 centered rounded-full p-1">
+                  <img src="/icons/check.svg" class="w-full h-full" />
+                </div>
+              </template>
+            </list>
+          </div>
+        </template>
         <div v-else class="w-full flex justify-center mt-24">
           <div class="text-center">
             <img
@@ -71,11 +56,23 @@
 </template>
 
 <script setup>
-import BaseInput from "~/components/global/input.vue";
 const props = defineProps(["label", "placeholder"]);
 const dialog = ref(false);
-const search = ref("");
 const states = ref([
+  "تهران",
+  "اصفهان",
+  "آذربایجان شرقی",
+  "آذربایجان غربی",
+  "خوزستان",
+  "خراسان شمالی",
+  "فارس",
+  "تهران",
+  "اصفهان",
+  "آذربایجان شرقی",
+  "آذربایجان غربی",
+  "خوزستان",
+  "خراسان شمالی",
+  "فارس",
   "تهران",
   "اصفهان",
   "آذربایجان شرقی",
@@ -92,6 +89,10 @@ watch(selectedState, () => {
   emit("update:modelValue", selectedState.value);
   dialog.value = false;
 });
+
+function getSearch(e) {
+  emit("update:modelValue", e);
+}
 </script>
 
 <style lang="scss" scoped>

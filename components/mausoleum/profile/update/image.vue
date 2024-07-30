@@ -4,14 +4,14 @@
       title="تصویر پروفایل شما"
       title-class="font-bold"
       :subtitle="profileImage ? 'حذف عکس' : 'انتخاب عکس'"
-      :sub-title-class="
+      :subtitle-class="
         profileImage ? 'text-red text-[11px]' : 'text-blue text-[11px]'
       "
       @clickSubtitle="profileImage ? (profileImage = null) : triggerFileInput()"
     >
       <template #prepend>
         <div
-          class="size-14 bg-blue/30 rounded-full flex items-center justify-center"
+          class="size-14 bg-blue/15 rounded-full flex items-center justify-center"
         >
           <img
             :src="profileImage || '/icons/userProfile.svg'"

@@ -17,11 +17,20 @@ body {
     color: #0B0B0B;
     max-width: 600px;
     margin: 0 auto;
-    overflow-y: scroll;
-    ::-webkit-scrollbar{
+<<<<<<< assets/css/main.scss
+}
+
+
+.disabled-scroll {
+    overflow-y: hidden !important;
+}
+
+.overflow-y: scroll;
+::-webkit-scrollbar{
         display: none;
-    }
-  }
+}
+
+
 @layer components {
 
     .divider {

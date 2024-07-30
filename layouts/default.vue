@@ -1,9 +1,13 @@
 <template>
   <div>
-    <Header v-if="!initStore.isLoading"></Header>
+    <ClientOnly>
+      <Header v-if="!initStore.isLoading"></Header>
+    </ClientOnly>
     <VitePwaManifest />
     <NuxtPage />
-    <Footer v-if="!initStore.isLoading"></Footer>
+    <ClientOnly>
+      <Footer v-if="!initStore.isLoading"></Footer>
+    </ClientOnly>
   </div>
 </template>
 

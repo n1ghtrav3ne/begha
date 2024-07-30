@@ -15,19 +15,18 @@
       </span>
     </div>
     <!-- select state dialog  -->
-    <bottomSheets v-model="dialog" title="تحصیلات" closable>
-      <div class="py-4 px-6">
-        <div class="divider"></div>
+    <bottomSheets v-model="dialog" title="تحصیلات">
+      <div class="p-4">
         <!-- show state  -->
-        <div class="mt-5" v-if="educations.length">
+        <div class="mt-2" v-if="educations.length">
           <list
             v-for="(item, i) in educations"
             :key="i"
             :title="item.name"
-            class="h-14"
+            class="h-14 px-3"
             :class="
               selectedEducations.value == item.value
-                ? 'bg-blue/30 rounded-lg'
+                ? 'bg-blue/15 rounded-lg'
                 : ''
             "
             @click="selectedEducations = item"
