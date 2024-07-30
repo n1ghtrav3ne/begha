@@ -14,6 +14,7 @@
 }
 
 .empty-layout {
+  height: 100%;
   max-width: 600px;
   margin: 0 auto;
   overflow-y: scroll !important;

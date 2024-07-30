@@ -1,13 +1,13 @@
 <template>
   <div>
-     <ZaerSaraList />
+    <ZaerSaraList />
   </div>
 </template>
 
 <script lang="ts" setup>
 import ZaerSaraList from '@/components/zaer-sara/ZaerSaraList.vue';
-defineComponent({ZaerSaraList})
+defineComponent({ ZaerSaraList })
 definePageMeta({
-  layout:  'empty-layout'
+  layout: 'empty-layout'
 })
 </script>

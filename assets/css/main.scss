@@ -40,3 +40,26 @@ body {
     }
 
 }
+//Global back navbar
+.back-navbar {
+    height: 48px;
+    background: $primary;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+
+    span.back-title {
+        font-size: 16px;
+        font-family: "yekan-regular";
+        color: $primary-on;
+    }
+
+    span.back-icon {
+        color: $primary-on;
+        font-size: 25px;
+        vertical-align: -10px;
+    }
+}
+.seprate-border{
+    border-bottom: 1px solid $outline-variant;
+}
