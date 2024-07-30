@@ -74,8 +74,8 @@ export default defineNuxtConfig({
     '/': { ssr: true },
     '/auth/**': { ssr: false },
     '/mausoleum/profile/**': { ssr: false },
+    '/followed-begha/**': { ssr: false },
   },
-
   runtimeConfig: {
     public: {
       baseURL: process.env.NUXT_PUBLIC_BASE_URL,

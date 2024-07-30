@@ -75,6 +75,10 @@ const props = defineProps({
     label: { type: String },
     placeholder: { type: String },
   },
+  fullScreen: {
+    type: Boolean,
+    default: false,
+  },
 });
 const sheetElem = ref(null);
 const fullScreen = ref(false);
@@ -112,6 +116,17 @@ watch(
       document.body.classList.add("disabled-scroll");
     } else {
       document.body.classList.remove("disabled-scroll");
+    }
+  }
+);
+
+watch(
+  () => props.fullScreen,
+  (newValue) => {
+    if (newValue) {
+      fullScreen.value = true;
+    } else {
+      disabledFullScreen();
     }
   }
 );
