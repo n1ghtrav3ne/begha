@@ -53,7 +53,7 @@ const footerItems = ref<
   {
     title: "درخواست ها",
     iconClass: "icon-Help-Iran",
-    link: "#",
+    link: "/mausoleum/requests",
     active: false,
   },
   {
