@@ -49,6 +49,12 @@
 
         </div>
 
+        <div @click="$router.push('/mausoleum/media/add-item')" class="add">
+            <span class="material-symbols-rounded scale-150">
+            add
+            </span>
+        </div>
+
 
     </div>
 
@@ -74,9 +80,16 @@
 
             <BottomSheets title="رویداد عید فطر" v-model="MediaOptionsSheet">
 
-                <MediaOptions />
+                <MediaOptions @delete="confirmDelete" />
 
             </BottomSheets>
+
+            <BottomSheets v-model="DeleteConfirmSheet">
+
+                <DeleteConfirm color=" error" />
+
+            </BottomSheets>
+
 
 </template>
 
@@ -90,8 +103,15 @@ const openSearch=ref(false)
 
 const MediaOptionsSheet=ref(false)
 
+const DeleteConfirmSheet=ref(false)
+
 const medias = ref();
 const emptyCheck = ref(true);
+
+const confirmDelete=()=>{
+    MediaOptionsSheet.value=false
+    DeleteConfirmSheet.value=true
+}
 
 onMounted(() => {
   if (medias.value.children.length === 0) {
@@ -155,6 +175,7 @@ const MediaItems=ref<{title:string ; explanation:string ; hashtag:string}[]>
     height: 100%;
     background: $surface;
     z-index: 99;
+    top: 0;
     right:0;
     left:0;
     max-width: 600px;
@@ -228,4 +249,19 @@ const MediaItems=ref<{title:string ; explanation:string ; hashtag:string}[]>
 }
 
 
+.add{
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: $primary;
+    color: $primary-on;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    bottom: 8%;
+}
 </style>

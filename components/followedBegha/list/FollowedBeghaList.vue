@@ -151,6 +151,10 @@ const handleScreenMode = (e: boolean) => {
   fullScreen.value = e;
 };
 
+const BeghaProvinceFilterModalSheet=ref(false)
+
+const BeghaEventFilterModalSheet=ref(false)
+
 const getBeghaItems = computed(() => {
   if (!search.value.length) {
     return beghaItems.value;

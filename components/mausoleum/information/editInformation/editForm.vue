@@ -456,10 +456,6 @@ const deletePlan = (index: number) => {
   }
 }
 
-.container::-webkit-scrollbar {
-  display: none;
-}
-
 .profileDetail {
   display: flex;
   width: 100%;

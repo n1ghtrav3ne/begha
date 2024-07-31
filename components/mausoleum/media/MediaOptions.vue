@@ -22,7 +22,7 @@
 
         </div>
 
-          <div class="lastItem">
+          <div @click="$emit('delete')" class="lastItem">
 
             <span class="material-symbols-outlined">
             delete

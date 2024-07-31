@@ -85,7 +85,7 @@ const items = ref<
     image: media,
     name: "رسانه",
     badgeColorClass: "success-bg-color",
-    link: "",
+    link: "/mausoleum/media",
   },
   {
     backColor: "linear-gradient(180deg, #F8E895 0%, #F4C82A 100%)",
