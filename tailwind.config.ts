@@ -117,20 +117,3 @@ export default {
   },
   plugins: [],
 }
-
-// transparent: "transparent",
-// current: "currentColor",
-// inherit: "inherit",
-// white: "#FFFFFF",
-
-// orange: '#FEBC09',
-// "blue-light": '#1fb6ff',
-// purple: '#7e5bef',
-// pink: '#ff49db',
-// green: '#22B945',
-// yellow: '#ffc82c',
-// 'gray-dark': '#273444',
-// 'gray': '#8492a6',
-// 'gray-light': '#d3dce6',
-// error: "#ef4444",
-// red: "#DB2929"
