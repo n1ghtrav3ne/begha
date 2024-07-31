@@ -1,13 +1,13 @@
 <template>
   <div>
-    <label class="font-normal text-sm text-surface-600">{{
+    <label class="font-normal text-sm text-neutral-800">{{
       props.label
     }}</label>
     <div
       @click="props.state ? (dialog = true) : ''"
-      class="w-full h-14 border-[1px] border-surface-100 rounded-lg mt-2 flex items-center justify-between p-3"
+      class="w-full h-14 border border-neutral-200 rounded-lg mt-2 flex items-center justify-between p-3"
     >
-      <span class="text-surface-600 text-xs">{{
+      <span class="text-neutral-800 text-xs">{{
         selectedCity ? selectedCity : props.placeholder
       }}</span>
       <span class="text-blue">
@@ -29,15 +29,17 @@
             :title="item.city"
             :subtitle="item.state"
             class="h-14 px-3"
-            subtitle-class="text-[11px]"
-            :class="selectedCity == item.city ? '  bg-blue/15 rounded-lg' : ''"
+            subtitle-class=" text-tiny"
+            :class="
+              selectedCity == item.city ? '  bg-secondary-200 rounded-lg' : ''
+            "
             @click="selectedCity = item.city"
           >
             <template #prepend>
               <img src="~/assets/images/icons/location2.svg" alt="" />
             </template>
             <template v-if="selectedCity == item.city" #append>
-              <div class="bg-blue size-6 centered rounded-full p-1">
+              <div class="bg-secondary-700 size-6 centered rounded-full p-1">
                 <img src="/icons/check.svg" class="w-full h-full" />
               </div>
             </template>

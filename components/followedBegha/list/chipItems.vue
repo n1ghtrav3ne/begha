@@ -16,9 +16,9 @@
       >
         <div
           v-if="item.status"
-          class="h-8 mx-1 bg-[#E4F1FE] border-[1px] border-blue rounded-2xl py-1 px-2 flex items-center justify-between"
+          class="h-8 mx-1 bg-secondary-200 border border-blue rounded-2xl py-1 px-2 flex items-center justify-between"
         >
-          <span class="text-[11px]">{{ item.label }}</span>
+          <span class="text-tiny">{{ item.label }}</span>
           <img
             src="~/assets/images/icons/close.svg"
             class="size-5"

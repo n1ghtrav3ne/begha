@@ -11,7 +11,7 @@
     <div
       @click="chooseCity(index)"
       :class="{ active: index === selectedCity }"
-      class="cities px-[12px] py-[8px]"
+      class="cities px-3 py-2"
       v-for="index in 4"
       :key="index"
     >

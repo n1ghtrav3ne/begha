@@ -4,20 +4,20 @@
       <list :title="list?.title" @click="getHandleList(list?.click)">
         <template #prepend>
           <div
-            class="relative size-9 bg-[#E4F1FE] rounded-full"
-            :class="list?.color && 'bg-[#FAE1E1]'"
+            class="relative size-9 bg-secondary-200 rounded-full"
+            :class="list?.color && 'bg-error-200'"
           >
             <div class="w-full h-full centered">
               <img :src="list?.icon" class="size-5" />
             </div>
             <div
               v-if="list?.new"
-              class="absolute size-2 bg-red rounded-full top-0"
+              class="absolute size-2 bg-error-700 rounded-full top-0"
             ></div>
           </div>
         </template>
         <template #append>
-          <span class="text-[11px]" :class="`text-${list?.descriptionColor}`">
+          <span class="text-tiny" :class="`text-${list?.descriptionColor}`">
             {{ list?.description }}
           </span>
         </template>
@@ -52,7 +52,7 @@ const lists = ref([
     icon: "/icons/frame.svg",
     title: "تکمیل پروفایل",
     description: "تکمیل نشده",
-    descriptionColor: "surface-300",
+    descriptionColor: "neutral-500",
     click: {
       url: "/mausoleum/profile/update",
     },

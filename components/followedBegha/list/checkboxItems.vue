@@ -13,9 +13,9 @@
           :key="i"
         >
           <div
-            class="h-8 mx-1 bg-[#E4F1FE] border-[1px] border-blue rounded-2xl py-1 px-2 flex items-center justify-between"
+            class="h-8 mx-1 bg-secondary-200 border border-blue rounded-2xl py-1 px-2 flex items-center justify-between"
           >
-            <span class="text-[11px]">{{ item.label }}</span>
+            <span class="text-tiny">{{ item.label }}</span>
             <img
               src="~/assets/images/icons/close.svg"
               class="size-5"
@@ -29,12 +29,12 @@
     <div v-for="(item, i) in items" :key="i" class="mt-2">
       <div class="inline-flex items-center p-2">
         <div
-          class="size-5 border-[1px] border-surface-100 rounded-[4px]"
+          class="size-5 border border-neutral-200 rounded-4"
           @click="(event) => activeCheckbox(event, i)"
         >
           <div
             v-show="item.status"
-            class="size-full bg-blue rounded-[4px] flex items-center justify-center"
+            class="size-full bg-secondary-700 rounded-4 flex items-center justify-center"
           >
             <img src="~/assets/images/icons/check-done.svg" />
           </div>

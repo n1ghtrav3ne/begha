@@ -3,7 +3,7 @@
     <div class="profile">
       <img src="~/assets/images/cemetery/noOne.png" alt="" />
 
-      <div class="nameContainer flex flex-col items-center gap-[4px]">
+      <div class="nameContainer flex flex-col items-center gap-1">
         <span class="name">محمدرضا موسوی</span>
 
         <span class="fatherName">فرزند عباس</span>

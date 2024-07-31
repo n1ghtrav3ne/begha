@@ -3,7 +3,7 @@
     <div
       @click="selectItem(0)"
       :class="{ active: selectedIndex === 0 }"
-      class="mainItem px-[12px] py-[8px]"
+      class="mainItem px-3 py-2"
     >
       <span class="all">همه</span>
 
@@ -13,7 +13,7 @@
     </div>
 
     <div
-      class="item px-[12px] py-[8px]"
+      class="item px-3 py-2"
       v-for="index in 4"
       :key="index"
       @click="selectItem(index)"

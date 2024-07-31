@@ -1,13 +1,13 @@
 <template>
   <div>
-    <label class="font-normal text-sm text-surface-600">{{
+    <label class="font-normal text-sm text-neutral-800">{{
       props.label
     }}</label>
     <div
       @click="dialog = true"
-      class="w-full h-14 border-[1px] border-surface-100 rounded-lg mt-2 flex items-center justify-between p-3"
+      class="w-full h-14 border border-neutral-200 rounded-lg mt-2 flex items-center justify-between p-3"
     >
-      <span class="text-surface-600 text-xs">{{
+      <span class="text-neutral-800 text-xs">{{
         selectedAddress ? selectedAddress : props.placeholder
       }}</span>
       <span class="text-blue">

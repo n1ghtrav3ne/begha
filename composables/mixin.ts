@@ -18,11 +18,11 @@ function getUserType(type: String) {
 
 function getRequestStatus(status: String) {
     switch (status) {
-        case 'new': return { text: 'جدید', class: "text-white bg-blue text-[11px]" }
-        case 'pending': return { text: 'درحال بررسی', class: "text-orange bg-[#FFF5DC]" }
-        case 'failed': return { text: 'رد شده', class: "text-red bg-[#FDF2F2]" }
-        case 'success': return { text: 'تایید شده', class: "text-green bg-[#D8FDEC]" }
-        case 'failed-user': return { text: 'لغو شده توسط کاربر', class: "text-red bg-[#FDF2F2]" }
+        case 'new': return { text: 'جدید', class: "text-white bg-secondary-700  text-tiny" }
+        case 'pending': return { text: 'درحال بررسی', class: "text-orange bg-warning-200" }
+        case 'failed': return { text: 'رد شده', class: " bg-error-700 bg-error-100" }
+        case 'success': return { text: 'تایید شده', class: "text-green bg-primary-200" }
+        case 'failed-user': return { text: 'لغو شده توسط کاربر', class: " bg-error-700 bg-error-100" }
     }
 }
 
@@ -44,7 +44,7 @@ function getDateWithMounthName(date: string) {
     const monthNumber = moment(date).utc().format("jMM");
 
     return (
-       
+
         moment(date).format("jD") +
         " " +
         getMonthName(monthNumber) +

@@ -2,7 +2,7 @@
   <div
     v-if="props.modelValue"
     @click="handleOutsideClick"
-    class="w-full h-screen fixed right-0 top-0 z-[99] bg-surface-600/70"
+    class="w-full h-screen fixed right-0 top-0 z-[99] bg-neutral-800/70"
   >
     <div
       ref="drawerElem"
@@ -10,7 +10,7 @@
     >
       <div class="flex items-center justify-between">
         <img src="~/assets/images/logo/sidebar-logo.png" alt="" />
-        <div class="size-6 border-[1px] rounded-full" @click="closeDrawer()">
+        <div class="size-6 border rounded-full" @click="closeDrawer()">
           <img src="~/assets/images/icons/close.svg" class="size-6" />
         </div>
       </div>
@@ -22,12 +22,12 @@
           class="flex items-center py-3"
           @click="router.push(item.link)"
         >
-          <span :class="item.icon" class="text-blue text-2xl"> </span>
+          <span :class="item.icon" class="bg-secondary-700 text-2xl"> </span>
           <span class="mr-2 text-sm font-normal">{{ item.title }}</span>
         </div>
       </div>
       <div class="absolute bottom-4 right-40">
-        <div class="text-surface-500">نسخه {{ appVersion }}</div>
+        <div class="text-neutral-100">نسخه {{ appVersion }}</div>
       </div>
     </div>
   </div>

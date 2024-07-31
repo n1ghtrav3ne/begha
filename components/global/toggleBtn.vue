@@ -1,23 +1,23 @@
 <template>
-  <div class="w-full h-9 bg-surface-50 flex justify-evenly rounded-md">
+  <div class="w-full h-9 bg-neutral-100 flex justify-evenly rounded-md">
     <div
-      class="w-[50%] rounded-md centered m-1"
+      class="w-1/2 rounded-md centered m-1"
       @click="selectedItemHandle('first')"
       :class="
         selectedItem == 'first'
-          ? 'bg-white text-surface-600 shadow-sm'
-          : 'bg-transparent text-surface-500'
+          ? 'bg-white text-neutral-800 shadow-sm'
+          : 'bg-transparent text-neutral-100'
       "
     >
       {{ props.first }}
       <slot v-if="selectedItem == 'first'" name="append-first"></slot>
     </div>
     <div
-      class="w-[50%] rounded-md centered m-1"
+      class="w-1/2 rounded-md centered m-1"
       :class="
         selectedItem == 'secend'
-          ? 'bg-white text-surface-600 shadow-sm'
-          : 'bg-transparent text-surface-500'
+          ? 'bg-white text-neutral-800 shadow-sm'
+          : 'bg-transparent text-neutral-100'
       "
       @click="selectedItemHandle('secend')"
     >

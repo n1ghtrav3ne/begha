@@ -3,16 +3,16 @@
     <!-- discount btn  -->
     <div
       @click="emit('openDialog', true)"
-      class="w-full h-[54px] border-[1px] py-4 px-3 border-surface-100 rounded-2xl flex items-center justify-between"
+      class="w-full h-[54px] border py-4 px-3 border-neutral-200 rounded-2xl flex items-center justify-between"
     >
-      <span class="text-sm text-surface-600">طرح‌های تخفیفی</span>
+      <span class="text-sm text-neutral-800">طرح‌های تخفیفی</span>
       <!-- icon -->
       <div class="size-6 centered">
         <img src="~/assets/images/icons/arrow-left.svg" alt="" />
       </div>
     </div>
     <!-- discount description  -->
-    <p class="text-[11px] text-justify text-surface-500 my-3">
+    <p class="text-tiny text-justify text-neutral-100 my-3">
       توجه داشته باشید که جهت استفاده از طرح های تخفیفی لازم است مدارک لازم به
       مسئول پدیرش ارائه شود. در غیر این صورت رزرو شما لغو خواهد شد.
     </p>
@@ -25,7 +25,9 @@
         color="white"
       >
         <template #append>
-          <button class="w-20 h-[38px] rounded-xl p-2 bg-blue text-white">
+          <button
+            class="w-20 h-[38px] rounded-xl p-2 bg-secondary-700text-white"
+          >
             اعمال
           </button>
         </template>

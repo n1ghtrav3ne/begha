@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>
-      <label class="font-normal text-sm text-surface-600">نقش</label>
+      <label class="font-normal text-sm text-neutral-800">نقش</label>
       <div
-        class="w-full h-14 border-[1px] border-surface-100 rounded-lg mt-2 flex items-center p-3"
+        class="w-full h-14 border border-neutral-200 rounded-lg mt-2 flex items-center p-3"
       >
         {{ props?.data?.role }}
       </div>
@@ -19,9 +19,9 @@
     </div>
 
     <div class="mt-11">
-      <label class="font-normal text-sm text-surface-600">شماره همراه</label>
+      <label class="font-normal text-sm text-neutral-800">شماره همراه</label>
       <div
-        class="w-full h-14 border-[1px] border-surface-100 rounded-lg mt-2 flex items-center p-3"
+        class="w-full h-14 border border-neutral-200 rounded-lg mt-2 flex items-center p-3"
       >
         {{ props?.data?.phone }}
       </div>

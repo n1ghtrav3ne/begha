@@ -29,8 +29,8 @@
       </div>
     </div>
 
-    <div class="reservationDate mx-auto px-[24px] py-[16px]">
-      <span class="text-[14px]">انتخاب تاریخ رزرو</span>
+    <div class="reservationDate mx-auto px-6 py-4">
+      <span class="text-sm">انتخاب تاریخ رزرو</span>
 
       <span class="material-symbols-outlined"> arrow_drop_down </span>
     </div>
@@ -41,7 +41,7 @@
         alt="beghaShape"
       />
 
-      <p class="firstTxt w-[83px] h-[25px] text-[16px] mr-[8px]">سالن مراسم</p>
+      <p class="firstTxt w-[83px] h-4 text-base mr-2">سالن مراسم</p>
 
       <div @click="cermonyHallFilterSheets = true" class="filter">
         <p class="secondTxt">ترتیب یر اساس</p>

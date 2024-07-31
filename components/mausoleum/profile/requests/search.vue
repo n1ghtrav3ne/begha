@@ -13,13 +13,15 @@
       <template #append>
         <div class="relative">
           <div
-            class="cursor-pointer size-8 bg-blue-light/30 rounded-full centered"
+            class="cursor-pointer size-8 bg-secondary-700/30 rounded-full centered"
             @click="filtersDialog = true"
           >
             <img src="~/assets/images/icons/filter.svg" alt="" />
           </div>
-          <div class="size-3 bg-blue rounded-full absolute -top-1 -left-1">
-            <div class="w-full h-full text-white centered text-[11px]">2</div>
+          <div
+            class="size-3 bg-secondary-700 rounded-full absolute -top-1 -left-1"
+          >
+            <div class="w-full h-full text-white centered text-tiny">2</div>
           </div>
         </div>
       </template>
@@ -29,7 +31,7 @@
       v-model="filtersDialog"
       closable
       title="جستجو درخواست"
-      class="font-normal text-sm text-surface-600"
+      class="font-normal text-sm text-neutral-800"
     >
       <div class="divider mt-6"></div>
       <div class="px-6 py-4">
