@@ -10,7 +10,7 @@
       <span class="text-neutral-800 text-xs">{{
         selectedAddress ? selectedAddress : props.placeholder
       }}</span>
-      <span class="text-blue">
+      <span class="text-secondary-700">
         <img src="~/assets/images/icons/location.svg" />
       </span>
     </div>

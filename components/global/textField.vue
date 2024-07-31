@@ -18,7 +18,7 @@
               : 'border border-secondary-400 border-shadow'
             : '',
         ]"
-        class="rounded-lg p-3 h-12"
+        class="rounded-lg p-3"
       >
         <div class="flex">
           <div class="flex-none">
