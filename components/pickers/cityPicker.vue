@@ -10,7 +10,7 @@
       <span class="text-neutral-800 text-xs">{{
         selectedCity ? selectedCity : props.placeholder
       }}</span>
-      <span class="text-blue">
+      <span class="text-secondary-700">
         <img src="~/assets/images/icons/menue-left.svg" />
       </span>
     </div>
@@ -60,7 +60,6 @@
 </template>
   
   <script setup>
-import BaseInput from "~/components/global/input.vue";
 const props = defineProps(["label", "placeholder", "state"]);
 const dialog = ref(false);
 

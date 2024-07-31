@@ -2,17 +2,11 @@
   <div>
     <div class="app-home">
       <div class="container">
-        <div class="h-14">
-          <baseInput
-            color="neutral-50"
-            :border="true"
-            placeholder="جستجو اماکن متبرکه"
-            :primary="true"
-            v-model="search"
-          >
+        <div>
+          <text-field placeholder="جستجو اماکن متبرکه" v-model="search">
             <template #append>
               <div
-                class="size-8 bg-secondary-200 rounded-full flex items-center justify-center text-secondary-700"
+                class="size-8 bg-secondary-200 rounded-full flex items-center justify-center text-secondary-700 text-xs"
               >
                 <span
                   @click="filterDialog = true"
@@ -22,7 +16,7 @@
                 </span>
               </div>
             </template>
-          </baseInput>
+          </text-field>
         </div>
 
         <!-- begha list items  -->
@@ -100,7 +94,6 @@ import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
 import BeghaProvinceFilterModal from "./BeghaProvinceFilterModal.vue";
 import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
-import BaseInput from "~/components/global/input.vue";
 import list from "~/components/global/list.vue";
 
 defineNuxtComponent({
@@ -151,9 +144,9 @@ const handleScreenMode = (e: boolean) => {
   fullScreen.value = e;
 };
 
-const BeghaProvinceFilterModalSheet=ref(false)
+const BeghaProvinceFilterModalSheet = ref(false);
 
-const BeghaEventFilterModalSheet=ref(false)
+const BeghaEventFilterModalSheet = ref(false);
 
 const getBeghaItems = computed(() => {
   if (!search.value.length) {

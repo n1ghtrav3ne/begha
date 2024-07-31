@@ -5,7 +5,7 @@
     <div class="h-[132px] w-[172px] left-0 right-0 mx-auto">
       <img src="~/assets/images/payment.svg" alt="" />
     </div>
-    <div class="w-full text-center text-blue">
+    <div class="w-full text-center text-secondary-700">
       <span class="text-22 font-bold">
         {{ converPrice(data.orginal_price) || 0 }} تومان
       </span>
@@ -21,7 +21,7 @@
         <span>مبلغ کل</span>
         <span>{{ converPrice(data?.price) }} تومان</span>
       </div>
-      <div class="flex justify-between text-sm bg-error-700 mt-3">
+      <div class="flex justify-between text-sm text-error-700 mt-3">
         <span>مبلغ کل</span>
         <span>{{ converPrice(data?.price) }} تومان</span>
       </div>

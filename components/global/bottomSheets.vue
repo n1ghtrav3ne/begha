@@ -38,8 +38,9 @@
 
           <!-- bottom sheet search field -->
           <div v-if="props.search" class="px-6 h-12" ref="inputElem">
-            <base-input
+            <text-field
               :placeholder="props.search.placeholder"
+              variant="filled"
               v-model="search"
               @update:model-value="emit('updateSearch', search)"
               @status="screenSizeHandler($event)"
@@ -49,7 +50,7 @@
                   <img src="~/assets/images/icons/search-black.svg" alt="" />
                 </div>
               </template>
-            </base-input>
+            </text-field>
           </div>
 
           <div
@@ -65,8 +66,6 @@
 </template>
 
 <script setup>
-import BaseInput from "~/components/global/input.vue";
-
 const props = defineProps({
   title: { type: String },
   modelValue: {},

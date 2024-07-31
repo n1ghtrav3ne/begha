@@ -1,13 +1,13 @@
 <template>
   <div>
-    <BaseInput
+    <text-field
       label=" کاربر گرامی لطفا شماره خود را وارد کنید ."
       placeholder="مثال : ۰۹۱۲۳۴۵۶۷۸۹"
       v-model="object.cellNumber"
       :error="inputError(errors, 'cellNumber')"
       @change="emit('update:modelValue', object.cellNumber)"
     >
-    </BaseInput>
+    </text-field>
     <div class="mt-8">
       <BaseButton @click="getCode()">
         <div class="text-center text-white">بعدی</div>
@@ -17,9 +17,8 @@
 </template>
 
 <script setup>
-import BaseInput from "../global/input.vue";
 import BaseButton from "../global/button.vue";
-defineComponent({ BaseInput, BaseButton });
+defineComponent({ BaseButton });
 
 const emit = defineEmits(["update:modelValue", "changeLevel"]);
 const loading = ref(false);
