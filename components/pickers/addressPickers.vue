@@ -15,13 +15,18 @@
       </span>
     </div>
     <!-- select address dialog  -->
-    <bottomSheets v-model="dialog" title="آدرس خود را انتخاب کنید.">
-      <div></div>
+    <bottomSheets
+      :fullScreen="true"
+      v-model="dialog"
+      title="آدرس خود را انتخاب کنید."
+    >
+      <Map />
     </bottomSheets>
   </div>
 </template>
     
     <script setup>
+import Map from "../global/Map.vue";
 const props = defineProps(["label", "placeholder"]);
 const dialog = ref(false);
 

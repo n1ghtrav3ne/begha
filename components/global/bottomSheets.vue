@@ -12,7 +12,8 @@
     >
       <div class="w-full h-full relative">
         <div
-          class="w-16 h-[5px] rounded-[20px] bg-primary-700 top-2 absolute left-0 right-0 mx-auto"
+          @click="fullScreen = !fullScreen"
+          class="w-16 h-[5px] rounded-[20px] bg-primary-700 top-2 absolute left-0 right-0 mx-auto cursor-pointer"
         ></div>
         <div class="p-4 w-full">
           <!-- bottom sheet header  -->

@@ -33,7 +33,11 @@
     </div>
 
     <div class="mt-11">
-      <date-picker label="تاریخ تولد" placeholder="روز،ماه،سال" />
+      <date-picker
+        label="تاریخ تولد"
+        botoomSheetTitle="تاریخ تولد خود را انتخاب کنید."
+        placeholder="روز،ماه،سال"
+      />
     </div>
 
     <div class="mt-5">

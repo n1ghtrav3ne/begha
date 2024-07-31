@@ -14,16 +14,32 @@
         <img src="~/assets/images/icons/menue-left.svg" />
       </span>
     </div>
-    <bottomSheets v-model="dateDialog"> </bottomSheets>
+    <bottomSheets v-model="dateDialog" :title="botoomSheetTitle">
+      <div>
+        <DatePicker
+          :show="true"
+          :dualInput="true"
+          :mode="'single'"
+          :column="1"
+          @select="getSelectDate($event)"
+        />
+      </div>
+    </bottomSheets>
   </div>
 </template>
 
 <script setup>
-const props = defineProps(["label", "placeholder"]);
+import DatePicker from "../global/date-picker/DatePicker.vue";
+
+const props = defineProps(["label", "placeholder", "botoomSheetTitle"]);
 const dateDialog = ref(false);
 const date = ref("");
 
 const emit = defineEmits(["update:modelValue"]);
+
+const getSelectDate = (e) => {
+  console.log(e);
+};
 watch(date, () => {
   emit("update:modelValue", date.value);
 });
