@@ -1,7 +1,7 @@
 <template>
   <div
     class="w-full flex justify-between items-center p-2"
-    :class="props?.bordered && 'border-b-[1px] border-surface-100/50'"
+    :class="props?.bordered && 'border-b border-neutral-100'"
   >
     <div class="flex items-center">
       <!-- list icon -->

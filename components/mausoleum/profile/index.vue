@@ -1,6 +1,6 @@
 <template>
   <div class="m-4">
-    <div class="divider my-4"></div>
+    <div class="divider my-4 text-x"></div>
     <!-- user information -->
     <div>
       <userInformation :user="user"></userInformation>
@@ -16,7 +16,7 @@
       <bottom-sheets v-model="newRequestDialog">
         <div class="mx-6 my-4 text-center">
           <div class="my-3 centered">
-            <div class="size-[52px] bg-blue/10 rounded-full centered">
+            <div class="size-[52px] bg-secondary-200 rounded-full centered">
               <img src="~/assets/images/icons/sms-edit.svg" />
             </div>
           </div>
@@ -27,13 +27,15 @@
           </span>
           <div class="w-full centered mt-12">
             <div class="w-6/12 p-2">
-              <button class="bg-blue w-full h-11 rounded-lg text-white">
+              <button
+                class="bg-secondary-700 w-full h-11 rounded-lg text-white"
+              >
                 تایید
               </button>
             </div>
             <div class="w-6/12">
               <button
-                class="border-[1px] w-full h-11 rounded-lg"
+                class="border w-full h-11 rounded-lg"
                 @click="newRequestDialog = false"
               >
                 انصراف

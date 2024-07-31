@@ -18,7 +18,9 @@
           <div class="relative">
             <div
               class="size-10 rounded-lg centered"
-              :class="getActive(item.value) ? 'bg-blue' : 'bg-surface-50'"
+              :class="
+                getActive(item.value) ? 'bg-secondary-700' : 'bg-neutral-100'
+              "
             >
               <img
                 :src="
@@ -30,7 +32,7 @@
             </div>
             <div
               v-if="getActive(item.value)"
-              class="absolute size-4 bg-blue rounded-full -top-1 -left-1 border-[1px] border-white"
+              class="absolute size-4 bg-secondary-700rounded-full -top-1 -left-1 border border-white"
             >
               <div class="w-full h-full centered">
                 <img src="/icons/check.svg" />
@@ -38,7 +40,7 @@
             </div>
           </div>
         </div>
-        <span class="text-[11px]">{{ item.title }}</span>
+        <span class="text-tiny">{{ item.title }}</span>
       </div>
     </SwiperSlide>
   </Swiper>

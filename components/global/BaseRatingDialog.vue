@@ -33,23 +33,25 @@
         <span class="register-rate">ثبت امتیاز</span>
       </div>
     </div>
-    <div @click="close" class="base fixed base top-0   h-screen bg-surface-400/40 overflow-auto"></div>
+    <div
+      @click="close"
+      class="base fixed base top-0 h-screen bg-neutral-400/40 overflow-auto"
+    ></div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useModalStore } from "~/stores/modals-store";
-const props = defineProps(["modalHeight", "modalPadding","modelValue"]);
+const props = defineProps(["modalHeight", "modalPadding", "modelValue"]);
 const modalStore = useModalStore();
 let rate = ref(0);
 let stars = ref([1, 2, 3, 4, 5]);
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 
 const close = () => {
-  emit('update:modelValue', false);
+  emit("update:modelValue", false);
 };
-
 
 const setStars = (star: number) => {
   if (star <= rate.value) {
@@ -63,13 +65,12 @@ const setStars = (star: number) => {
 <style lang="scss" scoped>
 @import "~/assets/css/icons.scss";
 @import "~/assets/css/colors.scss";
-.base{
+.base {
   max-width: 600px;
   width: 100% !important;
   right: 0;
   left: 0;
   margin: 0 auto;
-  
 }
 .base-modal {
   margin: 16px 12px;
@@ -79,7 +80,7 @@ const setStars = (star: number) => {
   width: 94%;
   position: fixed;
   right: 0;
-  left:0;
+  left: 0;
   margin: 0 auto;
   max-width: 600px;
   bottom: 0;

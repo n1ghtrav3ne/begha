@@ -67,7 +67,12 @@
         </div>
       </div>
       <div class="flex action">
-        <button @click="$router.go(-1)" class="bg-primary text-white submit w-80">افزودن</button>
+        <button
+          @click="$router.go(-1)"
+          class="bg-primary-700 text-white submit w-80"
+        >
+          افزودن
+        </button>
         <button
           class="w-20 border-2 border-primary rounded outline-none flex justify-center items-center save ms-3"
         >

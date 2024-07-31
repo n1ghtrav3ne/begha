@@ -32,7 +32,7 @@ body {
 @layer components {
 
     .divider {
-        @apply w-full bg-surface-100/50 h-[1px]
+        @apply w-full bg-neutral-200/50 h-[1px]
     }
 
     .centered {
@@ -40,6 +40,7 @@ body {
     }
 
 }
+
 //Global back navbar
 .back-navbar {
     height: 48px;
@@ -60,6 +61,7 @@ body {
         vertical-align: -10px;
     }
 }
-.seprate-border{
+
+.seprate-border {
     border-bottom: 1px solid $outline-variant;
 }

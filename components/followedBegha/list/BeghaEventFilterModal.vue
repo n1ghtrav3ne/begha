@@ -2,7 +2,7 @@
   <div>
     <div class="filter-modal-body p-4">
       <services-filter v-model="services"></services-filter>
-      <div class="w-full h-1 bg-blue/15 my-4"></div>
+      <div class="w-full h-1 bg-secondary-200 my-4"></div>
       <div class="h-12">
         <baseInput
           placeholder="جستجوی مراسم"
@@ -21,7 +21,7 @@
       </div>
 
       <div class="mt-8">
-        <button class="w-full bg-primary h-11 rounded-lg text-white">
+        <button class="w-full bg-primary-700 h-11 rounded-lg text-white">
           اعمال فیلتر
         </button>
       </div>

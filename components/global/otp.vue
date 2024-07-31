@@ -6,7 +6,7 @@
   >
     <input
       type="text"
-      class="size-12 outline-primary rounded-lg border-[1px] border-surface-400 text-center py-3 px-2 text-[22px] text-surface-500"
+      class="size-12 outline-primary rounded-lg border border-neutral-400 text-center py-3 px-2 text-22 text-neutral-100"
       v-for="(el, ind) in digits"
       :key="el + ind"
       :id="`input${ind + 1}`"

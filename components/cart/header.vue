@@ -1,5 +1,5 @@
 <template>
-  <div class="h-12 w-full bg-primary flex items-center p-4">
+  <div class="h-12 w-full bg-primary-700 flex items-center p-4">
     <span
       @click="$router.go(-1)"
       class="material-symbols-outlined ml-2 text-white"

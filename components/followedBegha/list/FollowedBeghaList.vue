@@ -4,7 +4,7 @@
       <div class="container">
         <div class="h-14">
           <baseInput
-            color="surface-30"
+            color="neutral-50"
             :border="true"
             placeholder="جستجو اماکن متبرکه"
             :primary="true"
@@ -12,7 +12,7 @@
           >
             <template #append>
               <div
-                class="size-8 bg-blue/15 rounded-full flex items-center justify-center text-blue"
+                class="size-8 bg-secondary-200 rounded-full flex items-center justify-center text-secondary-700"
               >
                 <span
                   @click="filterDialog = true"
@@ -32,7 +32,7 @@
               :title="item.name"
               :subtitle="item.location"
               title-class="font-bold"
-              subtitle-class="text-xs text-surface-500"
+              subtitle-class="text-xs text-neutral-100"
               class="p-3"
               :bordered="i + 1 < beghaItems.length"
             >
@@ -45,7 +45,7 @@
               </template>
               <template #append>
                 <button
-                  class="border-[1px] border-surface-100 rounded-lg p-2 text-xs text-surface-600 min-w-28"
+                  class="border border-neutral-200 rounded-lg p-2 text-xs text-neutral-800 min-w-28"
                 >
                   لغو دنبال کردن
                 </button>
@@ -76,7 +76,7 @@
             <span> بقعه ای را دنبال نمی کنید. </span>
             <br />
             <NuxtLink to="/begha/list">
-              <button class="text-primary mt-5">رفتن به لیست بقاع</button>
+              <button class="bg-primary-700 mt-5">رفتن به لیست بقاع</button>
             </NuxtLink>
           </div>
         </div>

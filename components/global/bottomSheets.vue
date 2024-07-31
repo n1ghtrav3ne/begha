@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="props.modelValue"
-    class="top-0 right-0 max-w-[600px] w-full fixed z-[99] h-screen m-0 m-auto left-0 bg-surface-600/70"
+    class="top-0 right-0 max-w-[600px] w-full fixed z-[99] h-screen m-0 left-0 bg-neutral-800/70"
     @click="handleOutsideClick"
   >
     <div
@@ -12,7 +12,7 @@
     >
       <div class="w-full h-full relative">
         <div
-          class="w-16 h-[5px] rounded-[20px] bg-primary top-2 absolute left-0 right-0 mx-auto"
+          class="w-16 h-[5px] rounded-[20px] bg-primary-700 top-2 absolute left-0 right-0 mx-auto"
         ></div>
         <div class="p-4 w-full">
           <!-- bottom sheet header  -->

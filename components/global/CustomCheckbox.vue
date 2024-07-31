@@ -1,12 +1,12 @@
 <template>
   <div class="inline-flex items-center p-2">
     <div
-      class="size-5 border-[1px] border-surface-100 rounded-[4px]"
+      class="size-5 border border-neutral-200 rounded-4 rounded"
       @click="activeCheckbox()"
     >
       <div
         v-show="checkBoxStatus"
-        class="size-full bg-blue rounded-[4px] flex items-center justify-center"
+        class="size-full bg-secondary-700 rounded-4 flex items-center justify-center"
       >
         <img src="~/assets/images/icons/check-done.svg" />
       </div>

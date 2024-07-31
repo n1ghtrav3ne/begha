@@ -1,12 +1,12 @@
 <template>
   <div
-    class="border-[1px] border-surface-100 rounded-2xl card-shadow bg-white px-8 py-3"
+    class="border border-neutral-200 rounded-2xl card-shadow bg-white px-8 py-3"
   >
     <div class="h-[132px] w-[172px] left-0 right-0 mx-auto">
       <img src="~/assets/images/payment.svg" alt="" />
     </div>
     <div class="w-full text-center text-blue">
-      <span class="text-[22px] font-bold">
+      <span class="text-22 font-bold">
         {{ converPrice(data.orginal_price) || 0 }} تومان
       </span>
       <br />
@@ -17,18 +17,18 @@
 
     <!-- show price and discount price  -->
     <div>
-      <div class="flex justify-between text-sm text-surface-600">
+      <div class="flex justify-between text-sm text-neutral-800">
         <span>مبلغ کل</span>
         <span>{{ converPrice(data?.price) }} تومان</span>
       </div>
-      <div class="flex justify-between text-sm text-red mt-3">
+      <div class="flex justify-between text-sm bg-error-700 mt-3">
         <span>مبلغ کل</span>
         <span>{{ converPrice(data?.price) }} تومان</span>
       </div>
     </div>
 
     <div class="w-full h-11 my-4">
-      <button class="w-full h-11 rounded-xl p-2 bg-primary text-white">
+      <button class="w-full h-11 rounded-xl p-2 bg-primary-700 text-white">
         پرداخت
       </button>
     </div>

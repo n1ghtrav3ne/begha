@@ -5,19 +5,19 @@
       :key="p"
       class="h-16 w-full p-3 rounded-xl cursor-pointer flex items-center justify-between my-2"
       @click="selectPlan(p)"
-      :class="activePlan == p && 'bg-[#E4F1FE] '"
+      :class="activePlan == p && ' bg-secondary-200 '"
     >
       <div class="w-full flex items-center">
         <div
           class="size-10 rounded-full centered"
-          :class="activePlan == p ? 'bg-[#429FF5]' : 'bg-[#E4F1FE]'"
+          :class="activePlan == p ? 'bg-secondary-700' : ' bg-secondary-200'"
         >
           <img src="~/assets/images/user.png" />
         </div>
         <div class="mr-2">
           <span>{{ plan.title }}</span>
           <br />
-          <span class="text-[11px]">
+          <span class="text-tiny">
             {{ getUserType(plan.type) }}
           </span>
         </div>
