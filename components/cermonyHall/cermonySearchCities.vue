@@ -19,13 +19,13 @@
     </div>
   </div>
 
-  <hr class="w-full h-[4px]" />
+  <hr class="w-full h-1" />
 
   <div :class="{ deactive: filterCheck === false }" class="filter">
     <img src="~/assets/images/cermony/menu.svg" alt="" />
 
     <div>
-      <span class="text-[14px] font-normal">همه</span>
+      <span class="text-sm font-normal">همه</span>
 
       <span class="material-symbols-outlined check-icon"> check_circle </span>
     </div>
@@ -36,9 +36,9 @@
       <img src="~/assets/images/cermony/location.svg" alt="" />
 
       <div class="cityName">
-        <span class="text-[14px] font-normal">نجف آباد</span>
+        <span class="text-sm font-normal">نجف آباد</span>
 
-        <span class="text-[11px] font-normal">اصفهان</span>
+        <span class="text-tiny font-normal">اصفهان</span>
       </div>
     </div>
   </div>

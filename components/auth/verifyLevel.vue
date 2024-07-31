@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="font-normal text-sm text-surface-600">
+    <label class="font-normal text-sm text-neutral-800">
       کد ارسال شده به شماره {{ props.phone }} را وارد کنید .
     </label>
     <div class="w-full mt-4">
@@ -10,13 +10,13 @@
       ></BaseOtp>
     </div>
     <div class="w-full text-center my-6">
-      <span class="text-xs text-surface-600" @click="emit('changeLevel')"
+      <span class="text-xs text-neutral-800" @click="emit('changeLevel')"
         >شماره همراه اشتباه است؟</span
       >
       <div class="mt-2">
         <BaseButton color="white">
           <div
-            class="text-center text-primary text-xs"
+            class="text-center bg-primary-700 text-xs"
             @click="getResendCode()"
           >
             دریافت مجدد کد
@@ -29,7 +29,7 @@
       <div>
         <BaseTimer :key="loading"></BaseTimer>
       </div>
-      <span class="text-xs text-surface-600 mt-[6px]"
+      <span class="text-xs text-neutral-800 mt-[6px]"
         >زمان باقی مانده ارسال کد</span
       >
     </div>

@@ -25,10 +25,10 @@
           :subtitle="item.name"
           class="mt-3"
           :bordered="i + 1 < followersData?.data?.length"
-          subtitleClass="text-surface-500 text-xs"
+          subtitleClass="text-neutral-100 text-xs"
         >
           <template #prepend>
-            <div class="size-10 bg-blue/15 rounded-full centered">
+            <div class="size-10 bg-secondary-200 rounded-full centered">
               <img :src="item.image || '/icons/profile.svg'" />
             </div>
           </template>
@@ -68,7 +68,9 @@
         </div>
         <span>دنبال‌کننده ای موجود نیست.</span>
         <div class="centered mt-6">
-          <button class="bg-blue p-2 min-w-[130px] text-white rounded-lg">
+          <button
+            class="bg-secondary-700 p-2 min-w-[130px] text-white rounded-lg"
+          >
             <div class="centered">
               <img src="~/assets/images/icons/share.svg" class="ml-1" />
               اشتراک گذاری

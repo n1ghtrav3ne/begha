@@ -39,7 +39,7 @@
 
             <span>آرامستان بقیع</span>
 
-            <div class="mausoleumName px-[10px] py-[4px]">
+            <div class="mausoleumName px-[10px] py-1">
 
                 <img class="pb-[3px]" src="~/assets/images/cemetery/holyBegha.svg" alt="">
 
@@ -86,7 +86,7 @@
       <div class="name">
         <span>آرامستان بقیع</span>
 
-        <div class="mausoleumName px-[10px] py-[4px]">
+        <div class="mausoleumName px-[10px] py-1">
           <img
             class="pb-[3px]"
             src="~/assets/images/cemetery/holyBegha.svg"
@@ -118,7 +118,7 @@
 
     <hr class="firstLine" />
 
-    <div class="deceasedTitle mt-[32px] w-full">
+    <div class="deceasedTitle mt-8 w-full">
       <span class="theDeceased">متوفیان</span>
 
       <div @click="orderingFilterSheet = true" class="sectionFilter">
@@ -127,7 +127,7 @@
       </div>
     </div>
 
-    <div class="cardsContainer mt-[24px]">
+    <div class="cardsContainer mt-6">
       <div v-for="(item, index) in theDeceaseds" :key="index">
         <deceasedCard @click="deceasedInfoSheet = true" :item="item" />
       </div>

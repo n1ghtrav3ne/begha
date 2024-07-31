@@ -3,7 +3,7 @@
     <div class="inputContainer">
       <img
         @click="$emit('close')"
-        class="w-[36px] h-[36px]"
+        class="size-9"
         src="~/assets/images/cemetery/Back Icon.svg"
         alt=""
       />

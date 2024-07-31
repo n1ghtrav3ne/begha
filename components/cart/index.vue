@@ -5,7 +5,7 @@
     <!-- page body -->
     <div class="p-6">
       <!-- description  -->
-      <p class="text-sm text-justify text-surface-600">
+      <p class="text-sm text-justify text-neutral-800">
         {{ data.description }}
       </p>
 

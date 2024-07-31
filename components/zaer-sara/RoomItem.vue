@@ -11,13 +11,13 @@
                 <button
                   class="w-20 border-2 border-primary rounded outline-none flex justify-center items-center stepper"
                 >
-                  <span class="text-primary text-2xl">+</span>
+                  <span class="bg-primary-700 text-2xl">+</span>
                 </button>
                 <span class="mx-3 text-lg">0</span>
                 <button
                   class="w-20 border-2 border-primary rounded outline-none flex justify-center items-center stepper"
                 >
-                  <span class="text-primary text-2xl">-</span>
+                  <span class="bg-primary-700 text-2xl">-</span>
                 </button>
               </div>
             </div>
@@ -34,9 +34,7 @@
           <div class="flex justify-between align-middle" v-else>
             <span class="text-error">حذف از لیست رزرو</span>
             <span class="text-error">
-              <img
-                src="@/assets/images/icons/trash-error.png"
-              />
+              <img src="@/assets/images/icons/trash-error.png" />
             </span>
           </div>
         </div>

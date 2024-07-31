@@ -1,8 +1,7 @@
 <template>
   <div class="greenBox container">
     <div class="firstItem">
-
-        <span @click="$router.go(-1)" class="material-symbols-outlined ">
+      <span @click="$router.go(-1)" class="material-symbols-outlined">
         arrow_right_alt
       </span>
 
@@ -55,7 +54,7 @@
           placeholder="شماره تماس بقعه را وارد کنید"
         />
 
-        <hr class="my-[16px]" />
+        <hr class="my-4" />
 
         <input
           class="phoneNumberInput"
@@ -96,7 +95,7 @@
 
               <span
                 @click="(cermonyTimeSheet = true), selectCermonyName(item.name)"
-                class="mx-[4px]"
+                class="mx-1"
                 >{{ item.text }}</span
               >
 
@@ -128,7 +127,7 @@
             <div class="time">
               <span
                 @click="(selectImamSheet = true), selectItem(item.name)"
-                class="mx-[4px]"
+                class="mx-1"
                 >{{ item.text }}</span
               >
             </div>

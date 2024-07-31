@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- page header  -->
-    <div class="w-full bg-primary h-12 flex justify-between items-center p-3">
+    <div
+      class="w-full bg-primary-700 h-12 flex justify-between items-center p-3"
+    >
       <!-- header title and back btn -->
       <div class="flex items-center text-white text-base">
         <span
@@ -40,7 +42,7 @@
         </singleForm>
         <jobForm v-else></jobForm>
         <div class="pt-24">
-          <button class="w-full h-11 bg-primary rounded-lg text-white">
+          <button class="w-full h-11 bg-primary-700 rounded-lg text-white">
             اعمال
           </button>
         </div>

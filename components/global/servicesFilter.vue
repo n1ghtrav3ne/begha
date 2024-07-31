@@ -1,48 +1,69 @@
 <template>
-  <div class="w-full flex text-center overflow-x-scroll py-2">
-    <div
-      v-for="(item, i) in items"
-      :key="i"
-      class="cursor-pointer mr-5"
-      @click="activeItemHandle(item.value)"
-    >
-      <div class="flex justify-center mb-3">
-        <div class="relative">
-          <div
-            class="size-10 rounded-lg centered"
-            :class="getActive(item.value) ? 'bg-blue' : 'bg-surface-50'"
-          >
-            <img
-              :src="
-                getActive(item.value)
-                  ? `/icons/${item.icon}-active.svg`
-                  : `/icons/${item.icon}.svg`
+  <Swiper
+    :modules="[SwiperPagination, SwiperEffectCreative]"
+    :slidesPerView="4"
+    :breakpoints="breakpoints"
+    :loop="false"
+    :autoplay="{
+      delay: 8000,
+      disableOnInteraction: true,
+    }"
+  >
+    <SwiperSlide v-for="(item, i) in items" :key="i">
+      <div
+        class="cursor-pointer text-center py-2"
+        @click="activeItemHandle(item.value)"
+      >
+        <div class="flex justify-center mb-3">
+          <div class="relative">
+            <div
+              class="size-10 rounded-lg centered"
+              :class="
+                getActive(item.value) ? 'bg-secondary-700' : 'bg-neutral-100'
               "
-            />
-          </div>
-          <div
-            v-if="getActive(item.value)"
-            class="absolute size-4 bg-blue rounded-full -top-1 -left-1 border-[1px] border-white"
-          >
-            <div class="w-full h-full centered">
-              <img src="/icons/check.svg" />
+            >
+              <img
+                :src="
+                  getActive(item.value)
+                    ? `/icons/${item.icon}-active.svg`
+                    : `/icons/${item.icon}.svg`
+                "
+              />
+            </div>
+            <div
+              v-if="getActive(item.value)"
+              class="absolute size-4 bg-secondary-700rounded-full -top-1 -left-1 border border-white"
+            >
+              <div class="w-full h-full centered">
+                <img src="/icons/check.svg" />
+              </div>
             </div>
           </div>
         </div>
+        <span class="text-tiny">{{ item.title }}</span>
       </div>
-      <span class="text-[11px]">{{ item.title }}</span>
-    </div>
-  </div>
+    </SwiperSlide>
+  </Swiper>
 </template>
 
 <script setup>
 const props = defineProps(["modelValue"]);
-
+const breakpoints = ref({
+  769: {
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+  },
+  1500: {
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+  },
+});
 const items = [
   { title: "سالن مراسم", value: "hall", icon: "hall" },
   { title: "زائرسرا", value: "pilgrimage", icon: "pilgrimage" },
   { title: "کتابخانه", value: "library", icon: "library" },
   { title: "قبور", value: "graves", icon: "graves" },
+  { title: "برنامه آموزشی", value: "learning", icon: "learning" },
   { title: "برنامه آموزشی", value: "learning", icon: "learning" },
 ];
 

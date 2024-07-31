@@ -4,17 +4,18 @@
       <div class="container">
         <div class="h-14">
           <baseInput
-            color="surface-30"
+            color="neutral-50"
             :border="true"
             placeholder="جستجو اماکن متبرکه"
             :primary="true"
+            v-model="search"
           >
             <template #append>
               <div
-                class="size-8 bg-blue/15 rounded-full flex items-center justify-center text-blue"
+                class="size-8 bg-secondary-200 rounded-full flex items-center justify-center text-secondary-700"
               >
                 <span
-                  @click="BeghaEventFilterModalSheet = true"
+                  @click="filterDialog = true"
                   class="material-symbols-outlined search-input-icon"
                 >
                   tune
@@ -26,12 +27,12 @@
 
         <!-- begha list items  -->
         <div class="mt-8" v-if="beghaItems.length">
-          <template v-for="(item, i) in beghaItems" :key="i">
+          <template v-for="(item, i) in getBeghaItems" :key="i">
             <list
               :title="item.name"
               :subtitle="item.location"
               title-class="font-bold"
-              subtitle-class="text-xs text-surface-500"
+              subtitle-class="text-xs text-neutral-100"
               class="p-3"
               :bordered="i + 1 < beghaItems.length"
             >
@@ -44,13 +45,27 @@
               </template>
               <template #append>
                 <button
-                  class="border-[1px] border-surface-100 rounded-lg p-2 text-xs text-surface-600 min-w-28"
+                  class="border border-neutral-200 rounded-lg p-2 text-xs text-neutral-800 min-w-28"
                 >
                   لغو دنبال کردن
                 </button>
               </template>
             </list>
           </template>
+          <div
+            v-if="!getBeghaItems.length"
+            class="w-full flex justify-center mt-32"
+          >
+            <div class="text-center">
+              <div class="text-center">
+                <img
+                  src="~/assets/images/icons/search-black.svg"
+                  class="w-12 h-12 left-0 right-0 mx-auto mb-2"
+                />
+                <span>موردی یافت نشد !</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div v-else class="w-full flex justify-center mt-44">
           <div class="text-center">
@@ -61,7 +76,7 @@
             <span> بقعه ای را دنبال نمی کنید. </span>
             <br />
             <NuxtLink to="/begha/list">
-              <button class="text-primary mt-5">رفتن به لیست بقاع</button>
+              <button class="bg-primary-700 mt-5">رفتن به لیست بقاع</button>
             </NuxtLink>
           </div>
         </div>
@@ -71,8 +86,11 @@
     <BottomSheets
       v-model="filterDialog"
       title="جستجو بر اساس خدمات و مراسمات جاری"
+      :fullScreen="fullScreen"
     >
-      <BeghaEventFilterModal />
+      <div>
+        <BeghaEventFilterModal @screen-mode="handleScreenMode($event)" />
+      </div>
     </BottomSheets>
   </div>
 </template>
@@ -84,7 +102,7 @@ import BeghaProvinceFilterModal from "./BeghaProvinceFilterModal.vue";
 import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
 import BaseInput from "~/components/global/input.vue";
 import list from "~/components/global/list.vue";
-import { useModalStore } from "~/stores/modals-store";
+
 defineNuxtComponent({
   PopularBegha,
   BeghaListItems,
@@ -92,7 +110,9 @@ defineNuxtComponent({
   BeghaEventFilterModal,
 });
 
-const filterDialog = ref(true);
+const search = ref("");
+
+const filterDialog = ref(false);
 const beghaItems = ref<{ name: string; location: string; image: string }[]>([
   {
     name: "امام زاده صالح",
@@ -126,12 +146,24 @@ const beghaItems = ref<{ name: string; location: string; image: string }[]>([
   },
 ]);
 
-const modalStore = useModalStore();
+const fullScreen = ref(false);
+const handleScreenMode = (e: boolean) => {
+  fullScreen.value = e;
+};
 
 const BeghaProvinceFilterModalSheet=ref(false)
 
 const BeghaEventFilterModalSheet=ref(false)
 
+const getBeghaItems = computed(() => {
+  if (!search.value.length) {
+    return beghaItems.value;
+  } else {
+    return beghaItems.value.filter((item: any) =>
+      item.name.includes(search.value)
+    );
+  }
+});
 </script>
 
 <style lang="scss" scoped>

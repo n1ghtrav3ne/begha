@@ -4,7 +4,7 @@
 
     <template v-for="(date, d) in groupArrays" :key="d">
       <div class="mt-10">
-        <span class="text-surface-400 text-[11px]">{{
+        <span class="text-neutral-400 text-tiny">{{
           converDate(date.date)
         }}</span>
       </div>
@@ -13,12 +13,12 @@
           <list
             :title="item?.title"
             :subtitle="item?.from"
-            subtitleClass="text-[11px] text-surface-500"
+            subtitleClass=" text-tiny text-neutral-100"
             class="mt-3"
             :bordered="i + 1 < date.requests?.length"
           >
             <template #prepend>
-              <div class="size-11 rounded-full bg-[#E4F1FE] centered">
+              <div class="size-11 rounded-full bg-secondary-200 centered">
                 <img
                   :src="item.image ? item?.image : '/icons/receipt-item.svg'"
                 />

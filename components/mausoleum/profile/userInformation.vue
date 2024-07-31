@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="h-[72px] w-full flex justify-between items-center bg-surface-50 p-2 rounded-[66px]"
+      class="h-[72px] w-full flex justify-between items-center bg-neutral-100 p-2 rounded-[66px]"
     >
       <div class="centered">
         <div class="size-14 rounded-full">
@@ -10,7 +10,7 @@
             class="w-full h-full rounded-full"
           />
         </div>
-        <div class="mr-2 font-normal text-sm text-surface-600">
+        <div class="mr-2 font-normal text-sm text-neutral-800">
           <span>
             {{ props?.user?.name }}
           </span>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div
-        class="bg-[#429FF5]/20 size-8 rounded-full centered ml-1"
+        class="bg-secondary-200 size-8 rounded-full centered ml-1"
         @click="typeDialog = true"
       >
         <img src="~/assets/images/icons/pencil.svg" />

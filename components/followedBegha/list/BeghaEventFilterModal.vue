@@ -1,150 +1,55 @@
 <template>
   <div>
-    <div class="filter-modal-body">
-      <div class="services-container pb-5 grid grid-rows-1">
-        <div class="grid grid-cols-5 flex">
-          <div
-            v-for="(item, index) in servicesList"
-            :key="index"
-            class="flex mt-5 flex-col items-center justify-center"
-          >
-            <span
-              :class="`${item.colorClass}`"
-              class="service-btn flex flex-col items-center justify-center"
-            >
-              <span class="material-symbols-outlined">
-                {{ item.iconClass }}
-              </span>
-            </span>
-            <span class="service-title mt-2">{{ item.title }}</span>
-          </div>
-        </div>
-      </div>
-      <div class="selected-filters">
-        <div class="filter-province mt-5">
-          <span class="material-symbols-outlined search-filter-icon">
-            search
-          </span>
-          <input type="text" placeholder="جستجوی مراسم" />
-        </div>
-        <div class="current-location mt-4 flex items-center">
-          <div class="grid grid-rows-1">
-            <div class="grid grid-cols-3 sm:grid-cols- md:grid-cols-4 flex">
-              <span
-                class="mt-2"
-                v-for="(badgeItem, index) in selectedEvents"
-                :key="index"
-                v-show="badgeItem.isChecked"
-              >
-                <span
-                  class="filtered-badge ml-2 flex items-center justify-between"
-                >
-                  <span
-                    class="filter-badge-text ml-3"
-                    v-if="badgeItem.isChecked"
-                    >{{ badgeItem.label }}</span
-                  >
-                  <span class="material-symbols-outlined delete-filter-icon">
-                    close
-                  </span>
-                </span>
-              </span>
+    <div class="filter-modal-body p-4">
+      <services-filter v-model="services"></services-filter>
+      <div class="w-full h-1 bg-secondary-200 my-4"></div>
+      <div class="h-12">
+        <baseInput
+          placeholder="جستجوی مراسم"
+          primary
+          @status="screenSizeHandler($event)"
+        >
+          <template #prepend>
+            <div class="cursor-pointer ml-2">
+              <img src="~/assets/images/icons/search-black.svg" alt="" />
             </div>
-          </div>
-        </div>
+          </template>
+        </baseInput>
+      </div>
+      <div>
+        <checkbox-items :items="checkBoxItems" />
       </div>
 
-      <div class="selectable-provinces mt-8">
-        <div class="filters-checkboxes">
-          <!-- <label class="input-container"
-              ><span class="checkbox-label"></span>
-              <input type="checkbox" :checked="true" />
-              <span class="checkmark"></span>
-            </label> -->
-          <label class="flex">
-            <BaseCheckbox
-              @updateCheckBoxes="selectedEventsFilter"
-              :items="checkboxes"
-            />
-          </label>
-        </div>
+      <div class="mt-8">
+        <button class="w-full bg-primary-700 h-11 rounded-lg text-white">
+          اعمال فیلتر
+        </button>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import PopularBegha from "~/components/home/PopularBegha.vue";
-import BeghaListItems from "~/components/home/BeghaListItems.vue";
+<script  setup>
+import BaseInput from "~/components/global/input.vue";
+import chipItems from "./chipItems.vue";
+import checkboxItems from "./checkboxItems.vue";
 
-defineNuxtComponent({ PopularBegha, BeghaListItems });
-let selectedEvents = ref<{ isChecked: boolean; label: string; id: number }[]>(
-  []
-);
-const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
-  {
-    id: 1,
-    label: "دعای ختم",
-    isChecked: false,
-  },
-  {
-    id: 2,
-    label: "دعای ندبه",
-    isChecked: false,
-  },
-  {
-    id: 3,
-    label: "دعای کمیل",
-    isChecked: false,
-  },
-  {
-    id: 4,
-    label: "دعای ختم",
-    isChecked: false,
-  },
-  {
-    id: 5,
-    label: "دعای ندبه",
-    isChecked: false,
-  },
-  {
-    id: 6,
-    label: "دعای کمیل",
-    isChecked: false,
-  },
-]);
-const servicesList = ref<
-  { title: string; iconClass: string; colorClass: string }[]
->([
-  {
-    title: "سالن مراسم",
-    iconClass: "cancel",
-    colorClass: "btn-bg-gray",
-  },
-  {
-    title: "زائر سرا",
-    iconClass: "cancel",
-    colorClass: "btn-bg-gray",
-  },
-  {
-    title: "کتابخانه",
-    iconClass: "cancel",
-    colorClass: "btn-bg-gray",
-  },
-  {
-    title: "قبور",
-    iconClass: "cancel",
-    colorClass: "btn-bg-gray",
-  },
-  {
-    title: "برنامه آموزشی",
-    iconClass: "cancel",
-    colorClass: "btn-bg-gray",
-  },
+const emit = defineEmits(["screenMode"]);
+defineNuxtComponent({ BaseInput, chipItems, checkboxItems });
+
+const services = ref([]);
+const checkBoxItems = ref([
+  { label: "دعا کمیل", value: "komeil", status: false },
+  { label: "دعا ندبه", value: "nodbe", status: false },
+  { label: "زیارت عاشورا", value: "ashora", status: false },
+  { label: "نماز میثم طیار", value: "tayar", status: false },
 ]);
 
-const selectedEventsFilter = (emited: any) => {
-  selectedEvents.value = emited;
+const screenSizeHandler = (e) => {
+  if (e) emit("screenMode", true);
+  else {
+    emit("screenMode", false);
+  }
 };
 </script>
 

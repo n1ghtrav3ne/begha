@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full">
-    <label class="font-normal text-sm text-surface-600">
+    <label class="font-normal text-sm text-neutral-800">
       {{ label }}
     </label>
     <div
@@ -12,10 +12,10 @@
         label ? 'mt-1' : '',
         activeInput
           ? primary
-            ? 'border-[1px] border-primary'
-            : 'border-[1px] border-secondary-400 border-shadow'
+            ? ' border  border-primary'
+            : ' border  border-secondary-400 border-shadow'
           : border
-          ? 'border-[1px] border-surface-100'
+          ? ' border  border-neutral-200'
           : '',
       ]"
     >
@@ -45,7 +45,7 @@ const emit = defineEmits(["update:modelValue", "status"]);
 const props = defineProps({
   color: {
     type: String,
-    default: "surface-50",
+    default: "neutral-100",
   },
   placeholder: {
     type: String,
