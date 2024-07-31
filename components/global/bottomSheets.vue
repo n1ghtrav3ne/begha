@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="props.modelValue"
-    class="top-0 right-0 max-w-[600px] w-full fixed z-[99] h-screen m-0 left-0 bg-neutral-800/70"
+    class="top-0 right-0 max-w-[600px] w-full fixed z-[99] h-screen m-0 m-auto left-0 bg-neutral-800/70"
     @click="handleOutsideClick"
   >
     <div
