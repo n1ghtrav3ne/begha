@@ -7,11 +7,7 @@
         </div>
         <div class="flex itmes-center">
           <span @click="drawer = true" class="icon-Menu-Iran"> </span>
-          <div class="choose-location flex items-center mr-3">
-            <span class="icon-Location-Iran location-choose-icon ml-1"> </span>
-            <span class="location-title-text">اصفهان، نجف آباد</span>
-            <span class="icon-Arrow-Bottom-Iran mr-1"> </span>
-          </div>
+          <location-picker></location-picker>
         </div>
       </div>
     </nav>
@@ -23,7 +19,8 @@
 
 <script  setup>
 import Sidebar from "./Sidebar.vue";
-defineComponent({ Sidebar });
+import locationPicker from "../pickers/locationPicker.vue";
+defineComponent({ Sidebar, locationPicker });
 
 const drawer = ref(false);
 </script>
