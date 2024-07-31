@@ -49,6 +49,12 @@
 
         </div>
 
+        <div @click="$router.push('/mausoleum/media/add-item')" class="add">
+            <span class="material-symbols-rounded scale-150">
+            add
+            </span>
+        </div>
+
 
     </div>
 
@@ -80,7 +86,7 @@
 
             <BottomSheets v-model="DeleteConfirmSheet">
 
-                <DeleteConfirm color="error" />
+                <DeleteConfirm color=" error" />
 
             </BottomSheets>
 
@@ -169,6 +175,7 @@ const MediaItems=ref<{title:string ; explanation:string ; hashtag:string}[]>
     height: 100%;
     background: $surface;
     z-index: 99;
+    top: 0;
     right:0;
     left:0;
     max-width: 600px;
@@ -242,4 +249,19 @@ const MediaItems=ref<{title:string ; explanation:string ; hashtag:string}[]>
 }
 
 
+.add{
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: $primary;
+    color: $primary-on;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    bottom: 8%;
+}
 </style>

@@ -132,7 +132,6 @@ const BeghaProvinceFilterModalSheet=ref(false)
 
 const BeghaEventFilterModalSheet=ref(false)
 
-const BeghaEventFilterModalSheet = ref(true);
 </script>
 
 <style lang="scss" scoped>
