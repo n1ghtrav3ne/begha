@@ -126,6 +126,9 @@ const selectIndex=(index:number)=>{
     if(selectedIndex.value===0){
         router.push('requests/cermony-hall/1')
     }
+    if(selectedIndex.value===3){
+        router.push('requests/grave/1')
+    }
 }
 
 </script>
