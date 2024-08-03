@@ -223,7 +223,7 @@
 
        <BottomSheets v-model="AcceptMessageSheet">
 
-           <AcceptMessage @close="AcceptMessageSheet=false" />
+           <AcceptMessage v-if="!openGravePosition" @gravePosition="openGravePosition=true" @close="AcceptMessageSheet=false" />
 
        </BottomSheets>
       
@@ -233,7 +233,7 @@
 
        </BottomSheets>
 
-       <GravePosition />
+       <GravePosition @close="openGravePosition=false" v-if="openGravePosition" />
 
 </template>
 
@@ -258,6 +258,8 @@ const failed=ref(false)
 const AcceptMessageSheet=ref(false)
 
 const RejectMessageSheet=ref(false)
+
+const openGravePosition=ref(false)
 
 const receiptInfo=ref<{title:string ; value:string ; hasIcon?:boolean}[]
 >([
