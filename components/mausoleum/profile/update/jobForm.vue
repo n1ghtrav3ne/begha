@@ -1,12 +1,7 @@
 <template>
   <div>
     <div class="mt-5 h-14">
-      <baseInput
-        label="شغل"
-        placeholder="شغل خود را وارد کنید"
-        color="white"
-        :border="true"
-      ></baseInput>
+      <text-field label="شغل" placeholder="شغل خود را وارد کنید"></text-field>
     </div>
 
     <div class="mt-11">
@@ -17,12 +12,10 @@
     </div>
 
     <div class="mt-5 h-14">
-      <baseInput
+      <text-field
         label="تلفن محل کار"
         placeholder="شماره همراه محل کار خود را وارد کنید"
-        color="white"
-        :border="true"
-      ></baseInput>
+      ></text-field>
     </div>
 
     <div class="mt-11">
@@ -33,7 +26,6 @@
 </template>
 
 <script setup>
-import BaseInput from "~/components/global/input.vue";
 import AddressPicker from "~/components/pickers/addressPickers.vue";
 import InsurancePicker from "~/components/pickers/InsurancePicker.vue";
 </script>

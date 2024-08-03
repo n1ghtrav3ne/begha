@@ -38,6 +38,54 @@
       >
       </text-field>
     </div>
+    <div class="my-6 bg-error-100 p-5">
+      <div>
+        <base-btn>
+          لیبل دکمه
+          <template #prepend>
+            <div class="size-5 bg-secondary-700 rounded-full ml-2"></div>
+          </template>
+          <template #append>
+            <div class="size-5 bg-secondary-700 rounded-full mr-2"></div>
+          </template>
+        </base-btn>
+      </div>
+      <div class="my-3">
+        <base-btn color="secondary-500">
+          لیبل دکمه
+          <template #prepend>
+            <div class="size-5 bg-secondary-700 rounded-full ml-2"></div>
+          </template>
+          <template #append>
+            <div class="size-5 bg-secondary-700 rounded-full mr-2"></div>
+          </template>
+        </base-btn>
+      </div>
+      <div class="my-3">
+        variant outlined
+        <base-btn color="secondary-500" variant="outlined">
+          لیبل دکمه
+          <template #prepend>
+            <div class="size-5 bg-secondary-700 rounded-full ml-2"></div>
+          </template>
+          <template #append>
+            <div class="size-5 bg-secondary-700 rounded-full mr-2"></div>
+          </template>
+        </base-btn>
+      </div>
+      variant link
+      <div class="my-3">
+        <base-btn color="secondary-500" variant="link">
+          لیبل دکمه
+          <template #prepend>
+            <div class="size-5 bg-secondary-700 rounded-full ml-2"></div>
+          </template>
+          <template #append>
+            <div class="size-5 bg-secondary-700 rounded-full mr-2"></div>
+          </template>
+        </base-btn>
+      </div>
+    </div>
   </div>
 </template>
 

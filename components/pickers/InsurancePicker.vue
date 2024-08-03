@@ -10,7 +10,7 @@
       <span class="text-neutral-800 text-xs">{{
         selectedInsurance.value ? selectedInsurance.name : props.placeholder
       }}</span>
-      <span class="text-blue">
+      <span class="text-secondary-700">
         <img src="~/assets/images/icons/menue-left.svg" />
       </span>
     </div>

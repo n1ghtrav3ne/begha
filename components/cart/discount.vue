@@ -1,45 +1,28 @@
 <template>
   <div>
     <!-- discount btn  -->
-    <div
-      @click="emit('openDialog', true)"
-      class="w-full h-[54px] border py-4 px-3 border-neutral-200 rounded-2xl flex items-center justify-between"
-    >
-      <span class="text-sm text-neutral-800">طرح‌های تخفیفی</span>
-      <!-- icon -->
-      <div class="size-6 centered">
-        <img src="~/assets/images/icons/arrow-left.svg" alt="" />
-      </div>
-    </div>
+    <select-input text="طرح های تخفیفی" @click="emit('openDialog', true)" />
     <!-- discount description  -->
-    <p class="text-tiny text-justify text-neutral-100 my-3">
+    <p class="text-tiny text-justify text-neutral-500 my-3">
       توجه داشته باشید که جهت استفاده از طرح های تخفیفی لازم است مدارک لازم به
       مسئول پدیرش ارائه شود. در غیر این صورت رزرو شما لغو خواهد شد.
     </p>
 
-    <div class="w-full h-[54px]">
-      <base-input
-        placeholder="کد تخفیف"
-        :border="true"
-        rounded="2xl"
-        color="white"
-      >
+    <div>
+      <text-field placeholder="کد تخفیف">
         <template #append>
-          <button
-            class="w-20 h-[38px] rounded-xl p-2 bg-secondary-700text-white"
-          >
+          <button class="w-20 h-[38px] rounded-xl bg-secondary-700 text-white">
             اعمال
           </button>
         </template>
-      </base-input>
+      </text-field>
     </div>
   </div>
 </template>
 
 <script setup>
-import BaseInput from "../global/input.vue";
 import BaseButton from "../global/button.vue";
-defineComponent([BaseInput, BaseButton]);
+defineComponent([BaseButton]);
 const emit = defineEmits(["openDialog"]);
 </script>
 

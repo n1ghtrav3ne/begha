@@ -12,7 +12,8 @@
     >
       <div class="w-full h-full relative">
         <div
-          class="w-16 h-[5px] rounded-[20px] bg-primary-700 top-2 absolute left-0 right-0 mx-auto"
+          @click="fullScreen = !fullScreen"
+          class="w-16 h-[5px] rounded-[20px] bg-primary-700 top-2 absolute left-0 right-0 mx-auto cursor-pointer"
         ></div>
         <div class="p-4 w-full">
           <!-- bottom sheet header  -->
@@ -38,8 +39,9 @@
 
           <!-- bottom sheet search field -->
           <div v-if="props.search" class="px-6 h-12" ref="inputElem">
-            <base-input
+            <text-field
               :placeholder="props.search.placeholder"
+              variant="filled"
               v-model="search"
               @update:model-value="emit('updateSearch', search)"
               @status="screenSizeHandler($event)"
@@ -49,7 +51,7 @@
                   <img src="~/assets/images/icons/search-black.svg" alt="" />
                 </div>
               </template>
-            </base-input>
+            </text-field>
           </div>
 
           <div
@@ -65,8 +67,6 @@
 </template>
 
 <script setup>
-import BaseInput from "~/components/global/input.vue";
-
 const props = defineProps({
   title: { type: String },
   modelValue: {},
