@@ -32,7 +32,7 @@
             </div>
             <div
               v-if="getActive(item.value)"
-              class="absolute size-4 bg-secondary-700rounded-full -top-1 -left-1 border border-white"
+              class="absolute size-4 bg-secondary-700 rounded-full -top-1 -left-1 border border-white"
             >
               <div class="w-full h-full centered">
                 <img src="/icons/check.svg" />
