@@ -22,6 +22,45 @@
   <div @click="fileInput.click()" class="iconContainer">
     <img src="~/assets/images/completeProfile/edit.svg" alt="" />
   </div>
+  <div>
+    <input
+      ref="fileInput"
+      @change="handleFileChange"
+      class="hidden"
+      type="file"
+      accept=".jpg,.png"
+    />
+
+    <div class="inputsContainer">
+      <div class="numberContainer">
+        <span>شماره همراه</span>
+
+        <input type="text" placeholder="شماره همراه خود را وارد کنید" />
+      </div>
+
+      <div class="nameHolder">
+        <span>نام و نام خانوادگی</span>
+
+        <input type="text" placeholder="نام و نام خانوادگی خود را وارد کنید" />
+      </div>
+
+      <div class="cityHolder">
+        <span>شهر</span>
+
+        <div @click="searchCitiesSheet = true" class="cityInput">
+          <input type="button" value="انتخاب کنید" />
+
+          <span class="material-symbols-rounded icon"> arrow_drop_down </span>
+        </div>
+      </div>
+    </div>
+
+    <button class="confirm">اعمال</button>
+  </div>
+
+  <div @click="fileInput.click()" class="iconContainer">
+    <img src="~/assets/images/completeProfile/edit.svg" alt="" />
+  </div>
 
   <input
     ref="fileInput"
