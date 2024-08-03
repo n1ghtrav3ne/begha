@@ -1,9 +1,7 @@
 <template>
   <div>
     <!-- page header  -->
-    <div
-      class="w-full bg-primary-700 h-12 flex justify-between items-center p-3"
-    >
+    <div class="page-header">
       <!-- header title and back btn -->
       <div class="flex items-center text-white text-base">
         <span
