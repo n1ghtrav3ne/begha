@@ -9,21 +9,20 @@
     </div>
   </div>
 
-            <span @click="$router.go(-1)" class="material-symbols-outlined ">
-            arrow_right_alt
-        </span>
+  <span @click="$router.go(-1)" class="material-symbols-outlined">
+    arrow_right_alt
+  </span>
 
-      <div class="imageStatus">
-        <span class="first">تصویر پروفایل شما</span>
+  <div class="imageStatus">
+    <span class="first">تصویر پروفایل شما</span>
 
-        <span @click="deleteImg" class="second">حذف تصویر</span>
-      </div>
+    <span @click="deleteImg" class="second">حذف تصویر</span>
+  </div>
 
-      <div @click="fileInput.click()" class="iconContainer">
-        <img src="~/assets/images/completeProfile/edit.svg" alt="" />
-      </div>
-    </div>
-
+  <div @click="fileInput.click()" class="iconContainer">
+    <img src="~/assets/images/completeProfile/edit.svg" alt="" />
+  </div>
+  <div>
     <input
       ref="fileInput"
       @change="handleFileChange"
