@@ -15,21 +15,7 @@
     </div>
 
 
-    <Swiper
-        :modules="[SwiperPagination, SwiperEffectCreative]"
-        :slidesPerView="'auto'"
-        :loop="false"
-        :autoplay="{
-          delay: 8000,
-          disableOnInteraction: true,
-        }"
-      >
-        arrow_right_alt
-      </span>
 
-      <span class="cermonyTxt">سالن مراسم</span>
-    </div>
-  </div>
 
   <Swiper
     :modules="[SwiperPagination, SwiperEffectCreative]"
