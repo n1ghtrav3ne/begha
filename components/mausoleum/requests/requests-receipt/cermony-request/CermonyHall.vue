@@ -17,7 +17,7 @@
 
         <div class="container">
 
-             <div class="flex flex-row w-full justify-between items-center mt-6">
+             <div class="flex flex-row w-full justify-between items-center mt-2">
 
             <div class="flex flex-col gap-1">
 
@@ -34,7 +34,7 @@
 
                 <div class="flex flex-col items-center gap-1">
 
-                    <div class="bg-primary-700 w-10 h-10 flex justify-center items-center p-2 rounded-lg">
+                    <div @click="AcceptMessageSheet=true"  class="bg-primary-700 w-10 h-10 flex justify-center items-center p-2 rounded-lg">
 
                         <span class="material-symbols-outlined text-primary-50">
                         check
@@ -46,7 +46,7 @@
 
                 </div>
 
-                   <div class="flex flex-col items-center gap-1">
+                   <div @click="RejectMessageSheet=true" class="flex flex-col items-center gap-1">
 
                     <div class="bg-error-700 w-10 h-10 flex justify-center items-center p-2 rounded-lg">
 
@@ -206,18 +206,25 @@
 
         <BottomSheets v-model="AcceptMessageSheet">
 
-            <AcceptMessage />
+            <AcceptMessage @close="AcceptMessageSheet=false" />
 
         </BottomSheets>
        
+        <BottomSheets v-model="RejectMessageSheet">
+
+            <RejectMessage />
+
+        </BottomSheets>
 
 </template>
 
 <script setup lang="ts">
 
-import RequestCard from '../RequestCard.vue';
+import RequestCard from '../../RequestCard.vue';
 
 import AcceptMessage from './AcceptMessage.vue';
+
+import RejectMessage from '../RejectMessage.vue';
 
 const newOne=ref(true)
 
@@ -227,7 +234,9 @@ const denied=ref(false)
 
 const failed=ref(false)
 
-const AcceptMessageSheet=ref(true)
+const AcceptMessageSheet=ref(false)
+
+const RejectMessageSheet=ref(false)
 
 const receiptInfo=ref<{title:string ; value:string ; hasIcon?:boolean}[]
 >([
