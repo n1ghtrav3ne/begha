@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-input
+    <text-field
       placeholder="جستجو بر اساس نام خدمت"
       v-model="search"
       @update:model-value="emit('update:modelValue', search)"
@@ -25,7 +25,7 @@
           </div>
         </div>
       </template>
-    </base-input>
+    </text-field>
 
     <bottom-sheets
       v-model="filtersDialog"
@@ -43,7 +43,6 @@
 
 
 <script setup>
-import BaseInput from "~/components/global/input.vue";
 import BottomSheets from "~/components/global/bottomSheets.vue";
 import filters from "./filters.vue";
 const search = ref("");

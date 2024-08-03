@@ -10,12 +10,10 @@
     </div>
 
     <div class="mt-5 h-14">
-      <baseInput
+      <text-field
         label="نام و نام خانوادگی"
         placeholder="نام و نام خانوادگی خود را وارد کنید"
-        color="white"
-        :border="true"
-      ></baseInput>
+      ></text-field>
     </div>
 
     <div class="mt-11">
@@ -28,16 +26,18 @@
     </div>
 
     <div class="h-14 mt-5">
-      <baseInput
+      <text-field
         label="کد ملی"
         placeholder="کد ملی ۱۰ رقمی خود را وارد کنید"
-        color="white"
-        :border="true"
-      ></baseInput>
+      ></text-field>
     </div>
 
     <div class="mt-11">
-      <date-picker label="تاریخ تولد" placeholder="روز،ماه،سال" />
+      <date-picker
+        label="تاریخ تولد"
+        botoomSheetTitle="تاریخ تولد خود را انتخاب کنید."
+        placeholder="روز،ماه،سال"
+      />
     </div>
 
     <div class="mt-5">
@@ -82,7 +82,6 @@
 </template>
 
 <script setup>
-import BaseInput from "~/components/global/input.vue";
 import DatePicker from "~/components/pickers/datePicker.vue";
 import StatePicker from "~/components/pickers/statePicker.vue";
 import CityPicker from "~/components/pickers/cityPicker.vue";

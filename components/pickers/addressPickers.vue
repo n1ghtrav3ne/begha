@@ -10,18 +10,23 @@
       <span class="text-neutral-800 text-xs">{{
         selectedAddress ? selectedAddress : props.placeholder
       }}</span>
-      <span class="text-blue">
+      <span class="text-secondary-700">
         <img src="~/assets/images/icons/location.svg" />
       </span>
     </div>
     <!-- select address dialog  -->
-    <bottomSheets v-model="dialog" title="آدرس خود را انتخاب کنید.">
-      <div></div>
+    <bottomSheets
+      :fullScreen="true"
+      v-model="dialog"
+      title="آدرس خود را انتخاب کنید."
+    >
+      <Map />
     </bottomSheets>
   </div>
 </template>
     
     <script setup>
+import Map from "../global/Map.vue";
 const props = defineProps(["label", "placeholder"]);
 const dialog = ref(false);
 

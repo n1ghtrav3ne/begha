@@ -3,10 +3,10 @@
     <div class="filter-modal-body p-4">
       <services-filter v-model="services"></services-filter>
       <div class="w-full h-1 bg-secondary-200 my-4"></div>
-      <div class="h-12">
-        <baseInput
+      <div cla ss="h-12">
+        <text-field
           placeholder="جستجوی مراسم"
-          primary
+          variant="filled"
           @status="screenSizeHandler($event)"
         >
           <template #prepend>
@@ -14,7 +14,7 @@
               <img src="~/assets/images/icons/search-black.svg" alt="" />
             </div>
           </template>
-        </baseInput>
+        </text-field>
       </div>
       <div>
         <checkbox-items :items="checkBoxItems" />
@@ -30,12 +30,11 @@
 </template>
 
 <script  setup>
-import BaseInput from "~/components/global/input.vue";
 import chipItems from "./chipItems.vue";
 import checkboxItems from "./checkboxItems.vue";
 
 const emit = defineEmits(["screenMode"]);
-defineNuxtComponent({ BaseInput, chipItems, checkboxItems });
+defineNuxtComponent({ chipItems, checkboxItems });
 
 const services = ref([]);
 const checkBoxItems = ref([

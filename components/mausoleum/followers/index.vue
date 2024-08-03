@@ -6,17 +6,17 @@
     <div v-else-if="followersData?.data?.length" class="p-4">
       <!-- search text field -->
       <div class="mb-8 h-12">
-        <base-input
+        <text-field
           v-model="search"
+          variant="filled"
           placeholder="جستجو بر اساس نام، شماره همراه"
-          primary
         >
           <template #prepend>
             <div class="cursor-pointer ml-2">
               <img src="~/assets/images/icons/search-black.svg" alt="" />
             </div>
           </template>
-        </base-input>
+        </text-field>
       </div>
       <!-- list for show followers data -->
       <div v-for="(item, i) in followersData?.data" :key="i">
@@ -25,7 +25,7 @@
           :subtitle="item.name"
           class="mt-3"
           :bordered="i + 1 < followersData?.data?.length"
-          subtitleClass="text-neutral-100 text-xs"
+          subtitleClass="text-neutral-500 text-xs"
         >
           <template #prepend>
             <div class="size-10 bg-secondary-200 rounded-full centered">
@@ -118,14 +118,10 @@ const followersData = ref({
   ],
 });
 
-import BaseInput from "~/components/global/input.vue";
-import List from "~/components/global/list.vue";
-
 const search = ref("");
 
 const userDialog = ref(false);
 const user = ref({});
-import bottomSheets from "~/components/global/bottomSheets.vue";
 function showUserDialog(item) {
   user.value = item;
   userDialog.value = true;
