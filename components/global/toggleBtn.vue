@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full h-9 bg-neutral-100 flex justify-evenly rounded-md">
+  <div class="w-full h-12 bg-neutral-100 flex justify-evenly rounded-md">
     <div
       class="w-1/2 rounded-md centered m-1"
       @click="selectedItemHandle('first')"
       :class="
         selectedItem == 'first'
           ? 'bg-white text-neutral-800 shadow-sm'
-          : 'bg-transparent text-neutral-100'
+          : 'bg-transparent text-neutral-500'
       "
     >
       {{ props.first }}
@@ -17,7 +17,7 @@
       :class="
         selectedItem == 'secend'
           ? 'bg-white text-neutral-800 shadow-sm'
-          : 'bg-transparent text-neutral-100'
+          : 'bg-transparent text-neutral-500'
       "
       @click="selectedItemHandle('secend')"
     >

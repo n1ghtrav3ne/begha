@@ -5,13 +5,13 @@
       @click="activeCheckbox()"
     >
       <div
-        v-show="checkBoxStatus"
+        v-show="modelValue"
         class="size-full bg-secondary-700 rounded-4 flex items-center justify-center"
       >
         <img src="~/assets/images/icons/check-done.svg" />
       </div>
     </div>
-    <span class="mr-2 text-xs">{{ props.item.label }}</span>
+    <span class="mr-2 text-xs">{{ props?.item?.label }}</span>
   </div>
 </template>
 
@@ -21,9 +21,16 @@ const emit = defineEmits(["update:modelValue"]);
 const checkBoxStatus = ref(false);
 
 const activeCheckbox = () => {
-  checkBoxStatus.value = !checkBoxStatus.value;
-  emit("update:modelValue", checkBoxStatus.value ? props.item : null);
+  emit("update:modelValue", !props.modelValue);
 };
+
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    checkBoxStatus.value = newValue;
+  },
+  { immediate: true }
+);
 </script>
 
 <style lang="scss" scoped>

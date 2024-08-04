@@ -23,6 +23,15 @@ function getRequestStatus(status: String) {
         case 'failed': return { text: 'رد شده', class: " bg-error-700 bg-error-100" }
         case 'success': return { text: 'تایید شده', class: "text-green bg-primary-200" }
         case 'failed-user': return { text: 'لغو شده توسط کاربر', class: " bg-error-700 bg-error-100" }
+        default: throw new Error("type in invalid")
+    }
+}
+
+function getAgentsStatus(status: string) {
+    switch (status) {
+        case "success": return { text: "تایید شده", color: "primary-200", textColor: "success-700" }
+        case "pending": return { text: "تایید شده", color: "warning-200", textColor: "warning-700" }
+        case "failed": return { text: "رد شده", color: "error-200", textColor: "error-700" }
     }
 }
 
@@ -98,4 +107,4 @@ function getMonthName(value: string): string {
     return mounth;
 }
 
-export default { converPrice, getUserType, getRequestStatus, converDate, getDateWithMounthName }
+export default { converPrice, getUserType, getRequestStatus, converDate, getDateWithMounthName, getAgentsStatus }
