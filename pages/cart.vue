@@ -1,8 +1,6 @@
 <template>
   <div>
-    <ClientOnly>
-      <cart />
-    </ClientOnly>
+    <cart />
   </div>
 </template>
 

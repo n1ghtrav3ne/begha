@@ -32,6 +32,7 @@
               :type="type"
               :value="modelValue"
               @input="updateValue($event.target.value)"
+              :autofocus="focus"
             />
             <div v-else>
               {{ modelValue || placeholder }}
@@ -82,6 +83,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  focus: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const getClass = computed(() => {
@@ -111,6 +116,7 @@ onMounted(() => {
           emit("status", false);
         } else {
           activeInput.value = true;
+          inputElem.value.querySelector("input").focus();
           emit("status", true);
         }
       }

@@ -38,7 +38,7 @@
           </div>
 
           <!-- bottom sheet search field -->
-          <div v-if="props.search" class="px-6 h-12" ref="inputElem">
+          <div v-if="props.search" ref="inputElem">
             <text-field
               :placeholder="props.search.placeholder"
               variant="filled"
