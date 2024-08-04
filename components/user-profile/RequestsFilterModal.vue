@@ -2,7 +2,7 @@
   <div>
     <div class="filter-modal-body">
       <div class="services-container pb-5 grid grid-rows-1">
-        <div class="grid grid-cols-5 flex">
+        <div class="grid grid-cols-5">
           <div
             v-for="(item, index) in servicesList"
             :key="index"
@@ -48,26 +48,23 @@ let selectedEvents = ref<{ isChecked: boolean; label: string; id: number }[]>(
   []
 );
 const checkboxes = ref<
-  { id: number; label: string; isChecked: boolean; status: string }[]
+  { id: number; label: string; isChecked: boolean;}[]
 >([
   {
     id: 1,
     label: "تائيد شده ها",
     isChecked: false,
-    status: "success",
   },
 
   {
     id: 2,
     label: "رد شده ها",
     isChecked: false,
-    status: "error",
   },
   {
     id: 3,
     label: "رد شده ها توسط شما ",
     isChecked: false,
-    status: "error",
   },
 ]);
 const servicesList = ref<
