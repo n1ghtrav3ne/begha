@@ -65,12 +65,12 @@
             class="mb-3 cursor-pointer"
           >
             <template #prepend>
-              <span class="icon-call-calling text-2xl"> </span>
+              <img src="/assets/images/icons/call-calling.svg" />
             </template>
           </list>
           <list title="ویرایش" class="my-3 cursor-pointer">
             <template #prepend>
-              <span class="icon-edit text-2xl"> </span>
+              <img src="/assets/images/icons/Edit.svg" />
             </template>
           </list>
           <list
@@ -82,7 +82,7 @@
             "
           >
             <template #prepend>
-              <span class="icon-trash-outlined text-2xl"> </span>
+              <img src="/assets/images/icons/trash-fild.svg" />
             </template>
           </list>
         </div>
@@ -94,7 +94,7 @@
           <div
             class="size-[52px] bg-error-200 mx-auto left-0 right-0 rounded-full centered"
           >
-            <span class="icon-trash text-2xl text-error-700"> </span>
+            <img src="/assets/images/icons/trash.svg" />
           </div>
           <h3 class="my-5">
             آیا از حذف این فرد ({{ selectedAgent.title }}) اطمینان دارید؟
@@ -104,7 +104,13 @@
               <base-btn color="error-700">بله</base-btn>
             </div>
             <div class="pr-2">
-              <base-btn variant="outlined" color="neutral-800"> خیر </base-btn>
+              <base-btn
+                variant="outlined"
+                color="neutral-800"
+                @click="deleteDialog = false"
+              >
+                خیر
+              </base-btn>
             </div>
           </div>
         </div>
