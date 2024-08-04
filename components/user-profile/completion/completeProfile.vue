@@ -1,7 +1,7 @@
 <template>
   <div class="greenBox container">
     <div class="firstItem">
-      <span @click="$router.push('../')" class="material-symbols-outlined">
+      <span @click="$router.go(-1)" class="material-symbols-outlined">
         arrow_right_alt
       </span>
 
@@ -9,19 +9,28 @@
     </div>
   </div>
 
-  <span @click="$router.go(-1)" class="material-symbols-outlined">
-    arrow_right_alt
-  </span>
+  <div class="container">
 
-  <div class="imageStatus">
-    <span class="first">تصویر پروفایل شما</span>
+    
+  <div class="flex flex-row items-center gap-3 mt-4 p-3 bg-neutral-100 rounded-xl">
 
-    <span @click="deleteImg" class="second">حذف تصویر</span>
+    <img :src="imageUrl || defaultImage" class="w-14 h-14 rounded-full bg-secondary-200" alt="">
+
+    <div class="flex flex-col gap-1">
+
+      <span class="font-bold text-sm">تصویر پروفایل شما</span>
+
+      <span @click="deleteImg" class="text-xs font-normal text-error-700">حذف تصویر</span>
+
+    </div>
+
+    
+    <div @click="fileInput.click()" class="mr-auto bg-secondary-700 rounded-full p-2 cursor-pointer">
+      <img src="~/assets/images/completeProfile/edit.svg" alt="" />
+    </div>
+    
   </div>
 
-  <div @click="fileInput.click()" class="iconContainer">
-    <img src="~/assets/images/completeProfile/edit.svg" alt="" />
-  </div>
   <div>
     <input
       ref="fileInput"
@@ -96,11 +105,14 @@
 
   <button class="confirm">اعمال</button>
 
-  <BottomSheets
+
+  </div>
+
+  <BottomSheets :search="{placeholder:'جستجو شهر یا استان'}"
     title="شهر مورد نظر خود را انتخاب کنید"
     v-model="searchCitiesSheet"
   >
-    <searchCities />
+    <searchCities @fullHeight="" />
   </BottomSheets>
 </template>
 

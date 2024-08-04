@@ -83,6 +83,9 @@
       <SearchFilter />
     </BottomSheets>
   </div>
+
+  <cityPicker />
+
 </template>
 
 <script setup lang="ts">
@@ -91,6 +94,7 @@ import SearchFilter from "~/components/main-events/SearchFilter.vue";
 import EventCard from "~/components/main-events/EventCard.vue";
 import DatePickers from "~/components/global/date-picker/DatePicker.vue";
 import BottomSheets from "~/components/global/bottomSheets.vue";
+import cityPicker from "../pickers/cityPicker.vue";
 
 defineComponent({
   followEvents,
