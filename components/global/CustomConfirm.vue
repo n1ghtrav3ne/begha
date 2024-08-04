@@ -1,10 +1,8 @@
 <template>
   <div class="w-full flex flex-col delete-container">
     <div class="flex flex-col justify-center items-center trash-cn mt-3">
-      <img
-        class="w-8 h-8 flex-shrink-0"
-        src="@/assets/images/icons/trash.svg"
-      />
+  
+      <slot name="icon"></slot>
       <span class="mt-3 mb-10">{{ title }}</span>
     </div>
     <div class="flex justify-between mb-4">
@@ -19,7 +17,7 @@
         type="button"
         class="ms-2 w-1/2 inline-block rounded border border-gray-500 px-6 py-2.5 text-xs font-medium uppercase leading-normal text-gray-500 hover:border-gray-700 hover:text-gray-700 focus:border-gray-700 focus:text-gray-700 focus:outline-none focus:ring-0 active:bg-gray-600 active:border-gray-600 active:text-gray-600"
       >
-        بله
+        خیر
       </button>
     </div>
   </div>
