@@ -31,7 +31,7 @@ defineProps({
   },
   color: {
     type: String,
-    default: "error",
+    default: "error-700",
   },
 });
 </script>

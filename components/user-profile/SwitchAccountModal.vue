@@ -2,24 +2,22 @@
   <div>
     <div class="filter-modal-body">
       <div class="selectable-provinces mt-8">
-        <div
-          v-for="(item, index) in cities"
+        <div @click="selectIndex(index)"
+          v-for="(item, index) in users"
           :key="index"
-          :class="item.isActive ? 'selected' : ''"
-          class="select-item available-province mt-3 flex items-center justify-between"
-        >
+          class="select-item available-province mt-3 flex items-center  justify-between" :class="{'bg-secondary-200' : activeOne === index}">
           <div class="flex items-center">
             <div class="accounts flex items-center">
-              <img src="~/assets/images/user/avatar.svg" alt="" />
+              <img :src="item.image || avatar" alt="" />
               <div class="name-login-text flex items-start flex-col">
-                <span class="login-state-text">احمد حسینی</span>
-                <span class="user-phone">کاربر عادی</span>
+                <span class="login-state-text">{{ item.name }}</span>
+                <span class="user-phone">{{ item.userType }}</span>
               </div>
             </div>
           </div>
-          <div v-if="item.isActive">
+          <div v-if="item.selected">
             <span
-              class="material-symbols-outlined flex check-icon items-center"
+              class="material-symbols-outlined flex text-secondary-700 check-icon items-center"
             >
               check_circle
             </span>
@@ -31,34 +29,35 @@
 </template>
 
 <script lang="ts" setup>
-const cities = ref<
-  { province: string; city: string; iconClass: string; isActive: boolean }[]
->([
+
+import avatar from "~/assets/images/user/avatar.svg"
+
+const activeOne=ref()
+
+const selectIndex=(index:number)=>{
+  users.value.forEach((item) => {
+    item.selected = false;
+  });
+  activeOne.value=index
+  users.value[index].selected=true
+}
+
+const users=ref<{image?:any ; name:string ; userType:string ; selected?:boolean}[]>
+([
   {
-    province: "همه",
-    city: "",
-    isActive: true,
-    iconClass: "apps",
+    name:'احمد حسینی',
+    userType:'کاربر عادی',
   },
   {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
+    name:'امام زاده صالح (ع)',
+    userType:'امام جماعت',
   },
   {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
+    name:'امام زاده محسن',
+    userType:'ادمین',
   },
-  {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
-  },
-]);
+])
+
 </script>
 
 <style lang="scss" scoped>
@@ -74,7 +73,6 @@ const cities = ref<
   }
   .select-item {
     padding: 16px;
-    background: #fff;
     border-radius: 16px;
     .all-icon {
       font-size: 25px;

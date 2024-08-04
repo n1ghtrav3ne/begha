@@ -1,6 +1,6 @@
 <template>
 
-  <div class="citiesContainer">
+  <div class="citiesContainer pt-5">
     <div
       @click="chooseCity(index)"
       :class="{ active: index === selectedCity }"
