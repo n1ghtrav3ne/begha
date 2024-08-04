@@ -20,7 +20,7 @@
 
       <span class="font-bold text-sm">تصویر پروفایل شما</span>
 
-      <span @click="deleteImg" class="text-xs font-normal text-error-700">حذف تصویر</span>
+      <span @click="deleteConfirmation=true" class="text-xs font-normal text-error-700">حذف تصویر</span>
 
     </div>
 
@@ -114,6 +114,21 @@
   >
     <searchCities @fullHeight="" />
   </BottomSheets>
+
+  <BottomSheets v-model="deleteConfirmation">
+
+    <CustomConfirm title="آیا از حذف تصویر پروفایل خود اطمینان دارید؟">
+
+      <template #icon>
+        <span class="material-symbols-outlined text-error-700 bg-error-200 p-2 rounded-full">
+        delete
+        </span>
+      </template>
+
+    </CustomConfirm>
+
+  </BottomSheets>
+
 </template>
 
 <script setup lang="ts">
@@ -121,12 +136,13 @@ import defaultImage from "~/assets/images/mausoleumInformation/frame.svg";
 
 import searchCities from "./searchCities.vue";
 
-defineComponent({ searchCities });
+import CustomConfirm from "~/components/global/CustomConfirm.vue";
 
 const searchCitiesSheet = ref(false);
 
+const deleteConfirmation=ref(false)
+
 const fileInput = ref();
-const currentImage = ref();
 const imageUrl = ref("");
 
 const handleFileChange = (event: any) => {
@@ -140,9 +156,6 @@ const handleFileChange = (event: any) => {
   reader.readAsDataURL(file);
 };
 
-const deleteImg = () => {
-  imageUrl.value = "";
-};
 </script>
 
 <style lang="scss" scoped>

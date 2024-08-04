@@ -1,319 +1,169 @@
 <template>
-  <div>
-    <div class="back-navbar container flex items-center justify-between">
-      <span
-        ><span
-          @click="$router.go(-1)"
-          class="material-symbols-outlined back-icon ml-2"
-        >
-          trending_flat </span
-        ><span class="back-title">درخواست های من</span></span
-      >
-    </div>
 
-    <div class="container pos-fix">
-      <div class="heading-info">
-        <div class="flex items-center justify-between title-state">
-          <span class="request-title">اتاق ۱۲ نفره</span>
-          <span class="status-badge success centered">تایید شده</span>
-        </div>
-        <div class="request-location">
-          <span class="location">
-            <span class="icon-Mosque-Iran"></span>
-            <span class="location-title">امام زاده صالح (ع)</span>
-          </span>
-        </div>
-        <div class="request-address">
-          <span>اصفهان، خیابان مصلی، لورم ایپسوم، روبروی لورم</span>
-        </div>
-        <div class="request-result flex items-center accepted">
-          <div class="result-img">
-            <img src="~/assets/images/user/accepted.svg" alt="" />
-          </div>
-          <div class="flex flex-col mr-2">
-            <span class="result-status-text"> پذیرش موفق </span>
-            <span class="result-status-desc">
-              درخواست شما در تاریخ ۱۴۰۲/۱۲/۱۲ ساعت ۱۲:۳۴ تائید شد.
-            </span>
-          </div>
-        </div>
-        <hr class="border-bottom" />
+  <div class="greenBox flex flex-row pt-[12px] pb-[11px] px-[16px] bg-primary-700 w-full items-center">
 
-        <div class="request-payment">
-          <div class="scrollable-content">
-            <ul class="payment-detail">
-              <li class="detail-item flex items-center justify-between">
-                <span class="detail-title">مبلغ پرداختی</span>
-                <span class="detail-text">۱٬۲۰۰٬۰۰۰ تومان</span>
-              </li>
-              <li class="detail-item flex items-center justify-between">
-                <span class="detail-title">تاریخ ارسال درخواست</span>
-                <span class="detail-text">۱۲ اردیبهشت ۱۴۰۳، ۱۴:۳۲</span>
-              </li>
-              <li class="detail-item flex items-center justify-between">
-                <span class="detail-title">شماره پیگیری</span>
-                <span class="detail-text">۷۴۸۴۹۳</span>
-              </li>
-              <li class="detail-item flex items-center justify-between">
-                <span class="detail-title">نام متوفی</span>
-                <span class="detail-text">سید احمد موسوی</span>
-              </li>
-              <li class="detail-item flex items-center justify-between">
-                <span class="detail-title">قبر درخواستی</span>
-                <span class="detail-text">قطعه شهدا، شماره ۱۲، طبقه ۲</span>
-              </li>
-              <li class="detail-item flex items-center justify-between">
-                <span class="detail-title">شماره سفارش</span>
-                <span class="detail-text">۹۴۵۰۰۳۲۴</span>
-              </li>
-              <hr class="border-bottom" />
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="back-support flex flex-col items-center">
-        <span class="centered support-btn">ارتباط با پشتیبانی</span>
-        <span
-          @click="CancelRequestModalSheet = true"
-          class="centered cancel-btn"
-          >لغو درخواست</span
-        >
-        <span @click="$router.push('/zaer-sara/list')" class="centered back-btn">رفتن به صفحه زائرسرا</span>
-      </div>
-    </div>
-    <BottomSheets v-model="CancelRequestModalSheet">
-      <CancelRequestModal @close="CancelRequestModalSheet = false" />
-    </BottomSheets>
+  <div class="firstItem flex flex-row items-center gap-4 text-primary-50">
+
+      <span @click="$router.go(-1)" class="material-symbols-outlined ">
+      arrow_right_alt
+  </span>
+
+  <span class="text-[16px]">درخواست های من</span>
+
+  </div>   
+
   </div>
+
+  <div class="container">
+
+    <div class="flex flex-row items-center w-full mt-6 justify-between">
+
+    <span class="text-base font-bold">درخواست زائرسرا</span>
+
+    <span v-if="confirmed" class="text-primary-700 bg-primary-200 px-3 py-2 rounded-xl text-tiny">تائید شده</span>
+
+  </div>
+
+  <div class="px-[10px] py-2 w-fit rounded-lg flex flex-row items-center gap-1 mt-3 bg-secondary-200">
+
+    <span class="icon-Mosque-Iran text-secondary-700 scale-150 pb-1"></span>
+
+    <span>امام زاده صالح (ع)</span>
+
+  </div>
+
+    <span class="text-tiny relative top-3 text-neutral-500">اصفهان، خیابان مصلی، لورم ایپسوم، روبروی لورم</span>
+
+
+    <div v-if="confirmed" class="flex flex-row items-center py-2 px-4 gap-3 border text-primary-700 border-success-400 bg-primary-200 rounded-xl mt-8">
+
+            
+      <span class="material-symbols-outlined scale-150">
+          check_circle
+      </span>
+
+      <div class="flex flex-col gap-2">
+
+      <span class="font-bold text-sm">
+          پذیرش موفق
+      </span>
+
+        <span class="text-xs font-normal">درخواست کاربر در تاریخ ۱۴۰۲/۱۲/۱۲ ساعت ۱۲:۳۴ تائید شد. </span>
+
+      </div>
+
+
+    </div>
+
+
+          <div class="mt-8 w-full flex flex-col px-3 border-y border-neutral-100 py-3">
+
+                    <div v-for="(item , index) in receiptInfo" :key="index" class="flex flex-row items-center py-3 w-full justify-between">
+
+                        <span class="text-xs font-normal text-neutral-500">{{ item.title }}</span>
+
+                        <div class="flex flex-row items-center gap-1">
+
+                            <span class="text-sm font-bold">{{ item.value }}</span>
+
+                            <span v-if="item.hasIcon" class="material-symbols-outlined scale-75">
+                            content_copy
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    
+                </div>
+
+
+          <div class="flex flex-col gap-4 mt-4">
+
+            <span class="text-tiny text-neutral-500">لیست رزرو ها</span>
+
+            <div v-for="index in 3" :key="index" class="flex flex-row gap-2 border-b border-secondary-200 w-full pb-[11px] items-center">
+
+              <img class="w-11 h-11 rounded-xl" src="~/assets/images/cemetery/cemetery.png" alt="">
+
+              <div class="flex flex-col gap-1">
+
+                <span class="text-sm">درخواست اتاق ۱۲ نفره (۱ عدد)</span>
+
+                <span class="text-tiny text-neutral-500">مبلغ کل: ۱٬۲۰۰٬۰۰۰ تومان</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="flex flex-col items-center mt-8">
+
+            <div class="w-full p-2 flex h-11 justify-center items-center rounded-lg bg-primary-700 text-primary-50 cursor-pointer">
+
+              <div class="flex flex-row items-center gap-2">
+
+                <span class="material-symbols-outlined">
+                call
+                </span>
+
+                <span class="text-xs">ارتباط با پشتیبانی</span>
+
+              </div>
+
+            </div>
+
+
+            <div @click="$router.push('/zaer-sara/list')" class="w-full p-2 flex h-11 justify-center items-center rounded-lg text-primary-700 cursor-pointer">
+
+              <div class="flex flex-row items-center gap-2">
+
+                <span class="text-xs">رفتن به صفحه زائرسرا</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+  </div>
+
+
 </template>
 
-<script lang="ts" setup>
-import CancelRequestModal from "./CancelRequestModal.vue";
-import BottomSheets from "~/components/global/bottomSheets.vue";
-defineComponent([CancelRequestModal]);
+<script setup lang="ts">
 
-const CancelRequestModalSheet = ref(false);
+const confirmed=ref(true)
+
+const receiptInfo=ref<{title:string ; value:string ; hasIcon?:boolean}[]
+>([
+    {
+        title:'مبلغ پرداختی',
+        value:'۱٬۲۰۰٬۰۰۰ تومان',
+    },
+    {
+        title:'تاریخ ارسال درخواست',
+        value:'۱۲ اردیبهشت ۱۴۰۳، ۱۴:۳۲',
+    },
+    {
+        title:'تاریخ ورود',
+        value:'۱۲ اردیبهشت ۱۴۰۳'
+    },
+    {
+        title:'تاریخ خروج',
+        value:'۱۲ اردیبهشت ۱۴۰۳'
+    },
+    {
+        title:'شماره پیگیری',
+        value:'۷۴۸۴۹۳'
+    },
+    {
+        title:'شماره سفارش',
+        value:'۹۴۵۰۰۳۲۴',
+        hasIcon:true
+    },
+])
+
 </script>
-
-<style lang="scss" scoped>
-@import "~/assets/css/icons.scss";
-@import "~/assets/css/colors.scss";
-
-.pos-fix {
-  position: relative !important;
-}
-
-.back-navbar {
-  height: 48px;
-  background: $primary;
-  display: flex;
-  align-items: center;
-  padding: 5px 10px;
-  span.back-title {
-    font-size: 16px;
-    font-family: "yekan-regular";
-    color: $primary-on;
-  }
-  span.back-icon {
-    color: $primary-on;
-    font-size: 25px;
-    vertical-align: -10px;
-  }
-}
-
-.heading-info {
-  .title-state {
-    margin-bottom: 15px;
-    .request-title {
-      font-size: 16px;
-      font-weight: 700;
-      font-family: "yekan-regular";
-      text-align: justify;
-    }
-    .status-badge {
-      padding: 8px 12px;
-      text-align: right;
-      font-family: "yekan-regular";
-      font-size: 11px;
-      font-weight: 400;
-      height: 32px;
-      border-radius: 12px;
-    }
-    .status-badge.success {
-      background-color: #d8fdec;
-      color: $primary;
-    }
-    .status-badge.warning {
-      background-color: #fff5dc;
-      color: $warning;
-    }
-    .status-badge.error {
-      background-color: #fdf2f2;
-      color: $error;
-    }
-  }
-  .request-location {
-    margin-bottom: 12px;
-    .location {
-      background-color: $secondary-container;
-      padding: 4px 10px;
-      border-radius: 8px;
-      .location-title {
-        font-size: 11px;
-        font-weight: 400;
-        font-family: "yekan-regular";
-        text-align: right;
-        margin-right: 4px;
-      }
-      .icon-Mosque-Iran {
-        color: $secondary;
-        vertical-align: -3px;
-      }
-    }
-  }
-  .request-address {
-    margin-bottom: 16px;
-    span {
-      font-size: 11px;
-      font-weight: 400;
-      font-family: "yekan-regular";
-      text-align: right;
-    }
-  }
-
-  .request-result.accepted {
-    padding: 16px 14px;
-    border-radius: 12px;
-    border: 0.6px solid #9fedb1;
-    background-color: #f0fcf3;
-    .result-status-text {
-      font-size: 14px;
-      font-weight: 700;
-      font-family: "yekan-regular";
-      text-align: right;
-      color: $success;
-      margin-bottom: 4px;
-    }
-    .result-status-desc {
-      font-size: 11px;
-      color: $success;
-      font-weight: 400;
-      font-family: "yekan-regular";
-      text-align: right;
-    }
-  }
-  .request-result.waiting {
-    padding: 16px 14px;
-    border-radius: 12px;
-    border: 0.6px solid #fee59e;
-    background-color: #fffbf0;
-    .result-status-text {
-      font-size: 14px;
-      font-weight: 700;
-      font-family: "yekan-regular";
-      text-align: right;
-      color: $warning;
-      margin-bottom: 4px;
-    }
-    .result-status-desc {
-      font-size: 11px;
-      color: $warning;
-      font-weight: 400;
-      font-family: "yekan-regular";
-      text-align: right;
-    }
-  }
-  .request-result.rejected {
-    padding: 16px 14px;
-    border-radius: 12px;
-    border: 0.6px solid #f1acac;
-    background-color: #fdf2f2;
-    .result-status-text {
-      font-size: 14px;
-      font-weight: 700;
-      font-family: "yekan-regular";
-      text-align: right;
-      color: $error;
-      margin-bottom: 4px;
-    }
-    .result-status-desc {
-      font-size: 11px;
-      color: $error;
-      font-weight: 400;
-      font-family: "yekan-regular";
-      text-align: right;
-    }
-  }
-
-  .request-payment {
-    .scrollable-content {
-      max-height: 380px;
-      overflow-y: scroll;
-    }
-    .payment-detail {
-      height: auto;
-      .detail-item {
-        padding: 16px 0;
-        .detail-title {
-          font-size: 12px;
-          color: $surface-on-variant;
-          font-weight: 400;
-          font-family: "yekan-regular";
-          text-align: right;
-        }
-        .detail-text {
-          font-size: 14px;
-          color: $surface-on;
-          font-weight: 700;
-          font-family: "yekan-regular";
-          text-align: right;
-        }
-      }
-    }
-  }
-  .border-bottom {
-    height: 1px;
-    color: $outline-variant;
-    margin: 16px 0;
-  }
-}
-
-.back-support {
-  padding: 16px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  margin: 0 auto;
-  max-width: 600px;
-  .support-btn {
-    padding: 8px;
-    color: $primary-on;
-    background-color: $primary;
-    font-size: 12px;
-    font-weight: 400;
-    font-family: "yekan-regular";
-    border-radius: 8px;
-    width: 100% !important;
-  }
-  .cancel-btn {
-    padding: 8px;
-    color: $primary-on;
-    background-color: $error;
-    font-size: 12px;
-    font-weight: 400;
-    font-family: "yekan-regular";
-    border-radius: 8px;
-    width: 100% !important;
-  }
-  .back-btn {
-    width: 100% !important;
-    padding: 8px;
-    color: $primary;
-    font-size: 12px;
-    font-weight: 400;
-    font-family: "yekan-regular";
-  }
-}
-</style>
