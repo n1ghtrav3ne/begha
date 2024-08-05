@@ -16,11 +16,16 @@
 
   <div class="container">
 
-    <div class="flex flex-row items-center w-full mt-6 justify-between">
+    <div class="flex flex-row items-center w-full mt-4 justify-between">
 
     <span class="text-base font-bold">درخواست زائرسرا</span>
 
     <span v-if="confirmed" class="text-primary-700 bg-primary-200 px-3 py-2 rounded-xl text-tiny">تائید شده</span>
+
+    <span v-if="denied" class="text-error-700 bg-error-200 px-3 py-2 rounded-xl text-tiny">رد شده</span>
+
+    <span v-if="inProgress" class="text-warning-700 bg-warning-200 px-3 py-2 rounded-xl text-tiny">در حال بررسی</span>
+
 
   </div>
 
@@ -55,10 +60,52 @@
 
     </div>
 
+    <div v-if="denied" class="flex flex-row items-center py-2 px-4 gap-3 border text-error-700 border-error-400 bg-error-200 rounded-xl mt-8">
 
-          <div class="mt-8 w-full flex flex-col px-3 border-y border-neutral-100 py-3">
+            
+      <span class="material-symbols-outlined scale-150">
+      cancel
+      </span>
 
-                    <div v-for="(item , index) in receiptInfo" :key="index" class="flex flex-row items-center py-3 w-full justify-between">
+      <div class="flex flex-col gap-2">
+
+      <span class="font-bold text-sm">
+          پذیرش ناموفق
+      </span>
+
+        <span class="text-xs font-normal">درخواست شما بدلیل عدم تطابق مدارک با طرح در تاریخ ۱۴۰۲/۱۲/۱۲ ساعت ۱۲:۳۴ رد شد.</span>
+
+      </div>
+
+
+    </div>
+
+    <div v-if="inProgress" class="flex flex-row items-center py-2 px-4 gap-3 border text-warning-700 border-warning-400 bg-warning-200 rounded-xl mt-8">
+
+            
+        <span class="material-symbols-outlined scale-150">
+        radio_button_checked
+        </span>
+
+      <div class="flex flex-col gap-2">
+
+      <span class="font-bold text-sm">
+        در انتظار پذیرش
+      </span>
+
+        <span class="text-xs font-normal">در خواست شما در حال بررسی می‌باشد.</span>
+
+      </div>
+
+
+    </div>
+
+
+          <div :class="{'border-t-0':denied}" class="mt-8 w-full flex flex-col px-3 border-y border-neutral-100 py-3">
+
+            <div  v-for="(item , index) in receiptInfo" :key="index">
+
+                    <div class="flex flex-row items-center py-3 w-full justify-between">
 
                         <span class="text-xs font-normal text-neutral-500">{{ item.title }}</span>
 
@@ -66,14 +113,45 @@
 
                             <span class="text-sm font-bold">{{ item.value }}</span>
 
-                            <span v-if="item.hasIcon" class="material-symbols-outlined scale-75">
+                            <span @click="copyText(item.value)" v-if="item.hasIcon" class="material-symbols-outlined scale-75">
                             content_copy
                             </span>
-
+                            
                         </div>
 
                     </div>
 
+                    <div v-if="index===0 && denied" class="text-error-700 text-tiny border-t pt-2 border-neutral-100">مبلغ پرداختی در تاریخ ۱۴۰۲/۱۲/۰۲، ۱۲:۳۴ عودت داده شد.</div>
+
+                    <div v-if="index ===0" class="flex flex-row justify-between items-center py-3">
+
+                      <span class="text-xs font-normal text-neutral-500">طرح تخفیفی</span>
+
+                       <div class="flex flex-row items-center gap-1">
+
+                            <span class="text-sm font-bold">کد تخفیف </span>
+
+                            <span  class="text-sm text-error-700 font-bold">(٪۲۰)</span>
+
+                            
+                        </div>
+
+
+                    </div>
+
+            </div>
+
+              <div v-if="confirmed" class="flex flex-row items-center py-3 w-full justify-between">
+
+                        <span class="text-xs font-normal text-neutral-500">گواهی فوت</span>
+
+                        <div class="flex flex-row items-center gap-1">
+
+                            <span class="text-sm text-primary-700 font-bold">ارسال شده</span>
+                            
+                        </div>
+
+              </div>
                     
                 </div>
 
@@ -98,10 +176,37 @@
 
           </div>
 
+           <div class="flex flex-row items-center gap-3 mt-4">
+
+                        <div class="bg-secondary-200 flex justify-center items-center w-6 h-6 rounded-lg">
+
+                            <span class="material-symbols-outlined text-secondary-700">
+                            check
+                            </span>
+
+                        </div>
+
+                        <span class="font-normal text-sm">مداح، سخنران، قاری</span>
+
+            </div>
+
+            <div class="flex flex-row items-center gap-3 mt-4">
+
+                        <div class="bg-secondary-200 flex justify-center items-center w-6 h-6 rounded-lg">
+
+                            <span class="material-symbols-outlined text-secondary-700">
+                            check
+                            </span>
+
+                        </div>
+
+                        <span class="font-normal text-sm">پذیرایی مراسم ختم</span>
+
+            </div>
 
           <div class="flex flex-col items-center mt-8">
 
-            <div class="w-full p-2 flex h-11 justify-center items-center rounded-lg bg-primary-700 text-primary-50 cursor-pointer">
+            <div v-if="!inProgress" class="w-full p-2 flex h-11 justify-center items-center rounded-lg bg-primary-700 text-primary-50 cursor-pointer">
 
               <div class="flex flex-row items-center gap-2">
 
@@ -114,6 +219,10 @@
               </div>
 
             </div>
+
+            <Button v-else @click="cancelConfirm=true" type="button" class="bg-error-700 text-error-50 text-sm rounded-lg w-full flex p-3 justify-center items-center">
+              لغو درخواست
+            </Button>
 
 
             <div @click="$router.push('/zaer-sara/list')" class="w-full p-2 flex h-11 justify-center items-center rounded-lg text-primary-700 cursor-pointer">
@@ -130,12 +239,23 @@
 
   </div>
 
+  <BottomSheets v-model="cancelConfirm">
+
+    <CustomConfirm title="درخواست شما در حال بررسی می‌باشد. آیا می خواهید آن را لغو کنید؟" />
+
+  </BottomSheets>
 
 </template>
 
 <script setup lang="ts">
 
 const confirmed=ref(true)
+
+const denied=ref(false)
+
+const inProgress=ref(false)
+
+const cancelConfirm=ref(false)
 
 const receiptInfo=ref<{title:string ; value:string ; hasIcon?:boolean}[]
 >([
@@ -165,5 +285,10 @@ const receiptInfo=ref<{title:string ; value:string ; hasIcon?:boolean}[]
         hasIcon:true
     },
 ])
+
+
+const copyText = (text: string) => {
+  navigator.clipboard.writeText(text)
+}
 
 </script>
