@@ -132,9 +132,9 @@ const items = ref<
   {
     backColor: "linear-gradient(180deg, #3BEBDD 0%, #20C6BC 100%)",
     image: memebers,
-    name: "اعضا",
+    name: "عوامل بقعه",
     badgeColorClass: "error-bg-color",
-    link: "",
+    link: "/mausoleum/tomb/agents",
   },
   {
     backColor: "linear-gradient(180deg, #F8E895 0%, #F4C82A 100%)",
