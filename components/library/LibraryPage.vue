@@ -12,7 +12,7 @@
             </span>
             <span class="library-page-title">کتابخانه</span>
           </div>
-          <div
+          <div @click="seachCitiesSheet=true"
             class="choose-location flex items-center mr-3"
           >
             <span class="icon-Arrow-Bottom-Iran ml-1"> </span>
@@ -49,7 +49,7 @@
           <img src="~/assets/images/home/popular-begha-shape.png" alt="" />
           <span> لیست کتاب‌ها </span>
         </div>
-        <div class="books-filter flex items-center">
+        <div @click="orderFilter=true" class="books-filter flex items-center">
           <span class="filter-base-text"> ترتیب بر اساس </span>
           <span class="flex items-center">
             <span class="active-filter"> محبوب ترین </span>
@@ -60,18 +60,64 @@
       </div>
 
       <div class="books-container">
-        <BookItem @click="$router.push('/library/book/1')" />
-        <BookItem />
+        <BookItem v-for="index in 3" @click="$router.push('/library/book/1')" />
       </div>
     </div>
   </div>
+
+  <BottomSheets title="ترتیب نمایش بر اساس" v-model="orderFilter">
+
+    <div class="flex w-full flex-col gap-3 pt-2">
+
+      <div @click="selectIndex(index)" :class="{'bg-secondary-200':index===selectedIndex}" v-for="(item , index) in itemText" :key="index" class="flex h-[44px] items-center w-full p-4 rounded-xl flex-row justify-between">
+
+        <span>{{ item.text }}</span>
+
+        <span v-if="index===selectedIndex" class="material-symbols-outlined text-secondary-700">
+        check_circle
+        </span>
+
+      </div>
+
+
+    </div>
+
+  </BottomSheets>
+
+  <BottomSheets v-model="emptyBasket">
+
+    <div class="flex flex-col items-center gap-2">
+      <img class="w-[116px] mt-4" src="~/assets/images/empty-data.png" alt="">
+      <span class="text-sm">کتابی برای رزرو انتخاب نشده است!!</span>
+    </div>
+
+  </BottomSheets>
+
+  <BottomSheets :search="{ placeholder: 'جستجوی شهر یا استان' }" title="شهر مورد نظر خود را انتخاب کنید" v-model="seachCitiesSheet">
+
+    <SearchCities />
+
+  </BottomSheets>
+
 </template>
 
 <script lang="ts" setup>
+
 import BookItem from "./BookItem.vue";
-import { useModalStore } from "~/stores/modals-store";
-const modalStore = useModalStore();
-defineComponent([BookItem]);
+
+const seachCitiesSheet=ref(false)
+
+const orderFilter=ref(false)
+
+const emptyBasket=ref(false)
+
+const selectedIndex=ref()
+
+const selectIndex=(index:number)=>{
+  selectedIndex.value=index
+}
+
+const itemText=ref([{text:'همه'},{text:'پربازدیدترین‌ها'},{text:'کتاب‌های موجود'}])
 </script>
 
 <style lang="scss" scoped>

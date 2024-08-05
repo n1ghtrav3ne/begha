@@ -35,10 +35,17 @@
                 </div>
               </div>
               <div>
-                <span class="stock-status flex items-center">
-                  <span class="material-symbols-outlined check-icon">
-                    check
-                  </span>
+                <span class="stock-status flex items-center gap-1">
+
+                  <div class="flex justify-center items-center bg-primary-200 p-1 rounded-full">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">
+                    <path opacity="0.4" d="M8.595 1H4.405C2.585 1 1.5 2.085 1.5 3.905V8.09C1.5 9.915 2.585 11 4.405 11H8.59C10.41 11 11.495 9.915 11.495 8.095V3.905C11.5 2.085 10.415 1 8.595 1Z" fill="#09D374"/>
+                    <path d="M5.79022 7.7898C5.69022 7.7898 5.59522 7.7498 5.52522 7.6798L4.11021 6.2648C3.96521 6.1198 3.96521 5.8798 4.11021 5.7348C4.25521 5.5898 4.49521 5.5898 4.64021 5.7348L5.79022 6.8848L8.36022 4.3148C8.50522 4.1698 8.74522 4.1698 8.89022 4.3148C9.03522 4.4598 9.03522 4.6998 8.89022 4.8448L6.05522 7.6798C5.98522 7.7498 5.89022 7.7898 5.79022 7.7898Z" fill="#09D374"/>
+                  </svg>
+
+                  </div>
+
                   <span class="status-text">موجود</span>
                 </span>
               </div>
@@ -76,32 +83,25 @@
             موجود در این کتاب دانسته‌اند در مورد اهمیت و ارزش ادبی و بلاغت
             نهج‌البلاغه سخنان متعددی از اندیشمندان زبان عربی نقل شده
             است[۲۰] برخی یکی از دلایل ماندگاری این کتاب را فصاحت و بلاغت موجود
-            در این کتاب دانسته‌اند...... اندیشمندان زبان عربی نقل شده
-            است[۲۰] برخی یکی از دلایل ماندگاری این کتاب را فصاحت و بلاغت موجود
-            در این کتاب دانسته‌اند در مورد اهمیت و ارزش ادبی و بلاغت نهج‌البلاغه
-            سخنان متعددی از اندیشمندان زبان عربی نقل شده است[۲۰] برخی یکی از
-            دلایل ماندگاری این کتاب را فصاحت و بلاغت موجود در این کتاب
-            دانسته‌اند در مورد اهمیت و ارزش ادبی و بلاغت نهج‌البلاغه سخنان
-            متعددی از اندیشمندان زبان عربی نقل شده است[۲۰] برخی یکی از دلایل
-            ماندگاری این کتاب را فصاحت و بلاغت موجود در این کتاب
-            دانسته‌اند......
+            در این کتاب دانسته‌اند......
           </p>
         </div>
       </div>
-      <div class="back-support flex flex-col items-center">
-        <span class="flex items-center max-w-[600px] justify-center support-btn"
-          >رزرو کتاب</span
-        >
+     
+      <div class="w-full mt-[55%] p-2 flex flex-row gap-2 h-11 rounded-lg justify-center bg-primary-700 text-primary-50 items-center">
+
+        <img src="~/assets/images/mausoleum-media/add-square.svg" alt="">
+
+        <span class="text-xs">رزرو کتاب</span>
+
       </div>
+
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import LibraryBanner from "./LibraryBanner.vue";
-import { useModalStore } from "~/stores/modals-store";
-const modalStore = useModalStore();
-defineComponent([LibraryBanner]);
 </script>
 
 <style lang="scss" scoped>
