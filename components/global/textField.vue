@@ -18,7 +18,7 @@
               : 'border border-secondary-400 border-shadow'
             : '',
         ]"
-        class="rounded-lg p-3"
+        class="rounded-lg p-4"
       >
         <div class="flex">
           <div class="flex-none">
@@ -27,7 +27,7 @@
           <div class="grow">
             <input
               v-if="!desabled"
-              class="h-full w-full outline-none bg-transparent text-sm"
+              class="h-full w-full flex text-start outline-none bg-transparent text-xs"
               :placeholder="placeholder"
               :type="type"
               :value="modelValue"
@@ -38,7 +38,7 @@
               {{ modelValue || placeholder }}
             </div>
           </div>
-          <div class="flex-none text-end">
+          <div class="flex text-end">
             <slot name="append"></slot>
           </div>
         </div>

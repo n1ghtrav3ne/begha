@@ -1,7 +1,7 @@
 <template>
   <div class="greenBox container">
     <div class="firstItem">
-      <span @click="$router.push('../')" class="material-symbols-outlined">
+      <span @click="$router.go(-1)" class="material-symbols-outlined">
         arrow_right_alt
       </span>
 
@@ -9,21 +9,29 @@
     </div>
   </div>
 
-            <span @click="$router.go(-1)" class="material-symbols-outlined ">
-            arrow_right_alt
-        </span>
+  <div class="container">
 
-      <div class="imageStatus">
-        <span class="first">تصویر پروفایل شما</span>
+    
+  <div class="flex flex-row items-center gap-3 mt-4 p-3 bg-neutral-100 rounded-xl">
 
-        <span @click="deleteImg" class="second">حذف تصویر</span>
-      </div>
+    <img :src="imageUrl || defaultImage" class="w-14 h-14 rounded-full bg-secondary-200" alt="">
 
-      <div @click="fileInput.click()" class="iconContainer">
-        <img src="~/assets/images/completeProfile/edit.svg" alt="" />
-      </div>
+    <div class="flex flex-col gap-1">
+
+      <span class="font-bold text-sm">تصویر پروفایل شما</span>
+
+      <span @click="deleteConfirmation=true" class="text-xs font-normal text-error-700">حذف تصویر</span>
+
     </div>
 
+    
+    <div @click="fileInput.click()" class="mr-auto bg-secondary-700 rounded-full p-2 cursor-pointer">
+      <img src="~/assets/images/completeProfile/edit.svg" alt="" />
+    </div>
+    
+  </div>
+
+  <div>
     <input
       ref="fileInput"
       @change="handleFileChange"
@@ -59,12 +67,68 @@
     <button class="confirm">اعمال</button>
   </div>
 
-  <BottomSheets
+  <div @click="fileInput.click()" class="iconContainer">
+    <img src="~/assets/images/completeProfile/edit.svg" alt="" />
+  </div>
+
+  <input
+    ref="fileInput"
+    @change="handleFileChange"
+    class="hidden"
+    type="file"
+    accept=".jpg,.png"
+  />
+
+  <div class="inputsContainer">
+    <div class="numberContainer">
+      <span>شماره همراه</span>
+
+      <input type="text" placeholder="شماره همراه خود را وارد کنید" />
+    </div>
+
+    <div class="nameHolder">
+      <span>نام و نام خانوادگی</span>
+
+      <input type="text" placeholder="نام و نام خانوادگی خود را وارد کنید" />
+    </div>
+
+    <div class="cityHolder">
+      <span>شهر</span>
+
+      <div @click="searchCitiesSheet = true" class="cityInput">
+        <input type="button" value="انتخاب کنید" />
+
+        <span class="material-symbols-rounded icon"> arrow_drop_down </span>
+      </div>
+    </div>
+  </div>
+
+  <button class="confirm">اعمال</button>
+
+
+  </div>
+
+  <BottomSheets :search="{placeholder:'جستجو شهر یا استان'}"
     title="شهر مورد نظر خود را انتخاب کنید"
     v-model="searchCitiesSheet"
   >
-    <searchCities />
+    <searchCities @fullHeight="" />
   </BottomSheets>
+
+  <BottomSheets v-model="deleteConfirmation">
+
+    <CustomConfirm title="آیا از حذف تصویر پروفایل خود اطمینان دارید؟">
+
+      <template #icon>
+        <span class="material-symbols-outlined text-error-700 bg-error-200 p-2 rounded-full">
+        delete
+        </span>
+      </template>
+
+    </CustomConfirm>
+
+  </BottomSheets>
+
 </template>
 
 <script setup lang="ts">
@@ -72,12 +136,13 @@ import defaultImage from "~/assets/images/mausoleumInformation/frame.svg";
 
 import searchCities from "./searchCities.vue";
 
-defineComponent({ searchCities });
+import CustomConfirm from "~/components/global/CustomConfirm.vue";
 
 const searchCitiesSheet = ref(false);
 
+const deleteConfirmation=ref(false)
+
 const fileInput = ref();
-const currentImage = ref();
 const imageUrl = ref("");
 
 const handleFileChange = (event: any) => {
@@ -91,9 +156,6 @@ const handleFileChange = (event: any) => {
   reader.readAsDataURL(file);
 };
 
-const deleteImg = () => {
-  imageUrl.value = "";
-};
 </script>
 
 <style lang="scss" scoped>

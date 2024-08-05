@@ -53,7 +53,7 @@
 
             <span class="text-xs font-normal text-neutral-500">دوشنبه ۱۴۰۲/۱۲/۰۲</span>
 
-            <RequestCard :item="item" v-for="(item , index) in requestItems" :key="index" />
+            <RequestCard @click="selectIndex(index)" :item="item" v-for="(item , index) in requestItems" :key="index" />
 
         </div>
 
@@ -61,7 +61,7 @@
 
             <span class="text-xs font-normal text-neutral-500">دوشنبه ۱۴۰۲/۱۲/۰۲</span>
 
-            <RequestCard :item="item" v-for="(item , index) in requestItems" :key="index" />
+            <RequestCard @click="selectIndex(index)" :item="item" v-for="(item , index) in requestItems" :key="index" />
 
         </div>
 
@@ -95,7 +95,7 @@ const sortItemsSheet=ref(false)
 const requestItems=ref<{text:string ; name:string ; new?:boolean ; inProgress?:boolean ; denied?:boolean ; confirmed?:boolean}[]
 >([
     {
-        text:'درخواست زائرسرا',
+        text:'درخواست سالن مراسم',
         name:'محمدحسین قربانی',
         new:true,
     },
@@ -115,6 +115,21 @@ const requestItems=ref<{text:string ; name:string ; new?:boolean ; inProgress?:b
        confirmed:true
     },
 ])
+
+const router=useRouter()
+
+
+const selectedIndex=ref()
+
+const selectIndex=(index:number)=>{
+    selectedIndex.value=index
+    if(selectedIndex.value===0){
+        router.push('requests/cermony-hall/1')
+    }
+    if(selectedIndex.value===3){
+        router.push('requests/grave/1')
+    }
+}
 
 </script>
 

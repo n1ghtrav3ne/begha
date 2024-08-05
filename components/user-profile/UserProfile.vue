@@ -36,7 +36,7 @@
             </span>
             <span class="option-text">{{ item.title }}</span>
           </li>
-          <li @click="openExit = true" class="option flex items-center">
+          <li @click="exitAccount=true" class="option flex items-center">
             <span class="option-icon logout centered">
               <span class="material-symbols-outlined"> logout </span>
             </span>
@@ -46,53 +46,53 @@
       </div>
     </div>
 
-    <BottomSheets v-model="openUserChange">
+  </div>
+
+  <BottomSheets v-model="openUserChange">
       <SwitchAccount />
     </BottomSheets>
-  </div>
+
+    <BottomSheets v-model="exitAccount">
+
+      <CustomConfirm title="آیا می خواهید خارج شوید؟">
+
+        <template #icon>
+        <span class="material-symbols-outlined text-error-700 bg-error-200 p-2 rounded-full">
+        logout
+        </span>
+      </template>
+
+      </CustomConfirm>
+      
+    </BottomSheets>
+
+        <BottomSheets v-model="deleteAccount">
+
+      <CustomConfirm title="آیا از حذف حساب کاربری خود اطمینان دارید؟">
+
+        <template #icon>
+        <span class="material-symbols-outlined text-error-700 bg-error-200 p-2 rounded-full">
+        delete
+        </span>
+      </template>
+
+      </CustomConfirm>
+      
+    </BottomSheets>
+
 </template>
 
 <script lang="ts" setup>
 import SwitchAccount from "./SwitchAccountModal.vue";
 import BottomSheets from "../global/bottomSheets.vue";
 
-import { useModalStore } from "~/stores/modals-store";
-defineComponent([SwitchAccount, BottomSheets]);
 
 const openUserChange = ref(false);
 
-const modalStore = useModalStore();
+const exitAccount=ref(false)
 
-const openExit = ref(false);
+const deleteAccount=ref(false)
 
-const cities = ref<
-  { province: string; city: string; iconClass: string; isActive: boolean }[]
->([
-  {
-    province: "همه",
-    city: "",
-    isActive: true,
-    iconClass: "apps",
-  },
-  {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
-  },
-  {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
-  },
-  {
-    province: "اصفهان",
-    city: "نجف آباد",
-    isActive: false,
-    iconClass: "location_on",
-  },
-]);
 const profileOptions = ref<{ title: string; icon: string; notif: boolean }[]>([
   {
     title: "درخواست های من",
@@ -130,6 +130,8 @@ const optionsAction = (item: { title: string }) => {
     useRouter().push("/profile/completion/");
   } else if (item.title === "ذخیره شده ها") {
     useRouter().push("/profile/savedMedia/");
+  }else if(item.title==="اعلانات"){
+    useRouter().push("/profile/notifications")
   }
 };
 </script>

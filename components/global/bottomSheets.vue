@@ -33,12 +33,12 @@
           </div>
 
           <!-- bottom sheet divider -->
-          <div v-if="title" class="pt-4 pb-2 px-6">
+          <div v-if="title" class="pt-4 pb-2">
             <div class="divider"></div>
           </div>
 
           <!-- bottom sheet search field -->
-          <div v-if="props.search" ref="inputElem">
+          <div v-if="props.search" class="h-12" ref="inputElem">
             <text-field
               :placeholder="props.search.placeholder"
               variant="filled"

@@ -1,13 +1,6 @@
 <template>
-  <div class="search">
-    <div class="searchBox">
-      <img src="~/assets/images/cermony/search-normal.svg" alt="" />
 
-      <input type="text" placeholder="جستجوی شهر یا استان" />
-    </div>
-  </div>
-
-  <div class="citiesContainer">
+  <div class="citiesContainer pt-5">
     <div
       @click="chooseCity(index)"
       :class="{ active: index === selectedCity }"
@@ -31,12 +24,17 @@
     </div>
   </div>
 </template>
-    <script lang="ts" setup>
+
+<script lang="ts" setup>
+
 const selectedCity = ref();
 
 const chooseCity = (index: number) => {
   selectedCity.value = index;
 };
+
+const increaseHeight=ref(true)
+
 </script>
     <style lang="scss" scoped>
 @import "~/assets/css/colors.scss";
@@ -117,7 +115,6 @@ const chooseCity = (index: number) => {
     flex-direction: row;
     width: 100%;
     align-items: center;
-    height: 47px;
     gap: 8px;
 
     .cityName {
