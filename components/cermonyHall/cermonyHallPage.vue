@@ -29,8 +29,10 @@
       </div>
     </div>
 
-    <div class="reservationDate mx-auto px-6 py-4">
-      <span class="text-sm">انتخاب تاریخ رزرو</span>
+    <div @click="calendarSheet=true" class="reservationDate mx-auto px-6 py-4">
+      <span v-if="dateText.length === 0" class="text-sm">انتخاب تاریخ رزرو</span>
+
+      <span>{{ dateText }}</span>
 
       <span class="material-symbols-outlined"> arrow_drop_down </span>
     </div>
@@ -65,13 +67,23 @@
     <cermonyHallFilter />
   </BottomSheets>
 
-  <BottomSheets v-model="cermonySearchCitiesSheets">
+  <BottomSheets title="شهر مورد نظر خود را انتخاب کنید" v-model="cermonySearchCitiesSheets">
+
     <cermonySearchCities />
+
   </BottomSheets>
 
-  <BottomSheets v-model="facilitiesSearchFilterSheets">
+
+  <BottomSheets title="جستجو بر اساس امکانات" v-model="facilitiesSearchFilterSheets">
     <facilitiesSearchFilter />
   </BottomSheets>
+
+  <BottomSheets v-model="calendarSheet">
+
+    <DatePicker @update:model-value="updateDate($event)" :show="true" :dualInput="true" :mode="'range'" :column="1"  />
+
+  </BottomSheets>
+
 </template>
 
 <script lang="ts" setup>
@@ -81,11 +93,16 @@ import CermonyCard from "./cermonyCard.vue";
 import facilitiesSearchFilter from "./facilitiesSearchFilter.vue";
 import BottomSheets from "../global/bottomSheets.vue";
 
+const { getDateWithMounthName } = mixin;
+
+
 const cermonyHallFilterSheets = ref(false);
 
 const cermonySearchCitiesSheets = ref(false);
 
 const facilitiesSearchFilterSheets = ref(false);
+
+const calendarSheet=ref(false)
 
 const beghaCermonyHallItems = ref<
   {
@@ -125,13 +142,14 @@ const beghaCermonyHallItems = ref<
     mausoleum: "امام زاده صالح (ع)",
   },
 ]);
-defineComponent([CermonyCard, cermonyHallFilter, cermonySearchCities]);
 
-const showOrder = ref(false);
+const dateText = ref('');
 
-const activateShowOrder = () => {
-  showOrder.value = !showOrder.value;
-};
+function updateDate(date: string[]) {
+  const chosenDate = getDateWithMounthName(date[0]);
+  dateText.value = chosenDate;
+}
+
 </script>
 
 <style lang="scss" scoped>

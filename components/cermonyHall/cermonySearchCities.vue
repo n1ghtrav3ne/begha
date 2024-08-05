@@ -1,176 +1,99 @@
 <template>
-  <div class="search">
-    <div class="searchBox">
-      <img src="~/assets/images/cermony/search-normal.svg" alt="" />
+  <div>
+      <div class="py-4 px-6">
+        <!-- your location -->
+        <div class="flex items-center h-10 mt-3">
+          <div class="size-8 bg-secondary-200 centered rounded-full">
+            <img src="~/assets/images/icons/gps.svg" />
+          </div>
+          <div class="mr-2">
+            <span>مکان فعلی شما</span>
+            <br />
+            <span class="text-tiny">اصفهان ، اصفهان</span>
+          </div>
+        </div>
 
-      <input type="text" placeholder="جستجوی شهر یا استان" />
-    </div>
-  </div>
+        <div class="w-full h-1 bg-secondary-200 my-4"></div>
 
-  <div class="currentLocation">
-    <div class="iconHolder">
-      <img src="~/assets/images/cermony/gps.svg" alt="" />
-    </div>
-
-    <div class="city">
-      <span>مکان فعلی شما</span>
-
-      <p>اصفهان, اصفهان</p>
-    </div>
-  </div>
-
-  <hr class="w-full h-1" />
-
-  <div :class="{ deactive: filterCheck === false }" class="filter">
-    <img src="~/assets/images/cermony/menu.svg" alt="" />
-
-    <div>
-      <span class="text-sm font-normal">همه</span>
-
-      <span class="material-symbols-outlined check-icon"> check_circle </span>
-    </div>
-  </div>
-
-  <div class="citiesContainer">
-    <div class="cities" v-for="index in 4" :key="index">
-      <img src="~/assets/images/cermony/location.svg" alt="" />
-
-      <div class="cityName">
-        <span class="text-sm font-normal">نجف آباد</span>
-
-        <span class="text-tiny font-normal">اصفهان</span>
+        <div v-if="locations?.filter((x) => x.city == search)">
+          <div>
+            <list
+              title="همه"
+              @click="selectedItem = null"
+              :class="!selectedItem ? '  bg-secondary-200 rounded-lg' : ''"
+              class="h-14"
+            >
+              <template #prepend>
+                <img src="~/assets/images/icons/menu.svg" />
+              </template>
+              <template v-if="!selectedItem" #append>
+                <div class="bg-secondary-700 size-6 centered rounded-full p-1">
+                  <img src="/icons/check.svg" class="w-full h-full" />
+                </div>
+              </template>
+            </list>
+          </div>
+          <list
+            v-for="(item, i) in getLocations"
+            :key="i"
+            :title="item.city"
+            :subtitle="item.state"
+            class="h-14"
+            subtitle-class=" text-tiny"
+            :class="
+              selectedItem?.city == item?.city
+                ? '  bg-secondary-200 rounded-lg'
+                : ''
+            "
+            @click="selectedItem = item"
+          >
+            <template #prepend>
+              <img src="~/assets/images/icons/location2.svg" alt="" />
+            </template>
+            <template v-if="selectedItem?.city == item?.city" #append>
+              <div class="bg-secondary-700 size-6 centered rounded-full p-1">
+                <img src="/icons/check.svg" class="w-full h-full" />
+              </div>
+            </template>
+          </list>
+        </div>
+        <div v-else class="w-full flex justify-center mt-32">
+          <div class="text-center">
+            <div class="text-center">
+              <img
+                src="~/assets/images/icons/search-black.svg"
+                class="w-12 h-12 left-0 right-0 mx-auto mb-2"
+              />
+              <span>موردی یافت نشد !</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 </template>
-<script lang="ts" setup>
-const filterCheck = ref(true);
+  
+  <script setup>
+const locationDialog = ref(true);
+const selectedItem = ref({});
+const locations = ref([
+  { state: "اصفهان", city: "شاهین شهر" },
+  { state: "تهران", city: "ولنجک" },
+  { state: "اصفهان", city: "زرین شهر" },
+  { state: "آذربایجان شرقی", city: "مراغه" },
+  { state: "خوزستان", city: "مسجد سلیمان" },
+]);
+
+const search = ref("");
+const getSearch = (e) => {
+  search.value = e;
+};
+
+const getLocations = computed(() => {
+  if (search?.value?.length) {
+    return locations.value.filter((item) => item.city.includes(search.value));
+  } else return locations.value;
+});
 </script>
-<style lang="scss" scoped>
-@import "~/assets/css/colors.scss";
-@import "~/assets/css/icons.scss";
-
-.search {
-  margin-top: 16px;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 48px;
-  padding: 16px;
-  border-radius: 16px;
-  background-color: $surface;
-
-  .searchBox {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    width: 100%;
-    font-weight: normal;
-
-    input {
-      outline: 0;
-      background-color: transparent;
-      width: 100%;
-    }
-  }
-}
-
-.currentLocation {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  height: 40px;
-  margin-top: 20px;
-
-  .iconHolder {
-    background: $secondary-container;
-    height: 32px;
-    width: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
-
-  .city {
-    display: flex;
-    flex-direction: column;
-
-    span {
-      font-size: 14px;
-      font-weight: 400;
-    }
-
-    p {
-      font-size: 11px;
-      font-weight: 400;
-    }
-  }
-}
-
-hr {
-  margin-top: 16px;
-  background-color: $secondary-container;
-  color: $secondary-container;
-}
-
-.filter {
-  padding-left: 12px;
-  padding-right: 12px;
-  margin-top: 16px;
-  height: 44px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  border-radius: 8px;
-  background-color: $secondary-container;
-
-  .material-symbols-outlined {
-    height: 24px;
-    width: 24px;
-  }
-
-  div {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    .material-symbols-outlined {
-      color: $secondary;
-    }
-  }
-}
-
-.deactive {
-  background-color: transparent;
-  .material-symbols-outlined {
-    display: none;
-  }
-}
-
-.citiesContainer {
-  display: flex;
-  flex-direction: column;
-  margin-top: 16px;
-  gap: 12px;
-
-  .cities {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    height: 47px;
-    gap: 8px;
-
-    .cityName {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-}
+  
+  <style lang="scss" scoped>
 </style>

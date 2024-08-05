@@ -3,11 +3,11 @@
     <span class="choosingTimeTitle">انتخاب ساعت</span>
 
     <div class="timeOptions">
-      <div
+      <div @click="selectIndex(index)"
         v-for="index in 6"
         :key="index"
         class="items"
-        :class="{ activeItem: index === 2, deactivatedItem: index === 5 }"
+        :class="{'bg-secondary-700 text-secondary-50': index===selectedIndex ,'bg-neutral-200 text-neutral-500 pointer-events-none' : index===5}"
       >
         ۸:۰۰ تا ۱۰:۰۰
       </div>
@@ -30,59 +30,11 @@
     <span> مطالعه قوانین و مقررات </span>
 
     <div class="list">
-      <div class="flex">
+      <div class="flex" v-for="index in 4" :key="index">
         <li></li>
         <p>
           کاربران موظف به حفظ منابع کتابخانه و جلوگیری از هرگونه تخریب، سوء
           استفاده یا سرقت از آنها می‌باشند.
-        </p>
-      </div>
-
-      <div class="flex">
-        <li></li>
-        <p>
-          هرگونه خسارت به منابع کتابخانه باید به صورت فوری به مسئولین کتابخانه
-          گزارش شود.
-        </p>
-      </div>
-
-      <div class="flex">
-        <li></li>
-        <p>
-          کاربران موظف به حفظ منابع کتابخانه و جلوگیری از هرگونه تخریب، سوء
-          استفاده یا سرقت از آنها می‌باشند.
-        </p>
-      </div>
-
-      <div class="flex">
-        <li></li>
-        <p>
-          هرگونه خسارت به منابع کتابخانه باید به صورت فوری به مسئولین کتابخانه
-          گزارش شود.
-        </p>
-      </div>
-
-      <div class="flex">
-        <li></li>
-        <p>
-          هرگونه خسارت به منابع کتابخانه باید به صورت فوری به مسئولین کتابخانه
-          گزارش شود.کاربران موظف به حفظ منابع کتابخانه و جلوگیری از هرگونه
-          تخریب، سوء استفاده یا سرقت از آنها می‌باشند.
-        </p>
-      </div>
-
-      <div class="flex">
-        <li></li>
-        <p>
-          هرگونه خسارت به منابع کتابخانه باید به صورت فوری به مسئولین کتابخانه
-          گزارش شود.
-        </p>
-      </div>
-      <div class="flex">
-        <li></li>
-        <p>
-          هرگونه خسارت به منابع کتابخانه باید به صورت فوری به مسئولین کتابخانه
-          گزارش شود.
         </p>
       </div>
 
@@ -90,16 +42,21 @@
     </div>
   </div>
 
-  <div class="buttonContainer">
-    <button class="confirmingReservation">ثبت رزرو</button>
+  <div class="flex w-[90%] mx-auto fixed max-w-[600px] right-0 left-0 m-0 bottom-5">
+    <button class="flex justify-center items-center bg-primary-700 text-primary-50 w-full rounded-lg p-2 h-11">ثبت رزرو</button>
   </div>
+
 </template>
 <script setup lang="ts">
-import FullHeightBaseDialog from "../global/FullHeightBaseDialog.vue";
+
 import reservationFacilities from "./reservationFacilities.vue";
 import BaseCheckbox from "~/components/global/BaseCheckbox.vue";
 
-defineComponent({ reservationFacilities, BaseCheckbox, FullHeightBaseDialog });
+const selectedIndex=ref()
+
+const selectIndex=(index:number)=>{
+  selectedIndex.value=index
+}
 
 const facilities = ref<{ image: string; title: string; price: number }[]>([
   {
@@ -181,7 +138,6 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
       font-style: normal;
       font-weight: 400;
       line-height: normal;
-      color: $surface-on;
     }
 
     .activeItem {
@@ -261,29 +217,4 @@ const checkboxes = ref<{ id: number; label: string; isChecked: boolean }[]>([
   display: none;
 }
 
-.buttonContainer {
-  width: 100%;
-  max-width: 600px;
-  bottom: 3%;
-
-  .confirmingReservation {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $primary;
-    padding: 8px;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    color: $primary-on;
-    height: 44px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 90%;
-  }
-}
 </style>
