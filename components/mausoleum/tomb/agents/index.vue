@@ -89,32 +89,8 @@
       </BottomSheets>
 
       <!-- delete dialog  -->
-      <BottomSheets v-model="deleteDialog">
-        <div class="px-4 py-6 text-center">
-          <div
-            class="size-[52px] bg-error-200 mx-auto left-0 right-0 rounded-full centered"
-          >
-            <img src="/assets/images/icons/trash.svg" />
-          </div>
-          <h3 class="my-5">
-            آیا از حذف این فرد ({{ selectedAgent.title }}) اطمینان دارید؟
-          </h3>
-          <div class="grid grid-cols-2 mt-9">
-            <div class="pl-2">
-              <base-btn color="error-700">بله</base-btn>
-            </div>
-            <div class="pr-2">
-              <base-btn
-                variant="outlined"
-                color="neutral-800"
-                @click="deleteDialog = false"
-              >
-                خیر
-              </base-btn>
-            </div>
-          </div>
-        </div>
-      </BottomSheets>
+      <DeleteSheet v-model="deleteDialog" :text="`(${selectedAgent.title})`">
+      </DeleteSheet>
     </div>
   </div>
 </template>

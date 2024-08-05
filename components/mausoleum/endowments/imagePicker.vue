@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-20 bg-neutral-100 rounded-xl flex items-center p-3">
     <list
-      title="تصویر پروفایل شما"
+      title="تصویر شاخص"
       title-class="font-bold"
       :subtitle="profileImage ? 'حذف عکس' : 'انتخاب عکس'"
       :subtitle-class="
@@ -12,13 +12,8 @@
       @clickSubtitle="profileImage ? (profileImage = null) : triggerFileInput()"
     >
       <template #prepend>
-        <div
-          class="size-14 bg-secondary-200 rounded-full flex items-center justify-center"
-        >
-          <img
-            :src="profileImage || '/icons/userProfile.svg'"
-            class="w-full h-full object-contain rounded-full"
-          />
+        <div class="size-14 bg-secondary-200 rounded-full centered">
+          <img :src="profileImage || '/icons/image.svg'" class="rounded-full" />
         </div>
       </template>
       <template #append v-if="profileImage">
@@ -34,8 +29,8 @@
     />
   </div>
 </template>
-
-<script setup>
+  
+  <script setup>
 import list from "~/components/global/list.vue";
 
 const profileImage = ref("");
@@ -56,8 +51,8 @@ function onImageSelected(event) {
   }
 }
 </script>
-
-<style lang="scss" scoped>
+  
+  <style lang="scss" scoped>
 .hidden {
   display: none;
 }
