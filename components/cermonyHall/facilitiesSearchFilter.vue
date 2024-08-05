@@ -1,176 +1,163 @@
 <template>
-  <div class="facilitiesContainer">
-    <div @click="() => (itemOne = !itemOne)" class="iconContainer">
-      <span
-        :class="{ active: itemOne }"
-        class="material-symbols-outlined hidden check-icon"
-      >
-        check_circle
-      </span>
 
-      <div class="imgContainer">
-        <img src="~/assets/images/cermony/Ghari.svg" alt="" />
-      </div>
+  <div class="flex flex-col">
+
+    <div class="flex flex-row items-center justify-between">
+
+    <div @click="selectIndex(index)" v-for="index in 5" :key="index" class="flex flex-col items-center mt-3 gap-2">
+
+      <span :class="{'bg-secondary-700 text-secondary-50' : index===selectedIndex}" class="icon-Hall-Iran bg-neutral-200 w-11 h-11 p-1 flex justify-center items-center text-2xl rounded-full"></span>
 
       <span>پذیرایی</span>
+
     </div>
 
-    <div @click="() => (itemTwo = !itemTwo)" class="iconContainer">
-      <span
-        :class="{ active: itemTwo }"
-        class="material-symbols-outlined hidden check-icon"
-      >
-        check_circle
-      </span>
-
-      <div class="imgContainer">
-        <img src="~/assets/images/cermony/Ghari.svg" alt="" />
-      </div>
-
-      <span>قاری</span>
-    </div>
-
-    <div @click="() => (itemThree = !itemThree)" class="iconContainer">
-      <span
-        :class="{ active: itemThree }"
-        class="material-symbols-outlined hidden check-icon"
-      >
-        check_circle
-      </span>
-
-      <div class="imgContainer">
-        <img src="~/assets/images/cermony/Ghari.svg" alt="" />
-      </div>
-
-      <span>مداح</span>
-    </div>
-
-    <div @click="() => (itemFourth = !itemFourth)" class="iconContainer">
-      <span
-        :class="{ active: itemFourth }"
-        class="material-symbols-outlined hidden check-icon"
-      >
-        check_circle
-      </span>
-
-      <div class="imgContainer">
-        <img src="~/assets/images/cermony/Ghari.svg" alt="" />
-      </div>
-
-      <span>سخنران</span>
-    </div>
-
-    <div @click="() => (itemFifth = !itemFifth)" class="iconContainer">
-      <span
-        :class="{ active: itemFifth }"
-        class="material-symbols-outlined hidden check-icon"
-      >
-        check_circle
-      </span>
-
-      <div class="imgContainer">
-        <img src="~/assets/images/cermony/Ghari.svg" alt="" />
-      </div>
-
-      <span>عکاسی</span>
-    </div>
   </div>
 
-  <div class="capacityTitle">
-    <span>ظرفیت</span>
-  </div>
 
-  <div class="sliderContainer">
-    <capacity />
-  </div>
+  <span class="mt-8">ظرفیت</span>
 
-  <button class="confirmingFilter">اعمال فیلتر</button>
+
+  <div class="capacityContainer"> 
+
+    <div class="flex flex-row-reverse w-[95%]">
+      <label  :style="`left:${inputValue/10}%`" class="rangeLabel">
+
+        {{ inputValue }}
+
+      </label>
+
+    </div>
+
+            <input type="range" min="0" max="1000" list="numbers" v-model="inputValue" />
+
+            <hr class="fill" :style="`width: ${inputValue/10}%`">
+
+            <datalist id="numbers" class="w-full flex flex-row-reverse justify-between text-tiny relative bottom-2 text-neutral-500">
+                <option value="0"></option>
+                <option value="100"></option>
+                <option value="200"></option>
+                <option value="300"></option>
+                <option value="400"></option>
+                <option value="5000"></option>
+                <option value="600"></option>
+                <option value="700"></option>
+                <option value="800"></option>
+                <option value="900"></option>
+                <option value="1000"></option>
+              </datalist>
+
+              <div class="w-full flex flex-row-reverse justify-between text-tiny ml-2 relative bottom-2 text-neutral-500">
+
+                <span class="text-tiny relative text-neutral-500 right-2.5">0</span>
+                <span class="text-tiny relative text-neutral-500 ">200</span>
+                <span class="text-tiny relative text-neutral-500 ">400</span>
+                <span class="text-tiny relative text-neutral-500 ">600</span>
+                <span class="text-tiny relative text-neutral-500 ">800</span>
+                <span class="text-tiny relative text-neutral-500 ">1000</span>
+
+              </div>
+
+
+        </div>
+
+        <div class="rounded-lg bg-primary-700 text-primary-50 mt-7 text-xs w-full flex justify-center items-center h-11 p-2 cursor-pointer">اعمال فیلتر</div>
+
+      </div>
+
 </template>
 <script lang="ts" setup>
-import capacity from "~/components/layouts/capacity.vue";
-defineComponent({ capacity });
 
-const itemOne = ref(false);
-const itemTwo = ref(false);
-const itemThree = ref(false);
-const itemFourth = ref(false);
-const itemFifth = ref(false);
+const inputValue=ref(0)
+
+const selectedIndex=ref()
+
+const selectIndex=(index:number)=>{
+  selectedIndex.value=index
+}
+
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import "~/assets/css/colors.scss";
 @import "~/assets/css/icons.scss";
 
-.facilitiesContainer {
+.capacityContainer{
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 70px;
-  justify-content: space-between;
-  margin-top: 21px;
-  .iconContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 46px;
-    height: 100%;
-    gap: 8px;
+  flex-direction: column;
+  width: 90%;
+  direction: ltr;
+  margin-right: auto;
+  margin-left: auto;
+      
+      .rangeLabel{
+          height: 24px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 11px;
+          font-weight: 400;
+          position: relative;
+          bottom: 0;
+          color: $secondary-on;
+          width: 26px;
+          background-image: url('~/assets/images/cermony/bg.svg');
+      }
+  
 
-    .check-icon {
-      position: absolute;
-      color: $secondary;
-      margin-right: 30px;
-    }
 
-    span {
-      font-size: 14px;
-      font-weight: 400;
-    }
-
-    .imgContainer {
-      background-color: $secondary-container;
-      border-radius: 100%;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
   }
+    
+      
+.fill{
+  position: relative;
+  right: 0;
+  left: 0;
+  width: 100%;
+  bottom: 13px;
+  border: 2px solid $secondary;
+  height: 4px;
+  border-radius: 100px;
 }
-
-.active {
-  display: flex;
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  z-index: 9999;
+  position: relative;
+  bottom: 4px;
+  background: $surface;
+  fill: var(--Key-Surface-Surface, #FBFBFB);
+  stroke: var(--Key-Surface-Surface, #FBFBFB);
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.10));
 }
-
-.capacityTitle {
-  margin-top: 32px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+input{
+  accent-color: $secondary;
+  -webkit-appearance: none;
+  appearance: none;
+  width:100%;
+  position: relative;
+  right: 0;
+  left: 0;
+  direction:ltr;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.sliderContainer {
-  margin-top: 12px;
-  height: 25px;
+input[type=range]::-webkit-slider-runnable-track  {
+  background: $secondary-container;
+  height: 4px;
+  border-radius: 100px;
   width: 100%;
 }
-
-.confirmingFilter {
-  width: 100%;
-  height: 44px;
-  background-color: $primary;
-  color: $primary-on;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20%;
-  border-radius: 8px;
-  padding: 8px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  
+option{
+  height: 1px;
+  background: $surface-on;
+  opacity: 0.6;
+  width: 1px;
+  border-radius: 30%;
 }
+
+
 </style>
