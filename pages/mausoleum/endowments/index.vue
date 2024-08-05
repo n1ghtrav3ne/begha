@@ -1,11 +1,10 @@
 <template>
   <div>
-    <cart />
+    <mausoleum-endowments />
   </div>
 </template>
 
 <script setup>
-import cart from "@/components/cart/index.vue";
 definePageMeta({
   layout: "empty-layout",
 });

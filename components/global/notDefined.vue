@@ -8,7 +8,7 @@
           class="bg-primary-700 text-white mt-3 flex justify-center items-center gap-2 py-2 px-4 w-full h-11 rounded-lg"
         >
           <img src="@/assets/images/icons/add-square.svg" />
-          {{ title }} جدید
+          {{ btnTitle || title }} جدید
         </button>
       </NuxtLink>
     </div>
@@ -18,6 +18,9 @@
 <script setup>
 const props = defineProps({
   title: {
+    type: String,
+  },
+  btnTitle: {
     type: String,
   },
   link: {

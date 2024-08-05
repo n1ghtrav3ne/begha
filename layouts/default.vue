@@ -4,7 +4,9 @@
       <Header v-if="!initStore.isLoading"></Header>
     </ClientOnly>
     <VitePwaManifest />
-    <NuxtPage />
+    <div class="pb-16">
+      <NuxtPage />
+    </div>
     <ClientOnly>
       <Footer v-if="!initStore.isLoading"></Footer>
     </ClientOnly>

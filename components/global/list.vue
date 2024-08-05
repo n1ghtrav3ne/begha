@@ -7,7 +7,7 @@
       <!-- list icon -->
       <slot name="prepend"></slot>
       <!-- list title -->
-      <div class="mr-2">
+      <div class="mr-2" @click="emit('pressClick')">
         <span :class="props.titleClass">
           {{ props?.title }}
         </span>
@@ -34,6 +34,8 @@ const props = defineProps([
   "subtitle",
   "bordered",
 ]);
+
+const emit = defineEmits(["pressClick"]);
 </script>
 
 <style lang="scss" scoped>

@@ -11,12 +11,12 @@
         <img src="~/assets/images/icons/check-done.svg" />
       </div>
     </div>
-    <span class="mr-2 text-xs">{{ props?.item?.label }}</span>
+    <span class="mr-2 text-xs">{{ props?.label }}</span>
   </div>
 </template>
 
 <script setup>
-const props = defineProps(["item", "modelValue"]);
+const props = defineProps(["label", "modelValue"]);
 const emit = defineEmits(["update:modelValue"]);
 const checkBoxStatus = ref(false);
 
