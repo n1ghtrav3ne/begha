@@ -17,20 +17,30 @@
     <div class="container begha-page-content">
       <div class="begha-profile-status flex items-center justify-end">
         <div class="notif-status-icons flex items-center">
-          <span class="begha-status flex items-center">
-            <span class="status-icon icon-Mosque-Iran"></span>
+
+          <span class="border border-error-700 bg-error-200 rounded-full w-[75px] justify-center flex flex-row gap-1 text-error-700 text-xs items-center">
+            <span class="status-icon icon-Mosque-Iran bg-error-300 rounded-full p-1 text-lg flex justify-center items-center"></span>
             <span class="status-text">بسته</span>
           </span>
+
           <span
             @click="$router.push('/begha-news/1')"
             class="begha-notif centered mr-3"
           >
-            <span class="material-symbols-outlined"> notifications </span>
-          </span>
+
+          <div class="flex justify-center items-center">
+            <span class="material-symbols-rounded  !text-secondary-700">
+            notifications
+            </span>
+            <div class="p-1 mb-5 ml-6 bg-error-700 rounded-full absolute"></div>
+          </div>
+                
+
+      </span>
         </div>
       </div>
       <div class="begha-profile-info flex items-center justify-between">
-        <div class="flex flex-col">
+        <div class="flex gap-1 flex-col">
           <span class="begha-name">حرم امام زاده صالح (ع)</span>
           <span class="begha-followers">۳۴۹ نفر دنبال کننده</span>
         </div>
