@@ -11,12 +11,16 @@
         <span class="text-neutral-800 text-xs">{{
           selectedItem.value ? selectedItem.name : props.placeholder
         }}</span>
-        <span class="text-secondary-700">
-          <img src="~/assets/images/icons/menue-left.svg" />
-        </span>
+        <div class="flex items-center cursor-pointer">
+          <span>انتخاب گیرنده</span>
+          <span class="icon-Arrow-Bottom-Iran mr-1 text-2xl"> </span>
+        </div>
       </div>
       <!-- select state dialog  -->
-      <bottomSheets v-model="dialog" title="انتخاب واحد">
+      <bottomSheets
+        v-model="dialog"
+        title="واحد گیرنده مورد نظر را انتخاب کنید"
+      >
         <div>
           <!-- show state  -->
           <div class="mt-2" v-if="items.length">
@@ -49,16 +53,9 @@
 const props = defineProps(["label", "placeholder"]);
 const dialog = ref(false);
 const items = ref([
-  { name: "تخته (فرش، موکت و ...)", value: "diploma" },
-  { name: "تخته (فرش، موکت و ...)", value: "masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
+  { name: "ستاد فرهنگی اوقاف", value: "diploma" },
+  { name: "ستاد بسیج", value: "masters" },
+  { name: "امور مالی", value: "senior-masters" },
 ]);
 const emit = defineEmits(["update:modelValue"]);
 

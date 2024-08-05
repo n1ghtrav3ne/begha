@@ -20,7 +20,7 @@
       title="شهر مورد نظر خود را انتخاب کنید"
       :search="{ placeholder: 'جستجوی شهر' }"
     >
-      <div class="p-4">
+      <div>
         <!-- show state  -->
         <div class="mt-2" v-if="states.length">
           <list
@@ -28,7 +28,7 @@
             :key="i"
             :title="item.city"
             :subtitle="item.state"
-            class="h-14 px-3"
+            class="h-14"
             subtitle-class=" text-tiny"
             :class="
               selectedCity == item.city ? '  bg-secondary-200 rounded-lg' : ''

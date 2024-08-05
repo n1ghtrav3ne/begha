@@ -92,7 +92,7 @@ const items = ref<
     image: notification,
     name: "پیغام ها",
     badgeColorClass: "success-bg-color",
-    link: "",
+    link: "/mausoleum/ticketing",
   },
   {
     backColor: "linear-gradient(180deg, #F8E895 0%, #F4C82A 100%)",
