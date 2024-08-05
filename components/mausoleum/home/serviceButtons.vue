@@ -127,7 +127,7 @@ const items = ref<
     image: news,
     name: "اخبار",
     badgeColorClass: "error-bg-color",
-    link: "",
+    link: "/mausoleum/news",
   },
   {
     backColor: "linear-gradient(180deg, #3BEBDD 0%, #20C6BC 100%)",

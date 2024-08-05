@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-20 bg-neutral-100 rounded-xl flex items-center p-3">
     <list
-      title="تصویر شاخص"
+      :title="title || 'تصویر'"
       title-class="font-bold"
       :subtitle="profileImage ? 'حذف عکس' : 'انتخاب عکس'"
       :subtitle-class="
@@ -32,10 +32,11 @@
   
   <script setup>
 import list from "~/components/global/list.vue";
-
+const props = defineProps(["title", "modelValue", "cover"]);
 const profileImage = ref("");
 const fileInput = ref(null);
 
+const emit = defineEmits(["update:modelValue"]);
 function triggerFileInput() {
   fileInput.value.click();
 }
@@ -48,6 +49,7 @@ function onImageSelected(event) {
       profileImage.value = reader.result;
     };
     reader.readAsDataURL(file);
+    emit("update:modelValue", file);
   }
 }
 </script>

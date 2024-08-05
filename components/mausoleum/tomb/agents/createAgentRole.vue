@@ -2,14 +2,15 @@
   <div>
     <!-- create agent page header -->
     <div class="page-header">
-      <NuxtLink to="/mausoleum/tomb/agents">
-        <div class="flex items-center text-white text-base">
-          <span class="material-symbols-outlined back-icon">
-            arrow_right_alt
-          </span>
-          <span class="mr-4">ایجاد نقش</span>
-        </div>
-      </NuxtLink>
+      <div class="flex items-center text-white text-base">
+        <span
+          class="material-symbols-outlined back-icon"
+          @click="useRouter().go(-1)"
+        >
+          arrow_right_alt
+        </span>
+        <span class="mr-4">ایجاد نقش</span>
+      </div>
     </div>
 
     <div class="py-4 px-6">

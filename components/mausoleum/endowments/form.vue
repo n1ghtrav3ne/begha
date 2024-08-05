@@ -17,7 +17,7 @@
       <!-- body -->
       <div class="p-4">
         <!-- image  -->
-        <imagePicker />
+        <imagePicker title="تصویر شاخص" />
 
         <!-- form body -->
         <div>
@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-import imagePicker from "./imagePicker.vue";
+import imagePicker from "~/components/pickers/imagePicker.vue";
 import unitPicker from "~/components/pickers/unitPicker.vue";
 import numberPicker from "~/components/pickers/numberPicker.vue";
 import datePicker from "~/components/pickers/datePicker.vue";

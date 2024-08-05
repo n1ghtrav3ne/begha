@@ -7,8 +7,8 @@
     <div
       id="sheet-elem"
       ref="sheetElem"
-      class="w-full sheetElem min-h-[200px] bg-white fixed max-w-[600px] bottom-0 rounded-t-2xl translate-y-full animate-slide-up overflow-y-hidden"
-      :class="fullScreen ? 'h-screen' : ''"
+      class="w-full sheetElem min-h-[200px] bg-white fixed max-w-[600px] bottom-0 translate-y-full animate-slide-up overflow-y-hidden"
+      :class="fullScreen ? 'h-screen rounded-none' : 'rounded-t-2xl'"
     >
       <div class="w-full h-full relative">
         <div
@@ -76,7 +76,7 @@ const props = defineProps({
     label: { type: String },
     placeholder: { type: String },
   },
-  fullScreen: {
+  fullscreen: {
     type: Boolean,
     default: false,
   },
@@ -125,16 +125,7 @@ watch(
   }
 );
 
-watch(
-  () => props.fullScreen,
-  (newValue) => {
-    if (newValue) {
-      fullScreen.value = true;
-    } else {
-      disabledFullScreen();
-    }
-  }
-);
+fullScreen.value = props.fullscreen;
 </script>
 
 <style lang="scss" scoped>
