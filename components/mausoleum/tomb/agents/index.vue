@@ -4,7 +4,7 @@
     <div class="page-header">
       <div class="flex items-center text-white text-base">
         <span
-          @click="useRouter().go(-1)"
+          @click="useRouter().push('/mausoleum')"
           class="material-symbols-outlined back-icon"
         >
           arrow_right_alt

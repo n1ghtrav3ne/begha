@@ -16,14 +16,14 @@
     </div>
     <!-- select state dialog  -->
     <bottomSheets v-model="dialog" title="انتخاب نقش">
-      <div class="p-4">
+      <div>
         <!-- show state  -->
         <div class="mt-2" v-if="insurance.length">
           <list
             v-for="(item, i) in insurance"
             :key="i"
             :title="item.name"
-            class="h-14 px-3"
+            class="h-14"
             :class="
               selectedInsurance.value == item.value
                 ? '  bg-secondary-200 rounded-lg'

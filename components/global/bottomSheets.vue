@@ -12,6 +12,7 @@
     >
       <div class="w-full h-full relative">
         <div
+          v-if="!empty"
           @click="fullScreen = !fullScreen"
           class="w-16 h-[5px] rounded-[20px] bg-primary-700 top-2 absolute left-0 right-0 mx-auto cursor-pointer"
         ></div>
@@ -19,7 +20,7 @@
           <!-- bottom sheet header  -->
           <div
             class="w-full flex justify-between items-center my-2 overflow-y-hidden"
-            v-if="props.title"
+            v-if="props.title && !empty"
           >
             <span :class="props.class">{{ props?.title }}</span>
 
@@ -33,12 +34,12 @@
           </div>
 
           <!-- bottom sheet divider -->
-          <div v-if="title" class="pt-4 pb-2">
+          <div v-if="title && !empty" class="pt-4 pb-2">
             <div class="divider"></div>
           </div>
 
           <!-- bottom sheet search field -->
-          <div v-if="props.search" class="h-12" ref="inputElem">
+          <div v-if="props.search" class="h-12 my-4" ref="inputElem">
             <text-field
               :placeholder="props.search.placeholder"
               variant="filled"
@@ -76,6 +77,10 @@ const props = defineProps({
     placeholder: { type: String },
   },
   fullScreen: {
+    type: Boolean,
+    default: false,
+  },
+  empty: {
     type: Boolean,
     default: false,
   },

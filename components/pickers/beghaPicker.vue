@@ -11,12 +11,17 @@
         <span class="text-neutral-800 text-xs">{{
           selectedItem.value ? selectedItem.name : props.placeholder
         }}</span>
-        <span class="text-secondary-700">
-          <img src="~/assets/images/icons/menue-left.svg" />
-        </span>
+        <div class="flex items-center cursor-pointer">
+          <span>انتخاب بقعه</span>
+          <span class="icon-Arrow-Bottom-Iran mr-1 text-2xl"> </span>
+        </div>
       </div>
       <!-- select state dialog  -->
-      <bottomSheets v-model="dialog" title="انتخاب واحد">
+      <bottomSheets
+        v-model="dialog"
+        title="واحد گیرنده مورد نظر را انتخاب کنید"
+        :search="{ placeholder: 'جستجوی بقعه' }"
+      >
         <div>
           <!-- show state  -->
           <div class="mt-2" v-if="items.length">
@@ -24,6 +29,8 @@
               v-for="(item, i) in items"
               :key="i"
               :title="item.name"
+              :subtitle="item.location"
+              subtitle-class="text-tiny text-neutral-500"
               class="h-14"
               :class="
                 selectedItem.value == item.value
@@ -32,6 +39,15 @@
               "
               @click="selectedItem = item"
             >
+              <template #prepend>
+                <div class="size-10 rounded-full">
+                  <img
+                    class="size-10 rounded-full"
+                    src="~/assets/images/one-begha/begha-profile.png"
+                    alt=""
+                  />
+                </div>
+              </template>
               <template v-if="selectedItem.value == item.value" #append>
                 <div class="bg-secondary-700 size-6 centered rounded-full p-1">
                   <img src="/icons/check.svg" class="w-full h-full" />
@@ -49,16 +65,11 @@
 const props = defineProps(["label", "placeholder"]);
 const dialog = ref(false);
 const items = ref([
-  { name: "تخته (فرش، موکت و ...)", value: "diploma" },
-  { name: "تخته (فرش، موکت و ...)", value: "masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
-  { name: "تخته (فرش، موکت و ...)", value: "senior-masters" },
+  { name: "امام زاده صالح", location: "تهران، تهران", value: "diploma" },
+  { name: "امام زاده صالح", location: "تهران، تهران", value: "diploma" },
+  { name: "امام زاده صالح", location: "تهران، تهران", value: "diploma" },
+  { name: "امام زاده صالح", location: "تهران، تهران", value: "diploma" },
+  { name: "امام زاده صالح", location: "تهران، تهران", value: "diploma" },
 ]);
 const emit = defineEmits(["update:modelValue"]);
 

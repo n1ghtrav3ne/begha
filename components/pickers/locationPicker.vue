@@ -15,7 +15,7 @@
       :search="{ placeholder: 'جستجوی شهر یا استان' }"
       @updateSearch="getSearch($event)"
     >
-      <div class="py-4 px-6">
+      <div>
         <!-- your location -->
         <div class="flex items-center h-10 mt-3">
           <div class="size-8 bg-secondary-200 centered rounded-full">

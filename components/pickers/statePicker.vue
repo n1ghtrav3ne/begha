@@ -21,12 +21,12 @@
       :search="{ placeholder: 'جستجو بر اساس نام استان' }"
       @update-search="getSearch($event)"
     >
-      <div class="p-4">
+      <div>
         <template v-if="states.length">
           <div v-for="(item, i) in states" :key="i">
             <list
               :title="item"
-              class="h-14 px-3"
+              class="h-14"
               :class="
                 selectedState == item ? '  bg-secondary-200 rounded-lg' : ''
               "
