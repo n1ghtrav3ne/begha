@@ -23,12 +23,13 @@
               v-else
               class="menu-item-icon"
               :class="
-                `${item.iconClass} ` + `${item.active ? 'active-item' : ''}`
+                `${item.iconClass} ` +
+                `${useRoute().fullPath == item.link ? 'active-item' : ''}`
               "
             >
             </span>
             <span
-              :class="item.active ? 'active-item' : ''"
+              :class="useRoute().fullPath == item.link ? 'active-item' : ''"
               class="mt-2 footer-item-title"
               >{{ item.title }}</span
             >
@@ -41,6 +42,9 @@
 
 <script lang="ts" setup>
 const router = useRouter();
+
+console.log("useRoute().name ", useRoute().fullPath);
+
 const footerItems = ref<
   { title: string; iconClass: string; link: string; active: boolean }[]
 >([
@@ -48,7 +52,7 @@ const footerItems = ref<
     title: "خانه",
     iconClass: "icon-Home",
     link: "/",
-    active: true,
+    active: false,
   },
   {
     title: "بقاع من",
