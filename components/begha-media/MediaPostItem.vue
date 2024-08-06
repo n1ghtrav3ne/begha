@@ -36,16 +36,16 @@
       </div>
       <div class="post-content">
         <div class="post-head-title">
-          <span>دیدار آیت الله خمینی با مردم</span>
+          <span>{{ item.title }}</span>
         </div>
         <div class="post-description">
           <p>
-            متن توضیحات لورم ایپسوممتن توضیحات لورم ایپسوممتن توضیحات لورم ایپسوم متن توضیحات لورم ایپسوممتن توضیحات لورم ایپسوممتن توضیحات لورم ایپسوم
+            {{ item.text }}
           </p>
         </div>
         <div class="post-tags">
-          <span v-for="(tag , index) in 6">
-            #امامزاده
+          <span>
+            #{{ item.hashtag }}
           </span>
         </div>
       </div>
@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts" setup>
-
+const props=defineProps(['item'])
 </script>
 
 <style lang="scss" scoped>
