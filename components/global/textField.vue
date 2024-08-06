@@ -9,7 +9,6 @@
       </div>
 
       <div
-        ref="inputElem"
         :class="[
           error ? 'border border-error-400 border-red-shadow' : getClass,
           activeInput
@@ -24,7 +23,7 @@
           <div class="flex-none ml-2" v-if="slots?.prepend">
             <slot name="prepend"></slot>
           </div>
-          <div class="grow">
+          <div class="grow" ref="inputElem">
             <input
               v-if="!desabled"
               class="w-full flex text-start outline-none bg-transparent text-sm"
