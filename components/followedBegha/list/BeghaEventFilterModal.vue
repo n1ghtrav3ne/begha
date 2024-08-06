@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="filter-modal-body p-4">
+    <div class="filter-modal-body">
       <services-filter v-model="services"></services-filter>
       <div class="w-full h-1 bg-secondary-200 my-4"></div>
       <div cla ss="h-12">
@@ -18,12 +18,6 @@
       </div>
       <div>
         <checkbox-items :items="checkBoxItems" />
-      </div>
-
-      <div class="mt-8">
-        <button class="w-full bg-primary-700 h-11 rounded-lg text-white">
-          اعمال فیلتر
-        </button>
       </div>
     </div>
   </div>

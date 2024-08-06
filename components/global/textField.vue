@@ -1,5 +1,5 @@
 <template>
-  <div class="my-3">
+  <div>
     <ClientOnly>
       <!-- text field label  -->
       <div :class="label && 'mb-2'">
@@ -9,7 +9,6 @@
       </div>
 
       <div
-        ref="inputElem"
         :class="[
           error ? 'border border-error-400 border-red-shadow' : getClass,
           activeInput
@@ -18,16 +17,16 @@
               : 'border border-secondary-400'
             : '',
         ]"
-        class="rounded-lg p-4"
+        class="rounded-lg"
       >
-        <div class="flex">
-          <div class="flex-none">
+        <div class="flex items-center h-[54px] px-2">
+          <div class="flex-none ml-2" v-if="slots?.prepend">
             <slot name="prepend"></slot>
           </div>
-          <div class="grow">
+          <div class="grow" ref="inputElem">
             <input
               v-if="!desabled"
-              class="h-full w-full flex text-start outline-none bg-transparent text-xs"
+              class="w-full flex text-start outline-none bg-transparent text-sm"
               :placeholder="placeholder"
               :type="type"
               :value="modelValue"
@@ -38,7 +37,7 @@
               {{ modelValue || placeholder }}
             </div>
           </div>
-          <div class="flex text-end">
+          <div class="flex text-end mr-2" v-if="slots?.append">
             <slot name="append"></slot>
           </div>
         </div>
@@ -55,7 +54,7 @@
 
 <script setup>
 const emit = defineEmits(["update:modelValue", "status"]);
-
+const slots = useSlots();
 const props = defineProps({
   // variant type : initial , filled
   variant: {

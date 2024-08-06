@@ -1,7 +1,7 @@
 <template>
   <Swiper
     :modules="[SwiperPagination, SwiperEffectCreative]"
-    :slidesPerView="4"
+    :slidesPerView="5"
     :breakpoints="breakpoints"
     :loop="false"
     :autoplay="{
@@ -17,12 +17,13 @@
         <div class="flex justify-center mb-3">
           <div class="relative">
             <div
-              class="size-10 rounded-lg centered"
+              class="size-[54px] rounded-lg centered"
               :class="
                 getActive(item.value) ? 'bg-secondary-700' : 'bg-neutral-100'
               "
             >
               <img
+                class="size-8"
                 :src="
                   getActive(item.value)
                     ? `/icons/${item.icon}-active.svg`
@@ -32,7 +33,7 @@
             </div>
             <div
               v-if="getActive(item.value)"
-              class="absolute size-4 bg-secondary-700 rounded-full -top-1 -left-1 border border-white"
+              class="absolute size-6 bg-secondary-700 rounded-full -top-2 -left-2 border border-white"
             >
               <div class="w-full h-full centered">
                 <img src="/icons/check.svg" />

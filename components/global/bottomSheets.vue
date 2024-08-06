@@ -5,7 +5,8 @@
     @click="handleOutsideClick"
   >
     <div
-      id="sheet-elem"
+      @touchstart="startTouchToClose($event)"
+      @touchend="endTouchToClose($event)"
       ref="sheetElem"
       class="w-full sheetElem min-h-[200px] bg-white fixed max-w-[600px] bottom-0 translate-y-full animate-slide-up overflow-y-hidden"
       :class="
@@ -18,11 +19,13 @@
     >
       <div class="w-full h-full relative">
         <div
+          @touchstart="startTouchToFullscreen($event)"
+          @touchend="endTouchToFullscreen($event)"
           v-if="!empty"
           @click="fullScreen = !fullScreen"
           class="w-16 h-[5px] rounded-[20px] bg-primary-700 top-2 absolute left-0 right-0 mx-auto cursor-pointer"
         ></div>
-        <div class="p-4 w-full">
+        <div id="closeByTouch" class="p-4 w-full">
           <!-- bottom sheet header  -->
           <div
             class="w-full flex justify-between items-center my-2 overflow-y-hidden"
@@ -65,7 +68,15 @@
             class="overflow-y-scroll"
             :class="fullScreen ? 'max-h-[700px]' : 'max-h-[400px]'"
           >
-            <slot></slot>
+            <div :class="slots?.actions && 'pb-14'">
+              <slot></slot>
+            </div>
+
+            <div class="fixed bottom-5 right-0 w-full" v-if="slots?.actions">
+              <div class="px-3">
+                <slot name="actions"></slot>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -93,7 +104,7 @@ const props = defineProps({
 });
 const sheetElem = ref(null);
 const fullScreen = ref(false);
-
+const slots = useSlots();
 const disabledFullScreen = () => {
   fullScreen.value = false;
   sheetElem.value.classList.remove("h-screen");
@@ -120,6 +131,40 @@ const screenSizeHandler = (e) => {
   }
 };
 
+const startFullscreenTouch = ref(null);
+const startTouchToFullscreen = (e) => {
+  console.log("start :", e.changedTouches[0].clientY);
+  startFullscreenTouch.value = e.changedTouches[0].clientY;
+};
+
+const endTouchToFullscreen = (e) => {
+  console.log("end", e.changedTouches[0].clientY);
+  console.log(
+    "startFullscreenTouch.value - e.changedTouches[0].clientY",
+    startFullscreenTouch.value - e.changedTouches[0].clientY
+  );
+  if (startFullscreenTouch.value - e.changedTouches[0].clientY > 0) {
+    fullScreen.value = true;
+  } else {
+    fullScreen.value = false;
+  }
+  startFullscreenTouch.value = null;
+};
+
+const startCloseTouch = ref(null);
+const startTouchToClose = (e) => {
+  if (e.srcElement.getAttribute("id")) {
+    startCloseTouch.value = e.changedTouches[0].clientX;
+  }
+};
+
+const endTouchToClose = (e) => {
+  if (startCloseTouch.value - e.changedTouches[0].clientX > 0) {
+    closeSheet();
+  }
+  startCloseTouch.value = null;
+};
+
 watch(
   () => props.modelValue,
   () => {
@@ -132,6 +177,13 @@ watch(
 );
 
 fullScreen.value = props.fullscreen;
+
+watch(
+  () => props.fullscreen,
+  (newValue) => {
+    fullScreen.value = newValue;
+  }
+);
 </script>
 
 <style lang="scss" scoped>
