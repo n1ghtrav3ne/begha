@@ -1,11 +1,11 @@
 <template>
   <div>
-    <endowmentForm link="endowments" />
+    <assetsForm link="assets" />
   </div>
 </template>
 
 <script setup>
-import endowmentForm from "../assetsAndEndowments/form.vue";
+import assetsForm from "../assetsAndEndowments/form.vue";
 </script>
 
 <style lang="scss" scoped>

@@ -8,7 +8,13 @@
       id="sheet-elem"
       ref="sheetElem"
       class="w-full sheetElem min-h-[200px] bg-white fixed max-w-[600px] bottom-0 translate-y-full animate-slide-up overflow-y-hidden"
-      :class="fullScreen ? 'h-screen rounded-none' : 'rounded-t-2xl'"
+      :class="
+        fullScreen
+          ? empty
+            ? 'h-screen rounded-none'
+            : 'h-[99%] rounded-none'
+          : 'rounded-t-2xl'
+      "
     >
       <div class="w-full h-full relative">
         <div

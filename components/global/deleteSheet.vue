@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BottomSheets v-model="dialog">
+    <BottomSheets v-model="dialog" :empty="true">
       <div class="px-4 py-6 text-center">
         <div
           class="size-[52px] bg-error-200 mx-auto left-0 right-0 rounded-full centered"

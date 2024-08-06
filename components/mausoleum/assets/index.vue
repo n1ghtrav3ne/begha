@@ -1,12 +1,12 @@
 <template>
   <div>
-    <endowmentsCart :data="endowments" link="endowments" />
+    <assetsCart :data="assets" link="assets" />
   </div>
 </template>
 
 <script setup>
-import endowmentsCart from "../assetsAndEndowments/index.vue";
-const endowments = ref([
+import assetsCart from "../assetsAndEndowments/index.vue";
+const assets = ref([
   {
     title: "فرش ۱۲ متری",
     subtitle: "۵ تخته",

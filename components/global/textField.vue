@@ -14,8 +14,8 @@
           error ? 'border border-error-400 border-red-shadow' : getClass,
           activeInput
             ? variant == 'filled'
-              ? 'border border-primary-700 '
-              : 'border border-secondary-400 border-shadow'
+              ? 'border border-neutral-700 '
+              : 'border border-secondary-400'
             : '',
         ]"
         class="rounded-lg p-4"

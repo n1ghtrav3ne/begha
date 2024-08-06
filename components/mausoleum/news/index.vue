@@ -84,7 +84,7 @@
         </NuxtLink>
       </template>
       <template v-else>
-        <NotDefined title="مورد" btnTitle="خبر" />
+        <NotDefined title="مورد" btnTitle="خبر" link="news/create" />
       </template>
 
       <BottomSheets v-model="newsDialog" :title="selected.title">

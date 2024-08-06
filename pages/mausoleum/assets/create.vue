@@ -1,11 +1,13 @@
 <template>
   <div>
-    <endowmentForm link="endowments" />
+    <mausoleum-assets-form />
   </div>
 </template>
 
 <script setup>
-import endowmentForm from "../assetsAndEndowments/form.vue";
+definePageMeta({
+  layout: "empty-layout",
+});
 </script>
 
 <style lang="scss" scoped>
