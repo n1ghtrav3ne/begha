@@ -4,9 +4,9 @@
 
     <div @click="selectIndex(index)" v-for="index in 5" :key="index" class="flex flex-col items-center mt-2 gap-2">
 
-      <div :class="{'bg-secondary-700 text-secondary-50' : selectedIndex===index}" class="p-3 flex justify-center items-center rounded-lg bg-neutral-200">
+      <div :class="{'bg-secondary-700 text-secondary-50' : selectedIndex===index}" class="p-3 flex justify-center items-center rounded-lg h-[54px] w-[54px] bg-neutral-200">
 
-        <span class="icon-House-Iran scale-150"></span>
+        <span class="icon-House-Iran text-2xl"></span>
 
       </div>
 

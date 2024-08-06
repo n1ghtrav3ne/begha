@@ -1,24 +1,34 @@
 <template>
   <div>
-    <div class="begha-banner-page-container">
-      <img
+    <div  class="begha-banner-page-container">
+      <img 
+
         class="begha-page-banner"
         src="https://s3-alpha-sig.figma.com/img/406f/c25b/55c068e0ec6af795f540ce9e7f947d19?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jACxSiy4b~cC3MHfc1tXnNemMMYQqV~aJ4V~DoKT8N8jQcjPSd3cCMfxv~ZhtXouNiwu0fVpX2gj9rMm0Q2KNgPcYhbbuwM8UCnEwdZVd6DajvyL-lO6ZRayqONJUX5CXOP8NYLlx-9~jgLgc-23oV7NXuKGll7mJBVxFwWR6PMeYZ2PC79vJsdFKMGzvfuAWOTo2cftFALdv~jdsD4lz8LzLtUe~V8Xt4zYX22SDSppdXR5o0PN1anEIlptzqQs6FfjPyhRLc2w87c6gXoBLuEHLRxjhniEzPnVBkI6AK0FYhyiUBwVTHbbHXhAr~5xqt7Hxb75nj37~b1vuLmMxg__"
         alt=""
+        
       />
-      <div class="begha-profile-image">
+  
+    </div>
+
+    <div :class="{'fixed max-w-[600px] m-auto top-0  bg-neutral-50 right-0 left-0':scrollTop>=160}" class="z-[99] duration-500 h-[153px] border-neutral-100 border-b">
+
+      <div :class="{ 'opacity-100':scrollTop>=150}" class="w-full duration-1000 fixed right-0 left-0 max-w-[600px] m-auto opacity-0 h-[52px] bg-primary-700"></div>
+
+    <div :class="{'w-[86px] h-[86px] translate-y-[65px] !p-[3px]':scrollTop>=150}" class="w-[120px] p-1 duration-500 bg-white relative bottom-[60px] right-4 h-[120px] rounded-full">
         <img
-          class="begha-profile-img"
+          class="w-full rounded-full h-full"
           src="~/assets/images/one-begha/begha-profile.png"
           alt=""
         />
       </div>
-    </div>
-    <div class="container begha-page-content">
-      <div class="begha-profile-status flex items-center justify-end">
+
+    <div class="container begha-page-content relative bottom-[120px]">
+
+      <div :class="{'top-7':scrollTop>=150}" class="begha-profile-status duration-500 flex items-center relative justify-end">
         <div class="notif-status-icons flex items-center">
 
-          <span class="border border-error-700 bg-error-200 rounded-full w-[75px] justify-center flex flex-row gap-1 text-error-700 text-xs items-center">
+          <span  class="border border-error-700 bg-error-200 rounded-full w-[75px] justify-center flex flex-row gap-1 text-error-700 text-xs items-center">
             <span class="status-icon icon-Mosque-Iran bg-error-300 rounded-full p-1 text-lg flex justify-center items-center"></span>
             <span class="status-text">بسته</span>
           </span>
@@ -39,7 +49,9 @@
       </span>
         </div>
       </div>
-      <div class="begha-profile-info flex items-center justify-between">
+
+
+      <div :class="{'top-[60px]':scrollTop>=95}" class="begha-profile-info duration-500 flex items-center relative justify-between">
         <div class="flex gap-1 flex-col">
           <span class="begha-name">حرم امام زاده صالح (ع)</span>
           <span class="begha-followers">۳۴۹ نفر دنبال کننده</span>
@@ -49,7 +61,14 @@
         </div>
       </div>
     </div>
-    <div class="container begha-profile-content">
+
+
+    </div>
+
+
+
+
+    <div class="container begha-profile-content relative ">
       <div class="begha-work-banner">
         <BeghaWorkEventBanner />
       </div>
@@ -82,7 +101,7 @@
               <span class="contact-numbers">۰۹۱۲۳۴۵۶۷۸۹ و ۰۹۱۳۱۹۴۰۴۰۴۹۴</span>
             </div>
             <span class="contact-icon-bg centered">
-              <span class="material-symbols-outlined"> call </span>
+              <span @click="callSheet=true" class="material-symbols-outlined"> call </span>
             </span>
           </div>
         </div>
@@ -92,12 +111,46 @@
       </div>
     </div>
   </div>
+
+  <BottomSheets title="تماس با دفتر بقعه" v-model="callSheet">
+
+    <CallSheet />
+
+  </BottomSheets>
+
 </template>
 
 <script lang="ts" setup>
+
 import BeghaWorkEventBanner from "./BeghaWorkEventBanner.vue";
+
 import NextPlans from "../home/NextPlans.vue";
-defineComponent([BeghaWorkEventBanner, NextPlans]);
+
+import CallSheet from "./CallSheet.vue";
+
+const callSheet=ref(false)
+
+const scrolled = ref(false);
+
+const poster=ref(false)
+
+const scrollAmount=ref()
+
+let scrollTop=ref()
+
+watchEffect(() => {
+  if (process.client) {
+    window.addEventListener("scroll", () => {
+      scrollTop.value = window.pageYOffset;
+      scrollAmount.value=scrollTop.value
+      if(scrollTop.value>=85){
+        scrolled.value=true
+      }
+    });
+  }
+});
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -105,7 +158,7 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
 @import "~/assets/css/icons.scss";
 
 .begha-banner-page-container {
-  position: relative;
+  
   .begha-page-banner {
     height: 140px;
     width: 100%;
@@ -203,7 +256,6 @@ defineComponent([BeghaWorkEventBanner, NextPlans]);
 
 .begha-page-content {
   .begha-profile-info {
-    border-bottom: 1px solid $outline-variant;
     padding-bottom: 15px;
   }
   .notif-status-icons {

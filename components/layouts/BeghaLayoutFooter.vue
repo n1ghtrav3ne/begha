@@ -76,7 +76,7 @@ const servicesList = ref<
     align-items: center;
     display: flex;
     padding: 12px 16px;
-    z-index: 9999;
+    z-index: 9;
   .footer-menu-buttons-container {
     width: 275px;
     border-radius: 12px;
