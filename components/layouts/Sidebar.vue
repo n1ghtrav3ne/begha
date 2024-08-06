@@ -1,12 +1,18 @@
 <template>
   <div
-    v-if="props.modelValue"
+    v-if="props.modelValue || isClosing"
     @click="handleOutsideClick"
     class="w-full h-screen fixed right-0 top-0 z-[99] bg-neutral-800/70"
   >
     <div
       ref="drawerElem"
-      class="w-[85%] h-full bg-white animate-slide-up px-4 py-6"
+      :class="[
+        'w-[85%] h-full bg-white px-4 py-6',
+        {
+          'animate-slide-up': props.modelValue,
+          'animate-slide-down': isClosing,
+        },
+      ]"
     >
       <div class="flex items-center justify-between">
         <img src="~/assets/images/logo/sidebar-logo.png" alt="" />
@@ -22,7 +28,11 @@
           class="flex items-center py-3"
           @click="router.push(item.link)"
         >
-          <span :class="item.icon" class="bg-secondary-700 text-2xl"> </span>
+          <span
+            :class="item.icon"
+            class="rounded-full size-8 centered text-2xl text-secondary-700"
+          >
+          </span>
           <span class="mr-2 text-sm font-normal">{{ item.title }}</span>
         </div>
       </div>
@@ -33,14 +43,13 @@
   </div>
 </template>
 
+
 <script setup>
 const props = defineProps(["modelValue"]);
 const router = useRouter();
 const appVersion = ref("1.1.1");
 const drawerItems = [
-  // { icon: "icon-Pray-Counter-Iran", title: "قبله نما", link: "" },
   { icon: "icon-Pray-Counter-Iran", title: "ذکر شمار", link: "#" },
-  // { icon: "", title: "اذان گو", link: "" },
   { icon: "icon-Calender-Iran", title: "تقویم", link: "#" },
   { icon: "icon-Support-Iran", title: "ارتباط با پشیبانی", link: "#" },
   { icon: "icon-Help-Iran", title: "راهنمای برنامه", link: "#" },
@@ -48,7 +57,16 @@ const drawerItems = [
 ];
 
 const emit = defineEmits(["update:modelValue"]);
-const closeDrawer = () => emit("update:modelValue", false);
+const isClosing = ref(false);
+
+const closeDrawer = () => {
+  isClosing.value = true;
+  setTimeout(() => {
+    emit("update:modelValue", false);
+    isClosing.value = false;
+  }, 300); // Duration of the animation
+};
+
 const drawerElem = ref(null);
 const handleOutsideClick = (event) => {
   if (drawerElem.value && !drawerElem.value.contains(event.target)) {
@@ -78,7 +96,21 @@ watch(
   }
 }
 
+@keyframes slide-down {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .animate-slide-up {
   animation: slide-up 0.3s forwards; /* Adjust timing as needed */
 }
+
+.animate-slide-down {
+  animation: slide-down 0.3s forwards; /* Adjust timing as needed */
+}
 </style>
+
