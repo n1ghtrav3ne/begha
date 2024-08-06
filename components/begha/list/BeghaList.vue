@@ -20,19 +20,23 @@
     </div>
     <div class="app-home">
       <div class="container">
-        <div class="search-box-input">
-          <input
-            class="search-input"
-            type="text"
-            placeholder="جستجو اماکن متبرکه"
-          />
-          <span
-            @click="BeghaEventFilterModalSheet = true"
-            class="material-symbols-outlined search-input-icon"
-          >
-            tune
-          </span>
+        <div>
+          <text-field placeholder="جستجو اماکن متبرکه">
+            <template #append>
+              <div
+                class="size-8 bg-secondary-200 rounded-full flex items-center justify-center text-secondary-700 text-xs"
+              >
+                <span
+                  @click="filterDialog = true"
+                  class="material-symbols-outlined search-input-icon"
+                >
+                  tune
+                </span>
+              </div>
+            </template>
+          </text-field>
         </div>
+
         <div class="popular-begha">
           <PopularBegha @click="$router.push('/begha-detail/1')" />
         </div>
@@ -41,8 +45,20 @@
         </div>
       </div>
     </div>
-    <BottomSheets v-model="filterProvinceBottomSheet">
-      <BeghaProvinceFilter />
+
+    <BottomSheets
+      v-model="filterDialog"
+      title="جستجو بر اساس خدمات و مراسمات جاری"
+      :fullscreen="fullScreen"
+    >
+      <div>
+        <BeghaEventFilterModal @screen-mode="handleScreenMode($event)" />
+      </div>
+      <template #actions>
+        <button class="w-full bg-primary-700 h-11 rounded-lg text-white">
+          اعمال فیلتر
+        </button>
+      </template>
     </BottomSheets>
 
     <BottomSheets v-model="BeghaEventFilterModalSheet">
@@ -55,8 +71,9 @@
 import PopularBegha from "~/components/home/PopularBegha.vue";
 import BeghaListItems from "~/components/home/BeghaListItems.vue";
 import BeghaProvinceFilter from "./BeghaProvinceFilter.vue";
-import BeghaEventFilterModal from "./BeghaEventFilterModal.vue";
 import BottomSheets from "~/components/global/bottomSheets.vue";
+import BeghaEventFilterModal from "../../followedBegha/list/BeghaEventFilterModal.vue";
+
 defineNuxtComponent({
   PopularBegha,
   BeghaListItems,
@@ -94,6 +111,13 @@ const cities = ref<
     iconClass: "location_on",
   },
 ]);
+
+const filterDialog = ref(false);
+
+const fullScreen = ref(false);
+const handleScreenMode = (e: boolean) => {
+  fullScreen.value = e;
+};
 </script>
 
 <style lang="scss" scoped>
