@@ -17,48 +17,131 @@
     </div>
 
     <div class="container">
-      <div class="book-info">
-        <BasketBookItem />
-        <BasketBookItem />
-        <BasketBookItem />
+      <div class="book-info border-b border-neutral-200">
+        <div v-for="(item , index) in bookInfo" :key="index">
+
+          <BasketBookItem @delete="deleteConfirm=true" :item="item" />
+
+        </div>
       </div>
-      <div class="book-description mt-8">
-        <div class="flex items-center">
-          <span class="book-genre-icon centered">
-            <span class="material-symbols-outlined"> menu_book </span>
+    
+      <span class="text-error-700 text-tiny relative top-3">کاربر گرامی این کتاب توسط شخص دیگری رزرو شد.</span>
+      
+      <div class="flex flex-col gap-4 w-full mt-11">
+
+        <div class="flex flex-row gap-1 items-center">
+
+          <span class="material-symbols-rounded text-secondary-700 bg-secondary-200 rounded-full p-1">
+          description
           </span>
-          <span class="book-desc-title">درباره کتاب نهج البلاغه</span>
+
+          <span class="text-base font-bold text-secondary-700">مطالعه قوانین و مقررات</span>
+
         </div>
-        <div class="scrollable-desc-text">
-          <ul class="list-disc list-inside mt-4">
-            <li>
-              کاربران موظف به حفظ منابع کتابخانه و جلوگیری از هرگونه تخریب، سوء
-              اسمی‌باشند.
-            </li>
-            <li>
-              کاربران موظف به حفظ منابع کتابخانه و جلوگیری از هرگونه تخریب،
-            </li>
-            <li>
-              کاربران موظف به حفظ منابع کتابخانه و جلوگیری از هرگونه تخریب، سوء
-              استفاده یا سرقت از آنها می‌باشند.
-            </li>
-          </ul>
+
+        <div class="flex flex-col">
+
+          <div v-for="index in 3" :key="index" class="flex">
+
+            <li></li>
+            <span>کاربران موظف به حفظ منابع کتابخانه و جلوگیری از هرگونه تخریب، سوء استفاده یا سرقت از آنها می‌باشند.</span>
+
+          </div>
+
         </div>
+
+        <CustomCheckbox class="mt-20" :item="{label:'قوانین و مقررات را مطالعه کرده و آن را می پذیرم.'}" />
+
+        <Button @click="confirmed=true" type="button" class="text-xs bg-primary-700 w-full p-3 rounded-lg text-primary-50">ثبت رزرو</Button>
+
       </div>
-      <div class="back-support flex flex-col items-center">
-        <span class="flex max-w-[600px] items-center justify-center support-btn"
-          >رزرو کتاب</span
-        >
-      </div>
+
     </div>
+
   </div>
+
+  <BottomSheets v-model="deleteConfirm">
+
+    <CustomConfirm title="آیا از حذف این کتاب از لیست رزرو اطمینان دارید؟">
+
+      <template #icon>
+        <span class="material-symbols-outlined text-error-700 bg-error-200 p-2 rounded-full">
+        delete
+        </span>
+      </template>
+
+    </CustomConfirm>
+
+  </BottomSheets>
+
+  <BottomSheets v-model="confirmed" title="رزرو کتاب">
+
+    <div class="flex flex-col border-b border-neutral-100 py-3 gap-3 w-full">
+
+      <div class="flex flex-row items-center text-primary-700 mr-1 gap-2">
+
+        <span class="material-symbols-rounded scale-150">
+        check_circle
+        </span>
+
+        <span class="font-bold text-sm">ثبت درخواست با موفقیت انجام شد.</span>
+
+      </div>
+
+      <p class="text-xs h-[76px] overflow-auto">کاربر گرامی درخواست شما برای رزرو کتاب به بقعه های امام زاده صالح (ع) و امام حسین ارسال شد.
+        پس از بررسی و موافقت با درخواست، تاریخ، ساعت و محل دریافت کتاب را به شما اعلام خواهند کرد. </p>
+
+    </div>
+
+    <div class="flex flex-row justify-between mt-3">
+
+      <span>شماره سفارش</span>
+
+      <div class="flex gap-1 items-center">
+
+        <span>۹۴۵۰۰۳۲۴</span>
+
+        <span class="material-symbols-outlined scale-75">
+        content_copy
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="flex flex-row justify-between gap-4 mt-4 w-full">
+
+      <button type="button" class="flex text-primary-50 h-11 justify-center bg-primary-700 w-full items-center p-2 rounded-lg text-xs">تائيد</button>
+
+      <button type="button" class="flex border h-11 justify-center w-full items-center p-2 rounded-lg text-xs">رفتن به درخواست ها</button>
+
+    </div>
+
+  </BottomSheets>
+
 </template>
 
 <script lang="ts" setup>
+
 import BasketBookItem from "./BasketBookItem.vue";
-import { useModalStore } from "~/stores/modals-store";
-const modalStore = useModalStore();
-defineComponent([BasketBookItem]);
+
+const deleteConfirm=ref(false)
+
+const confirmed=ref(false)
+
+const bookInfo=ref<{name:string ; author:string ; finished?:boolean}[]>
+([
+  {
+    name:'نهج البلاغه دشتی',
+    author:'آقای لورم ایپسوم'
+  },
+  {
+    name:'نهج البلاغه دشتی',
+    author:'آقای لورم ایپسوم',
+    finished:true
+  },
+])
+
 </script>
 
 <style lang="scss" scoped>

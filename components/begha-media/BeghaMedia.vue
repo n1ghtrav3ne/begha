@@ -3,12 +3,9 @@
     <div class="begha-banner-page-container">
       <div class="begha-page-banner">
         <div class="flex items-center justify-end p-2 pt-3 pl-4">
-          <span
-            @click="BeghaMediaPostFilterSheet = true"
-            class="material-symbols-outlined centered"
-          >
-            search
-          </span>
+        
+          <img src="~/assets/images/cemetery/search-normal copy.svg" alt="">
+
         </div>
       </div>
       <div class="begha-profile-image">

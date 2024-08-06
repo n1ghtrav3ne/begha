@@ -67,7 +67,7 @@
     <cermonyHallFilter />
   </BottomSheets>
 
-  <BottomSheets title="شهر مورد نظر خود را انتخاب کنید" v-model="cermonySearchCitiesSheets">
+  <BottomSheets :search="{ placeholder: 'جستجوی شهر یا استان' }"  title="شهر مورد نظر خود را انتخاب کنید" v-model="cermonySearchCitiesSheets">
 
     <cermonySearchCities />
 
