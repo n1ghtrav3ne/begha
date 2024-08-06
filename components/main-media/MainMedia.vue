@@ -4,7 +4,7 @@
       <searchAndFilters> </searchAndFilters>
     </div>
     <div class="my-3">
-      <NuxtLink :to="`/begha-media/${i}`">
+      <NuxtLink :to="`/begha-media/${1}`">
         <div class="flex items-center my-3">
           <img
             class="size-10 rounded-full"
@@ -19,8 +19,10 @@
 
       <div class="flex justify-between my-3">
         <div
-          class="h-9 p-2 rounded-3xl flex items-center justify-between"
-          :class="like && 'border border-error-700 bg-error-100'"
+          class="h-9 p-2 border rounded-3xl flex items-center justify-between"
+          :class="
+            like ? ' border-error-700 bg-error-100' : 'border-neutral-200'
+          "
         >
           <span class="ml-1 text-xs">هزار 109</span>
           <span
@@ -54,7 +56,7 @@
     </div>
     <div class="divider my-7"></div>
     <div class="mt-5">
-      <NuxtLink :to="`/begha-media/${i}`">
+      <NuxtLink :to="`/begha-media/${1}`">
         <div class="flex items-center my-3">
           <img
             class="size-10 rounded-full"

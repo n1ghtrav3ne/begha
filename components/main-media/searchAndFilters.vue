@@ -53,20 +53,28 @@
           <CustomCheckbox
             label="بقاع دنبال شده"
             v-model="tombFollowers"
+            @update:model-value="
+              tombFollowers ? (selectedItem = 'folowers') : null;
+              filterDialog = false;
+            "
           ></CustomCheckbox>
         </div>
         <div class="h-1 bg-secondary-200 my-3"></div>
         <div>
           <list
             title="همه"
-            @click="selectedItem = []"
-            class="my-2"
-            :class="!selectedItem.length && 'bg-secondary-200 p-3 rounded-lg'"
+            @click="
+              selectedItem = null;
+              filterDialog = false;
+              tombFollowers = false;
+            "
+            class="my-2 p-2"
+            :class="!selectedItem && 'bg-secondary-200 rounded-lg'"
           >
             <template #prepend>
               <img src="/assets/images/icons/menu.svg" />
             </template>
-            <template v-if="!selectedItem.length" #append>
+            <template v-if="!selectedItem" #append>
               <div class="bg-secondary-700 size-6 centered rounded-full p-1">
                 <img src="/icons/check.svg" class="w-full h-full" />
               </div>
@@ -76,10 +84,15 @@
             v-for="(item, i) in listItems"
             :key="i"
             :title="item.title"
-            @click="selectedItemHandller(item)"
-            class="my-2 cursor-pointer"
+            @click="
+              selectedItem = item;
+              filterDialog = false;
+              tombFollowers = false;
+            "
+            class="my-2 p-2 cursor-pointer"
             :class="
-              checkItemHandller(item) && 'bg-secondary-200 p-3 rounded-lg'
+              selectedItem?.payload == item?.payload &&
+              'bg-secondary-200  rounded-lg'
             "
           >
             <template #prepend>
@@ -87,7 +100,7 @@
                 <img src="/assets/images/icons/Vector.svg" />
               </div>
             </template>
-            <template v-if="checkItemHandller(item)" #append>
+            <template v-if="selectedItem?.payload == item?.payload" #append>
               <div class="bg-secondary-700 size-6 centered rounded-full p-1">
                 <img src="/icons/check.svg" class="w-full h-full" />
               </div>
@@ -119,8 +132,8 @@
         </div>
         <div class="mt-2">
           <template
-            v-for="(item, i) in mediase.filter((x) => x.title.includes(search))"
-            :key="i"
+            v-for="(item, x) in mediase.filter((x) => x.title.includes(search))"
+            :key="x"
           >
             <list
               v-if="mediase.filter((x) => x.title.includes(search)).length"
@@ -170,7 +183,7 @@ const filterDialog = ref(false);
 const searchFilter = ref("");
 const tombFollowers = ref(false);
 const searchDialog = ref(null);
-const selectedItem = ref([]);
+const selectedItem = ref(null);
 
 const search = ref("");
 const searchObject = ref({});
