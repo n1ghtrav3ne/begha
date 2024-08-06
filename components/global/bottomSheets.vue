@@ -65,7 +65,15 @@
             class="overflow-y-scroll"
             :class="fullScreen ? 'max-h-[700px]' : 'max-h-[400px]'"
           >
-            <slot></slot>
+            <div :class="slots?.actions && 'pb-14'">
+              <slot></slot>
+            </div>
+
+            <div class="fixed bottom-5 right-0 w-full" v-if="slots?.actions">
+              <div class="px-3">
+                <slot name="actions"></slot>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -93,7 +101,7 @@ const props = defineProps({
 });
 const sheetElem = ref(null);
 const fullScreen = ref(false);
-
+const slots = useSlots();
 const disabledFullScreen = () => {
   fullScreen.value = false;
   sheetElem.value.classList.remove("h-screen");
@@ -132,6 +140,13 @@ watch(
 );
 
 fullScreen.value = props.fullscreen;
+
+watch(
+  () => props.fullscreen,
+  (newValue) => {
+    fullScreen.value = newValue;
+  }
+);
 </script>
 
 <style lang="scss" scoped>

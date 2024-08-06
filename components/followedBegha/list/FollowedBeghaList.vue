@@ -26,8 +26,8 @@
               :title="item.name"
               :subtitle="item.location"
               title-class="font-bold"
-              subtitle-class="text-xs text-neutral-100"
-              class="p-3"
+              subtitle-class="text-xs text-neutral-500"
+              class="py-3"
               :bordered="i + 1 < beghaItems.length"
             >
               <template #prepend>
@@ -80,11 +80,16 @@
     <BottomSheets
       v-model="filterDialog"
       title="جستجو بر اساس خدمات و مراسمات جاری"
-      :fullScreen="fullScreen"
+      :fullscreen="fullScreen"
     >
       <div>
         <BeghaEventFilterModal @screen-mode="handleScreenMode($event)" />
       </div>
+      <template #actions>
+        <button class="w-full bg-primary-700 h-11 rounded-lg text-white">
+          اعمال فیلتر
+        </button>
+      </template>
     </BottomSheets>
   </div>
 </template>

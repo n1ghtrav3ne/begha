@@ -3,7 +3,7 @@
     <div class="mt-5">
       <Swiper
         :modules="[SwiperPagination, SwiperEffectCreative]"
-        :slidesPerView="3.3"
+        :slidesPerView="2.7"
         :breakpoints="breakpoints"
         :loop="false"
         :autoplay="{ delay: 8000, disableOnInteraction: true }"
@@ -13,7 +13,7 @@
           :key="i"
         >
           <div
-            class="h-8 mx-1 bg-secondary-200 border border-blue rounded-2xl py-1 px-2 flex items-center justify-between"
+            class="h-8 mx-1 bg-secondary-200 border border-secondary-700 rounded-2xl py-1 px-2 flex items-center justify-between"
           >
             <span class="text-tiny">{{ item.label }}</span>
             <img
@@ -55,8 +55,8 @@ const emit = defineEmits(["update:modelValue"]);
 const items = ref([]);
 
 const breakpoints = {
-  769: { slidesPerView: 4, slidesPerGroup: 4 },
-  1500: { slidesPerView: 4, slidesPerGroup: 4 },
+  280: { slidesPerView: 3.3, slidesPerGroup: 4 },
+  500: { slidesPerView: 4.3, slidesPerGroup: 4 },
 };
 
 const activeCheckbox = (event, index) => {

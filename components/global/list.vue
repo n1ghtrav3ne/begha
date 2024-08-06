@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full flex justify-between items-center p-2"
+    class="w-full flex justify-between items-center"
     :class="props?.bordered && 'border-b border-neutral-100'"
   >
     <div class="flex items-center">
