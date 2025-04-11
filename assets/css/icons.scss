@@ -1,0 +1,138 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?hlo8dd');
+  src: url('../fonts/icomoon.eot?hlo8dd#iefix') format('embedded-opentype'),
+    url('../fonts/icons/icomoon.eot') format('eot'),
+    url('../fonts/icons/icomoon.woff') format('woff'),
+    url('../fonts/icons/icomoon.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Close-Iran:before {
+  content: "\e917";
+}
+
+.icon-More-Iran:before {
+  content: "\e908";
+}
+
+.icon-Prayer-Iran:before {
+  content: "\e918";
+}
+
+.icon-Calender-Iran:before {
+  content: "\e912";
+}
+
+.icon-Guides-Iran:before {
+  content: "\e913";
+}
+
+.icon-Help-Iran:before {
+  content: "\e914";
+}
+
+.icon-Pray-Counter-Iran:before {
+  content: "\e915";
+}
+
+.icon-Support-Iran:before {
+  content: "\e916";
+}
+
+.icon-Map-iran .path1:before {
+  content: "\e910";
+  color: rgb(251, 255, 253);
+  opacity: 0.4;
+}
+
+.icon-Map-iran .path2:before {
+  content: "\e911";
+  margin-left: -1em;
+  color: rgb(251, 255, 253);
+}
+
+.icon-Home:before {
+  content: "\e909";
+}
+
+.icon-Media:before {
+  content: "\e90a";
+  color: #7e7e7e;
+}
+
+.icon-Mosque:before {
+  content: "\e90b";
+  color: #7e7e7e;
+}
+
+.icon-Profile:before {
+  content: "\e90c";
+  color: #7e7e7e;
+}
+
+.icon-Location-Iran:before {
+  content: "\e90d";
+}
+
+.icon-Arrow-Bottom-Iran:before {
+  content: "\e90e";
+}
+
+.icon-Menu-Iran:before {
+  content: "\e90f";
+}
+
+.icon-Book-Iran:before {
+  content: "\e900";
+}
+
+.icon-Donate-Iran:before {
+  content: "\e901";
+}
+
+.icon-Education-Iran:before {
+  content: "\e902";
+}
+
+.icon-Event-Iran:before {
+  content: "\e903";
+}
+
+.icon-Ghabr-Iran:before {
+  content: "\e904";
+}
+
+.icon-Hall-Iran:before {
+  content: "\e905";
+}
+
+.icon-House-Iran:before {
+  content: "\e906";
+}
+
+.icon-Mosque-Iran:before {
+  content: "\e907";
+}
+
+.icon-star-Iran:before {
+  content: "\e901";
+}

@@ -1,0 +1,19 @@
+image:  docker:latest
+
+variables:
+    PROJECT_ID: "solaleh_webapp"
+    HOOK_ID:    "mn7rycmdi3yezdpuumabcx488e"    
+
+build_job:
+    stage: build
+    tags:
+        - foreign
+    only:
+        - production
+        - demo
+    script:
+    - PRJ_ID="${PROJECT_ID}_${CI_COMMIT_BRANCH}"
+    - docker build . -t registry.ertebat.io/$PRJ_ID:$CI_PIPELINE_ID
+    - docker push registry.ertebat.io/$PRJ_ID:$CI_PIPELINE_ID
+    - docker rmi registry.ertebat.io/$PRJ_ID:$CI_PIPELINE_ID
+    - wget -O - "https://webhook.ertebat.io/cicd.php?img=$PRJ_ID&tag=$CI_PIPELINE_ID&webhook=$HOOK_ID"

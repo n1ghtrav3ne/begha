@@ -1,0 +1,18 @@
+@use 'colors' as *;
+
+* {
+  direction: rtl;
+  font-family: 'yekan-regular';
+  user-select: none;
+}
+
+.container {
+  padding: 16px !important;
+  margin: 0 auto !important;
+  max-width: 600px !important;
+}
+
+
+body {
+  background-color: $surface;
+}

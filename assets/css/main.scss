@@ -1,0 +1,71 @@
+@use "colors";
+@use "fonts";
+@use "style";
+@use "icons";
+@import "~/assets/css/colors.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    background-color: $surface;
+}
+
+body {
+    font-family: 'yekan-regular';
+    font-size: 14px;
+    color: #0B0B0B;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+.disabled-scroll {
+    overflow-y: hidden !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+@layer components {
+
+    .divider {
+        @apply w-full bg-neutral-200/50 h-[1px]
+    }
+
+    .centered {
+        @apply flex items-center justify-center
+    }
+
+    .page-header {
+        @apply w-full h-12 bg-primary-700 flex items-center justify-between text-white text-base px-3
+    }
+
+}
+
+//Global back navbar
+.back-navbar {
+    height: 48px;
+    background: $primary;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+
+    span.back-title {
+        font-size: 16px;
+        font-family: "yekan-regular";
+        color: $primary-on;
+    }
+
+    span.back-icon {
+        color: $primary-on;
+        font-size: 25px;
+        vertical-align: -10px;
+    }
+}
+
+.seprate-border {
+    border-bottom: 1px solid $outline-variant;
+}
