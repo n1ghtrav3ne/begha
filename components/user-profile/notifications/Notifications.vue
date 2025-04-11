@@ -1,0 +1,47 @@
+<template>
+
+      <div class="greenBox flex flex-row pt-[12px] pb-[11px] px-[16px] bg-primary-700 w-full items-center">
+
+            <div class="firstItem flex flex-row items-center gap-4 text-primary-50">
+
+                <span @click="$router.go(-1)" class="material-symbols-outlined ">
+                arrow_right_alt
+            </span>
+
+            <span class="text-[16px]">اعلانات</span>
+
+            </div>   
+            
+        </div>
+
+        <div class="container">
+
+            <div class="flex flex-row items-center p-4 bg-neutral-100 rounded-xl mt-4 gap-2">
+
+                <img src="~/assets/images/cermony/search-normal.svg" alt="">
+
+                <input type="text" class="bg-transparent w-full outline-none" placeholder="جستجو">
+
+                <span class="bg-secondary-200 p-1 rounded-full relative right-4"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+<path d="M7.5 15C7.89782 15 8.27936 14.842 8.56066 14.5607C8.84196 14.2794 9 13.8978 9 13.5C9 13.1022 8.84196 12.7206 8.56066 12.4393C8.27936 12.158 7.89782 12 7.5 12C7.10218 12 6.72064 12.158 6.43934 12.4393C6.15804 12.7206 6 13.1022 6 13.5C6 13.8978 6.15804 14.2794 6.43934 14.5607C6.72064 14.842 7.10218 15 7.5 15Z" fill="#429FF5" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3 13.5H6" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 13.5H15" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 10.5C12.3978 10.5 12.7794 10.342 13.0607 10.0607C13.342 9.77936 13.5 9.39782 13.5 9C13.5 8.60218 13.342 8.22064 13.0607 7.93934C12.7794 7.65804 12.3978 7.5 12 7.5C11.6022 7.5 11.2206 7.65804 10.9393 7.93934C10.658 8.22064 10.5 8.60218 10.5 9C10.5 9.39782 10.658 9.77936 10.9393 10.0607C11.2206 10.342 11.6022 10.5 12 10.5Z" fill="#429FF5" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3 9H10.5" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.5 9H15" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5.25 6C5.64782 6 6.02936 5.84196 6.31066 5.56066C6.59196 5.27936 6.75 4.89782 6.75 4.5C6.75 4.10218 6.59196 3.72064 6.31066 3.43934C6.02936 3.15804 5.64782 3 5.25 3C4.85218 3 4.47064 3.15804 4.18934 3.43934C3.90804 3.72064 3.75 4.10218 3.75 4.5C3.75 4.89782 3.90804 5.27936 4.18934 5.56066C4.47064 5.84196 4.85218 6 5.25 6Z" fill="#429FF5" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3 4.5H3.75" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.75 4.5L15 4.5" stroke="#429FF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg></span>
+
+                <span class="relative text-tiny text-secondary-50 bg-secondary-700 rounded-full w-5 h-4 flex justify-center items-center bottom-2">2</span>
+
+            </div>
+
+        </div>
+
+</template>
+
+<script setup lang="ts">
+
+</script>
